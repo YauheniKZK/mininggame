@@ -1,6 +1,6 @@
 
 
-import { tapDataAction } from '@/services/tap.service'
+import { getUserService, tapDataAction } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -29,12 +29,23 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
-
+  async function actionGetUser() {
+    try {
+      const res = await getUserService()
+      if (res) {
+        console.log('getUserService', res)
+        totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
 
   return {
     totalScoreGetters,
     updateTotalScore,
     actionGetTotalScore,
-    totalUserScoreGetter
+    totalUserScoreGetter,
+    actionGetUser
   }
 })

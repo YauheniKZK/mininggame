@@ -51,10 +51,6 @@ const updateTouchStart = () => {
     @click="updateTouchEnd"
     @touchstart="updateTouchStart"
   >
-    <!-- <span class="text-[#fff] " :class="{
-      'text-[20px]': tap,
-      'text-[24px]': !tap
-    }">{{ 'Tap' }}</span> -->
   </div>
 </template>
 

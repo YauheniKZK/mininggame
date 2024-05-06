@@ -1,13 +1,25 @@
 <script setup lang="ts">
 import Main from '@/pages/Main.vue';
 import Mining from '@/pages/Mining.vue';
-import { ref } from 'vue';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+// import { storeToRefs } from 'pinia';
+import { onMounted, ref } from 'vue';
+
+const versionApp = import.meta.env.PACKAGE_VERSION
+
+const appStore = useApplicationStore()
+// const { totalScoreGetters } = storeToRefs(appStore)
+const { actionGetUser } = appStore
 
 
 const valueTab = ref('main')
 const updateTab = (value: string) => {
   valueTab.value = value
 }
+
+onMounted(async () => {
+  await actionGetUser()
+})
 </script>
 
 <template>
@@ -28,7 +40,10 @@ const updateTab = (value: string) => {
         </n-tab-pane>
       </n-tabs>
     </div>
-    <div class="flex w-full">
+    <div class="flex flex-col w-full">
+      <div class="flex justify-end p-[8px_12px]">
+        <span class="text-[#fff]">{{ versionApp }}</span>
+      </div>
       <div class="flex w-full h-[70px] bg-[#2e3337] items-center" style="border-radius: 16px 16px 0 0;box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
         <n-tabs type="segment" class="w-full tabs-custom1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="main">
