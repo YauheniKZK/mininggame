@@ -6,6 +6,8 @@
   "scripts": {
     "dev": "vite --port 5176 --host",
     "build": "vue-tsc && vite build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist --branch gh-pages",
     "preview": "vite preview"
   },
   "dependencies": {
