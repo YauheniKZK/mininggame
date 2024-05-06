@@ -6,7 +6,7 @@ import { ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore, actionGetTotalScore } = appStore
+const { updateTotalScore } = appStore
 
 // const tap = ref(false)
 const tapBlock = ref()
@@ -32,7 +32,7 @@ const updateTouchEnd = async () => {
     tapActionIncr(totalScoreGetters.value)
     num = 0
     updateTotalScore(0)
-    await actionGetTotalScore()
+    // await actionGetTotalScore()
   }
   
   // tapAction()

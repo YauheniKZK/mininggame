@@ -6,7 +6,7 @@ import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
-const { actionGetTotalScore } = appStore
+// const { actionGetTotalScore } = appStore
 
 // watch(() => totalUserScoreGetter.value, async (newVal) => {
 //   if (newVal) {
@@ -17,7 +17,7 @@ const { actionGetTotalScore } = appStore
 // const total = computed(() => totalUserScoreGetter.value)
 
 onMounted(async () => {
-  await actionGetTotalScore()
+  // await actionGetTotalScore()
 })
 </script>
 

@@ -11,9 +11,9 @@ export const getUserService = async () => {
     }
 }
 
-export const tapDataAction = async () => {
+export const registrationUserService = async () => {
     if (WebApp) {
-        const url = `${Config.REST_SERVER}/mining/taps`
+        const url = `${Config.REST_SERVER}/mining/start`
         const res = await api.get(url)
         console.log('res', res)    
         return res

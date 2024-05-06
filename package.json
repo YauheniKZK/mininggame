@@ -1,7 +1,7 @@
 {
   "name": "iamprogrammer",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "type": "commonjs",
   "scripts": {
     "dev": "vite --port 5176 --host",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@twa-dev/sdk": "^7.0.0",
+    "@vicons/ionicons5": "^0.12.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "axios": "^1.6.8",
     "gh-pages": "^6.1.1",
