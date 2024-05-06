@@ -38,8 +38,8 @@ export const useApplicationStore = defineStore('application', () => {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
       }      
-    } catch (error) {
-      console.log('error')
+    } catch (error: any) {
+      console.log('error', error?.response)
     }
   }
 
