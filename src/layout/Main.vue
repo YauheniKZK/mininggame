@@ -3,11 +3,14 @@ import Main from '@/view/Main.vue';
 import StartPage from '@/pages/StartPage.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
+import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
-// const { actionGetUser } = appStore
-
+const { actionGetUser } = appStore
+onMounted(async () => {
+  await actionGetUser()
+})
 </script>
 
 <template>
