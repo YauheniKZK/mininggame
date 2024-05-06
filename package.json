@@ -12,6 +12,7 @@
     "@twa-dev/sdk": "^7.0.0",
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "axios": "^1.6.8",
+    "gh-pages": "^6.1.1",
     "pinia": "^2.1.7",
     "ts-node": "^10.9.2",
     "vue": "^3.4.21"
