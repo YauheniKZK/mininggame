@@ -30,7 +30,7 @@ onMounted(async () => {
         <span class="text-[14px] text-[#fff] font-[600] leading-[18px]">{{ '$/hour' }}</span>
       </div>
       <div class="flex items-center text-[14px] text-[#fff] font-[600] leading-[18px]">
-        {{ 'Total: ' + totalUserScoreGetter }}
+        {{ 'TotaL: ' + totalUserScoreGetter }}
       </div>
     </div>
 
