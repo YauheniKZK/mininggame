@@ -4,8 +4,6 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
-const props = defineProps<{ idUser: number }>()
-
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
 const { updateTotalScore, actionGetTotalScore } = appStore
@@ -28,7 +26,7 @@ const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
   updateTotalScore(value)
-  console.log('props.idUser', props.idUser)
+  // console.log('props.idUser', props.idUser)
   num++
   if (num > 20) {
     tapActionIncr(totalScoreGetters.value)

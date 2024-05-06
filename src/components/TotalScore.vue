@@ -4,8 +4,6 @@ import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
 import { onMounted } from 'vue';
 
-defineProps<{ msg: string }>()
-
 const appStore = useApplicationStore()
 const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
 const { actionGetTotalScore } = appStore

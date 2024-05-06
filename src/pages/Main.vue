@@ -1,8 +1,8 @@
 <script setup lang="ts">
 // import { computed, ref } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue'
-import WebApp from '@twa-dev/sdk'
-// import TotalScore from '@/components/TotalScore.vue';
+// import WebApp from '@twa-dev/sdk'
+import TotalScore from '@/components/TotalScore.vue';
 import TapBlock from '@/components/TapBlock.vue';
 
 // const handlebtn = () => {
@@ -17,7 +17,7 @@ import TapBlock from '@/components/TapBlock.vue';
       <TotalScore />
     </div>
     <div class="flex justify-center">
-      <TapBlock :idUser="WebApp.initDataUnsafe.user?.id" />
+      <TapBlock />
     </div>
   </div>
 </template>
