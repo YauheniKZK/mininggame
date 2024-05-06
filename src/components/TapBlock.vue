@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { tapAction, tapActionIncr } from '@/services/tap.service';
+import { tapActionIncr } from '@/services/tap.service';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
@@ -10,7 +10,7 @@ const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
 const { updateTotalScore, actionGetTotalScore } = appStore
 
-const tap = ref(false)
+// const tap = ref(false)
 const tapBlock = ref()
 
 // const updateScore = () => {
@@ -41,7 +41,7 @@ const updateTouchEnd = async () => {
   // tapActionIncr(totalScoreGetters.value)
   // tapBlock.value.style.transform = ``
 }
-const updateTouchStart = (event) => {
+const updateTouchStart = () => {
   // tapBlock.value.style.transform = `perspective(500px) rotateY(${((event.touches[0].clientX - tapBlock.value.offsetWidth) / 30) * 1}deg) rotateX(${((event.touches[0].clientY - tapBlock.value.offsetHeight) / 3) * -1}deg)`;
 }
 </script>

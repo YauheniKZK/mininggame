@@ -2,7 +2,7 @@
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
-import { computed, onMounted, watch } from 'vue';
+import { onMounted } from 'vue';
 
 defineProps<{ msg: string }>()
 

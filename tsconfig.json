@@ -13,7 +13,7 @@
     "noEmit": true,
     "jsx": "preserve",
     "allowSyntheticDefaultImports": true,
-    "types": ["node", "vite/client", "@intlify/unplugin-vue-i18n/messages"],
+    "types": ["node", "vite/client"],
     /* Linting */
     "strict": true,
     "noUnusedLocals": true,
