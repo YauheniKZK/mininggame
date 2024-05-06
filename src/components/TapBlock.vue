@@ -48,7 +48,7 @@ const updateTouchStart = () => {
   <div
     ref="tapBlock"
     class="flex items-center justify-center w-[300px] h-[300px] rounded-[50%] tapBlock"
-    @touchend="updateTouchEnd"
+    @click="updateTouchEnd"
     @touchstart="updateTouchStart"
   >
     <!-- <span class="text-[#fff] " :class="{
