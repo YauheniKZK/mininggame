@@ -26,7 +26,7 @@ const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
   updateTotalScore(value)
-  // console.log('props.idUser', props.idUser)
+  // console.log('props.idUser1', props.idUser)
   num++
   if (num > 20) {
     tapActionIncr(totalScoreGetters.value)
