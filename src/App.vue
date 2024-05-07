@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted, onBeforeUnmount, watch } from 'vue';
+import { onMounted, onBeforeUnmount, watch, computed } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
@@ -21,7 +21,9 @@ onMounted(() => {
   })
 })
 
-watch(() => WebApp.viewportHeight, (newVal) => {
+const heightApp = computed(() => WebApp.viewportHeight)
+
+watch(() => heightApp.value, (newVal) => {
   console.log('viewportHeight', newVal)
 })
 
