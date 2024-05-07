@@ -13,6 +13,7 @@ onMounted(async () => {
   await actionGetUser('start')
 })
 onUnmounted(async () => {
+  console.log('1111111111111111111')
   await actionMiningMoney(totalScoreGetters.value)
   resetUserData()
 })
