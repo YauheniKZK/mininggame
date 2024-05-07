@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Main from '@/pages/Main.vue';
 import Mining from '@/pages/Mining.vue';
+import Earn from '@/pages/Earn.vue';
 // import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
@@ -33,7 +34,7 @@ onMounted(async () => {
           <Mining />
         </n-tab-pane>
         <n-tab-pane name="earn" class="w-full">
-          <span class="text-[#fff]">{{ 'earn' }}</span>
+          <Earn />
         </n-tab-pane>
         <n-tab-pane name="info" class="w-full">
           <span class="text-[#fff]">{{ 'info' }}</span>
