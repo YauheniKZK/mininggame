@@ -33,6 +33,7 @@ watch(() => timer.value, (newVal) => {
       clearInterval(interval.value)
       timer.value = 0
       actionMiningMoney(totalScoreGetters.value)
+      updateTotalScore(0)
       actionGetUser('page')
     }
   }
@@ -71,7 +72,7 @@ const updateTouchStart = () => {
   <div
     ref="tapBlock"
     class="flex items-center justify-center w-[300px] h-[300px] rounded-[50%] tapBlock"
-    @click="updateTouchEnd"
+    @touchend="updateTouchEnd"
     @touchstart="updateTouchStart"
   >
   </div>
