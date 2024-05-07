@@ -101,6 +101,7 @@ const clickCanvas = (event: any) => {
       } else {
         y = event.clientY - rect.top; // Сбрасываем позицию текста
         alpha = 1.0; // Восстанавливаем прозрачность
+        addTextToCanvas('11$');
       }
     }
     animateText()
