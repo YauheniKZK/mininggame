@@ -38,9 +38,10 @@ onMounted(async () => {
     <div class="flex flex-col">
       <div class="flex items-end">
         <n-number-animation
+          ref="numberAnimationInstRef"
           :from="oldValue"
           :to="totalScoreGetters"
-          :active="false"
+          :active="true"
           :precision="0"
         />
         <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalScoreGetters }}</span>
