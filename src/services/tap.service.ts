@@ -31,7 +31,7 @@ export const tapActionIncr = async (value: number) => {
 
 export const getLinkRefUserService = async () => {
     if (WebApp) {
-        const url = `${Config.REST_SERVER}/referrer/link`
+        const url = `${Config.REST_SERVER}/referral/link`
         const res = await api.get(url)
         console.log('res', res)    
         return res

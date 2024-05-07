@@ -2,15 +2,15 @@
 import Main from '@/pages/Main.vue';
 import Mining from '@/pages/Mining.vue';
 import Earn from '@/pages/Earn.vue';
-// import { useApplicationStore } from '@/stores/application/applicationStore';
-// import { storeToRefs } from 'pinia';
-import { onMounted, ref } from 'vue';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
+import { onMounted, onUnmounted, ref } from 'vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
-// const appStore = useApplicationStore()
-// const { totalScoreGetters } = storeToRefs(appStore)
-// const { actionGetUser } = appStore
+const appStore = useApplicationStore()
+const { totalScoreGetters } = storeToRefs(appStore)
+const { actionMiningMoney } = appStore
 
 
 const valueTab = ref('main')
@@ -20,6 +20,9 @@ const updateTab = (value: string) => {
 
 onMounted(async () => {
   // await actionGetUser()
+})
+onUnmounted(async () => {
+  actionMiningMoney(totalScoreGetters.value)
 })
 </script>
 
