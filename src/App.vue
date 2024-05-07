@@ -14,8 +14,9 @@ onMounted(() => {
   console.log('WebApp.version', WebApp.version)
   WebApp.onEvent('viewportChanged', async (event: any) => {
     console.log('event', event)
+    let value = totalScoreGetters.value
     if (event.isStateStable) {
-      await actionMiningMoney(totalScoreGetters.value)
+      await actionMiningMoney(value)
     }
   })
 })
