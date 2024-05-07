@@ -12,6 +12,9 @@ onMounted(() => {
   console.log('WebApp.version', WebApp.version)
   WebApp.onEvent('viewportChanged', async (event: any) => {
     console.log('event', event)
+    if (event.isStateStable) {
+      await actionMiningMoney(10)
+    }
   })
 })
 
