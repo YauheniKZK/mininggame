@@ -10,7 +10,7 @@ const { actionMiningMoney } = appStore
 onMounted(() => {
   WebApp.expand()
   WebApp.themeParams.section_header_text_color = '#FFFFFF'
-  WebApp.themeParams.secondary_bg_color = '#000000'
+  WebApp.themeParams.secondary_bg_color = '#888888'
   WebApp.themeParams.text_color = '#FFFFFF'
   console.log('WebApp.version', WebApp.version)
   WebApp.onEvent('backButtonClicked', async () => {
