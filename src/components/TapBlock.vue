@@ -71,38 +71,38 @@ const updateTouchStart = () => {
 const imgtap = ref()
 const myCanvas = ref()
 
-function addTextToCanvas(text: string, ctx: any, canvas: any, alpha: number, x: number, y: number) {
-  ctx.clearRect(0, 0, canvas.width, canvas.height); // Очищаем canvas
-  ctx.font = '20px Arial';
-  ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`; // Устанавливаем прозрачность
-  ctx.textAlign = 'center';
-  ctx.fillText(text, x, y);
-}
-
-// Функция анимации
-function animateText(ctx: any, canvas: any, alpha: number, x: number, y: number): any {
-  addTextToCanvas('Привет, Canvas!', ctx, canvas, alpha, x, y);
-  y -= 1; // Двигаем текст вверх
-  alpha -= 0.01; // Уменьшаем прозрачность
-
-  if (y > 0 && alpha > 0) {
-    requestAnimationFrame(animateText(ctx, canvas, alpha, x, y)); // Продолжаем анимацию
-  } else {
-    y = canvas.height; // Сбрасываем позицию текста
-    alpha = 1.0; // Восстанавливаем прозрачность
-  }
-}
-
 const clickCanvas = () => {
   if (myCanvas.value) {
+    
     console.log('1111')
-    const y = myCanvas.value.height
-    const alpha = 1.0
+    let y = myCanvas.value.height
+    let alpha = 1.0
 
     const ctx = myCanvas.value.getContext("2d");
     // const rect = myCanvas.value.getBoundingClientRect()
     const x = myCanvas.value.width / 2;
-    animateText(ctx, myCanvas.value, alpha, x, y)
+    function addTextToCanvas(text: string) {
+      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
+      ctx.font = '20px Arial';
+      ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`; // Устанавливаем прозрачность
+      ctx.textAlign = 'center';
+      ctx.fillText(text, x, y);
+    }
+
+    // Функция анимации
+    function animateText(): any {
+      addTextToCanvas('Привет, Canvas!');
+      y -= 1; // Двигаем текст вверх
+      alpha -= 0.01; // Уменьшаем прозрачность
+
+      if (y > 0 && alpha > 0) {
+        requestAnimationFrame(animateText); // Продолжаем анимацию
+      } else {
+        y = myCanvas.value.height; // Сбрасываем позицию текста
+        alpha = 1.0; // Восстанавливаем прозрачность
+      }
+    }
+    animateText()
   }
 }
 
