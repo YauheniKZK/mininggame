@@ -5,25 +5,19 @@ import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount } from 'vue';
-import WebApp from '@twa-dev/sdk'
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters, totalScoreGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, loadingGetUserGetters } = storeToRefs(appStore)
 const { actionGetUser, resetUserData, actionMiningMoney } = appStore
 onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
 })
-onBeforeUnmount(async () => {
+onBeforeUnmount(() => {
   console.log('1111111111111111111')
-  await actionMiningMoney(totalScoreGetters.value)
+  actionMiningMoney(10)
   resetUserData()
 })
-
-WebApp.onEvent('popupClosed', async () => {
-  await actionMiningMoney(totalScoreGetters.value)
-})
-
 </script>
 
 <template>
