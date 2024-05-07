@@ -76,12 +76,12 @@ const clickCanvas = (event: any) => {
     const texts: any = []
     console.log('1111')
     const rect = myCanvas.value.getBoundingClientRect()
-    let y = event.clientY - rect.top
+    let y = event.touches[0].clientY - rect.top
     // let alpha = 1.0
 
     const ctx = myCanvas.value.getContext("2d");
     // const rect = myCanvas.value.getBoundingClientRect()
-    const x = event.clientX - rect.left;
+    const x = event.touches[0].clientX - rect.left;
 
     function addText(text: string, x: number, y: number, speed: number) {
       texts.push({ text: text, x: x, y: y, speed: speed, alpha: 1.0 });
@@ -130,7 +130,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[300px] max-w-[100%] h-[300px]">
-      <canvas ref="myCanvas" width="100%" height="300" @click="clickCanvas"></canvas>
+      <canvas ref="myCanvas" height="300" class="w-full" @touchend="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
