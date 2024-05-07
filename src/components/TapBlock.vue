@@ -71,23 +71,38 @@ const updateTouchStart = () => {
 const imgtap = ref()
 const myCanvas = ref()
 
-function addTextToCanvas(ctx: any, text: string, x: number, y: number) {
-  console.log('ctx', ctx)
-  console.log('x', x)
-  console.log('y', y)
+function addTextToCanvas(text: string, ctx: any, canvas: any, alpha: number, x: number, y: number) {
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Очищаем canvas
   ctx.font = '20px Arial';
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`; // Устанавливаем прозрачность
+  ctx.textAlign = 'center';
   ctx.fillText(text, x, y);
 }
 
-const clickCanvas = (event: any) => {
+// Функция анимации
+function animateText(ctx: any, canvas: any, alpha: number, x: number, y: number): any {
+  addTextToCanvas('Привет, Canvas!', ctx, canvas, alpha, x, y);
+  y -= 1; // Двигаем текст вверх
+  alpha -= 0.01; // Уменьшаем прозрачность
+
+  if (y > 0 && alpha > 0) {
+    requestAnimationFrame(animateText(ctx, canvas, alpha, x, y)); // Продолжаем анимацию
+  } else {
+    y = canvas.height; // Сбрасываем позицию текста
+    alpha = 1.0; // Восстанавливаем прозрачность
+  }
+}
+
+const clickCanvas = () => {
   if (myCanvas.value) {
     console.log('1111')
+    const y = myCanvas.value.height
+    const alpha = 1.0
+
     const ctx = myCanvas.value.getContext("2d");
-    const rect = myCanvas.value.getBoundingClientRect()
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    addTextToCanvas(ctx, 'CLICK', x, y)
+    // const rect = myCanvas.value.getBoundingClientRect()
+    const x = myCanvas.value.width / 2;
+    animateText(ctx, myCanvas.value, alpha, x, y)
   }
 }
 
