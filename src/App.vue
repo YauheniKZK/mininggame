@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted, onBeforeUnmount } from 'vue';
+import { onMounted, onBeforeUnmount, watch } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
@@ -13,12 +13,16 @@ onMounted(() => {
   WebApp.expand()
   console.log('WebApp.version', WebApp.version)
   WebApp.onEvent('viewportChanged', async (event: any) => {
-    console.log('event', event)
+    console.log('event', event?.viewportHeight)
     let value = totalScoreGetters.value
     if (event.isStateStable) {
       await actionMiningMoney(value)
     }
   })
+})
+
+watch(() => WebApp.viewportHeight, (newVal) => {
+  console.log('viewportHeight', newVal)
 })
 
 onBeforeUnmount(async () => {
