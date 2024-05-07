@@ -26,15 +26,16 @@ let num = 0
 const timer = ref(0)
 const interval = ref<any>(null)
 
-watch(() => timer.value, (newVal) => {
+watch(() => timer.value, async (newVal) => {
   if (newVal) {
     console.log('newVal', newVal)
     if (newVal > 0) {
       clearInterval(interval.value)
       timer.value = 0
       actionMiningMoney(totalScoreGetters.value)
-      updateTotalScore(0)
-      actionGetUser('page')
+      
+      await actionGetUser('page')
+      // updateTotalScore(0)
     }
   }
 })

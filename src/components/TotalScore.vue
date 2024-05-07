@@ -37,14 +37,14 @@ onMounted(async () => {
     <img :src="getImageUrl('img/monetka1.png')" class="w-[60px] h-[60px] mr-[8px] object-contain" alt="">
     <div class="flex flex-col">
       <div class="flex items-end">
-        <n-number-animation
+        <!-- <n-number-animation
           ref="numberAnimationInstRef"
           :from="oldValue"
           :to="totalScoreGetters"
           :active="true"
           :precision="0"
-        />
-        <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalUserScoreGetter + totalScoreGetters }}</span>
+        /> -->
+        <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalScoreGetters }}</span>
         <span class="text-[14px] text-[#fff] font-[600] leading-[18px]">{{ '$/hour' }}</span>
       </div>
       <div class="flex items-center text-[14px] text-[#fff] font-[600] leading-[18px]">
