@@ -118,11 +118,11 @@ const clickCanvas = (event: any) => {
 
 onMounted(() => {
   if (imgtap.value && myCanvas.value) {
-    const ctx = myCanvas.value.getContext("2d");
-    // ctx.drawImage(imgtap.value, 10, 10);
-    imgtap.value.addEventListener("load", () => {
-      ctx.drawImage(imgtap.value, 10, 10);
-    });
+    // const ctx = myCanvas.value.getContext("2d");
+    // // ctx.drawImage(imgtap.value, 10, 10);
+    // imgtap.value.addEventListener("load", () => {
+    //   ctx.drawImage(imgtap.value, 10, 10);
+    // });
   }
 })
 </script>
@@ -130,7 +130,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[300px] max-w-[100%] h-[300px]">
-      <canvas ref="myCanvas" width="100%" height="300" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" width="100%" height="300" @click="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
