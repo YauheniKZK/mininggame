@@ -73,38 +73,46 @@ const myCanvas = ref()
 
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
-    
+    const texts: any = []
     console.log('1111')
     const rect = myCanvas.value.getBoundingClientRect()
     let y = event.clientY - rect.top
-    let alpha = 1.0
+    // let alpha = 1.0
 
     const ctx = myCanvas.value.getContext("2d");
     // const rect = myCanvas.value.getBoundingClientRect()
     const x = event.clientX - rect.left;
-    function addTextToCanvas(text: string) {
-      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
-      ctx.font = '20px Arial';
-      ctx.fillStyle = `rgba(0, 0, 0, ${alpha})`; // Устанавливаем прозрачность
-      ctx.textAlign = 'center';
-      ctx.fillText(text, x, y);
+
+    function addText(text: string, x: number, y: number, speed: number) {
+      texts.push({ text: text, x: x, y: y, speed: speed, alpha: 1.0 });
     }
 
-    // Функция анимации
-    function animateText(): any {
-      addTextToCanvas('11$');
-      y -= 1; // Двигаем текст вверх
-      alpha -= 0.01; // Уменьшаем прозрачность
+    function animateTexts() {
+      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
 
-      if (y > 0 && alpha > 0) {
-        requestAnimationFrame(animateText); // Продолжаем анимацию
-      } else {
-        y = event.clientY - rect.top; // Сбрасываем позицию текста
-        alpha = 1.0; // Восстанавливаем прозрачность
-        addTextToCanvas('11$');
+      // Обновляем свойства и отрисовываем каждый текст
+      texts.forEach(function(textObj: any, index: number) {
+        ctx.font = '20px Arial';
+        ctx.fillStyle = `rgba(0, 0, 0, ${textObj.alpha})`;
+        ctx.fillText(textObj.text, textObj.x, textObj.y);
+
+        // Обновляем координаты и прозрачность для анимации
+        textObj.y -= textObj.speed;
+        textObj.alpha -= 0.01;
+
+        // Удаляем текст, если он полностью исчез
+        if (textObj.alpha <= 0) {
+          texts.splice(index, 1);
+        }
+      });
+
+      // Запускаем следующий кадр анимации
+      if (texts.length > 0) {
+        requestAnimationFrame(animateTexts);
       }
     }
-    animateText()
+    addText('11$', x, y, 1);
+    animateTexts()
   }
 }
 
