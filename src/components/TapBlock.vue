@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import { tapActionIncr } from '@/services/tap.service';
+// import { tapActionIncr } from '@/services/tap.service';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore, actionGetUser } = appStore
+const { updateTotalScore } = appStore
 
 // const tap = ref(false)
 const tapBlock = ref()
@@ -29,10 +29,10 @@ const updateTouchEnd = async () => {
   // console.log('props.idUser1', props.idUser)
   num++
   if (num > 20) {
-    tapActionIncr(totalScoreGetters.value)
+    // tapActionIncr(totalScoreGetters.value)
     num = 0
-    updateTotalScore(0)
-    await actionGetUser('page')
+    // updateTotalScore(0)
+    // await actionGetUser('page')
   }
   
   // tapAction()

@@ -2,7 +2,7 @@
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { watch } from 'vue';
-import WebApp from '@twa-dev/sdk'
+// import WebApp from '@twa-dev/sdk'
 
 // import { computed, ref } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue'
@@ -23,7 +23,8 @@ const createLinkRef = async () => {
 
 watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
   if (newVal) {
-    WebApp.close()
+    // WebApp.close()
+    console.log('actionMiningMoney', newVal)
   }
 })
 
