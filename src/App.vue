@@ -12,7 +12,11 @@ onMounted(() => {
   WebApp.themeParams.section_header_text_color = '#fffff'
   WebApp.themeParams.text_color = '#fff'
   console.log('WebApp.version', WebApp.version)
+  WebApp.onEvent('backButtonClicked', async () => {
+    await actionMiningMoney(10)
+  })
 })
+
 onBeforeUnmount(async () => {
   await actionMiningMoney(10)
 })
