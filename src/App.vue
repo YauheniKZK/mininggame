@@ -13,7 +13,7 @@ onMounted(() => {
   WebApp.expand()
   console.log('WebApp.version', WebApp.version)
   WebApp.onEvent('viewportChanged', async (event: any) => {
-    console.log('event', event?.viewportHeight)
+    console.log('event', event)
     let value = totalScoreGetters.value
     if (event.isStateStable) {
       await actionMiningMoney(value)
@@ -23,8 +23,11 @@ onMounted(() => {
 
 const heightApp = computed(() => WebApp.viewportHeight)
 
-watch(() => heightApp.value, (newVal) => {
+watch(() => heightApp.value, async (newVal) => {
   console.log('viewportHeight', newVal)
+  if (newVal > 100) {
+    await actionMiningMoney(totalScoreGetters.value)
+  }
 })
 
 onBeforeUnmount(async () => {

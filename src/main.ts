@@ -10,7 +10,7 @@ WebApp.themeParams.section_header_text_color = '#FFFFFF'
 WebApp.themeParams.secondary_bg_color = '#888888'
 WebApp.themeParams.text_color = '#FFFFFF'
 WebApp.themeParams.text_color = '#FFFFFF'
-WebApp.setHeaderColor('#888888')
+WebApp.setHeaderColor('#35374B')
 WebApp.ready()
 
 const app = createApp(App)
