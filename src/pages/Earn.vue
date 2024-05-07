@@ -14,7 +14,7 @@ import { watch } from 'vue';
 //   WebApp.showAlert(`Hello World! Current count is `)
 // }
 const appStore = useApplicationStore()
-const { successGetLinkRefUserServiceGetters, loadingGetLinkRefUserServiceGetters } = storeToRefs(appStore)
+const { successGetLinkRefUserServiceGetters, loadingGetLinkRefUserServiceGetters, referralsGetters } = storeToRefs(appStore)
 const { actionGetLinkRefUserService } = appStore
 
 const createLinkRef = async () => {
@@ -32,6 +32,12 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 
 <template>
   <div class="flex flex-col items-center w-full h-full">
+    <div v-if="referralsGetters.length > 0" class=" mb-[24px]">
+      <div v-for="(item, index) in referralsGetters" :key="index" class="flex items-center mb-[8px] p-[8px] rounded-[8px] bg-[#77B0AA]">
+        <span class="text-[#fff] mr-[12px]">{{ item?.username + ': ' }}</span>
+        <span class="text-[#fff]">{{ item?.balance }}</span>
+      </div>
+    </div>
     <button
       type="button" 
       class="w-full h-[50px] flex justify-center items-center bg-[#3C5B6F] rounded-[8px]"

@@ -13,6 +13,7 @@ export const useApplicationStore = defineStore('application', () => {
   const loadingGetUser = ref(false)
   const loadingGetLinkRefUserService = ref(false)
   const successGetLinkRefUserService = ref(false)
+  const referrals = ref<any>([])
 
   // --------Getters---------
 
@@ -22,6 +23,7 @@ export const useApplicationStore = defineStore('application', () => {
   const loadingGetUserGetters = computed(() => loadingGetUser.value)
   const loadingGetLinkRefUserServiceGetters = computed(() => loadingGetLinkRefUserService.value)
   const successGetLinkRefUserServiceGetters = computed(() => successGetLinkRefUserService.value)
+  const referralsGetters = computed(() => referrals.value)
 
   // --------Actions---------
 
@@ -42,6 +44,12 @@ export const useApplicationStore = defineStore('application', () => {
       if (res && res.data) {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
+        if (res.data.referrals) {
+          referrals.value = res.data.referrals
+        } else {
+          referrals.value = []
+        }
+        
       }
       loadingGetUser.value = false
     } catch (error: any) {
@@ -119,6 +127,7 @@ export const useApplicationStore = defineStore('application', () => {
     actionGetLinkRefUserService,
     loadingGetLinkRefUserServiceGetters,
     successGetLinkRefUserServiceGetters,
-    actionMiningMoney
+    actionMiningMoney,
+    referralsGetters
   }
 })
