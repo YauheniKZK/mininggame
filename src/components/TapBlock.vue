@@ -1,9 +1,9 @@
 <script setup lang="ts">
 // import { tapActionIncr } from '@/services/tap.service';
-import { tapActionIncr } from '@/services/tap.service';
+// import { tapActionIncr } from '@/services/tap.service';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { onBeforeUnmount, ref, watch } from 'vue';
+import { ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
@@ -64,12 +64,6 @@ const updateTouchEnd = async () => {
 const updateTouchStart = () => {
   // tapBlock.value.style.transform = `perspective(500px) rotateY(${((event.touches[0].clientX - tapBlock.value.offsetWidth) / 30) * 1}deg) rotateX(${((event.touches[0].clientY - tapBlock.value.offsetHeight) / 3) * -1}deg)`;
 }
-
-onBeforeUnmount(async () => {
-  console.log('1111111111111111111222')
-  // actionMiningMoney(10)
-  await tapActionIncr(10)
-})
 </script>
 
 <template>

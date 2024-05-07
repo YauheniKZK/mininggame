@@ -1,13 +1,20 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+
+const appStore = useApplicationStore()
+const { actionMiningMoney } = appStore
 
 onMounted(() => {
   WebApp.expand()
   WebApp.themeParams.section_header_text_color = '#fffff'
   WebApp.themeParams.text_color = '#fff'
   console.log('WebApp.version', WebApp.version)
+})
+onUnmounted(async () => {
+  await actionMiningMoney(10)
 })
 </script>
 
