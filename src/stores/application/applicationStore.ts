@@ -10,6 +10,7 @@ export const useApplicationStore = defineStore('application', () => {
   const totalScore = ref(0)
   // const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
+  const successCurrentUserData = ref(false)
   const loadingGetUser = ref(false)
   const loadingGetLinkRefUserService = ref(false)
   const successGetLinkRefUserService = ref(false)
@@ -21,6 +22,7 @@ export const useApplicationStore = defineStore('application', () => {
   const totalScoreGetters = computed(() => totalScore.value)
   const totalUserScoreGetter = computed(() => currentUserDataGetters.value.balance)
   const loadingGetUserGetters = computed(() => loadingGetUser.value)
+  const successCurrentUserDataGetters = computed(() => successCurrentUserData.value)
   const loadingGetLinkRefUserServiceGetters = computed(() => loadingGetLinkRefUserService.value)
   const successGetLinkRefUserServiceGetters = computed(() => successGetLinkRefUserService.value)
   const referralsGetters = computed(() => referrals.value)
@@ -36,6 +38,7 @@ export const useApplicationStore = defineStore('application', () => {
   // }
 
   async function actionGetUser(type: 'page' |'start') {
+    successCurrentUserData.value = false
     if (type === 'start') {
       loadingGetUser.value = true
     }
@@ -49,10 +52,13 @@ export const useApplicationStore = defineStore('application', () => {
         } else {
           referrals.value = []
         }
-        
+        successCurrentUserData.value = true
+      } else {
+        successCurrentUserData.value = false
       }
       loadingGetUser.value = false
     } catch (error: any) {
+      successCurrentUserData.value = false
       console.log('error', error?.response)
       if (error?.response.status === 419) {
         currentUserData.value = null
@@ -128,6 +134,7 @@ export const useApplicationStore = defineStore('application', () => {
     loadingGetLinkRefUserServiceGetters,
     successGetLinkRefUserServiceGetters,
     actionMiningMoney,
-    referralsGetters
+    referralsGetters,
+    successCurrentUserDataGetters
   }
 })

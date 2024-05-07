@@ -4,15 +4,21 @@ import StartPage from '@/pages/StartPage.vue';
 import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { onMounted, onBeforeUnmount } from 'vue';
-import { tapActionIncr } from '@/services/tap.service';
+import { onMounted, onBeforeUnmount, watch } from 'vue';
+// import { tapActionIncr } from '@/services/tap.service';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData } = appStore
+const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters } = storeToRefs(appStore)
+const { actionGetUser, resetUserData, updateTotalScore } = appStore
 onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
+})
+
+watch(() => successCurrentUserDataGetters.value, (newVal) => {
+  if (newVal) {
+    updateTotalScore(0)
+  }
 })
 
 // watch(() => currentUserData.value, (newVal) => {
@@ -22,7 +28,7 @@ onMounted(async () => {
 onBeforeUnmount(async () => {
   console.log('1111111111111111111')
   // actionMiningMoney(10)
-  await tapActionIncr(10)
+  // await tapActionIncr(10)
   resetUserData()
 })
 </script>
