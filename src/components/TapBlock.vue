@@ -6,7 +6,7 @@ import { ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore, actionMiningMoney, actionGetUser } = appStore
+const { updateTotalScore } = appStore
 
 // const tap = ref(false)
 const tapBlock = ref()
@@ -31,8 +31,8 @@ watch(() => timer.value, (newVal) => {
     if (newVal > 0) {
       clearInterval(interval.value)
       timer.value = 0
-      actionMiningMoney(totalScoreGetters.value)
-      actionGetUser('page')
+      // actionMiningMoney(totalScoreGetters.value)
+      // actionGetUser('page')
     }
   }
 })

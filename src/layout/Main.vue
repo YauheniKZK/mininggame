@@ -19,10 +19,10 @@ onMounted(async () => {
 //   actionMiningMoney(10)
 // })
 
-onBeforeUnmount(() => {
+onBeforeUnmount(async () => {
   console.log('1111111111111111111')
   // actionMiningMoney(10)
-  tapActionIncr(10)
+  await tapActionIncr(10)
   resetUserData()
 })
 </script>
