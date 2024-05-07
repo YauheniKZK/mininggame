@@ -3,8 +3,10 @@ import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
 import { onMounted, onBeforeUnmount } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
+const { totalScoreGetters } = storeToRefs(appStore)
 const { actionMiningMoney } = appStore
 
 onMounted(() => {
@@ -13,7 +15,7 @@ onMounted(() => {
   WebApp.onEvent('viewportChanged', async (event: any) => {
     console.log('event', event)
     if (event.isStateStable) {
-      await actionMiningMoney(10)
+      await actionMiningMoney(totalScoreGetters.value)
     }
   })
 })
