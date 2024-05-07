@@ -2,7 +2,7 @@
 // import { tapActionIncr } from '@/services/tap.service';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
@@ -22,12 +22,30 @@ const tapBlock = ref()
 //   }, 100)
 // }
 let num = 0
+const timer = ref(0)
+const interval = ref<any>(null)
+
+watch(() => timer.value, (newVal) => {
+  if (newVal) {
+    console.log('newVal', newVal)
+    if (newVal > 9) {
+      clearInterval(interval.value)
+      timer.value = 0
+    }
+  }
+})
+
 const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
   updateTotalScore(value)
   // console.log('props.idUser1', props.idUser)
+  clearInterval(interval.value)
+  interval.value = setInterval(() => {
+    timer.value++
+  }, 1000)
   num++
+  
   if (num > 5) {
     // tapActionIncr(totalScoreGetters.value)
     num = 0
