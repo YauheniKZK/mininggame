@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onBeforeUnmount } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 
 const appStore = useApplicationStore()
@@ -13,7 +13,7 @@ onMounted(() => {
   WebApp.themeParams.text_color = '#fff'
   console.log('WebApp.version', WebApp.version)
 })
-onUnmounted(async () => {
+onBeforeUnmount(async () => {
   await actionMiningMoney(10)
 })
 </script>
