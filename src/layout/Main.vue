@@ -4,7 +4,7 @@ import StartPage from '@/pages/StartPage.vue';
 import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { onMounted, onUnmounted } from 'vue';
+import { onMounted, onBeforeUnmount } from 'vue';
 import WebApp from '@twa-dev/sdk'
 
 const appStore = useApplicationStore()
@@ -14,7 +14,7 @@ onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
 })
-onUnmounted(async () => {
+onBeforeUnmount(async () => {
   console.log('1111111111111111111')
   await actionMiningMoney(totalScoreGetters.value)
   resetUserData()
