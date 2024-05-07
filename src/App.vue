@@ -7,6 +7,7 @@ onMounted(() => {
   WebApp.expand()
   WebApp.themeParams.section_header_text_color = '#fff'
   WebApp.themeParams.text_color = '#fff'
+  console.log(WebApp.isVersionAtLeast("6.2"))
 })
 </script>
 
