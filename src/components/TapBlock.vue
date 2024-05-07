@@ -73,7 +73,10 @@ const myCanvas = ref()
 onMounted(() => {
   if (imgtap.value && myCanvas.value) {
     const ctx = myCanvas.value.getContext("2d");
-    ctx.drawImage(imgtap.value, 10, 10);
+    // ctx.drawImage(imgtap.value, 10, 10);
+    imgtap.value.addEventListener("load", () => {
+      ctx.drawImage(imgtap.value, 10, 10);
+    });
   }
 })
 </script>
