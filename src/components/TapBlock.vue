@@ -1,13 +1,13 @@
 <script setup lang="ts">
 // import { tapActionIncr } from '@/services/tap.service';
-import WebApp from '@twa-dev/sdk'
+// import WebApp from '@twa-dev/sdk'
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore } = appStore
+const { updateTotalScore, actionMiningMoney, actionGetUser } = appStore
 
 // const tap = ref(false)
 const tapBlock = ref()
@@ -32,8 +32,8 @@ watch(() => timer.value, (newVal) => {
     if (newVal > 0) {
       clearInterval(interval.value)
       timer.value = 0
-      // actionMiningMoney(totalScoreGetters.value)
-      // actionGetUser('page')
+      actionMiningMoney(totalScoreGetters.value)
+      actionGetUser('page')
     }
   }
 })
@@ -41,13 +41,13 @@ watch(() => timer.value, (newVal) => {
 const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
-  WebApp.CloudStorage.setItem('totalScore', String(value))
+  // WebApp.CloudStorage.setItem('totalScore', String(value))
   updateTotalScore(value)
   // console.log('props.idUser1', props.idUser)
   clearInterval(interval.value)
   interval.value = setInterval(() => {
     timer.value++
-  }, 500)
+  }, 300)
   num++
   
   if (num > 5) {
