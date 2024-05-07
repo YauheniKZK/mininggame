@@ -7,14 +7,15 @@ import { storeToRefs } from 'pinia';
 import { onMounted, onUnmounted } from 'vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters, totalScoreGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, loadingGetUserGetters } = storeToRefs(appStore)
 const { actionGetUser, resetUserData, actionMiningMoney } = appStore
 onMounted(async () => {
+  console.log('222222')
   await actionGetUser('start')
 })
 onUnmounted(async () => {
   console.log('1111111111111111111')
-  await actionMiningMoney(totalScoreGetters.value)
+  await actionMiningMoney(10)
   resetUserData()
 })
 </script>
