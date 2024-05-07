@@ -30,7 +30,7 @@ const start = () => {
   showModal.value = true
   setTimeout(async () => {
     await actionRegistrationUser()
-    await actionGetUser()
+    await actionGetUser('page')
     showModal.value = false
   }, 3000)
 }

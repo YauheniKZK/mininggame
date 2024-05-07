@@ -10,12 +10,14 @@ export const useApplicationStore = defineStore('application', () => {
   const totalScore = ref(0)
   const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
+  const loadingGetUser = ref(false)
 
   // --------Getters---------
 
   const currentUserDataGetters = computed(() => currentUserData.value)
   const totalScoreGetters = computed(() => totalScore.value)
   const totalUserScoreGetter = computed(() => totalUserScore.value)
+  const loadingGetUserGetters = computed(() => loadingGetUser.value)
 
   // --------Actions---------
 
@@ -31,15 +33,23 @@ export const useApplicationStore = defineStore('application', () => {
   //   }
   // }
 
-  async function actionGetUser() {
+  async function actionGetUser(type: 'page' |'start') {
+    if (type === 'start') {
+      loadingGetUser.value = true
+    }
     try {
       const res = await getUserService()
-      if (res) {
+      if (res && res.data) {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
-      }      
+      }
+      loadingGetUser.value = false
     } catch (error: any) {
       console.log('error', error?.response)
+      if (error?.response.status === 419) {
+        currentUserData.value = null
+      }
+      loadingGetUser.value = false
     }
   }
 
@@ -48,7 +58,7 @@ export const useApplicationStore = defineStore('application', () => {
       const res = await registrationUserService()
       if (res) {
         console.log('registrationUserService', res)
-        totalUserScore.value = res.data.balance || 0
+        // totalUserScore.value = res.data.balance || 0
       }      
     } catch (error) {
       console.log('error')
@@ -62,6 +72,7 @@ export const useApplicationStore = defineStore('application', () => {
     totalUserScoreGetter,
     actionGetUser,
     actionRegistrationUser,
-    currentUserDataGetters
+    currentUserDataGetters,
+    loadingGetUserGetters
   }
 })

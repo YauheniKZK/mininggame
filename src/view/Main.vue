@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import Main from '@/pages/Main.vue';
 import Mining from '@/pages/Mining.vue';
-import { useApplicationStore } from '@/stores/application/applicationStore';
+// import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
-const appStore = useApplicationStore()
+// const appStore = useApplicationStore()
 // const { totalScoreGetters } = storeToRefs(appStore)
-const { actionGetUser } = appStore
+// const { actionGetUser } = appStore
 
 
 const valueTab = ref('main')
@@ -18,7 +18,7 @@ const updateTab = (value: string) => {
 }
 
 onMounted(async () => {
-  await actionGetUser()
+  // await actionGetUser()
 })
 </script>
 
