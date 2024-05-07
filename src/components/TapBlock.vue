@@ -70,6 +70,23 @@ const updateTouchStart = () => {
 }
 const imgtap = ref()
 const myCanvas = ref()
+
+function addTextToCanvas(ctx: any, text: string, x: number, y: number) {
+  ctx.font = '20px Arial';
+  ctx.fillStyle = 'black';
+  ctx.fillText(text, x, y);
+}
+
+const clickCanvas = (event: any) => {
+  if (myCanvas.value) {
+    const ctx = myCanvas.value.getContext("2d");
+    const rect = myCanvas.value.getBoundingClientRect()
+    const x = event.clientX - rect.left;
+    const y = event.clientY - rect.top;
+    addTextToCanvas(ctx, 'CLICK', x, y)
+  }
+}
+
 onMounted(() => {
   if (imgtap.value && myCanvas.value) {
     const ctx = myCanvas.value.getContext("2d");
@@ -84,7 +101,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[300px] max-w-[100%] h-[300px]">
-      <canvas ref="myCanvas" width="100%" height="300"></canvas>
+      <canvas ref="myCanvas" width="100%" height="300" @click="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
