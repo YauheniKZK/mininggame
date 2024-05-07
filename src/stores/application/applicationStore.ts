@@ -8,7 +8,7 @@ export const useApplicationStore = defineStore('application', () => {
   // --------State---------
 
   const totalScore = ref(0)
-  const totalUserScore = ref(0)
+  // const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
   const loadingGetUser = ref(false)
 
@@ -16,7 +16,7 @@ export const useApplicationStore = defineStore('application', () => {
 
   const currentUserDataGetters = computed(() => currentUserData.value)
   const totalScoreGetters = computed(() => totalScore.value)
-  const totalUserScoreGetter = computed(() => totalUserScore.value)
+  const totalUserScoreGetter = computed(() => currentUserDataGetters.value.balance)
   const loadingGetUserGetters = computed(() => loadingGetUser.value)
 
   // --------Actions---------
