@@ -6,7 +6,7 @@ import { ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore } = appStore
+const { updateTotalScore, actionMiningMoney } = appStore
 
 // const tap = ref(false)
 const tapBlock = ref()
@@ -28,11 +28,12 @@ const updateTouchEnd = async () => {
   updateTotalScore(value)
   // console.log('props.idUser1', props.idUser)
   num++
-  if (num > 20) {
+  if (num > 5) {
     // tapActionIncr(totalScoreGetters.value)
     num = 0
     // updateTotalScore(0)
     // await actionGetUser('page')
+    await actionMiningMoney(totalScoreGetters.value)
   }
   
   // tapAction()
