@@ -72,6 +72,9 @@ const imgtap = ref()
 const myCanvas = ref()
 
 function addTextToCanvas(ctx: any, text: string, x: number, y: number) {
+  console.log('ctx', ctx)
+  console.log('x', x)
+  console.log('y', y)
   ctx.font = '20px Arial';
   ctx.fillStyle = 'black';
   ctx.fillText(text, x, y);
@@ -79,6 +82,7 @@ function addTextToCanvas(ctx: any, text: string, x: number, y: number) {
 
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
+    console.log('1111')
     const ctx = myCanvas.value.getContext("2d");
     const rect = myCanvas.value.getBoundingClientRect()
     const x = event.clientX - rect.left;
