@@ -2,8 +2,9 @@
 // import { tapActionIncr } from '@/services/tap.service';
 // import WebApp from '@twa-dev/sdk'
 import { useApplicationStore } from '@/stores/application/applicationStore';
+import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
@@ -67,9 +68,23 @@ const updateTouchEnd = async () => {
 const updateTouchStart = () => {
   // tapBlock.value.style.transform = `perspective(500px) rotateY(${((event.touches[0].clientX - tapBlock.value.offsetWidth) / 30) * 1}deg) rotateX(${((event.touches[0].clientY - tapBlock.value.offsetHeight) / 3) * -1}deg)`;
 }
+const imgtap = ref()
+const myCanvas = ref()
+onMounted(() => {
+  if (imgtap.value && myCanvas.value) {
+    const ctx = myCanvas.value.getContext("2d");
+    ctx.drawImage(imgtap.value, 10, 10);
+  }
+})
 </script>
 
 <template>
+  <div class="w-[300px] max-w-[100%] h-[300px]">
+    <canvas ref="myCanvas" width="100%" height="300"></canvas>
+  </div>
+  <div style="display:none;">
+    <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
+  </div>
   <div
     ref="tapBlock"
     class="flex items-center justify-center w-[300px] h-[300px] rounded-[50%] tapBlock"
