@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import { tapActionIncr } from '@/services/tap.service';
-// import { tapActionIncr } from '@/services/tap.service';
+import WebApp from '@twa-dev/sdk'
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { ref, watch } from 'vue';
@@ -41,6 +41,7 @@ watch(() => timer.value, (newVal) => {
 const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
+  WebApp.CloudStorage.setItem('totalScore', String(value))
   updateTotalScore(value)
   // console.log('props.idUser1', props.idUser)
   clearInterval(interval.value)

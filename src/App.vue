@@ -12,11 +12,12 @@ const { actionMiningMoney } = appStore
 onMounted(() => {
   WebApp.expand()
   console.log('WebApp.version', WebApp.version)
+  console.log('totalScore', WebApp.CloudStorage.getItem('totalScore'))
   WebApp.onEvent('viewportChanged', async (event: any) => {
     console.log('event', event)
-    let value = totalScoreGetters.value
+    // let value = totalScoreGetters.value
     if (event.isStateStable) {
-      await actionMiningMoney(value)
+      // await actionMiningMoney(value)
     }
   })
 })
