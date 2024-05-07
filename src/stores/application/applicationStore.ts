@@ -1,6 +1,6 @@
 
 
-import { getUserService, registrationUserService } from '@/services/tap.service'
+import { getUserService, registrationUserService, getLinkRefUserService } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -11,6 +11,8 @@ export const useApplicationStore = defineStore('application', () => {
   // const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
   const loadingGetUser = ref(false)
+  const loadingGetLinkRefUserService = ref(false)
+  const successGetLinkRefUserService = ref(false)
 
   // --------Getters---------
 
@@ -18,6 +20,8 @@ export const useApplicationStore = defineStore('application', () => {
   const totalScoreGetters = computed(() => totalScore.value)
   const totalUserScoreGetter = computed(() => currentUserDataGetters.value.balance)
   const loadingGetUserGetters = computed(() => loadingGetUser.value)
+  const loadingGetLinkRefUserServiceGetters = computed(() => loadingGetLinkRefUserService.value)
+  const successGetLinkRefUserServiceGetters = computed(() => successGetLinkRefUserService.value)
 
   // --------Actions---------
 
@@ -61,6 +65,27 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionGetLinkRefUserService() {
+    loadingGetLinkRefUserService.value = true
+    successGetLinkRefUserService.value = false
+    try {
+      const res = await getLinkRefUserService()
+      if (res && res.data) {
+        console.log('actionGetLinkRefUserService', res)
+        // totalUserScore.value = res.data.balance || 0
+        loadingGetLinkRefUserService.value = false
+        successGetLinkRefUserService.value = true
+      } else {
+        loadingGetLinkRefUserService.value = false
+        successGetLinkRefUserService.value = false
+      }
+    } catch (error) {
+      loadingGetLinkRefUserService.value = false
+      successGetLinkRefUserService.value = false
+      console.log('error')
+    }
+  }
+
   function updateTotalScore(value: number) {
     totalScore.value = value
   }
@@ -78,6 +103,9 @@ export const useApplicationStore = defineStore('application', () => {
     actionRegistrationUser,
     currentUserDataGetters,
     loadingGetUserGetters,
-    resetUserData
+    resetUserData,
+    actionGetLinkRefUserService,
+    loadingGetLinkRefUserServiceGetters,
+    successGetLinkRefUserServiceGetters
   }
 })
