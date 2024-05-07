@@ -75,13 +75,16 @@ const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     const texts: any = []
     console.log('1111')
+    const touch = event.changedTouches[0]
     const rect = myCanvas.value.getBoundingClientRect()
-    let y = event.touches[0].clientY - rect.top
+    const xTouch = touch.clientX - rect.left;
+    const yTouch = touch.clientY - rect.top;
+    let y = yTouch
     // let alpha = 1.0
 
     const ctx = myCanvas.value.getContext("2d");
     // const rect = myCanvas.value.getBoundingClientRect()
-    const x = event.touches[0].clientX - rect.left;
+    const x = xTouch;
 
     function addText(text: string, x: number, y: number, speed: number) {
       texts.push({ text: text, x: x, y: y, speed: speed, alpha: 1.0 });
