@@ -86,12 +86,12 @@ const clickCanvas = (event: any) => {
     // const rect = myCanvas.value.getBoundingClientRect()
     const x = xTouch;
 
-    function addText(text: string, x: number, y: number, speed: number) {
-      texts.push({ text: text, x: x, y: y, speed: speed, alpha: 1.0 });
+    function addText(text: string, x: number, y: number) {
+      texts.push({ text: text, x: x, y: y, alpha: 1.0 });
     }
 
     function animateTexts() {
-      // ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
+      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
 
       // Обновляем свойства и отрисовываем каждый текст
       texts.forEach(function(textObj: any, index: number) {
@@ -100,7 +100,7 @@ const clickCanvas = (event: any) => {
         ctx.fillText(textObj.text, textObj.x, textObj.y);
 
         // Обновляем координаты и прозрачность для анимации
-        textObj.y -= textObj.speed;
+        textObj.y -= 1;
         textObj.alpha -= 0.01;
 
         // Удаляем текст, если он полностью исчез
@@ -114,7 +114,7 @@ const clickCanvas = (event: any) => {
         requestAnimationFrame(animateTexts);
       }
     }
-    addText('11$', x, y, 1);
+    addText('11$', x, y);
     animateTexts()
   }
 }
