@@ -130,7 +130,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[300px] max-w-[100%] h-[300px]">
-      <canvas ref="myCanvas" height="300" class="w-full" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" width="400" height="300" class="w-full" @touchend="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
