@@ -6,6 +6,9 @@ const pinia = createPinia()
 import WebApp from '@twa-dev/sdk'
 import '@/assets/css/style.css'
 
+WebApp.themeParams.section_header_text_color = '#FFFFFF'
+WebApp.themeParams.secondary_bg_color = '#888888'
+WebApp.themeParams.text_color = '#FFFFFF'
 WebApp.ready()
 
 const app = createApp(App)
