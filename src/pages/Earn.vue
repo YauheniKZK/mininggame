@@ -32,8 +32,8 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 
 <template>
   <div class="flex flex-col items-center w-full h-full">
-    <div v-if="referralsGetters.length > 0" class=" mb-[24px]">
-      <div v-for="(item, index) in referralsGetters" :key="index" class="flex items-center mb-[8px] p-[8px] rounded-[8px] bg-[#77B0AA]">
+    <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
+      <div v-for="(item, index) in referralsGetters" :key="index" class="flex items-center mb-[8px] p-[8px] rounded-[8px] bg-[#77B0AA] w-full">
         <span class="text-[#fff] mr-[12px]">{{ item?.username + ': ' }}</span>
         <span class="text-[#fff]">{{ item?.balance }}</span>
       </div>
