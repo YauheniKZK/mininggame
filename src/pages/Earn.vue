@@ -30,7 +30,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full h-[100vh]">
+  <div class="flex flex-col items-center w-full h-full">
     <button
       type="button" 
       class="w-full h-[50px] flex justify-center items-center bg-[#3C5B6F] rounded-[8px]"
