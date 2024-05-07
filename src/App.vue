@@ -6,6 +6,7 @@ import { onMounted } from 'vue';
 onMounted(() => {
   WebApp.expand()
   WebApp.themeParams.section_header_text_color = '#fff'
+  WebApp.themeParams.text_color = '#fff'
 })
 </script>
 
