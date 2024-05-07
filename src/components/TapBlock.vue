@@ -79,18 +79,20 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="w-[300px] max-w-[100%] h-[300px]">
-    <canvas ref="myCanvas" width="100%" height="300"></canvas>
-  </div>
-  <div style="display:none;">
-    <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
-  </div>
-  <div
-    ref="tapBlock"
-    class="flex items-center justify-center w-[300px] h-[300px] rounded-[50%] tapBlock"
-    @touchend="updateTouchEnd"
-    @touchstart="updateTouchStart"
-  >
+  <div class="flex flex-col">
+    <div class="w-[300px] max-w-[100%] h-[300px]">
+      <canvas ref="myCanvas" width="100%" height="300"></canvas>
+    </div>
+    <div style="display:none;">
+      <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
+    </div>
+    <div
+      ref="tapBlock"
+      class="flex items-center justify-center w-[300px] h-[300px] rounded-[50%] tapBlock"
+      @touchend="updateTouchEnd"
+      @touchstart="updateTouchStart"
+    >
+    </div>
   </div>
 </template>
 
