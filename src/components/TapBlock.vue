@@ -45,7 +45,7 @@ const updateTouchEnd = async () => {
   clearInterval(interval.value)
   interval.value = setInterval(() => {
     timer.value++
-  }, 1000)
+  }, 500)
   num++
   
   if (num > 5) {
