@@ -91,7 +91,7 @@ const clickCanvas = (event: any) => {
     }
 
     function animateTexts() {
-      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
+      // ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
 
       // Обновляем свойства и отрисовываем каждый текст
       texts.forEach(function(textObj: any, index: number) {
