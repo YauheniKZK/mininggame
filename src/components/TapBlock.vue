@@ -71,16 +71,17 @@ const updateTouchStart = () => {
 const imgtap = ref()
 const myCanvas = ref()
 
-const clickCanvas = () => {
+const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     
     console.log('1111')
-    let y = myCanvas.value.height
+    const rect = myCanvas.value.getBoundingClientRect()
+    let y = event.clientY - rect.top
     let alpha = 1.0
 
     const ctx = myCanvas.value.getContext("2d");
     // const rect = myCanvas.value.getBoundingClientRect()
-    const x = myCanvas.value.width / 2;
+    const x = event.clientX - rect.left;
     function addTextToCanvas(text: string) {
       ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
       ctx.font = '20px Arial';
@@ -91,14 +92,14 @@ const clickCanvas = () => {
 
     // Функция анимации
     function animateText(): any {
-      addTextToCanvas('Привет, Canvas!');
+      addTextToCanvas('11$');
       y -= 1; // Двигаем текст вверх
       alpha -= 0.01; // Уменьшаем прозрачность
 
       if (y > 0 && alpha > 0) {
         requestAnimationFrame(animateText); // Продолжаем анимацию
       } else {
-        y = myCanvas.value.height; // Сбрасываем позицию текста
+        y = event.clientY - rect.top; // Сбрасываем позицию текста
         alpha = 1.0; // Восстанавливаем прозрачность
       }
     }
