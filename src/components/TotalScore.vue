@@ -44,7 +44,7 @@ onMounted(async () => {
           :active="true"
           :precision="0"
         /> -->
-        <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalScoreGetters }}</span>
+        <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalUserScoreGetter + totalScoreGetters }}</span>
         <span class="text-[14px] text-[#fff] font-[600] leading-[18px]">{{ '$/hour' }}</span>
       </div>
       <div class="flex items-center text-[14px] text-[#fff] font-[600] leading-[18px]">
