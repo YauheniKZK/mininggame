@@ -10,7 +10,7 @@
 
 <template>
   <div class="flex items-center justify-center w-full h-full">
-    <n-spin :size="48" />
+    <n-spin :size="48" :stroke="'#fff'" />
   </div>
 </template>
 

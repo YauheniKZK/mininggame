@@ -4,13 +4,16 @@ import StartPage from '@/pages/StartPage.vue';
 import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { onMounted } from 'vue';
+import { onMounted, onUnmounted } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, loadingGetUserGetters } = storeToRefs(appStore)
-const { actionGetUser } = appStore
+const { actionGetUser, resetUserData } = appStore
 onMounted(async () => {
   await actionGetUser('start')
+})
+onUnmounted(() => {
+  resetUserData()
 })
 </script>
 
@@ -18,7 +21,7 @@ onMounted(async () => {
   <div class="flex flex-col h-[calc(100vh-0px)]">
     <LoadingStart v-if="loadingGetUserGetters" />
     <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
-    <Main v-else />
+    <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
   </div>
 </template>
 

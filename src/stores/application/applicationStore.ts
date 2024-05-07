@@ -21,10 +21,6 @@ export const useApplicationStore = defineStore('application', () => {
 
   // --------Actions---------
 
-  function updateTotalScore(value: number) {
-    totalScore.value = value
-  }
-
   // async function actionGetTotalScore() {
   //   const res = await tapDataAction()
   //   if (res) {
@@ -65,6 +61,14 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  function updateTotalScore(value: number) {
+    totalScore.value = value
+  }
+
+  function resetUserData() {
+    currentUserData.value = null
+  }
+
   return {
     totalScoreGetters,
     updateTotalScore,
@@ -73,6 +77,7 @@ export const useApplicationStore = defineStore('application', () => {
     actionGetUser,
     actionRegistrationUser,
     currentUserDataGetters,
-    loadingGetUserGetters
+    loadingGetUserGetters,
+    resetUserData
   }
 })
