@@ -5,7 +5,7 @@ import { ref } from 'vue';
 // import TotalScore from './components/TotalScore.vue';
 // import TapBlock from './components/TapBlock.vue';
 import SkillItem from '@/components/skills/SkillItem.vue'
-
+// WebApp.setHeaderColor
 // const handlebtn = () => {
 //   WebApp.showAlert(`Hello World! Current count is `)
 // }
