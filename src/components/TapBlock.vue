@@ -151,7 +151,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col relative">
-    <div class="w-[100vh] max-w-[100%] h-[400px] touch-none">
+    <div class="w-[100vh] max-w-[100%] h-[400px] touch-none relative z-[1]">
       <canvas ref="myCanvas" class="w-[100vh] h-full" @touchend="clickCanvas"></canvas>
     </div>
     <!-- <div style="display:none;">
@@ -159,7 +159,7 @@ onMounted(() => {
     </div> -->
     <div
       ref="tapBlock"
-      class="flex items-center justify-center absolute top-[calc(50%-150px)] left-[calc(50%-150px)] w-[300px] h-[300px] rounded-[50%] tapBlock"
+      class="flex items-center justify-center absolute top-[calc(50%-150px)] z-[0] left-[calc(50%-150px)] w-[300px] h-[300px] rounded-[50%] tapBlock"
     >
     </div>
   </div>
