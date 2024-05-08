@@ -61,7 +61,7 @@ export const useApplicationStore = defineStore('application', () => {
           referrals.value = []
         }
         if (type === 'mining') {
-          miningTotalScore.value = res.data.balance
+          miningTotalScore.value = 0
         }
         successCurrentUserData.value = true
       } else {
@@ -143,6 +143,10 @@ export const useApplicationStore = defineStore('application', () => {
     totalScore.value = value
   }
 
+  function updateMiningTotalScore() {
+    miningTotalScore.value++
+  }
+
   function incrimentTotalScore() {
     const value = 1
     totalScore.value = totalScore.value + value
@@ -172,6 +176,7 @@ export const useApplicationStore = defineStore('application', () => {
     lastCheckinUserGetters,
     currentCheckinUserGetters,
     incrimentTotalScore,
-    miningTotalScoreGetters
+    miningTotalScoreGetters,
+    updateMiningTotalScore
   }
 })

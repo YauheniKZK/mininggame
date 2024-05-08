@@ -10,7 +10,7 @@ import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, miningTotalScoreGetters, totalScoreGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, updateTotalScore, actionMiningMoney } = appStore
+const { actionGetUser, resetUserData, updateTotalScore, actionMiningMoney, updateMiningTotalScore } = appStore
 
 const interval = ref<any>(null)
 
@@ -22,10 +22,11 @@ onMounted(async () => {
   if (!interval.value) {
     interval.value = setInterval(() => {
       // incrimentTotalScore()
-      actionGetUser('mining')
+      updateMiningTotalScore()
       console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
       console.log('totalScoreGetters', totalScoreGetters.value)
       actionMiningMoney(1)
+      actionGetUser('mining')
       
     }, 1000)
   } else {
