@@ -101,7 +101,7 @@ const clickCanvas = (event: any) => {
       // ctx.drawImage(img, xImg, yImg, 300, 300);
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '26px Roboto';
+        ctx.font = '32px Ubuntu sans-serif';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
         // Обновляем координаты и прозрачность для анимации
