@@ -110,8 +110,8 @@ const clickCanvas = (event: any) => {
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
         // Обновляем координаты и прозрачность для анимации
-        textObj.y -= 0.3;
-        textObj.alpha -= 0.005;
+        textObj.y -= 0.4;
+        textObj.alpha -= 0.003;
 
         // Удаляем текст, если он полностью исчез
         if (textObj.alpha <= 0) {
@@ -124,7 +124,7 @@ const clickCanvas = (event: any) => {
         requestAnimationFrame(animateTexts);
       }
     }
-    const symbolsArr = ['11', '23', '45', '3', '5', '1', '0']; // Ваш список символов
+    const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{}', 'let', 'var', 'func', '>', 'sync', 'dev', '{', '(']; // Ваш список символов
 
     function getRandomSymbol(symbols: string[]) {
       return symbols[Math.floor(Math.random() * symbols.length)];
