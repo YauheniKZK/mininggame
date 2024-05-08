@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted, onBeforeUnmount } from 'vue';
+import { onMounted, onBeforeUnmount, computed, watch } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
@@ -12,6 +12,16 @@ const { actionMiningMoney } = appStore
 onMounted(() => {
   WebApp.expand()
   console.log('WebApp.version', WebApp.version)
+})
+
+onresize = (event) => {
+  console.log('event onresize', event)
+}
+
+const webAppHeight = computed(() => WebApp.viewportHeight)
+
+watch(() => webAppHeight.value, (newVal) => {
+  console.log('rrrrrrrrrr', newVal)  
 })
 
 onBeforeUnmount(async () => {
