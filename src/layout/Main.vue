@@ -16,7 +16,7 @@ onMounted(async () => {
   await actionGetUser('start')
   await actionCheckinUserService()
   WebApp.onEvent('viewportChanged', async (event: any) => {
-    console.log('event', event)
+    console.log('event', WebApp.viewportHeight)
     if (WebApp.viewportHeight < 200) {
       await actionCheckinUserService()
     }
