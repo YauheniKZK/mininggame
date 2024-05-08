@@ -118,7 +118,13 @@ const clickCanvas = (event: any) => {
         requestAnimationFrame(animateTexts);
       }
     }
-    addText('11$', x, y);
+    const symbolsArr = ['11', '23', '45', '3', '5', '1', '0']; // Ваш список символов
+
+    function getRandomSymbol(symbols: string[]) {
+      return symbols[Math.floor(Math.random() * symbols.length)];
+    }
+    const symbol = getRandomSymbol(symbolsArr)
+    addText(symbol, x, y);
     animateTexts()
   }
 }
