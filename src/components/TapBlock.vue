@@ -1,6 +1,6 @@
 <script setup lang="ts">
 // import { tapActionIncr } from '@/services/tap.service';
-// import WebApp from '@twa-dev/sdk'
+import WebApp from '@twa-dev/sdk'
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
@@ -45,6 +45,7 @@ const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
   // WebApp.CloudStorage.setItem('totalScore', String(value))
+  WebApp.HapticFeedback.impactOccurred('soft')
   updateTotalScore(value)
   // console.log('props.idUser1', props.idUser)
   clearInterval(interval.value)
