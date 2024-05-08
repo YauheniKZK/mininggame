@@ -82,7 +82,7 @@ const img = new Image()
 img.src = getImageUrl('img/keyboard1.png')
 img.height = 300
 img.width = 300
-
+const ctx = ref()
 function addText(text: string, x: number, y: number) {
   texts.value.push({ text: text, x: x, y: y, alpha: 1.0 });
 }
@@ -103,28 +103,29 @@ const clickCanvas = (event: any) => {
     let y = yTouch
     // let alpha = 1.0
 
-    const ctx = myCanvas.value.getContext("2d");
-    ctx.imageSmoothingEnabled = true
+    // const ctx = myCanvas.value.getContext("2d");
+    // ctx.imageSmoothingEnabled = true
     // const rect = myCanvas.value.getBoundingClientRect()
     const x = xTouch;
 
     function animateTexts() {
-      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
+      ctx.value.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
       // ctx.drawImage(img, xImg, yImg, 300, 300);
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '38px "Ubuntu"';
-        ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
-        ctx.fillText(textObj.text, textObj.x, textObj.y);
+        ctx.value.font = '38px "Ubuntu"';
+        ctx.value.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
+        ctx.value.fillText(textObj.text, textObj.x, textObj.y);
         // Обновляем координаты и прозрачность для анимации
         
-        textObj.alpha -= 0.004;
+        textObj.y -= 1;
+        textObj.alpha -= 0.005;
 
-        if (textObj.alpha < 3) {
-          textObj.y -= 2;
-        } else {
-          textObj.y -= 0.02;
-        }
+        // if (textObj.alpha < 3) {
+        //   textObj.y -= 2;
+        // } else {
+        //   textObj.y -= 0.02;
+        // }
 
         // Удаляем текст, если он полностью исчез
         if (textObj.alpha <= 0) {
@@ -160,9 +161,12 @@ const clickCanvas = (event: any) => {
 
 onMounted(() => {
   if (myCanvas.value) {
+
     console.log('www', tapBlockContainer.value.clientWidth)
     myCanvas.value.width = tapBlockContainer.value.clientWidth
     myCanvas.value.height = 460
+    ctx.value = myCanvas.value.getContext("2d");
+    ctx.value.imageSmoothingEnabled = true
     // const ctx = myCanvas.value.getContext("2d");
     // img.onload = function() {
     //   const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
