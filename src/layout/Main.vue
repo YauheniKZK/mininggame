@@ -55,9 +55,9 @@ watch(() => isTapingGetters.value, (newVal) => {
   } else {
     // interval2.value = null
     clearInterval(interval2.value)
-    // resetMiningTotalScore()
+    resetMiningTotalScore()
     
-    interval.value = setInterval(async () => {
+    interval.value = setInterval(() => {
       // incrimentTotalScore()
       actionMiningMoney(1)
       // updateMiningTotalScore()
@@ -65,9 +65,8 @@ watch(() => isTapingGetters.value, (newVal) => {
       console.log('totalScoreGetters', totalScoreGetters.value)
       
       
-      await actionGetUser('page')
+      actionGetUser('page')
       updateTotalScore(0)
-      resetMiningTotalScore()
       
     }, 1000)
   }

@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import { tapActionIncr } from '@/services/tap.service';
 import WebApp from '@twa-dev/sdk'
+import VirtualKeyboard from '@/components/VirtualKeyboard.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
@@ -189,6 +190,7 @@ onMounted(() => {
 
 <template>
   <div ref="tapBlockContainer" class="flex flex-col relative">
+    <VirtualKeyboard />
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none relative z-[1]">
       <canvas ref="myCanvas" class="absolute -top-[40px]" @touchend="clickCanvas"></canvas>
     </div>
