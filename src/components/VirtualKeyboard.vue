@@ -21,7 +21,7 @@ const tapBlockContainerR = ref()
 onMounted(() => {
   if (canvaskeyboard.value) {
     const ctx = canvaskeyboard.value.getContext('2d');
-    ctx.value.imageSmoothingEnabled = true
+    ctx.imageSmoothingEnabled = true
     let buttons: any = [];
 
     function resizeCanvas() {
