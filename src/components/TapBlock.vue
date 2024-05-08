@@ -138,6 +138,7 @@ onMounted(() => {
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
       ctx.drawImage(img, x, y);
+      myCanvas.value.width = img.height
     }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
