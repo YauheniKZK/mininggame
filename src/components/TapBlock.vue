@@ -73,8 +73,8 @@ const myCanvas = ref()
 const texts = ref<any>([])
 const img = new Image()
 img.src = getImageUrl('img/keyboard1.png')
-img.height = 400
-img.width = 400
+img.height = 300
+img.width = 300
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     console.log('1111')
@@ -136,8 +136,6 @@ onMounted(() => {
   if (myCanvas.value) {
     const ctx = myCanvas.value.getContext("2d");
     img.onload = function() {
-      
-      img.classList.add('object-contain')
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
       ctx.drawImage(img, x, y);
