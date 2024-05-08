@@ -82,6 +82,10 @@ const img = new Image()
 img.src = getImageUrl('img/keyboard1.png')
 img.height = 300
 img.width = 300
+
+function addText(text: string, x: number, y: number) {
+  texts.value.push({ text: text, x: x, y: y, alpha: 1.0 });
+}
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     // if (navigator.vibrate) {
@@ -103,10 +107,6 @@ const clickCanvas = (event: any) => {
     ctx.imageSmoothingEnabled = true
     // const rect = myCanvas.value.getBoundingClientRect()
     const x = xTouch;
-
-    function addText(text: string, x: number, y: number) {
-      texts.value.push({ text: text, x: x, y: y, alpha: 1.0 });
-    }
 
     function animateTexts() {
       ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
