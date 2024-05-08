@@ -45,7 +45,7 @@ const updateTouchEnd = async () => {
   let value = totalScoreGetters.value
   value++
   // WebApp.CloudStorage.setItem('totalScore', String(value))
-  WebApp.HapticFeedback.impactOccurred('soft')
+  WebApp.HapticFeedback.impactOccurred('medium')
   updateTotalScore(value)
   // console.log('props.idUser1', props.idUser)
   clearInterval(interval.value)
