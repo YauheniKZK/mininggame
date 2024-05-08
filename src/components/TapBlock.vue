@@ -98,7 +98,8 @@ const clickCanvas = (event: any) => {
 
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '36px serif';
+        ctx.drawImage(img, xImg, yImg);
+        ctx.font = '32px serif';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
 
@@ -124,7 +125,6 @@ const clickCanvas = (event: any) => {
     }
     const symbol = getRandomSymbol(symbolsArr)
     addText(symbol, x, y);
-    ctx.drawImage(img, xImg, yImg);
     animateTexts()
     updateTouchEnd()
   }
