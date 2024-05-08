@@ -42,11 +42,11 @@ onMounted(() => {
         buttons = []; // Reset buttons array
         const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
         const buttonWidth = canvaskeyboard.value.width / 15;
-        const buttonHeight = buttonWidth * 0.6;
-        const buttonMargin = 10;
+        const buttonHeight = buttonWidth * 0.6 + 16;
+        const buttonMargin = 26;
         const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
-        let x = buttonMargin + 16;
-        let y = buttonMargin + 16;
+        let x = buttonMargin;
+        let y = buttonMargin;
 
         keys.forEach((key, index) => {
             if (index % keysPerRow === 0 && index !== 0) {
