@@ -6,7 +6,7 @@ import { computed, onMounted, ref, watch } from 'vue';
 import moment from 'moment'
 
 const appStore = useApplicationStore()
-const { totalScoreGetters, totalUserScoreGetter, lastCheckinUserGetters, currentCheckinUserGetters, miningTotalScoreGetters } = storeToRefs(appStore)
+const { totalScoreGetters, totalUserScoreGetter, lastCheckinUserGetters, currentCheckinUserGetters } = storeToRefs(appStore)
 // const { actionGetTotalScore } = appStore
 
 const oldValue = ref(0)
@@ -35,6 +35,8 @@ const getDiffTiem = computed(() => {
   return '--'
 })
 
+const totalCount = computed(() => totalUserScoreGetter.value + totalScoreGetters.value)
+
 onMounted(async () => {
   // await actionGetTotalScore()
 })
@@ -52,7 +54,7 @@ onMounted(async () => {
           :active="true"
           :precision="0"
         /> -->
-        <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalUserScoreGetter + totalScoreGetters + miningTotalScoreGetters }}</span>
+        <span class="text-[24px] text-[#fff] font-[600] leading-[24px] mr-[6px]">{{ totalCount }}</span>
         <span class="text-[14px] text-[#fff] font-[600] leading-[18px]">{{ '$/hour' }}</span>
       </div>
       <div class="flex items-center text-[14px] text-[#fff] font-[600] leading-[18px]">

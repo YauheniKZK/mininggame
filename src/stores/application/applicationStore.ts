@@ -9,7 +9,7 @@ export const useApplicationStore = defineStore('application', () => {
 
   const totalScore = ref(0)
   const miningTotalScore = ref(0)
-  // const totalUserScore = ref(0)
+  const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
   const successCurrentUserData = ref(false)
   const loadingGetUser = ref(false)
@@ -23,7 +23,7 @@ export const useApplicationStore = defineStore('application', () => {
 
   const currentUserDataGetters = computed(() => currentUserData.value)
   const totalScoreGetters = computed(() => totalScore.value)
-  const totalUserScoreGetter = computed(() => currentUserDataGetters.value.balance)
+  const totalUserScoreGetter = computed(() => totalUserScore.value)
   const loadingGetUserGetters = computed(() => loadingGetUser.value)
   const successCurrentUserDataGetters = computed(() => successCurrentUserData.value)
   const loadingGetLinkRefUserServiceGetters = computed(() => loadingGetLinkRefUserService.value)
@@ -63,6 +63,7 @@ export const useApplicationStore = defineStore('application', () => {
         if (type === 'mining') {
           miningTotalScore.value = 0
         }
+        totalUserScore.value = res.data.balance
         successCurrentUserData.value = true
       } else {
         successCurrentUserData.value = false
