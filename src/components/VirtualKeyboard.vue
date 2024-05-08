@@ -24,7 +24,7 @@ onMounted(() => {
     let buttons: any = [];
 
     function resizeCanvas() {
-        canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth - 32;
+        canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
         canvaskeyboard.value.height = 460;
         drawKeyboard();
     }
@@ -45,7 +45,7 @@ onMounted(() => {
         const buttonHeight = buttonWidth * 0.6;
         const buttonMargin = 10;
         const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
-        let x = buttonMargin;
+        let x = buttonMargin + 8;
         let y = buttonMargin;
 
         keys.forEach((key, index) => {
