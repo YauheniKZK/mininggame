@@ -9,6 +9,7 @@ import { onMounted, ref } from 'vue';
 //const appStore = useApplicationStore()
 // const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
 const canvaskeyboard = ref()
+const tapBlockContainerR = ref()
 
 // const inputField: any = document.getElementById('inputField')
 // const buttonWidth = 60;
@@ -23,7 +24,7 @@ onMounted(() => {
     let buttons: any = [];
 
     function resizeCanvas() {
-        canvaskeyboard.value.width = window.innerWidth;
+        canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
         canvaskeyboard.value.height = 400;
         drawKeyboard();
     }
@@ -93,7 +94,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full">
+  <div ref="tapBlockContainerR" class="flex flex-col w-full">
     <canvas ref="canvaskeyboard"></canvas>
   </div>
 </template>
