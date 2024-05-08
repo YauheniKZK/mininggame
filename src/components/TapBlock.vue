@@ -152,7 +152,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col relative">
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none relative z-[1]">
-      <canvas ref="myCanvas" class="w-[100vh] h-full" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" class="w-[100vh] absolute -top-[40px] h-[calc(100%+60px)]" @touchend="clickCanvas"></canvas>
     </div>
     <!-- <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
