@@ -26,7 +26,7 @@ onMounted(() => {
 
     function resizeCanvas() {
         canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
-        canvaskeyboard.value.height = tapBlockContainerR.value.clientWidth / 2;
+        canvaskeyboard.value.height = tapBlockContainerR.value.clientWidth;
         drawKeyboard();
     }
 
@@ -42,7 +42,7 @@ onMounted(() => {
     function drawKeyboard() {
         buttons = []; // Reset buttons array
         const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
-        const buttonWidth = tapBlockContainerR.value.clientWidth / 18;
+        const buttonWidth = tapBlockContainerR.value.clientWidth / 17;
         const buttonHeight = buttonWidth * 0.6;
         const buttonMargin = 10;
         const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
