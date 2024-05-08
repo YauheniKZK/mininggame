@@ -11,7 +11,7 @@ const { totalScoreGetters } = storeToRefs(appStore)
 const { updateTotalScore, actionMiningMoney, actionGetUser } = appStore
 
 // const tap = ref(false)
-// const tapBlock = ref()
+const tapBlockContainer = ref()
 
 // const updateScore = () => {
 //   let value = totalScoreGetters.value
@@ -134,8 +134,8 @@ const clickCanvas = (event: any) => {
 
 onMounted(() => {
   if (myCanvas.value) {
-    console.log('www', window.innerWidth)
-    myCanvas.value.width = document.documentElement.scrollWidth
+    console.log('www', tapBlockContainer.value.clientWidth)
+    myCanvas.value.width = tapBlockContainer.value.clientWidth
     myCanvas.value.height = 460
     // const ctx = myCanvas.value.getContext("2d");
     // img.onload = function() {
@@ -153,7 +153,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col relative">
+  <div ref="tapBlockContainer" class="flex flex-col relative">
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none relative z-[1]">
       <canvas ref="myCanvas" class="absolute -top-[40px]" @touchend="clickCanvas"></canvas>
     </div>
