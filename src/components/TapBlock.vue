@@ -117,8 +117,14 @@ const clickCanvas = (event: any) => {
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
         // Обновляем координаты и прозрачность для анимации
-        textObj.y -= 0.4;
+        
         textObj.alpha -= 0.003;
+
+        if (textObj.alpha < 3) {
+          textObj.y -= 0.1;
+        } else {
+          textObj.y -= 0.4;
+        }
 
         // Удаляем текст, если он полностью исчез
         if (textObj.alpha <= 0) {
