@@ -71,63 +71,71 @@ const updateTouchStart = () => {
 const imgtap = ref()
 const myCanvas = ref()
 const texts = ref<any>([])
+const img = new Image()
+img.src = getImageUrl('img/keyboard1.png')
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
-    console.log('1111')
-    const touch = event.changedTouches[0]
-    const rect = myCanvas.value.getBoundingClientRect()
-    const xTouch = touch.clientX - rect.left;
-    const yTouch = touch.clientY - rect.top;
-    let y = yTouch
-    // let alpha = 1.0
+    img.onload = function() {
+      const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
+      const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
+      
+      
+      console.log('1111')
+      const touch = event.changedTouches[0]
+      const rect = myCanvas.value.getBoundingClientRect()
+      const xTouch = touch.clientX - rect.left;
+      const yTouch = touch.clientY - rect.top;
+      let y = yTouch
+      // let alpha = 1.0
 
-    const ctx = myCanvas.value.getContext("2d");
-    // const rect = myCanvas.value.getBoundingClientRect()
-    const x = xTouch;
-
-    function addText(text: string, x: number, y: number) {
-      texts.value.push({ text: text, x: x, y: y, alpha: 1.0 });
-    }
-
-    function animateTexts() {
-      ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
-
-      // Обновляем свойства и отрисовываем каждый текст
-      texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '48px serif';
-        ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
-        ctx.fillText(textObj.text, textObj.x, textObj.y);
-
-        // Обновляем координаты и прозрачность для анимации
-        textObj.y -= 1;
-        textObj.alpha -= 0.01;
-
-        // Удаляем текст, если он полностью исчез
-        if (textObj.alpha <= 0) {
-          texts.value.splice(index, 1);
-        }
-      });
-
-      // Запускаем следующий кадр анимации
-      if (texts.value.length > 0) {
-        requestAnimationFrame(animateTexts);
+      const ctx = myCanvas.value.getContext("2d");
+      // const rect = myCanvas.value.getBoundingClientRect()
+      const x = xTouch;
+      ctx.drawImage(img, xImg, yImg);
+      function addText(text: string, x: number, y: number) {
+        texts.value.push({ text: text, x: x, y: y, alpha: 1.0 });
       }
+
+      function animateTexts() {
+        ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
+
+        // Обновляем свойства и отрисовываем каждый текст
+        texts.value.forEach(function(textObj: any, index: number) {
+          ctx.font = '48px serif';
+          ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
+          ctx.fillText(textObj.text, textObj.x, textObj.y);
+
+          // Обновляем координаты и прозрачность для анимации
+          textObj.y -= 1;
+          textObj.alpha -= 0.01;
+
+          // Удаляем текст, если он полностью исчез
+          if (textObj.alpha <= 0) {
+            texts.value.splice(index, 1);
+          }
+        });
+
+        // Запускаем следующий кадр анимации
+        if (texts.value.length > 0) {
+          requestAnimationFrame(animateTexts);
+        }
+      }
+      addText('11$', x, y);
+      animateTexts()
     }
-    addText('11$', x, y);
-    animateTexts()
   }
 }
 
 onMounted(() => {
   if (imgtap.value && myCanvas.value) {
-    const ctx = myCanvas.value.getContext("2d");
-    const img = new Image()
-    img.src = getImageUrl('img/keyboard1.png')
-    img.onload = function() {
-      const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
-      const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
-      ctx.drawImage(img, x, y);
-    }
+    // const ctx = myCanvas.value.getContext("2d");
+    // const img = new Image()
+    // img.src = getImageUrl('img/keyboard1.png')
+    // img.onload = function() {
+    //   const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
+    //   const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
+    //   ctx.drawImage(img, x, y);
+    // }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
     // imgtap.value.addEventListener("load", () => {
@@ -140,7 +148,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none">
-      <canvas ref="myCanvas" width="1000" height="300" class="w-full" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" width="1000" height="400" class="w-full" @touchend="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
