@@ -1,6 +1,6 @@
 
 
-import { getUserService, registrationUserService, getLinkRefUserService, tapActionIncr } from '@/services/tap.service'
+import { getUserService, registrationUserService, getLinkRefUserService, tapActionIncr, checkinUserService } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -91,6 +91,18 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionCheckinUserService() {
+    try {
+      const res = await checkinUserService()
+      if (res) {
+        console.log('actionCheckinUserService', res)
+        // totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
   async function actionGetLinkRefUserService() {
     loadingGetLinkRefUserService.value = true
     successGetLinkRefUserService.value = false
@@ -135,6 +147,7 @@ export const useApplicationStore = defineStore('application', () => {
     successGetLinkRefUserServiceGetters,
     actionMiningMoney,
     referralsGetters,
-    successCurrentUserDataGetters
+    successCurrentUserDataGetters,
+    actionCheckinUserService
   }
 })

@@ -37,3 +37,12 @@ export const getLinkRefUserService = async () => {
         return res
     }
 }
+
+export const checkinUserService = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/mining/checkin`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}

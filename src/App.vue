@@ -1,37 +1,22 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted, onBeforeUnmount, watch, computed } from 'vue';
+import { onMounted, onBeforeUnmount } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { actionMiningMoney } = appStore
+const { actionMiningMoney, actionCheckinUserService } = appStore
 
 onMounted(() => {
   WebApp.expand()
+  actionCheckinUserService()
   console.log('WebApp.version', WebApp.version)
-  WebApp.onEvent('viewportChanged', async (event: any) => {
-    console.log('event', event)
-    // let value = totalScoreGetters.value
-    if (event.isStateStable) {
-      // await actionMiningMoney(value)
-    }
-  })
-})
-
-const heightApp = computed(() => WebApp.viewportHeight)
-
-watch(() => heightApp.value, async (newVal) => {
-  console.log('viewportHeight', newVal)
-  if (newVal > 100) {
-    await actionMiningMoney(totalScoreGetters.value)
-  }
 })
 
 onBeforeUnmount(async () => {
-  await actionMiningMoney(10)
+  await actionMiningMoney(totalScoreGetters.value)
 })
 </script>
 
