@@ -71,8 +71,9 @@ const updateTouchEnd = async () => {
 // const imgtap = ref()
 const myCanvas = ref()
 const texts = ref<any>([])
-  const img = new Image()
-  img.src = getImageUrl('img/keyboard1.png')
+const img = new Image()
+img.src = getImageUrl('img/keyboard1.png')
+img.height = 400
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     console.log('1111')
@@ -99,7 +100,7 @@ const clickCanvas = (event: any) => {
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
         ctx.drawImage(img, xImg, yImg);
-        ctx.font = '32px serif';
+        ctx.font = '26px serif';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
 
@@ -126,6 +127,7 @@ const clickCanvas = (event: any) => {
     const symbol = getRandomSymbol(symbolsArr)
     addText(symbol, x, y);
     animateTexts()
+    ctx.drawImage(img, xImg, yImg)
     updateTouchEnd()
   }
 }
@@ -134,7 +136,7 @@ onMounted(() => {
   if (myCanvas.value) {
     const ctx = myCanvas.value.getContext("2d");
     img.onload = function() {
-      img.height = myCanvas.value.height
+      
       img.classList.add('object-contain')
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
