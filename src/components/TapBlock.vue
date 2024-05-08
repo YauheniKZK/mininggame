@@ -121,9 +121,9 @@ const clickCanvas = (event: any) => {
         textObj.alpha -= 0.004;
 
         if (textObj.alpha < 3) {
-          textObj.y -= 1;
+          textObj.y -= 0.02;
         } else {
-          textObj.y -= 0.1;
+          textObj.y -= 2;
         }
 
         // Удаляем текст, если он полностью исчез
