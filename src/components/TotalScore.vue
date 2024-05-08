@@ -30,7 +30,7 @@ watch(() => totalScoreGetters.value, (newVal, oldVal) => {
 
 const getDiffTiem = computed(() => {
   if (lastCheckinUserGetters.value) {
-    return moment(lastCheckinUserGetters.value).diff(moment(), 'minutes')
+    return Math.abs(moment(lastCheckinUserGetters.value).diff(moment(), 'minutes')) + ' min'
   }
   return '--'
 })
