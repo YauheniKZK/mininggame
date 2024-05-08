@@ -36,7 +36,7 @@ watch(() => timer.value, async (newVal) => {
       actionMiningMoney(totalScoreGetters.value)
       
       // await actionGetUser('page')
-      // updateTotalScore(0)
+      updateTotalScore(0)
     }
   }
 })
