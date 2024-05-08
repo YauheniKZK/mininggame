@@ -99,7 +99,7 @@ const clickCanvas = (event: any) => {
 
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '48px serif';
+        ctx.font = '36px serif';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
 
@@ -134,8 +134,6 @@ const clickCanvas = (event: any) => {
 onMounted(() => {
   if (myCanvas.value) {
     const ctx = myCanvas.value.getContext("2d");
-    const img = new Image()
-    img.src = getImageUrl('img/keyboard1.png')
     img.onload = function() {
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
@@ -154,7 +152,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none">
-      <canvas ref="myCanvas" class="w-full" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" class="w-[100vh]" @touchend="clickCanvas"></canvas>
     </div>
     <!-- <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
