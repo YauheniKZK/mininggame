@@ -119,6 +119,7 @@ const clickCanvas = (event: any) => {
         // Удаляем текст, если он полностью исчез
         if (textObj.alpha <= 0) {
           texts.value.splice(index, 1);
+          animationFrameId.value = null
         }
       });
 
