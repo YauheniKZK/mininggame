@@ -94,8 +94,8 @@ const clickCanvas = (event: any) => {
 
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '20px Arial';
-        ctx.fillStyle = `rgba(0, 0, 0, ${textObj.alpha})`;
+        ctx.font = '32px';
+        ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
 
         // Обновляем координаты и прозрачность для анимации
@@ -131,7 +131,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col">
-    <div class="w-[300px] max-w-[100%] h-[300px]">
+    <div class="w-[300px] max-w-[100%] h-[300px] touch-none">
       <canvas ref="myCanvas" width="400" height="300" class="w-full" @touchend="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
