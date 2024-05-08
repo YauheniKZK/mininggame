@@ -7,11 +7,10 @@ import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { actionMiningMoney, actionCheckinUserService } = appStore
+const { actionMiningMoney } = appStore
 
 onMounted(() => {
   WebApp.expand()
-  actionCheckinUserService()
   console.log('WebApp.version', WebApp.version)
 })
 

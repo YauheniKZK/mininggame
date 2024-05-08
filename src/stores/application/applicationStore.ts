@@ -15,6 +15,7 @@ export const useApplicationStore = defineStore('application', () => {
   const loadingGetLinkRefUserService = ref(false)
   const successGetLinkRefUserService = ref(false)
   const referrals = ref<any>([])
+  const lastCheckinUser = ref<any>(null)
 
   // --------Getters---------
 
@@ -26,6 +27,7 @@ export const useApplicationStore = defineStore('application', () => {
   const loadingGetLinkRefUserServiceGetters = computed(() => loadingGetLinkRefUserService.value)
   const successGetLinkRefUserServiceGetters = computed(() => successGetLinkRefUserService.value)
   const referralsGetters = computed(() => referrals.value)
+  const lastCheckinUserGetters = computed(() => lastCheckinUser.value)
 
   // --------Actions---------
 
@@ -47,6 +49,9 @@ export const useApplicationStore = defineStore('application', () => {
       if (res && res.data) {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
+        if (type === 'start') {
+          lastCheckinUser.value = res.data.checkin
+        }
         if (res.data.referrals) {
           referrals.value = res.data.referrals
         } else {
@@ -55,10 +60,12 @@ export const useApplicationStore = defineStore('application', () => {
         successCurrentUserData.value = true
       } else {
         successCurrentUserData.value = false
+        lastCheckinUser.value = null
       }
       loadingGetUser.value = false
     } catch (error: any) {
       successCurrentUserData.value = false
+      lastCheckinUser.value = null
       console.log('error', error?.response)
       if (error?.response.status === 419) {
         currentUserData.value = null
@@ -148,6 +155,7 @@ export const useApplicationStore = defineStore('application', () => {
     actionMiningMoney,
     referralsGetters,
     successCurrentUserDataGetters,
-    actionCheckinUserService
+    actionCheckinUserService,
+    lastCheckinUserGetters
   }
 })

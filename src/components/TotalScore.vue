@@ -2,10 +2,11 @@
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
-import { onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
+import moment from 'moment'
 
 const appStore = useApplicationStore()
-const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
+const { totalScoreGetters, totalUserScoreGetter, lastCheckinUserGetters } = storeToRefs(appStore)
 // const { actionGetTotalScore } = appStore
 
 const oldValue = ref(0)
@@ -26,6 +27,13 @@ watch(() => totalScoreGetters.value, (newVal, oldVal) => {
 // })
 
 // const total = computed(() => totalUserScoreGetter.value)
+
+const getDiffTiem = computed(() => {
+  if (lastCheckinUserGetters.value) {
+    return moment(lastCheckinUserGetters.value).diff(moment(), 'minutes')
+  }
+  return '--'
+})
 
 onMounted(async () => {
   // await actionGetTotalScore()
@@ -49,6 +57,9 @@ onMounted(async () => {
       </div>
       <div class="flex items-center text-[14px] text-[#fff] font-[600] leading-[18px]">
         {{ 'TotaL: ' + totalUserScoreGetter }}
+      </div>
+      <div class="flex items-center text-[14px] text-[#fff] font-[600] leading-[18px]">
+        {{ 'How long have you been gone: ' + getDiffTiem }}
       </div>
     </div>
 
