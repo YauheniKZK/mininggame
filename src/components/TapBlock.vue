@@ -134,6 +134,7 @@ const clickCanvas = (event: any) => {
 
 onMounted(() => {
   if (myCanvas.value) {
+    console.log('www', window.screen.availWidth)
     // const ctx = myCanvas.value.getContext("2d");
     // img.onload = function() {
     //   const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
