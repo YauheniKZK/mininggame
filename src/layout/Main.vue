@@ -10,7 +10,7 @@ import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, miningTotalScoreGetters, totalScoreGetters, isTapingGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, actionMiningMoney, updateMiningTotalScore } = appStore
+const { actionGetUser, resetUserData, actionMiningMoney, updateMiningTotalScore, resetMiningTotalScore } = appStore
 
 const interval = ref<any>(null)
 const interval2 = ref<any>(null)
@@ -33,7 +33,7 @@ onMounted(async () => {
       
     }, 1000)
   } else {
-    interval.value = null
+    // interval.value = null
     clearInterval(interval.value)
   }
 })
@@ -46,15 +46,16 @@ watch(() => successCurrentUserDataGetters.value, (newVal) => {
 
 watch(() => isTapingGetters.value, (newVal) => {
   if (newVal) {
-    interval.value = null
+    // interval.value = null
     clearInterval(interval.value)
     interval2.value = setInterval(() => {
       updateMiningTotalScore()
       
     }, 1000)
   } else {
-    interval2.value = null
+    // interval2.value = null
     clearInterval(interval2.value)
+    resetMiningTotalScore()
     interval.value = setInterval(() => {
       // incrimentTotalScore()
       actionMiningMoney(1)
@@ -79,9 +80,9 @@ onBeforeUnmount(async () => {
   // await tapActionIncr(10)
   if (interval.value) {
     clearInterval(interval.value)
-    interval.value = null
+    // interval.value = null
   }
-  interval2.value = null
+  // interval2.value = null
   clearInterval(interval2.value)
   resetUserData()
 })
