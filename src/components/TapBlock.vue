@@ -73,6 +73,7 @@ const updateTouchEnd = async () => {
 const myCanvas = ref()
 const texts = ref<any>([])
 // const speed = ref(1)
+const animationFrameId = ref<any>(null)
 const img = new Image()
 img.src = getImageUrl('img/keyboard1.png')
 img.height = 300
@@ -123,10 +124,11 @@ const clickCanvas = (event: any) => {
 
       // Запускаем следующий кадр анимации
       if (texts.value.some((text: any) => text.y > -24)) {
-        requestAnimationFrame(animateTexts);
+        animationFrameId.value = requestAnimationFrame(animateTexts);
       } else {
         // Удаляем тексты, которые уже исчезли
         texts.value = texts.value.filter((text: any) => text.y > -24);
+        animationFrameId.value = null
       }
       // if (texts.value.length > 0) {
       //   requestAnimationFrame(animateTexts);
