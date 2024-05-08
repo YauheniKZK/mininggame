@@ -72,6 +72,7 @@ const updateTouchEnd = async () => {
 // const imgtap = ref()
 const myCanvas = ref()
 const texts = ref<any>([])
+// const speed = ref(1)
 const img = new Image()
 img.src = getImageUrl('img/keyboard1.png')
 img.height = 300
@@ -83,6 +84,7 @@ const clickCanvas = (event: any) => {
       navigator.vibrate(200);
     }
     console.log('1111', event)
+    // const speed = 0.5
     // const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     // const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
     const touch = event.changedTouches[0]
@@ -120,9 +122,15 @@ const clickCanvas = (event: any) => {
       });
 
       // Запускаем следующий кадр анимации
-      if (texts.value.length > 0) {
+      if (texts.value.some((text: any) => text.y > -24)) {
         requestAnimationFrame(animateTexts);
+      } else {
+        // Удаляем тексты, которые уже исчезли
+        texts.value = texts.value.filter((text: any) => text.y > -24);
       }
+      // if (texts.value.length > 0) {
+      //   requestAnimationFrame(animateTexts);
+      // }
     }
     const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{}', 'let', 'var', 'func', '>', 'sync', 'dev', '{', '(']; // Ваш список символов
 
