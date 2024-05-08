@@ -5,6 +5,7 @@ import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount, watch } from 'vue';
+import WebApp from '@twa-dev/sdk'
 // import { tapActionIncr } from '@/services/tap.service';
 
 const appStore = useApplicationStore()
@@ -14,6 +15,16 @@ onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
   await actionCheckinUserService()
+  WebApp.onEvent('viewportChanged', async (event: any) => {
+    console.log('event', event)
+    if (WebApp.viewportHeight < 200) {
+      await actionCheckinUserService()
+    }
+    // let value = totalScoreGetters.value
+    if (event.isStateStable) {
+      // await actionMiningMoney(value)
+    }
+  })
 })
 
 watch(() => successCurrentUserDataGetters.value, (newVal) => {
