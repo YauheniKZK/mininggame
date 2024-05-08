@@ -127,6 +127,10 @@ const clickCanvas = (event: any) => {
     const symbol = getRandomSymbol(symbolsArr)
     addText(symbol, x, y);
     animateTexts()
+    if ('vibrate' in navigator) {
+      // Вибрация на 200 миллисекунд
+      navigator.vibrate(200);
+    }
     // ctx.drawImage(img, xImg, yImg, 300, 300)
     updateTouchEnd()
   }
