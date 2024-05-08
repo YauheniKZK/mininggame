@@ -77,6 +77,10 @@ img.height = 300
 img.width = 300
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
+    if (navigator.vibrate) {
+      // Вибрация на 200 миллисекунд
+      navigator.vibrate(200);
+    }
     console.log('1111', event)
     // const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     // const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
@@ -127,10 +131,6 @@ const clickCanvas = (event: any) => {
     const symbol = getRandomSymbol(symbolsArr)
     addText(symbol, x, y);
     animateTexts()
-    if ('vibrate' in navigator) {
-      // Вибрация на 200 миллисекунд
-      navigator.vibrate(200);
-    }
     // ctx.drawImage(img, xImg, yImg, 300, 300)
     updateTouchEnd()
   }
