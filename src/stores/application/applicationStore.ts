@@ -8,6 +8,7 @@ export const useApplicationStore = defineStore('application', () => {
   // --------State---------
 
   const totalScore = ref(0)
+  const miningTotalScore = ref(0)
   // const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
   const successCurrentUserData = ref(false)
@@ -30,6 +31,7 @@ export const useApplicationStore = defineStore('application', () => {
   const referralsGetters = computed(() => referrals.value)
   const lastCheckinUserGetters = computed(() => lastCheckinUser.value)
   const currentCheckinUserGetters = computed(() => currentCheckinUser.value)
+  const miningTotalScoreGetters = computed(() => miningTotalScore.value)
 
   // --------Actions---------
 
@@ -41,7 +43,7 @@ export const useApplicationStore = defineStore('application', () => {
   //   }
   // }
 
-  async function actionGetUser(type: 'page' |'start') {
+  async function actionGetUser(type: 'page' |'start' | 'mining') {
     successCurrentUserData.value = false
     if (type === 'start') {
       loadingGetUser.value = true
@@ -57,6 +59,9 @@ export const useApplicationStore = defineStore('application', () => {
           referrals.value = res.data.referrals
         } else {
           referrals.value = []
+        }
+        if (type === 'mining') {
+          miningTotalScore.value = res.data.balance
         }
         successCurrentUserData.value = true
       } else {
@@ -166,6 +171,7 @@ export const useApplicationStore = defineStore('application', () => {
     actionCheckinUserService,
     lastCheckinUserGetters,
     currentCheckinUserGetters,
-    incrimentTotalScore
+    incrimentTotalScore,
+    miningTotalScoreGetters
   }
 })

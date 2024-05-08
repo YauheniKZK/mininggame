@@ -9,7 +9,7 @@ import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 // import { tapActionIncr } from '@/services/tap.service';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, miningTotalScoreGetters, totalScoreGetters } = storeToRefs(appStore)
 const { actionGetUser, resetUserData, updateTotalScore, actionMiningMoney } = appStore
 
 const interval = ref<any>(null)
@@ -22,8 +22,11 @@ onMounted(async () => {
   if (!interval.value) {
     interval.value = setInterval(() => {
       // incrimentTotalScore()
+      actionGetUser('mining')
+      console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
+      console.log('totalScoreGetters', totalScoreGetters.value)
       actionMiningMoney(1)
-      actionGetUser('page')
+      
     }, 1000)
   } else {
     interval.value = null
