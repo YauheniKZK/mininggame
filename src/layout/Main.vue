@@ -22,10 +22,12 @@ onMounted(async () => {
   if (!interval.value) {
     interval.value = setInterval(() => {
       // incrimentTotalScore()
+      actionMiningMoney(1)
       updateMiningTotalScore()
       console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
       console.log('totalScoreGetters', totalScoreGetters.value)
-      actionMiningMoney(1)
+      
+      
       actionGetUser('mining')
       
     }, 1000)
