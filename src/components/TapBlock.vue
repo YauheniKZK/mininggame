@@ -76,7 +76,6 @@ const texts = ref<any>([])
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     console.log('1111')
-    myCanvas.value.height = 400
     const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
     const touch = event.changedTouches[0]
@@ -138,7 +137,6 @@ onMounted(() => {
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
       ctx.drawImage(img, x, y);
-      myCanvas.value.height = 400
     }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
@@ -152,7 +150,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none">
-      <canvas ref="myCanvas" class="w-[100vh]" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" class="w-[100vh] h-full" @touchend="clickCanvas"></canvas>
     </div>
     <!-- <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
