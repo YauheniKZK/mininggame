@@ -21,11 +21,12 @@ const tapBlockContainerR = ref()
 onMounted(() => {
   if (canvaskeyboard.value) {
     const ctx = canvaskeyboard.value.getContext('2d');
+    ctx.value.imageSmoothingEnabled = true
     let buttons: any = [];
 
     function resizeCanvas() {
         canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
-        canvaskeyboard.value.height = 460;
+        canvaskeyboard.value.height = tapBlockContainerR.value.clientWidth / 2;
         drawKeyboard();
     }
 
@@ -41,7 +42,7 @@ onMounted(() => {
     function drawKeyboard() {
         buttons = []; // Reset buttons array
         const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
-        const buttonWidth = canvaskeyboard.value.width / 15;
+        const buttonWidth = canvaskeyboard.value.width / 14;
         const buttonHeight = buttonWidth * 0.6;
         const buttonMargin = 10;
         const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
@@ -69,8 +70,8 @@ onMounted(() => {
     canvaskeyboard.value.addEventListener('touchstart', function(event: any) {
         const touch = event.changedTouches[0]
         const rect = canvaskeyboard.value.getBoundingClientRect();
-        const mouseX = touch.clientX - rect.left;
-        const mouseY = touch.clientY - rect.top;
+        const mouseX = Math.round(touch.clientX - rect.left);
+        const mouseY = Math.round(touch.clientY - rect.top);
         const button = getButtonAtPosition(mouseX, mouseY);
         if (button) {
             button.isPressed = true;
