@@ -68,7 +68,7 @@ const updateTouchEnd = async () => {
 // const updateTouchStart = () => {
 //   // tapBlock.value.style.transform = `perspective(500px) rotateY(${((event.touches[0].clientX - tapBlock.value.offsetWidth) / 30) * 1}deg) rotateX(${((event.touches[0].clientY - tapBlock.value.offsetHeight) / 3) * -1}deg)`;
 // }
-const imgtap = ref()
+// const imgtap = ref()
 const myCanvas = ref()
 const texts = ref<any>([])
   const img = new Image()
@@ -76,7 +76,7 @@ const texts = ref<any>([])
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     console.log('1111')
-    myCanvas.value.height = img.height
+    myCanvas.value.height = 400
     const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
     const touch = event.changedTouches[0]
@@ -132,7 +132,7 @@ const clickCanvas = (event: any) => {
 }
 
 onMounted(() => {
-  if (imgtap.value && myCanvas.value) {
+  if (myCanvas.value) {
     const ctx = myCanvas.value.getContext("2d");
     const img = new Image()
     img.src = getImageUrl('img/keyboard1.png')
@@ -140,7 +140,7 @@ onMounted(() => {
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
       ctx.drawImage(img, x, y);
-      myCanvas.value.height = img.height
+      myCanvas.value.height = 400
     }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
