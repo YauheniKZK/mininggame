@@ -135,7 +135,7 @@ const clickCanvas = (event: any) => {
 onMounted(() => {
   if (myCanvas.value) {
     console.log('www', window.innerWidth)
-    myCanvas.value.width
+    myCanvas.value.width = document.documentElement.scrollWidth
     myCanvas.value.height = 460
     // const ctx = myCanvas.value.getContext("2d");
     // img.onload = function() {
