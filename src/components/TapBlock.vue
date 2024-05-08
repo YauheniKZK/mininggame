@@ -74,6 +74,7 @@ const texts = ref<any>([])
 const img = new Image()
 img.src = getImageUrl('img/keyboard1.png')
 img.height = 400
+img.width = 400
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     console.log('1111')
@@ -96,10 +97,9 @@ const clickCanvas = (event: any) => {
 
     function animateTexts() {
       ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
-
+      ctx.drawImage(img, xImg, yImg);
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.drawImage(img, xImg, yImg);
         ctx.font = '26px serif';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
