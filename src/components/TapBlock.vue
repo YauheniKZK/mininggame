@@ -120,6 +120,14 @@ const clickCanvas = (event: any) => {
 
 onMounted(() => {
   if (imgtap.value && myCanvas.value) {
+    const ctx = myCanvas.value.getContext("2d");
+    const img = new Image()
+    img.src = getImageUrl('img/keyboard1.png')
+    img.onload = function() {
+      const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
+      const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
+      ctx.drawImage(img, x, y);
+    }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
     // imgtap.value.addEventListener("load", () => {
@@ -131,8 +139,8 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col">
-    <div class="w-[300px] max-w-[100%] h-[300px] touch-none">
-      <canvas ref="myCanvas" width="400" height="300" class="w-full" @touchend="clickCanvas"></canvas>
+    <div class="w-[100vh] max-w-[100%] h-[400px] touch-none">
+      <canvas ref="myCanvas" width="1000" height="300" class="w-full" @touchend="clickCanvas"></canvas>
     </div>
     <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
