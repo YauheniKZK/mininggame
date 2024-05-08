@@ -118,12 +118,12 @@ const clickCanvas = (event: any) => {
         ctx.fillText(textObj.text, textObj.x, textObj.y);
         // Обновляем координаты и прозрачность для анимации
         
-        textObj.alpha -= 0.003;
+        textObj.alpha -= 0.004;
 
         if (textObj.alpha < 3) {
-          textObj.y -= 0.1;
+          textObj.y -= 1;
         } else {
-          textObj.y -= 0.4;
+          textObj.y -= 0.1;
         }
 
         // Удаляем текст, если он полностью исчез
