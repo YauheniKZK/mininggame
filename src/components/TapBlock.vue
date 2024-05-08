@@ -70,10 +70,9 @@ const updateTouchStart = () => {
 }
 const imgtap = ref()
 const myCanvas = ref()
-
+const texts = ref<any>([])
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
-    const texts: any = []
     console.log('1111')
     const touch = event.changedTouches[0]
     const rect = myCanvas.value.getBoundingClientRect()
@@ -87,14 +86,14 @@ const clickCanvas = (event: any) => {
     const x = xTouch;
 
     function addText(text: string, x: number, y: number) {
-      texts.push({ text: text, x: x, y: y, alpha: 1.0 });
+      texts.value.push({ text: text, x: x, y: y, alpha: 1.0 });
     }
 
     function animateTexts() {
       ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
 
       // Обновляем свойства и отрисовываем каждый текст
-      texts.forEach(function(textObj: any, index: number) {
+      texts.value.forEach(function(textObj: any, index: number) {
         ctx.font = '20px Arial';
         ctx.fillStyle = `rgba(0, 0, 0, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
@@ -105,12 +104,12 @@ const clickCanvas = (event: any) => {
 
         // Удаляем текст, если он полностью исчез
         if (textObj.alpha <= 0) {
-          texts.splice(index, 1);
+          texts.value.splice(index, 1);
         }
       });
 
       // Запускаем следующий кадр анимации
-      if (texts.length > 0) {
+      if (texts.value.length > 0) {
         requestAnimationFrame(animateTexts);
       }
     }
