@@ -24,6 +24,17 @@ watch(() => webAppHeight.value, (newVal) => {
   console.log('rrrrrrrrrr', newVal)  
 })
 
+WebApp.onEvent('viewportChanged', async (event: any) => {
+  console.log('event111', event)
+  if (WebApp.viewportHeight < 200) {
+    // await actionCheckinUserService()
+  }
+  // let value = totalScoreGetters.value
+  if (event.isStateStable) {
+    console.log('event222', event)
+  }
+})
+
 onBeforeUnmount(async () => {
   await actionMiningMoney(totalScoreGetters.value)
 })
