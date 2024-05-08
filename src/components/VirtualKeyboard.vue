@@ -42,9 +42,9 @@ onMounted(() => {
     function drawKeyboard() {
         buttons = []; // Reset buttons array
         const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
-        const buttonWidth = tapBlockContainerR.value.clientWidth / 8;
+        const buttonWidth = tapBlockContainerR.value.clientWidth / 6;
         const buttonHeight = buttonWidth * 0.6;
-        const buttonMargin = 10;
+        const buttonMargin = 4;
         const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
         let x = buttonMargin;
         let y = buttonMargin;
