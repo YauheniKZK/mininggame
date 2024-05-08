@@ -106,12 +106,12 @@ const clickCanvas = (event: any) => {
       // ctx.drawImage(img, xImg, yImg, 300, 300);
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
-        ctx.font = '32px Ubuntu sans-serif';
+        ctx.font = '38px "Ubuntu"';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
         // Обновляем координаты и прозрачность для анимации
         textObj.y -= 1;
-        textObj.alpha -= 0.01;
+        textObj.alpha -= 0.001;
 
         // Удаляем текст, если он полностью исчез
         if (textObj.alpha <= 0) {
