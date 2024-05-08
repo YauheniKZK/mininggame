@@ -18,6 +18,7 @@ export const useApplicationStore = defineStore('application', () => {
   const referrals = ref<any>([])
   const lastCheckinUser = ref<any>(null)
   const currentCheckinUser = ref<any>(null)
+  const isTaping = ref(false)
 
   // --------Getters---------
 
@@ -32,6 +33,7 @@ export const useApplicationStore = defineStore('application', () => {
   const lastCheckinUserGetters = computed(() => lastCheckinUser.value)
   const currentCheckinUserGetters = computed(() => currentCheckinUser.value)
   const miningTotalScoreGetters = computed(() => miningTotalScore.value)
+  const isTapingGetters = computed(() => isTaping.value)
 
   // --------Actions---------
 
@@ -148,6 +150,10 @@ export const useApplicationStore = defineStore('application', () => {
     miningTotalScore.value++
   }
 
+  function resetMiningTotalScore() {
+    miningTotalScore.value = 0
+  }
+
   function incrimentTotalScore() {
     const value = 1
     totalScore.value = totalScore.value + value
@@ -155,6 +161,10 @@ export const useApplicationStore = defineStore('application', () => {
 
   function resetUserData() {
     currentUserData.value = null
+  }
+
+  function actionIsTaping(status: boolean) {
+    isTaping.value = status
   }
 
   return {
@@ -178,6 +188,9 @@ export const useApplicationStore = defineStore('application', () => {
     currentCheckinUserGetters,
     incrimentTotalScore,
     miningTotalScoreGetters,
-    updateMiningTotalScore
+    updateMiningTotalScore,
+    actionIsTaping,
+    isTapingGetters,
+    resetMiningTotalScore
   }
 })

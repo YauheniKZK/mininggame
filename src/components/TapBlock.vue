@@ -7,8 +7,8 @@ import { storeToRefs } from 'pinia';
 import { onMounted, ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
-const { totalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore, actionMiningMoney } = appStore
+const { totalScoreGetters, miningTotalScoreGetters } = storeToRefs(appStore)
+const { updateTotalScore, actionMiningMoney, actionIsTaping, resetMiningTotalScore } = appStore
 
 // const tap = ref(false)
 const tapBlockContainer = ref()
@@ -33,15 +33,18 @@ watch(() => timer.value, async (newVal) => {
     if (newVal > 0) {
       clearInterval(interval.value)
       timer.value = 0
-      actionMiningMoney(totalScoreGetters.value)
+      actionMiningMoney(totalScoreGetters.value + miningTotalScoreGetters.value)
       
       // await actionGetUser('page')
+      resetMiningTotalScore()
       updateTotalScore(0)
+      actionIsTaping(false)
     }
   }
 })
 
 const updateTouchEnd = async () => {
+  actionIsTaping(true)
   let value = totalScoreGetters.value
   value++
   // WebApp.CloudStorage.setItem('totalScore', String(value))
