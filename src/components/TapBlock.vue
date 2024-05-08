@@ -97,7 +97,7 @@ const clickCanvas = (event: any) => {
 
     function animateTexts() {
       ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
-      ctx.drawImage(img, xImg, yImg, img.width, img.height);
+      ctx.drawImage(img, xImg, yImg, 300, 300);
       // Обновляем свойства и отрисовываем каждый текст
       texts.value.forEach(function(textObj: any, index: number) {
         ctx.font = '26px serif';
@@ -127,7 +127,7 @@ const clickCanvas = (event: any) => {
     const symbol = getRandomSymbol(symbolsArr)
     addText(symbol, x, y);
     animateTexts()
-    ctx.drawImage(img, xImg, yImg, img.width, img.height)
+    ctx.drawImage(img, xImg, yImg, 300, 300)
     updateTouchEnd()
   }
 }
@@ -138,7 +138,7 @@ onMounted(() => {
     img.onload = function() {
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
-      ctx.drawImage(img, x, y, img.width, img.height);
+      ctx.drawImage(img, x, y, 300, 300);
     }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
