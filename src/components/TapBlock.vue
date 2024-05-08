@@ -8,7 +8,7 @@ import { onMounted, ref, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters, miningTotalScoreGetters } = storeToRefs(appStore)
-const { updateTotalScore, actionMiningMoney, actionIsTaping, resetMiningTotalScore } = appStore
+const { updateTotalScore, actionMiningMoney, actionIsTaping } = appStore
 
 // const tap = ref(false)
 const tapBlockContainer = ref()
@@ -36,9 +36,10 @@ watch(() => timer.value, async (newVal) => {
       actionMiningMoney(totalScoreGetters.value + miningTotalScoreGetters.value)
       
       // await actionGetUser('page')
-      resetMiningTotalScore()
-      updateTotalScore(0)
+      
       actionIsTaping(false)
+      // resetMiningTotalScore()
+      // updateTotalScore(0)
     }
   }
 })
