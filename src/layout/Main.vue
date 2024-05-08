@@ -10,11 +10,11 @@ import { onMounted, onBeforeUnmount, watch } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, updateTotalScore, actionCheckinUserService } = appStore
+const { actionGetUser, resetUserData, updateTotalScore } = appStore
 onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
-  await actionCheckinUserService()
+  // await actionCheckinUserService()
 
 })
 

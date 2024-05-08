@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters } = storeToRefs(appStore)
-const { actionMiningMoney } = appStore
+const { actionMiningMoney, actionCheckinUserService } = appStore
 
 onMounted(() => {
   WebApp.expand()
@@ -32,6 +32,7 @@ WebApp.onEvent('viewportChanged', async (event: any) => {
   // let value = totalScoreGetters.value
   if (event.isStateStable) {
     console.log('event222', event)
+    await actionCheckinUserService()
   }
 })
 
