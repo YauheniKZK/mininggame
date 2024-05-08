@@ -80,7 +80,7 @@ const clickCanvas = (event: any) => {
     console.log('1111', event)
     // const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     // const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
-    const touch = event.touches[0]
+    const touch = event.changedTouches[0]
     const rect = myCanvas.value.getBoundingClientRect()
     const xTouch = Math.round(touch.clientX - rect.left);
     const yTouch = Math.round(touch.clientY - rect.top);
