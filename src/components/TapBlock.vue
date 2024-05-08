@@ -102,10 +102,10 @@ const clickCanvas = (event: any) => {
     const xTouch = Math.round(touch.clientX - rect.left);
     const yTouch = Math.round(touch.clientY - rect.top);
     let y = yTouch
-    texts.value.forEach((item: any) => {
-      item.y = y
-      item.alpha = 1
-    })
+    // texts.value.forEach((item: any) => {
+    //   item.y = y
+    //   item.alpha = 1
+    // })
     // let alpha = 1.0
 
     // const ctx = myCanvas.value.getContext("2d");
