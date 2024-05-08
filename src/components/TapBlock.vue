@@ -77,7 +77,7 @@ img.height = 300
 img.width = 300
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
-    console.log('1111')
+    console.log('1111', event)
     // const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     // const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
     const touch = event.touches[0]
@@ -88,6 +88,7 @@ const clickCanvas = (event: any) => {
     // let alpha = 1.0
 
     const ctx = myCanvas.value.getContext("2d");
+    ctx.imageSmoothingEnabled = true
     // const rect = myCanvas.value.getBoundingClientRect()
     const x = xTouch;
 
@@ -103,7 +104,6 @@ const clickCanvas = (event: any) => {
         ctx.font = '26px Roboto';
         ctx.fillStyle = `rgba(255, 255, 255, ${textObj.alpha})`;
         ctx.fillText(textObj.text, textObj.x, textObj.y);
-        ctx.imageSmoothingEnabled = true
         // Обновляем координаты и прозрачность для анимации
         textObj.y -= 1;
         textObj.alpha -= 0.01;
