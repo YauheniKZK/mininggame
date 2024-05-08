@@ -92,6 +92,7 @@ const clickCanvas = (event: any) => {
     //   // Вибрация на 200 миллисекунд
     //   navigator.vibrate(200);
     // }
+    
     console.log('1111', event)
     // const speed = 0.5
     // const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
@@ -101,6 +102,10 @@ const clickCanvas = (event: any) => {
     const xTouch = Math.round(touch.clientX - rect.left);
     const yTouch = Math.round(touch.clientY - rect.top);
     let y = yTouch
+    texts.value.forEach((item: any) => {
+      item.y = y
+      item.alpha = 1
+    })
     // let alpha = 1.0
 
     // const ctx = myCanvas.value.getContext("2d");
