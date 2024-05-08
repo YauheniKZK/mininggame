@@ -6,7 +6,7 @@ import { computed, onMounted, ref, watch } from 'vue';
 import moment from 'moment'
 
 const appStore = useApplicationStore()
-const { totalScoreGetters, totalUserScoreGetter, lastCheckinUserGetters } = storeToRefs(appStore)
+const { totalScoreGetters, totalUserScoreGetter, lastCheckinUserGetters, currentCheckinUserGetters } = storeToRefs(appStore)
 // const { actionGetTotalScore } = appStore
 
 const oldValue = ref(0)
@@ -29,8 +29,8 @@ watch(() => totalScoreGetters.value, (newVal, oldVal) => {
 // const total = computed(() => totalUserScoreGetter.value)
 
 const getDiffTiem = computed(() => {
-  if (lastCheckinUserGetters.value) {
-    return Math.abs(moment(lastCheckinUserGetters.value).diff(moment(), 'seconds')) + ' sec'
+  if (lastCheckinUserGetters.value && currentCheckinUserGetters.value) {
+    return Math.abs(moment(lastCheckinUserGetters.value).diff(moment(currentCheckinUserGetters.value), 'seconds')) + ' sec'
   }
   return '--'
 })

@@ -4,18 +4,30 @@ import StartPage from '@/pages/StartPage.vue';
 import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { onMounted, onBeforeUnmount, watch } from 'vue';
+import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 // import WebApp from '@twa-dev/sdk'
 // import { tapActionIncr } from '@/services/tap.service';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, updateTotalScore, actionCheckinUserService } = appStore
+const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, totalScoreGetters } = storeToRefs(appStore)
+const { actionGetUser, resetUserData, updateTotalScore, actionMiningMoney, incrimentTotalScore } = appStore
+
+const interval = ref<any>(null)
+
 onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
-  await actionCheckinUserService()
-
+  // await actionCheckinUserService()
+  
+  if (!interval.value) {
+    interval.value = setInterval(() => {
+      incrimentTotalScore()
+      actionMiningMoney(totalScoreGetters.value)
+    }, 1000)
+  } else {
+    interval.value = null
+    clearInterval(interval.value)
+  }
 })
 
 watch(() => successCurrentUserDataGetters.value, (newVal) => {
@@ -32,6 +44,10 @@ onBeforeUnmount(async () => {
   console.log('1111111111111111111')
   // actionMiningMoney(10)
   // await tapActionIncr(10)
+  if (interval.value) {
+    clearInterval(interval.value)
+    interval.value = null
+  }
   resetUserData()
 })
 </script>

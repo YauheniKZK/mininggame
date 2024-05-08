@@ -16,6 +16,7 @@ export const useApplicationStore = defineStore('application', () => {
   const successGetLinkRefUserService = ref(false)
   const referrals = ref<any>([])
   const lastCheckinUser = ref<any>(null)
+  const currentCheckinUser = ref<any>(null)
 
   // --------Getters---------
 
@@ -28,6 +29,7 @@ export const useApplicationStore = defineStore('application', () => {
   const successGetLinkRefUserServiceGetters = computed(() => successGetLinkRefUserService.value)
   const referralsGetters = computed(() => referrals.value)
   const lastCheckinUserGetters = computed(() => lastCheckinUser.value)
+  const currentCheckinUserGetters = computed(() => currentCheckinUser.value)
 
   // --------Actions---------
 
@@ -49,9 +51,8 @@ export const useApplicationStore = defineStore('application', () => {
       if (res && res.data) {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
-        if (type === 'start') {
-          lastCheckinUser.value = res.data.checkin
-        }
+        lastCheckinUser.value = res.data.checkin
+        currentCheckinUser.value = res.data.server_time
         if (res.data.referrals) {
           referrals.value = res.data.referrals
         } else {
@@ -61,11 +62,13 @@ export const useApplicationStore = defineStore('application', () => {
       } else {
         successCurrentUserData.value = false
         lastCheckinUser.value = null
+        currentCheckinUser.value = null
       }
       loadingGetUser.value = false
     } catch (error: any) {
       successCurrentUserData.value = false
       lastCheckinUser.value = null
+      currentCheckinUser.value = null
       console.log('error', error?.response)
       if (error?.response.status === 419) {
         currentUserData.value = null
@@ -135,6 +138,11 @@ export const useApplicationStore = defineStore('application', () => {
     totalScore.value = value
   }
 
+  function incrimentTotalScore() {
+    const value = 1
+    totalScore.value = totalScore.value + value
+  }
+
   function resetUserData() {
     currentUserData.value = null
   }
@@ -156,6 +164,8 @@ export const useApplicationStore = defineStore('application', () => {
     referralsGetters,
     successCurrentUserDataGetters,
     actionCheckinUserService,
-    lastCheckinUserGetters
+    lastCheckinUserGetters,
+    currentCheckinUserGetters,
+    incrimentTotalScore
   }
 })

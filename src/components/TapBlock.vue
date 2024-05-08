@@ -80,10 +80,10 @@ img.height = 300
 img.width = 300
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
-    if (navigator.vibrate) {
-      // Вибрация на 200 миллисекунд
-      navigator.vibrate(200);
-    }
+    // if (navigator.vibrate) {
+    //   // Вибрация на 200 миллисекунд
+    //   navigator.vibrate(200);
+    // }
     console.log('1111', event)
     // const speed = 0.5
     // const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
@@ -135,7 +135,7 @@ const clickCanvas = (event: any) => {
       //   requestAnimationFrame(animateTexts);
       // }
     }
-    const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{}', 'let', 'var', 'func', '>', 'sync', 'dev', '{', '(']; // Ваш список символов
+    const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{}', 'let', 'var', 'func', '>', 'sync', 'dev', '{', '(', '()', 'oops']; // Ваш список символов
 
     function getRandomSymbol(symbols: string[]) {
       return symbols[Math.floor(Math.random() * symbols.length)];

@@ -11,6 +11,7 @@ const { actionMiningMoney } = appStore
 
 onMounted(() => {
   WebApp.expand()
+  console.log('WebApp.initDataUnsafe.user?.photo_url', WebApp.initDataUnsafe.user?.photo_url)
   console.log('WebApp.version', WebApp.version)
 })
 
