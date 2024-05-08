@@ -11,7 +11,7 @@ const { totalScoreGetters } = storeToRefs(appStore)
 const { updateTotalScore, actionMiningMoney, actionGetUser } = appStore
 
 // const tap = ref(false)
-const tapBlock = ref()
+// const tapBlock = ref()
 
 // const updateScore = () => {
 //   let value = totalScoreGetters.value
@@ -65,9 +65,9 @@ const updateTouchEnd = async () => {
   // tapActionIncr(totalScoreGetters.value)
   // tapBlock.value.style.transform = ``
 }
-const updateTouchStart = () => {
-  // tapBlock.value.style.transform = `perspective(500px) rotateY(${((event.touches[0].clientX - tapBlock.value.offsetWidth) / 30) * 1}deg) rotateX(${((event.touches[0].clientY - tapBlock.value.offsetHeight) / 3) * -1}deg)`;
-}
+// const updateTouchStart = () => {
+//   // tapBlock.value.style.transform = `perspective(500px) rotateY(${((event.touches[0].clientX - tapBlock.value.offsetWidth) / 30) * 1}deg) rotateX(${((event.touches[0].clientY - tapBlock.value.offsetHeight) / 3) * -1}deg)`;
+// }
 const imgtap = ref()
 const myCanvas = ref()
 const texts = ref<any>([])
@@ -76,6 +76,7 @@ const texts = ref<any>([])
 const clickCanvas = (event: any) => {
   if (myCanvas.value) {
     console.log('1111')
+    myCanvas.value.height = img.height
     const xImg = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
     const yImg = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
     const touch = event.changedTouches[0]
@@ -94,7 +95,6 @@ const clickCanvas = (event: any) => {
     }
 
     function animateTexts() {
-      ctx.drawImage(img, xImg, yImg);
       ctx.clearRect(0, 0, myCanvas.value.width, myCanvas.value.height); // Очищаем canvas
 
       // Обновляем свойства и отрисовываем каждый текст
@@ -125,7 +125,9 @@ const clickCanvas = (event: any) => {
     }
     const symbol = getRandomSymbol(symbolsArr)
     addText(symbol, x, y);
+    ctx.drawImage(img, xImg, yImg);
     animateTexts()
+    updateTouchEnd()
   }
 }
 
@@ -138,7 +140,7 @@ onMounted(() => {
       const x = (myCanvas.value.width - img.width) / 2; // Вычисляем координату X для центрирования
       const y = (myCanvas.value.height - img.height) / 2; // Вычисляем координату Y для центрирования
       ctx.drawImage(img, x, y);
-      myCanvas.value.width = img.height
+      myCanvas.value.height = img.height
     }
     // const ctx = myCanvas.value.getContext("2d");
     // // ctx.drawImage(imgtap.value, 10, 10);
@@ -152,9 +154,9 @@ onMounted(() => {
 <template>
   <div class="flex flex-col">
     <div class="w-[100vh] max-w-[100%] h-[400px] touch-none">
-      <canvas ref="myCanvas" width="1000" height="400" class="w-full" @touchend="clickCanvas"></canvas>
+      <canvas ref="myCanvas" class="w-full" @touchend="clickCanvas"></canvas>
     </div>
-    <div style="display:none;">
+    <!-- <div style="display:none;">
       <img ref="imgtap" :src="getImageUrl('img/keyboard1.png')" alt="" />
     </div>
     <div
@@ -163,7 +165,7 @@ onMounted(() => {
       @touchend="updateTouchEnd"
       @touchstart="updateTouchStart"
     >
-    </div>
+    </div> -->
   </div>
 </template>
 
