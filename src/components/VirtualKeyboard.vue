@@ -45,8 +45,8 @@ onMounted(() => {
         const buttonHeight = buttonWidth * 0.6;
         const buttonMargin = 10;
         const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
-        let x = buttonMargin + 8;
-        let y = buttonMargin;
+        let x = buttonMargin + 16;
+        let y = buttonMargin + 16;
 
         keys.forEach((key, index) => {
             if (index % keysPerRow === 0 && index !== 0) {
