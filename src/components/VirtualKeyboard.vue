@@ -36,7 +36,7 @@ onMounted(() => {
     ];
 
     function resizeCanvas() {
-      canvaskeyboard.value.width = tapBlockContainerR.value.clientX;
+      canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
       canvaskeyboard.value.height = 460
       // const numberOfRows = keys.length;
       const numberOfKeysInRow = keys[0].length;
