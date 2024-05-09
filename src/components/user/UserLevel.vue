@@ -10,33 +10,32 @@ const props = defineProps<{ balance: string }>()
 </script>
 
 <template>
-  <div class="flex rounded-[16px] w-full" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
+  <div class="flex items-center rounded-[16px] w-full" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
     <div class="flex items-center justify-center p-[8px] w-[40%] min-[40%]">
       <n-progress
         type="circle"
         :percentage="20"
         :stroke-width="10"
-        :rail-color="[{ stroke: 'var(--chart-color)' }]"
+        style="width: 60px"
+        :rail-color="['var(--chart-color)']"
       >
         <div class="flex flex-col items-center justify-center">
-          <span class="text-[var(--main-text-color)] text-center">
-            {{ 'Your level:' }}
-          </span>
-          <span class="text-[var(--main-text-color)] text-center">
+          <span class="text-[var(--main-text-color)] text-[11px] text-center">
             {{ 'Junior' }}
           </span>
         </div>
 
       </n-progress>
     </div>
-    <div class="flex w-[1px] h-[80px]" style="background: var(--secondary-color-light);"></div>
+    <div class="flex w-[1px] h-[60px] mx-[4px]" style="background: #54a4af52;"></div>
     <div class="flex flex-col p-[8px]">
-      <div class="flex items-center">
-        <span class="flex min-w-[80px] mr-[8px] text-[var(--main-text-color)]">{{ 'Balance: ' }}</span>
+      <div class="flex items-center flex-wrap text-[12px]">
+        <span class="flex min-w-[80px] mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Balance: ' }}</span>
         <span class="text-[var(--main-text-color)]">{{ props.balance + ' $' }}</span>
       </div>
-      <div class="flex items-center">
-        <span class="flex min-w-[80px] mr-[8px] text-[var(--main-text-color)]">{{ 'Up level: ' }}</span>
+      <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
+      <div class="flex items-center flex-wrap text-[12px]">
+        <span class="flex min-w-[80px] mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Up level: ' }}</span>
         <span class="text-[var(--main-text-color)]">{{ '100 000$' }}</span>
       </div>
     </div>
