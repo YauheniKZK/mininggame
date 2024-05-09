@@ -24,7 +24,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="max-w-[120px] min-w-[120px]">
         <UserNameAvatar :name="currentUserDataGetters.first_name" />
       </div>
-      <div class="flex-grow">
+      <div class="flex-grow max-w-[250px]">
         <UserLevel :balance="currentUserDataGetters.balance" />
       </div>
     </div>
