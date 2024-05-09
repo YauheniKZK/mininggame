@@ -5,6 +5,7 @@
 import TotalScore from '@/components/TotalScore.vue';
 import TapBlock from '@/components/TapBlock.vue';
 import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
+import UserLevel from '@/components/user/UserLevel.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
@@ -23,8 +24,8 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="w-[40%]">
         <UserNameAvatar :name="currentUserDataGetters.first_name" />
       </div>
-      <div>
-
+      <div class="flex-grow">
+        <UserLevel :balance="currentUserDataGetters.balance" />
       </div>
     </div>
     <div class="flex justify-center items-center w-full mb-[24px]">
