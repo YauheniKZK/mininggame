@@ -28,9 +28,16 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between h-full">
-    <div class="flex">
-      <n-tabs class="w-full tabs-custom1 none-tab mb-[24px]" :tab-class="'tab-class'" :value="valueTab" animated>
-        <n-tab-pane name="main" class="w-full">
+    <div class="flex h-full">
+      <n-tabs
+        class="w-full tabs-custom1 none-tab mb-[24px] h-full"
+        :tab-class="'tab-class'"
+        :pane-wrapper-class="'h-full'"
+        :pane-class="'h-full'"
+        :value="valueTab"
+        animated
+      >
+        <n-tab-pane name="main" class="w-full h-full">
           <Main />
         </n-tab-pane>
         <n-tab-pane name="mining" class="w-full">
