@@ -65,6 +65,7 @@ const drawPressedKey = (ctx: any, x: any, y: any, key: any) => {
 const drawKeyboard = () => {
   const canvas = keyboardCanvas.value;
   const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height)
   keys.forEach((row, rowIndex) => {
     row.forEach((key, keyIndex) => {
       const x = keyIndex * (canvasSize.keyWidth + keyMargin);
