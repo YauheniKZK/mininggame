@@ -36,6 +36,11 @@ const resizeCanvas = () => {
   const numberOfKeysInRow = keys[0].length;
   canvasSize.keyWidth = canvasSize.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
   canvasSize.keyHeight = canvasSize.keyWidth;
+  console.log('canvasSize.keyWidth', canvasSize.keyWidth)
+  console.log('numberOfKeysInRow', numberOfKeysInRow)
+  console.log('keyMargin', keyMargin)
+  console.log('canvasSize', canvasSize)
+  console.log('------')
   drawKeyboard();
 };
 
