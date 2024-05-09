@@ -28,7 +28,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between h-full">
-    <div class="flex p-[16px]">
+    <div class="flex">
       <n-tabs class="w-full tabs-custom1 none-tab mb-[24px]" :tab-class="'tab-class'" :value="valueTab" animated>
         <n-tab-pane name="main" class="w-full">
           <Main />

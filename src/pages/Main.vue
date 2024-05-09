@@ -18,9 +18,9 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center w-full p-[16px]">
     <div class="flex items-center justify-between w-full mb-[24px]">
-      <div class="w-f[40%]">
+      <div class="w-[40%]">
         <UserNameAvatar :name="currentUserDataGetters.first_name" />
       </div>
       <div>
