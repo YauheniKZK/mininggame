@@ -44,12 +44,12 @@ onMounted(async () => {
         </n-tab-pane>
       </n-tabs>
     </div>
-    <div class="flex flex-col w-full fixed bottom-[8px] px-[8px]">
+    <div class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
       <div class="flex justify-end p-[8px_12px]">
         <span class="text-[#fff]">{{ versionApp }}</span>
       </div>
       <div class="flex w-full h-[70px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
-        <n-tabs type="segment" class="w-full tabs-custom1" :value="valueTab" animated @update:value="updateTab">
+        <n-tabs type="segment" class="w-full tabs-custom1 custom-bg-1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="main">
             Main
           </n-tab>
@@ -92,7 +92,7 @@ onMounted(async () => {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #53547469;
+  background: #535474f2;
   filter: blur(1px);
   border-radius: 12px;
 }

@@ -74,6 +74,11 @@ body, html {
 
 }
 
+.tabs-custom1.custom-bg-1 {
+  --n-color-segment: #2e333700 !important;
+  --n-tab-color-segment: #662549 !important;
+}
+
 .tabs-custom1 .n-tabs-tab__label {
   white-space: normal;
   text-align: center;
