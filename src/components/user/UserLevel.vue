@@ -10,7 +10,7 @@ const props = defineProps<{ balance: string }>()
 </script>
 
 <template>
-  <div class="flex items-center rounded-[16px] w-full" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
+  <div class="flex items-center rounded-[16px] w-full min-h-[100px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
     <div class="flex items-center justify-center p-[8px] w-[40%] min-[40%]">
       <n-progress
         type="circle"
