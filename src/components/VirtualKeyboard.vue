@@ -11,7 +11,7 @@ import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
 // const keyboardCanvas = ref()
 const tapBlockContainerR = ref()
 
-const tapBlockContainerRWidth = computed(() => 590)
+const tapBlockContainerRWidth = computed(() => tapBlockContainerR.value?.clientWidth || 0)
 
 // const inputField: any = document.getElementById('inputField')
 // const buttonWidth = 60;
