@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, onUnmounted, reactive, ref } from 'vue';
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
 
 // import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { getImageUrl } from '@/utils/images';
@@ -11,6 +11,8 @@ import { onMounted, onUnmounted, reactive, ref } from 'vue';
 // const keyboardCanvas = ref()
 const tapBlockContainerR = ref()
 
+const tapBlockContainerRWidth = computed(() => tapBlockContainerR.value.clientWidth || 0)
+
 // const inputField: any = document.getElementById('inputField')
 // const buttonWidth = 60;
 // const buttonHeight = 40;
@@ -20,7 +22,7 @@ const tapBlockContainerR = ref()
 
 
 const keyboardCanvas = ref<any>();
-const canvasSize = reactive({ width: tapBlockContainerR.value.clientWidth, keyWidth: 0, keyHeight: 0 });
+const canvasSize = reactive({ width: tapBlockContainerRWidth.value, keyWidth: 0, keyHeight: 0 });
 const keyMargin = 10;
 const keys = [
   ['Q', 'W', 'E', 'R', 'T'],
@@ -30,7 +32,7 @@ const keys = [
 ];
 
 const resizeCanvas = () => {
-  canvasSize.width = tapBlockContainerR.value.clientWidth;
+  canvasSize.width = tapBlockContainerRWidth.value;
   const numberOfKeysInRow = keys[0].length;
   canvasSize.keyWidth = canvasSize.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
   canvasSize.keyHeight = canvasSize.keyWidth;
@@ -98,7 +100,7 @@ onMounted(() => {
   if (keyboardCanvas.value) {
     window.addEventListener('resize', resizeCanvas);
     const canvas: any = keyboardCanvas.value;
-    canvas.width = tapBlockContainerR.value.clientWidth;
+    canvas.width = tapBlockContainerRWidth.value
     canvas.addEventListener('touchstart', handleTouchStart);
     canvas.addEventListener('touchend', handleTouchEnd);
 
