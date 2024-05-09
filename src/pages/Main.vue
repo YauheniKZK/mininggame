@@ -4,6 +4,12 @@
 // import WebApp from '@twa-dev/sdk'
 import TotalScore from '@/components/TotalScore.vue';
 import TapBlock from '@/components/TapBlock.vue';
+import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
+
+const appStore = useApplicationStore()
+const { currentUserDataGetters } = storeToRefs(appStore)
 
 // const handlebtn = () => {
 //   WebApp.showAlert(`Hello World! Current count is `)
@@ -13,6 +19,9 @@ import TapBlock from '@/components/TapBlock.vue';
 
 <template>
   <div class="flex flex-col items-center w-full">
+    <div class="flex items-center">
+      <UserNameAvatar :name="currentUserDataGetters.first_name" />
+    </div>
     <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
     </div>
