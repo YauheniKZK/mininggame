@@ -22,7 +22,7 @@ const tapBlockContainerRWidth = computed(() => 590)
 
 
 const keyboardCanvas = ref<any>();
-const canvasSize = reactive({ width: tapBlockContainerRWidth.value, keyWidth: 0, keyHeight: 0 });
+const canvasSize = reactive({ width: tapBlockContainerRWidth.value, keyWidth: 60, keyHeight: 60 });
 const keyMargin = 10;
 const keys = [
   ['Q', 'W', 'E', 'R', 'T'],
@@ -35,7 +35,7 @@ const resizeCanvas = () => {
   console.log('tapBlockContainerRWidth.value111111', tapBlockContainerRWidth.value)
   canvasSize.width = tapBlockContainerRWidth.value;
   const numberOfKeysInRow = keys[0].length;
-  canvasSize.keyWidth = canvasSize.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
+  canvasSize.keyWidth = 60
   canvasSize.keyHeight = canvasSize.keyWidth;
   console.log('canvasSize.keyWidth', canvasSize.keyWidth)
   console.log('numberOfKeysInRow', numberOfKeysInRow)
