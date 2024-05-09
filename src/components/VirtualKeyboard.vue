@@ -11,7 +11,7 @@ import { computed, onMounted, onUnmounted, reactive, ref } from 'vue';
 // const keyboardCanvas = ref()
 const tapBlockContainerR = ref()
 
-const tapBlockContainerRWidth = computed(() => tapBlockContainerR.value?.clientWidth || 0)
+const tapBlockContainerRWidth = computed(() => 590)
 
 // const inputField: any = document.getElementById('inputField')
 // const buttonWidth = 60;
@@ -32,6 +32,7 @@ const keys = [
 ];
 
 const resizeCanvas = () => {
+  console.log('tapBlockContainerRWidth.value111111', tapBlockContainerRWidth.value)
   canvasSize.width = tapBlockContainerRWidth.value;
   const numberOfKeysInRow = keys[0].length;
   canvasSize.keyWidth = canvasSize.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
