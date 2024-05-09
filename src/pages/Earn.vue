@@ -33,16 +33,15 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 <template>
   <div class="flex flex-col items-center w-full h-full p-[16px]">
     <div class="flex w-full mb-[16px] p-[12px] rounded-[16px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
-      <div class="flex flex-col">
-        <span class="text-[20px] text-[var(--main-text-color)]">
+      <div class="flex flex-col min-w-[50%]">
+        <span class="text-[18px] text-[var(--main-text-color)]">
           {{ 'Hey, ' + currentUserDataGetters.first_name  }}
         </span>
-        <span class="text-[16px] text-[var(--main-text-color)]">
+        <span class="text-[14px] text-[var(--main-text-color)]">
           {{ 'Invite friends and earn extra experience points' }}
         </span>
       </div>
       <div class="flex justify-center items-center">
-
       </div>
     </div>
     <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
