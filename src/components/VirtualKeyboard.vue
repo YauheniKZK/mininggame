@@ -19,7 +19,7 @@ const tapBlockContainerR = ref()
 // const buttons: any = []
 
 
-const keyboardCanvas = ref<any>(null);
+const keyboardCanvas = ref<any>();
 const canvasSize = reactive({ width: tapBlockContainerR.value.clientWidth, keyWidth: 0, keyHeight: 0 });
 const keyMargin = 10;
 const keys = [
@@ -95,13 +95,16 @@ const handleTouchEnd = (event: any) => {
 };
 
 onMounted(() => {
-  window.addEventListener('resize', resizeCanvas);
-  const canvas: any = keyboardCanvas.value;
-  canvas.width = tapBlockContainerR.value.clientWidth;
-  canvas.addEventListener('touchstart', handleTouchStart);
-  canvas.addEventListener('touchend', handleTouchEnd);
+  if (keyboardCanvas.value) {
+    window.addEventListener('resize', resizeCanvas);
+    const canvas: any = keyboardCanvas.value;
+    canvas.width = tapBlockContainerR.value.clientWidth;
+    canvas.addEventListener('touchstart', handleTouchStart);
+    canvas.addEventListener('touchend', handleTouchEnd);
 
-  resizeCanvas();
+    resizeCanvas();
+  }
+
 });
 
 onUnmounted(() => {
