@@ -19,7 +19,7 @@ const props = defineProps<{ balance: string }>()
         :stroke-width="12"
         style="width: 60px"
         :color="['var(--chart-color)']"
-        :rail-color="['#00ADB5']"
+        :rail-color="['#704264']"
       >
         <div class="flex flex-col items-center justify-center">
           <span class="text-[var(--main-text-color)] text-[11px] text-center">
