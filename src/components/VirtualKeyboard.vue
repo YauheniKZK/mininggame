@@ -97,11 +97,9 @@ const handleTouchEnd = (event: any) => {
 onMounted(() => {
   window.addEventListener('resize', resizeCanvas);
   const canvas: any = keyboardCanvas.value;
-  if (canvas) {
-    canvas.width = canvasSize.width;
-    canvas.addEventListener('touchstart', handleTouchStart);
-    canvas.addEventListener('touchend', handleTouchEnd);
-  }
+  canvas.width = tapBlockContainerR.value.clientWidth;
+  canvas.addEventListener('touchstart', handleTouchStart);
+  canvas.addEventListener('touchend', handleTouchEnd);
 
   resizeCanvas();
 });
@@ -109,10 +107,8 @@ onMounted(() => {
 onUnmounted(() => {
   window.removeEventListener('resize', resizeCanvas);
   const canvas: any = keyboardCanvas.value;
-  if (canvas) {
-    canvas.removeEventListener('touchstart', handleTouchStart);
-    canvas.removeEventListener('touchend', handleTouchEnd);
-  }
+  canvas.removeEventListener('touchstart', handleTouchStart);
+  canvas.removeEventListener('touchend', handleTouchEnd);
 
 });
 </script>
