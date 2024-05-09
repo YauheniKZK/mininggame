@@ -14,10 +14,12 @@ const props = defineProps<{ balance: string }>()
     <div class="flex items-center justify-center p-[8px] w-[40%] min-[40%]">
       <n-progress
         type="circle"
+        :gap-offset-degree="180"
         :percentage="20"
         :stroke-width="10"
         style="width: 60px"
-        :rail-color="['var(--chart-color)']"
+        :color="['var(--chart-color)']"
+        :rail-color="['#00ADB5']"
       >
         <div class="flex flex-col items-center justify-center">
           <span class="text-[var(--main-text-color)] text-[11px] text-center">
