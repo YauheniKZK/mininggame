@@ -14,7 +14,7 @@ import { watch } from 'vue';
 //   WebApp.showAlert(`Hello World! Current count is `)
 // }
 const appStore = useApplicationStore()
-const { successGetLinkRefUserServiceGetters, loadingGetLinkRefUserServiceGetters, referralsGetters } = storeToRefs(appStore)
+const { successGetLinkRefUserServiceGetters, loadingGetLinkRefUserServiceGetters, referralsGetters, currentUserDataGetters } = storeToRefs(appStore)
 const { actionGetLinkRefUserService } = appStore
 
 const createLinkRef = async () => {
@@ -31,7 +31,20 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full h-full">
+  <div class="flex flex-col items-center w-full h-full p-[16px]">
+    <div class="flex w-full mb-[16px] p-[12px] rounded-[16px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
+      <div class="flex flex-col">
+        <span class="text-[20px] text-[var(--main-text-color)]">
+          {{ 'Hey, ' + currentUserDataGetters.first_name  }}
+        </span>
+        <span class="text-[16px] text-[var(--main-text-color)]">
+          {{ 'Invite friends and earn extra experience points' }}
+        </span>
+      </div>
+      <div class="flex justify-center items-center">
+
+      </div>
+    </div>
     <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
       <div v-for="(item, index) in referralsGetters" :key="index" class="flex items-center mb-[8px] p-[8px] rounded-[8px] bg-[#77B0AA] w-full">
         <span class="text-[#fff] mr-[12px]">{{ item?.username + ': ' }}</span>
