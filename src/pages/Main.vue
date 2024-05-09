@@ -8,6 +8,7 @@ import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
 import UserLevel from '@/components/user/UserLevel.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
@@ -15,6 +16,15 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 // const handlebtn = () => {
 //   WebApp.showAlert(`Hello World! Current count is `)
 // }
+const show = ref(false)
+
+onMounted(() => {
+  show.value = !show.value
+})
+
+onBeforeUnmount(() => {
+  show.value = !show.value
+})
 
 </script>
 
@@ -22,7 +32,9 @@ const { currentUserDataGetters } = storeToRefs(appStore)
   <div class="flex flex-col items-center w-full p-[16px]">
     <div class="flex items-center gap-[16px] justify-between w-full mb-[24px]">
       <div class="max-w-[120px] min-w-[120px]">
-        <UserNameAvatar :name="currentUserDataGetters.first_name" />
+        <transition name="bounce">
+          <UserNameAvatar v-if="show" class="animation-block" :name="currentUserDataGetters.first_name" />
+        </transition>
       </div>
       <div class="flex-grow max-w-[250px]">
         <UserLevel :balance="currentUserDataGetters.balance" />
@@ -49,5 +61,19 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+
+.bounce-enter-active, .bounce-leave-active {
+  transition: left 0.3s, transform 0.3s; /* Анимация для входа и выхода */
+}
+
+.bounce-enter-from, .bounce-leave-to {
+  left: -300px;
+  transform: translateY(-20px); /* Начальное положение и отпрыгивание */
+}
+
+.bounce-enter-to, .bounce-leave-from {
+  left: 0;
+  transform: translateY(0); /* Конечное положение после отпрыгивания */
 }
 </style>
