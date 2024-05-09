@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
       </div>
       <div class="flex-grow max-w-[250px]">
         <transition name="bounce-right">
-          <UserLevel :balance="currentUserDataGetters.balance" />
+          <UserLevel v-if="show" :balance="currentUserDataGetters.balance" />
         </transition>
       </div>
     </div>
