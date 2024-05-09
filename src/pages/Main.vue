@@ -85,7 +85,7 @@ onBeforeUnmount(() => {
 
 .bounce-right-enter-from, .bounce-right-leave-to {
   right: -400px;
-  transform: translateX(-50px); /* Начальное положение и отпрыгивание */
+  transform: translateX(50px); /* Начальное положение и отпрыгивание */
 }
 
 .bounce-right-enter-to, .bounce-right-leave-from {
