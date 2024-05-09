@@ -3,7 +3,11 @@
 // import { getImageUrl } from '@/utils/images';
 // import { storeToRefs } from 'pinia';
 // import { onMounted } from 'vue';
+import gsap from 'gsap'
+import { computed } from 'vue';
 const props = defineProps<{ balance: string }>()
+
+const adasd = computed(() => gsap.to(props.balance, { duration: 0.5, number: Number(props.balance) || 0 }))
 
 //const appStore = useApplicationStore()
 // const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
@@ -33,7 +37,7 @@ const props = defineProps<{ balance: string }>()
     <div class="flex flex-col p-[8px]">
       <div class="flex items-center flex-wrap text-[12px]">
         <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Balance: ' }}</span>
-        <span class="text-[var(--main-text-color)]">{{ props.balance + ' $' }}</span>
+        <span class="text-[var(--main-text-color)]">{{ adasd + ' $' }}</span>
       </div>
       <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
       <div class="flex items-center flex-wrap text-[12px]">
