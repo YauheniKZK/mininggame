@@ -2,8 +2,8 @@
 // import { computed, ref } from 'vue';
 // import HelloWorld from './components/HelloWorld.vue'
 // import WebApp from '@twa-dev/sdk'
-import TotalScore from '@/components/TotalScore.vue';
-import TapBlock from '@/components/TapBlock.vue';
+// import TotalScore from '@/components/TotalScore.vue';
+// import TapBlock from '@/components/TapBlock.vue';
 import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
 import UserLevel from '@/components/user/UserLevel.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
@@ -28,12 +28,12 @@ const { currentUserDataGetters } = storeToRefs(appStore)
         <UserLevel :balance="currentUserDataGetters.balance" />
       </div>
     </div>
-    <div class="flex justify-center items-center w-full mb-[24px]">
+    <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
     </div>
     <div class="flex justify-center">
       <TapBlock />
-    </div>
+    </div> -->
   </div>
 </template>
 
