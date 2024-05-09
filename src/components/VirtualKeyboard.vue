@@ -21,6 +21,8 @@ const tapBlockContainerR = ref()
 
 onMounted(() => {
   if (canvaskeyboard.value) {
+    canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth
+    canvaskeyboard.value.height = 460
     const ctx = canvaskeyboard.value.getContext('2d');
     ctx.imageSmoothingEnabled = true
 
