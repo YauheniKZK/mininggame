@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, onUnmounted, reactive, ref } from 'vue';
 
 // import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { getImageUrl } from '@/utils/images';
@@ -8,7 +8,7 @@ import { onMounted, ref } from 'vue';
 
 //const appStore = useApplicationStore()
 // const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
-const canvaskeyboard = ref()
+// const keyboardCanvas = ref()
 const tapBlockContainerR = ref()
 
 // const inputField: any = document.getElementById('inputField')
@@ -19,94 +19,107 @@ const tapBlockContainerR = ref()
 // const buttons: any = []
 
 
-onMounted(() => {
-  if (canvaskeyboard.value) {
-    canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth
-    canvaskeyboard.value.height = 460
-    const ctx = canvaskeyboard.value.getContext('2d');
-    ctx.imageSmoothingEnabled = true
+const keyboardCanvas = ref<any>(null);
+const canvasSize = reactive({ width: window.innerWidth, keyWidth: 0, keyHeight: 0 });
+const keyMargin = 10;
+const keys = [
+  ['Q', 'W', 'E', 'R', 'T'],
+  ['A', 'S', 'D', 'F', 'G'],
+  ['Z', 'X', 'C', 'V', 'B'],
+  ['1', '2', '3', '4', '5']
+];
 
-    let keyWidth: any;
-    let keyHeight: any;
-    const keyMargin = 10;
+const resizeCanvas = () => {
+  canvasSize.width = window.innerWidth;
+  const numberOfKeysInRow = keys[0].length;
+  canvasSize.keyWidth = canvasSize.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
+  canvasSize.keyHeight = canvasSize.keyWidth;
+  drawKeyboard();
+};
 
-    const keys = [
-      ['Q', 'W', 'E', 'R', 'T'],
-      ['A', 'S', 'D', 'F', 'G'],
-      ['Z', 'X', 'C', 'V', 'B'],
-      ['1', '2', '3', '4', '5']
-    ];
+const drawKey = (ctx: any, x: any, y: any, key: any) => {
+  ctx.fillStyle = 'lightgrey';
+  ctx.fillRect(x, y, canvasSize.keyWidth, canvasSize.keyHeight);
+  ctx.fillStyle = 'black';
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = '20px Arial';
+  ctx.fillText(key, x + canvasSize.keyWidth / 2, y + canvasSize.keyHeight / 2);
+};
 
-    function resizeCanvas() {
-      canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
-      canvaskeyboard.value.height = 460
-      // const numberOfRows = keys.length;
-      const numberOfKeysInRow = keys[0].length;
-      keyWidth = canvaskeyboard.value.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
-      keyHeight = keyWidth; // Делаем кнопки квадратными
-      drawKeyboard();
-    }
+const drawPressedKey = (ctx: any, x: any, y: any, key: any) => {
+  ctx.fillStyle = 'darkgrey';
+  ctx.fillRect(x, y, canvasSize.keyWidth, canvasSize.keyHeight);
+  ctx.fillStyle = 'white';
+  ctx.fillText(key, x + canvasSize.keyWidth / 2, y + canvasSize.keyHeight / 2);
+};
 
-    function drawKey(x: any, y: any, key: any) {
-      ctx.fillStyle = 'lightgrey';
-      ctx.fillRect(x, y, keyWidth, keyHeight);
-      ctx.fillStyle = 'black';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.font = '20px Arial';
-      ctx.fillText(key, x + keyWidth / 2, y + keyHeight / 2);
-    }
+const drawKeyboard = () => {
+  const canvas = keyboardCanvas.value;
+  const ctx = canvas.getContext('2d');
+  keys.forEach((row, rowIndex) => {
+    row.forEach((key, keyIndex) => {
+      const x = keyIndex * (canvasSize.keyWidth + keyMargin);
+      const y = rowIndex * (canvasSize.keyHeight + keyMargin);
+      drawKey(ctx, x, y, key);
+    });
+  });
+};
 
-    function drawPressedKey(x: any, y: any, key: any) {
-      ctx.fillStyle = 'darkgrey'; // Цвет кнопки при нажатии
-      ctx.fillRect(x, y, keyWidth, keyHeight);
-      ctx.fillStyle = 'white'; // Цвет текста при нажатии
-      ctx.fillText(key, x + keyWidth / 2, y + keyHeight / 2);
-    }
+const handleTouchStart = (event: any) => {
+  event.preventDefault();
+  const touch = event.touches[0];
+  const canvas = keyboardCanvas.value;
+  if (canvas) {
+    const rect = canvas.getBoundingClientRect();
+    const x = touch.clientX - rect.left;
+    const y = touch.clientY - rect.top;
+    const ctx = canvas.getContext('2d');
 
-    function drawKeyboard() {
-      keys.forEach((row, rowIndex) => {
-        row.forEach((key, keyIndex) => {
-          const x = keyIndex * (keyWidth + keyMargin);
-          const y = rowIndex * (keyHeight + keyMargin);
-          drawKey(x, y, key);
-        });
-      });
-    }
-
-    canvaskeyboard.value.addEventListener('touchstart', function(event: any) {
-      event.preventDefault();
-      const touch = event.touches[0];
-      const rect = canvaskeyboard.value.getBoundingClientRect();
-      const x = touch.clientX - rect.left;
-      const y = touch.clientY - rect.top;
-
-      keys.forEach((row, rowIndex) => {
-        row.forEach((key, keyIndex) => {
-          const keyX = keyIndex * (keyWidth + keyMargin);
-          const keyY = rowIndex * (keyHeight + keyMargin);
-          if (x > keyX && x < keyX + keyWidth && y > keyY && y < keyY + keyHeight) {
-            drawPressedKey(keyX, keyY, key);
-          }
-        });
+    keys.forEach((row, rowIndex) => {
+      row.forEach((key, keyIndex) => {
+        const keyX = keyIndex * (canvasSize.keyWidth + keyMargin);
+        const keyY = rowIndex * (canvasSize.keyHeight + keyMargin);
+        if (x > keyX && x < keyX + canvasSize.keyWidth && y > keyY && y < keyY + canvasSize.keyHeight) {
+          drawPressedKey(ctx, keyX, keyY, key);
+        }
       });
     });
-
-    canvaskeyboard.value.addEventListener('touchend', function(event: any) {
-      event.preventDefault();
-      drawKeyboard();
-    });
-
-    // Вызываем функцию resizeCanvas при загрузке страницы и при изменении размера окна
-    window.addEventListener('load', resizeCanvas);
-    window.addEventListener('resize', resizeCanvas);    
   }
-})
+  
+};
+
+const handleTouchEnd = (event: any) => {
+  event.preventDefault();
+  drawKeyboard();
+};
+
+onMounted(() => {
+  window.addEventListener('resize', resizeCanvas);
+  const canvas: any = keyboardCanvas.value;
+  if (canvas) {
+    canvas.width = canvasSize.width;
+    canvas.addEventListener('touchstart', handleTouchStart);
+    canvas.addEventListener('touchend', handleTouchEnd);
+  }
+
+  resizeCanvas();
+});
+
+onUnmounted(() => {
+  window.removeEventListener('resize', resizeCanvas);
+  const canvas: any = keyboardCanvas.value;
+  if (canvas) {
+    canvas.removeEventListener('touchstart', handleTouchStart);
+    canvas.removeEventListener('touchend', handleTouchEnd);
+  }
+
+});
 </script>
 
 <template>
   <div ref="tapBlockContainerR" class="flex flex-col w-full">
-    <canvas ref="canvaskeyboard"></canvas>
+    <canvas ref="keyboardCanvas"></canvas>
   </div>
 </template>
 
