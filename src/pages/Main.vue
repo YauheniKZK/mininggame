@@ -80,7 +80,7 @@ onBeforeUnmount(() => {
 }
 
 .bounce-right-enter-active, .bounce-right-leave-active {
-  transition: left 0.3s, transform 0.3s; /* Анимация для входа и выхода */
+  transition: right 0.3s, transform 0.3s; /* Анимация для входа и выхода */
 }
 
 .bounce-right-enter-from, .bounce-right-leave-to {
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 }
 
 .bounce-right-enter-to, .bounce-right-leave-from {
-  left: 0;
+  right: 0;
   transform: translateX(0); /* Конечное положение после отпрыгивания */
 }
 </style>
