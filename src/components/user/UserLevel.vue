@@ -15,8 +15,8 @@ const props = defineProps<{ balance: string }>()
       <n-progress
         type="circle"
         :gap-offset-degree="180"
-        :percentage="20"
-        :stroke-width="10"
+        :percentage="65"
+        :stroke-width="12"
         style="width: 60px"
         :color="['var(--chart-color)']"
         :rail-color="['#00ADB5']"
@@ -32,12 +32,12 @@ const props = defineProps<{ balance: string }>()
     <div class="flex w-[1px] h-[60px] mx-[4px]" style="background: #54a4af52;"></div>
     <div class="flex flex-col p-[8px]">
       <div class="flex items-center flex-wrap text-[12px]">
-        <span class="flex min-w-[80px] mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Balance: ' }}</span>
+        <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Balance: ' }}</span>
         <span class="text-[var(--main-text-color)]">{{ props.balance + ' $' }}</span>
       </div>
       <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
       <div class="flex items-center flex-wrap text-[12px]">
-        <span class="flex min-w-[80px] mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Up level: ' }}</span>
+        <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Up level: ' }}</span>
         <span class="text-[var(--main-text-color)]">{{ '100 000$' }}</span>
       </div>
     </div>
