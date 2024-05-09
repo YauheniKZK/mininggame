@@ -44,11 +44,11 @@ onMounted(async () => {
         </n-tab-pane>
       </n-tabs>
     </div>
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full fixed bottom-[8px] px-[8px]">
       <div class="flex justify-end p-[8px_12px]">
         <span class="text-[#fff]">{{ versionApp }}</span>
       </div>
-      <div class="flex w-full h-[70px] bg-[#2e3337] items-center" style="border-radius: 16px 16px 0 0;box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
+      <div class="flex w-full h-[70px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
         <n-tabs type="segment" class="w-full tabs-custom1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="main">
             Main
@@ -81,5 +81,19 @@ onMounted(async () => {
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.footer-before {
+  position: relative;
+}
+.footer-before::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #53547469;
+  filter: blur(1px);
+  border-radius: 12px;
 }
 </style>
