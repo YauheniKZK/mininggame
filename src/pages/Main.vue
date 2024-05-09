@@ -37,7 +37,9 @@ onBeforeUnmount(() => {
         </transition>
       </div>
       <div class="flex-grow max-w-[250px]">
-        <UserLevel :balance="currentUserDataGetters.balance" />
+        <transition name="bounce-right">
+          <UserLevel :balance="currentUserDataGetters.balance" />
+        </transition>
       </div>
     </div>
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
@@ -68,12 +70,26 @@ onBeforeUnmount(() => {
 }
 
 .bounce-enter-from, .bounce-leave-to {
-  left: -300px;
-  transform: translateY(-20px); /* Начальное положение и отпрыгивание */
+  left: -400px;
+  transform: translateX(-50px); /* Начальное положение и отпрыгивание */
 }
 
 .bounce-enter-to, .bounce-leave-from {
   left: 0;
-  transform: translateY(0); /* Конечное положение после отпрыгивания */
+  transform: translateX(0); /* Конечное положение после отпрыгивания */
+}
+
+.bounce-right-enter-active, .bounce-right-leave-active {
+  transition: left 0.3s, transform 0.3s; /* Анимация для входа и выхода */
+}
+
+.bounce-right-enter-from, .bounce-right-leave-to {
+  right: -400px;
+  transform: translateX(-50px); /* Начальное положение и отпрыгивание */
+}
+
+.bounce-right-enter-to, .bounce-right-leave-from {
+  left: 0;
+  transform: translateX(0); /* Конечное положение после отпрыгивания */
 }
 </style>
