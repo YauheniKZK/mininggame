@@ -65,7 +65,7 @@ body, html {
 .tabs-custom1 {
   --n-color-segment: #2e3337 !important;
   --n-tab-padding: 6px 4px !important;
-  --n-tab-border-radius: 20px !important;
+  --n-tab-border-radius: 12px !important;
   --n-tab-text-color: #fff !important;
   --n-tab-text-color-active: #fff !important;
   --n-tab-font-size: 15px !important;
