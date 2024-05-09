@@ -19,8 +19,13 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 
 <template>
   <div class="flex flex-col items-center w-full">
-    <div class="flex items-center">
-      <UserNameAvatar :name="currentUserDataGetters.first_name" />
+    <div class="flex items-center justify-between w-full mb-[24px]">
+      <div class="w-f[40%]">
+        <UserNameAvatar :name="currentUserDataGetters.first_name" />
+      </div>
+      <div>
+
+      </div>
     </div>
     <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
