@@ -4,12 +4,21 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --main-bg-color: #535474;
+  --main-text-color: #E4E4E4;
+  --main-shadow-color: #432C51;
+  --secondary-color-light: #54A4AF;
+  --chart-color: #ECBC55;
+}
+
 body, html {
   width: 100%;
   height: 100%;
   padding: 0;
   margin: 0;
-  background: #35374B;
+  background: var(--main-bg-color);
+  color: var(--main-text-color);
   font-family: "Ubuntu", sans-serif;
   font-style: normal;
 }
