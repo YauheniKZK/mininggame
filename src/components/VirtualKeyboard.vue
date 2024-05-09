@@ -18,78 +18,85 @@ const tapBlockContainerR = ref()
 // const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789[]{}/.$'.split('')
 // const buttons: any = []
 
+
 onMounted(() => {
   if (canvaskeyboard.value) {
     const ctx = canvaskeyboard.value.getContext('2d');
     ctx.imageSmoothingEnabled = true
-    let buttons: any = [];
+
+    let keyWidth: any;
+    let keyHeight: any;
+    const keyMargin = 10;
+
+    const keys = [
+      ['Q', 'W', 'E', 'R', 'T'],
+      ['A', 'S', 'D', 'F', 'G'],
+      ['Z', 'X', 'C', 'V', 'B'],
+      ['1', '2', '3', '4', '5']
+    ];
 
     function resizeCanvas() {
-        canvaskeyboard.value.width = tapBlockContainerR.value.clientWidth;
-        canvaskeyboard.value.height = 460;
-        drawKeyboard();
+      canvaskeyboard.value.width = tapBlockContainerR.value.clientX;
+      // const numberOfRows = keys.length;
+      const numberOfKeysInRow = keys[0].length;
+      keyWidth = canvaskeyboard.value.width / numberOfKeysInRow - keyMargin * (numberOfKeysInRow + 1) / numberOfKeysInRow;
+      keyHeight = keyWidth; // Делаем кнопки квадратными
+      drawKeyboard();
     }
 
-    function drawButton(x: any, y: any, width: any, height: any, text: any, isPressed: any) {
-        ctx.fillStyle = isPressed ? '#666' : '#ccc';
-        ctx.fillRect(x, y, width, height);
-        ctx.fillStyle = '#000';
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.fillText(text, x + width / 2, y + height / 2);
+    function drawKey(x: any, y: any, key: any) {
+      ctx.fillStyle = 'lightgrey';
+      ctx.fillRect(x, y, keyWidth, keyHeight);
+      ctx.fillStyle = 'black';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '20px Arial';
+      ctx.fillText(key, x + keyWidth / 2, y + keyHeight / 2);
+    }
+
+    function drawPressedKey(x: any, y: any, key: any) {
+      ctx.fillStyle = 'darkgrey'; // Цвет кнопки при нажатии
+      ctx.fillRect(x, y, keyWidth, keyHeight);
+      ctx.fillStyle = 'white'; // Цвет текста при нажатии
+      ctx.fillText(key, x + keyWidth / 2, y + keyHeight / 2);
     }
 
     function drawKeyboard() {
-        buttons = []; // Reset buttons array
-        const keys = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
-        const buttonWidth = (tapBlockContainerR.value.clientWidth - 32) / 8;
-        const buttonHeight = buttonWidth * 0.6;
-        const buttonMargin = 4;
-        const keysPerRow = Math.floor(canvaskeyboard.value.width / (buttonWidth + buttonMargin));
-        let x = buttonMargin;
-        let y = buttonMargin;
-
-        keys.forEach((key, index) => {
-            if (index % keysPerRow === 0 && index !== 0) {
-                y += buttonHeight + buttonMargin;
-                x = buttonMargin;
-            }
-            buttons.push({ key, x, y, width: buttonWidth, height: buttonHeight, isPressed: false });
-            drawButton(x, y, buttonWidth, buttonHeight, key, false);
-            x += buttonWidth + buttonMargin;
+      keys.forEach((row, rowIndex) => {
+        row.forEach((key, keyIndex) => {
+          const x = keyIndex * (keyWidth + keyMargin);
+          const y = rowIndex * (keyHeight + keyMargin);
+          drawKey(x, y, key);
         });
-    }
-
-    function getButtonAtPosition(x: any, y: any) {
-        return buttons.find((button: any) => 
-            x >= button.x && x <= button.x + button.width &&
-            y >= button.y && y <= button.y + button.height
-        );
+      });
     }
 
     canvaskeyboard.value.addEventListener('touchstart', function(event: any) {
-        const touch = event.changedTouches[0]
-        const rect = canvaskeyboard.value.getBoundingClientRect();
-        const mouseX = Math.round(touch.clientX - rect.left);
-        const mouseY = Math.round(touch.clientY - rect.top);
-        const button = getButtonAtPosition(mouseX, mouseY);
-        if (button) {
-            button.isPressed = true;
-            drawButton(button.x, button.y, button.width, button.height, button.key, true);
-        }
-    });
+      event.preventDefault();
+      const touch = event.touches[0];
+      const rect = canvaskeyboard.value.getBoundingClientRect();
+      const x = touch.clientX - rect.left;
+      const y = touch.clientY - rect.top;
 
-    canvaskeyboard.value.addEventListener('touchend', function() {
-        buttons.forEach((button: any) => {
-            if (button.isPressed) {
-                button.isPressed = false;
-                drawButton(button.x, button.y, button.width, button.height, button.key, false);
-            }
+      keys.forEach((row, rowIndex) => {
+        row.forEach((key, keyIndex) => {
+          const keyX = keyIndex * (keyWidth + keyMargin);
+          const keyY = rowIndex * (keyHeight + keyMargin);
+          if (x > keyX && x < keyX + keyWidth && y > keyY && y < keyY + keyHeight) {
+            drawPressedKey(keyX, keyY, key);
+          }
         });
+      });
     });
 
-    window.addEventListener('resize', resizeCanvas);
-    resizeCanvas();     
+    canvaskeyboard.value.addEventListener('touchend', function(event: any) {
+      event.preventDefault();
+      drawKeyboard();
+    });
+
+    // Вызываем функцию resizeCanvas при загрузке страницы и при изменении размера окна
+    window.addEventListener('load', resizeCanvas);
+    window.addEventListener('resize', resizeCanvas);    
   }
 })
 </script>
