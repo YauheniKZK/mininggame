@@ -107,6 +107,7 @@ onMounted(() => {
     window.addEventListener('resize', resizeCanvas);
     const canvas: any = keyboardCanvas.value;
     canvas.width = tapBlockContainerRWidth.value
+    canvas.height = 490
     canvas.addEventListener('touchstart', handleTouchStart);
     canvas.addEventListener('touchend', handleTouchEnd);
 
