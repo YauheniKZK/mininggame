@@ -33,7 +33,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 
 <template>
   <div class="flex flex-col items-center w-full h-full p-[16px]">
-    <div class="flex w-full mb-[16px] p-[12px] rounded-[16px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
+    <div class="flex w-full mb-[24px] p-[12px] rounded-[16px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
       <div class="flex flex-col min-w-[50%] max-w-[215px]">
         <span class="text-[18px] text-[var(--main-text-color)]">
           {{ 'Hey, ' + currentUserDataGetters.first_name  }}
@@ -52,14 +52,14 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
         style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
         class="flex items-center mb-[16px] p-[12px] relative rounded-[8px] bg-[#232D3F] w-full"
       >
-        <div class="left-[16px] -top-[8px] absolute h-[24px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[FEC260]">
+        <div class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
           <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ 'Javascript' }}</span>
         </div>
         <div class="flex justify-center items-center mr-[12px]">
-          <img :src="getImageUrl('img/invite_user.png')" class="object-contain max-w-[30px]" alt="" />
+          <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[30px]" alt="" />
         </div>
         <div class="flex flex-col">
-          <div class="flex items-center mb-[8px]">
+          <div class="flex items-center">
             <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
           </div>
           <div class="flex items-center">
