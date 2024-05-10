@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useApplicationStore } from '@/stores/application/applicationStore';
+import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
 import { watch } from 'vue';
 // import WebApp from '@twa-dev/sdk'
@@ -45,9 +46,27 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
       </div>
     </div>
     <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
-      <div v-for="(item, index) in referralsGetters" :key="index" class="flex items-center mb-[8px] p-[8px] rounded-[8px] bg-[#77B0AA] w-full">
-        <span class="text-[#fff] mr-[12px]">{{ item?.username + ': ' }}</span>
-        <span class="text-[#fff]">{{ item?.balance }}</span>
+      <div
+        v-for="(item, index) in referralsGetters"
+        :key="index"
+        style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
+        class="flex items-center mb-[16px] p-[12px] relative rounded-[8px] bg-[#232D3F] w-full"
+      >
+        <div class="left-[16px] -top-[8px] absolute h-[24px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[FEC260]">
+          <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ 'Javascript' }}</span>
+        </div>
+        <div class="flex justify-center items-center mr-[12px]">
+          <img :src="getImageUrl('img/invite_user.png')" class="object-contain max-w-[30px]" alt="" />
+        </div>
+        <div class="flex flex-col">
+          <div class="flex items-center mb-[8px]">
+            <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
+          </div>
+          <div class="flex items-center">
+            <span class="text-[#fff] mr-[12px]">{{ item?.first_name }}</span>
+          </div>
+        </div>
+   
       </div>
     </div>
     <button
