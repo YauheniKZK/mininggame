@@ -46,30 +46,36 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
         <img :src="getImageUrl('img/invite_friend_bg.png')" class="object-contain max-w-[200px] w-full" alt="" />
       </div>
     </div>
-    <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
-      <div
-        v-for="(item, index) in referralsGetters"
-        :key="index"
-        style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
-        class="flex items-center mb-[16px] p-[8px] relative rounded-[8px] bg-[#232D3F] w-full"
-      >
-        <div class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
-          <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ 'Javascript' }}</span>
-        </div>
-        <div class="flex justify-center items-center mr-[12px]">
-          <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[54px]" alt="" />
-        </div>
-        <div class="flex flex-col">
-          <div class="flex items-center">
-            <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
+    <div class="flex flex-col">
+      <div class="flex items-center mb-[16px]">
+        <span class="text-[20px] text-[var(--main-text-color)]">{{ `Your referrals (${referralsGetters.length})` }}</span>
+      </div>
+      <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
+        <div
+          v-for="(item, index) in referralsGetters"
+          :key="index"
+          style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
+          class="flex items-center mb-[16px] p-[8px] relative rounded-[8px] bg-[#232D3F] w-full"
+        >
+          <div class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
+            <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ 'Javascript' }}</span>
           </div>
-          <div class="flex items-center">
-            <span class="text-[#fff] mr-[12px]">{{ item?.first_name }}</span>
+          <div class="flex justify-center items-center mr-[12px]">
+            <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[54px]" alt="" />
           </div>
+          <div class="flex flex-col">
+            <div class="flex items-center">
+              <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
+            </div>
+            <div class="flex items-center">
+              <span class="text-[#fff] mr-[12px]">{{ item?.first_name }}</span>
+            </div>
+          </div>
+    
         </div>
-   
       </div>
     </div>
+
     <button
       type="button" 
       class="w-full h-[50px] flex justify-center items-center bg-[#3C5B6F] rounded-[8px]"
