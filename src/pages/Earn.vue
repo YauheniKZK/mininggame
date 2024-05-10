@@ -50,13 +50,13 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
         v-for="(item, index) in referralsGetters"
         :key="index"
         style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
-        class="flex items-center mb-[16px] p-[12px] relative rounded-[8px] bg-[#232D3F] w-full"
+        class="flex items-center mb-[16px] p-[8px] relative rounded-[8px] bg-[#232D3F] w-full"
       >
         <div class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
           <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ 'Javascript' }}</span>
         </div>
         <div class="flex justify-center items-center mr-[12px]">
-          <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[30px]" alt="" />
+          <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[54px]" alt="" />
         </div>
         <div class="flex flex-col">
           <div class="flex items-center">
