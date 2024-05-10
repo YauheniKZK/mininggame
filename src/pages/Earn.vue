@@ -46,9 +46,9 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
         <img :src="getImageUrl('img/invite_friend_bg.png')" class="object-contain max-w-[200px] w-full" alt="" />
       </div>
     </div>
-    <div class="flex flex-col">
-      <div class="flex items-center mb-[16px]">
-        <span class="text-[20px] text-[var(--main-text-color)]">{{ `Your referrals (${referralsGetters.length})` }}</span>
+    <div class="flex flex-col w-full">
+      <div class="flex items-center mb-[10px]">
+        <span class="text-[18px] text-[var(--main-text-color)]">{{ `Your referrals (${referralsGetters.length})` }}</span>
       </div>
       <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
         <div
