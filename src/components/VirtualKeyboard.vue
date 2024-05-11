@@ -127,7 +127,7 @@ onUnmounted(() => {
 
 <template>
   <div ref="tapBlockContainerR" class="flex flex-col w-full">
-    <canvas ref="keyboardCanvas"></canvas>
+    <canvas ref="keyboardCanvas" height="260"></canvas>
   </div>
 </template>
 
