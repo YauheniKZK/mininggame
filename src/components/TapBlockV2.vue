@@ -3,6 +3,7 @@
 import { ref } from 'vue';
 
 const textGeneratedRef = ref<any>()
+const scrollbarContainer = ref()
 const textGenerated = ref('')
 function generateMatrixSymbol() {
   const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
@@ -12,6 +13,7 @@ const whiteText = () => {
   const symbol = generateMatrixSymbol()
   textGenerated.value += symbol
   textGeneratedRef.value.textContent = textGenerated.value
+  scrollbarContainer.value.scrollTop = scrollbarContainer.value.scrollHeight
 }
 </script>
 
@@ -19,7 +21,7 @@ const whiteText = () => {
   <div class="flex flex-col relative w-full">
     <div class="flex mb-[24px] overflow-hidden relative">
       <div class="screen rounded-[16px]">
-        <n-scrollbar style="max-height: 260px">
+        <n-scrollbar ref="scrollbarContainer" style="max-height: 260px">
           <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
         </n-scrollbar>
       </div>
@@ -56,7 +58,7 @@ const whiteText = () => {
 }
 
 .screen:after {
-  background-image:linear-gradient(transparent, transparent 3px, #222);
+  background-image:linear-gradient(transparent, transparent 3px, #2222228f);
   background-size:4px 4px;
   bottom:0;
   content:"";
@@ -66,6 +68,7 @@ const whiteText = () => {
   right:0;
   top:0;
   z-index:2;
+  border-radius: 16px;
 }
 
 p:last-child:after {
