@@ -4,6 +4,7 @@
 // import WebApp from '@twa-dev/sdk'
 // import TotalScore from './components/TotalScore.vue';
 // import TapBlock from './components/TapBlock.vue';
+import TapBlockV2 from '@/components/TapBlockV2.vue';
 
 // const handlebtn = () => {
 //   WebApp.showAlert(`Hello World! Current count is `)
@@ -12,22 +13,10 @@
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full h-[100vh]">
-    {{ 'earn' }}
+  <div class="flex flex-col items-center w-full h-full p-[16px]">
+    <TapBlockV2 />
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
