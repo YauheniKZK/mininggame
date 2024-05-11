@@ -24,7 +24,7 @@ const whiteText = () => {
     <div class="flex mb-[24px] overflow-hidden relative">
       <div ref="scrollbarContainer" class="screen rounded-[16px]">
         <n-scrollbar ref="scrollbarRef" style="max-height: 260px">
-          <p ref="scrollbarRef" class="break-words">{{ textGenerated }}</p>
+          <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
         </n-scrollbar>
       </div>
     </div>
