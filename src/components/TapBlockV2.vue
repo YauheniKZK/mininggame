@@ -13,7 +13,8 @@ const whiteText = () => {
   const symbol = generateMatrixSymbol()
   textGenerated.value += symbol
   textGeneratedRef.value.textContent = textGenerated.value
-  scrollbarContainer.value.scrollTop = scrollbarContainer.value.scrollHeight
+  console.log('scrollbarContainer.value.scrollHeight', scrollbarContainer.value.scrollHeight)
+  scrollbarContainer.value.scrollTo = scrollbarContainer.value.scrollHeight
 }
 </script>
 
