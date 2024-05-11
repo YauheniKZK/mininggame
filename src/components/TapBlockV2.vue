@@ -28,7 +28,7 @@ const whiteText = () => {
         </n-scrollbar>
       </div>
     </div>
-    <div class="w-full h-[260px] flex justify-center items-center rounded-[16px] bg-slate-500" @click="whiteText">
+    <div class="w-full h-[260px] flex justify-center items-center rounded-[16px] bg-slate-500" @touchend="whiteText">
       {{ 'Taps' }}
     </div>
   </div>
