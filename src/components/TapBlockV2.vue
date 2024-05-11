@@ -4,6 +4,7 @@ import { ref } from 'vue';
 
 const textGeneratedRef = ref<any>()
 const scrollbarContainer = ref()
+const scrollbarRef = ref()
 const textGenerated = ref('')
 function generateMatrixSymbol() {
   const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
@@ -14,16 +15,16 @@ const whiteText = () => {
   textGenerated.value += symbol
   textGeneratedRef.value.textContent = textGenerated.value
   console.log('scrollbarContainer.value.scrollHeight', scrollbarContainer.value.scrollHeight)
-  scrollbarContainer.value.scrollTo = scrollbarContainer.value.scrollHeight
+  scrollbarRef.value.scrollTo = scrollbarContainer.value.scrollHeight
 }
 </script>
 
 <template>
   <div class="flex flex-col relative w-full">
     <div class="flex mb-[24px] overflow-hidden relative">
-      <div class="screen rounded-[16px]">
-        <n-scrollbar ref="scrollbarContainer" style="max-height: 260px">
-          <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
+      <div ref="scrollbarContainer" class="screen rounded-[16px]">
+        <n-scrollbar ref="scrollbarRef" style="max-height: 260px">
+          <p ref="scrollbarRef" class="break-words">{{ textGenerated }}</p>
         </n-scrollbar>
       </div>
     </div>
