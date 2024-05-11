@@ -58,6 +58,7 @@ const whiteText = () => {
   position:absolute;
   right:0;
   z-index:1;
+  border-radius: 16px;
 }
 
 .screen:after {
