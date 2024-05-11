@@ -5,7 +5,7 @@ import { ref } from 'vue';
 const textGeneratedRef = ref<any>()
 const textGenerated = ref('')
 function generateMatrixSymbol() {
-  const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890';
+  const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
   return characters.charAt(Math.floor(Math.random() * characters.length));
 }
 const whiteText = () => {
@@ -16,7 +16,7 @@ const whiteText = () => {
 </script>
 
 <template>
-  <div class="flex flex-col relative">
+  <div class="flex flex-col relative w-full">
     <div class="flex mb-[24px] overflow-hidden relative">
       <div class="screen rounded-[16px]">
         <n-scrollbar style="max-height: 260px">
