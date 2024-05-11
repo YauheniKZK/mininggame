@@ -15,7 +15,8 @@ const whiteText = () => {
   textGenerated.value += symbol
   textGeneratedRef.value.textContent = textGenerated.value
   console.log('scrollbarContainer.value.scrollHeight', scrollbarContainer.value.scrollHeight)
-  scrollbarRef.value.scrollTo(0, scrollbarContainer.value.scrollHeight)
+  const scrollbar: any = document.querySelector('.scrollbarRef .n-scrollbar-content')
+  scrollbarRef.value.scrollTo(0, scrollbar.scrollHeight)
 }
 </script>
 
@@ -23,7 +24,7 @@ const whiteText = () => {
   <div class="flex flex-col relative w-full">
     <div class="flex mb-[24px] overflow-hidden relative">
       <div ref="scrollbarContainer" class="screen rounded-[16px]">
-        <n-scrollbar ref="scrollbarRef" style="max-height: 260px">
+        <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
           <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
         </n-scrollbar>
       </div>
