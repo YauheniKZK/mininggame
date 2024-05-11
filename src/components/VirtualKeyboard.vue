@@ -46,12 +46,12 @@ const resizeCanvas = () => {
 };
 
 const drawKey = (ctx: any, x: any, y: any, key: any) => {
-  ctx.fillStyle = 'lightgrey';
+  ctx.fillStyle = '#46244C';
   ctx.fillRect(x, y, canvasSize.keyWidth, canvasSize.keyHeight);
-  ctx.fillStyle = 'black';
+  ctx.fillStyle = '#fff';
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.font = '20px Arial';
+  ctx.font = '20px "Ubuntu"';
   ctx.fillText(key, x + canvasSize.keyWidth / 2, y + canvasSize.keyHeight / 2);
 };
 
@@ -127,7 +127,7 @@ onUnmounted(() => {
 
 <template>
   <div ref="tapBlockContainerR" class="flex flex-col w-full">
-    <canvas ref="keyboardCanvas" height="260"></canvas>
+    <canvas ref="keyboardCanvas" height="260" style="border-radius: 16px;"></canvas>
   </div>
 </template>
 
