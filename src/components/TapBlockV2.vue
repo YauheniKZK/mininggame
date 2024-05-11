@@ -1,6 +1,7 @@
 <script setup lang="ts">
 // import { getImageUrl } from '@/utils/images';
 import { ref } from 'vue';
+import VirtualKeyboard from './VirtualKeyboard.vue';
 
 const textGeneratedRef = ref<any>()
 const scrollbarContainer = ref()
@@ -30,7 +31,7 @@ const whiteText = () => {
       </div>
     </div>
     <div class="w-full h-[260px] flex justify-center items-center rounded-[16px] bg-slate-500" @touchend="whiteText">
-      {{ 'Taps' }}
+      <VirtualKeyboard />
     </div>
   </div>
 </template>
