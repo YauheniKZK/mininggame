@@ -23,7 +23,7 @@ const tapBlockContainerRWidth = computed(() => tapBlockContainerR.value?.clientW
 
 const keyboardCanvas = ref<any>();
 const canvasSize = reactive({ width: tapBlockContainerRWidth.value, keyWidth: 0, keyHeight: 0 });
-const keyMargin = 10;
+const keyMargin = 4;
 const keys = [
   ['Q', 'W', 'E', 'R', 'T'],
   ['A', 'S', 'D', 'F', 'G'],
