@@ -15,7 +15,7 @@ const whiteText = () => {
   textGenerated.value += symbol
   textGeneratedRef.value.textContent = textGenerated.value
   console.log('scrollbarContainer.value.scrollHeight', scrollbarContainer.value.scrollHeight)
-  scrollbarRef.value.scrollTo = scrollbarContainer.value.scrollHeight
+  scrollbarRef.value.scrollTo(0, scrollbarContainer.value.scrollHeight)
 }
 </script>
 
