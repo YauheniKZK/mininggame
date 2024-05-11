@@ -46,3 +46,12 @@ export const checkinUserService = async () => {
         return res
     }
 }
+
+export const getStackCategories = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/stacks/categories`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}

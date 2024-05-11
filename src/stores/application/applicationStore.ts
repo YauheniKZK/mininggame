@@ -1,6 +1,13 @@
 
 
-import { getUserService, registrationUserService, getLinkRefUserService, tapActionIncr, checkinUserService } from '@/services/tap.service'
+import {
+  getUserService,
+  registrationUserService,
+  getLinkRefUserService,
+  tapActionIncr,
+  checkinUserService,
+  getStackCategories
+} from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
 
@@ -142,6 +149,18 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionGetStackCategories() {
+    try {
+      const res = await getStackCategories()
+      if (res) {
+        console.log('getStackCategories', res)
+        // totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
   function updateTotalScore(value: number) {
     totalScore.value = value
   }
@@ -191,6 +210,7 @@ export const useApplicationStore = defineStore('application', () => {
     updateMiningTotalScore,
     actionIsTaping,
     isTapingGetters,
-    resetMiningTotalScore
+    resetMiningTotalScore,
+    actionGetStackCategories
   }
 })
