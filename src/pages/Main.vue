@@ -4,6 +4,7 @@
 // import WebApp from '@twa-dev/sdk'
 // import TotalScore from '@/components/TotalScore.vue';
 // import TapBlock from '@/components/TapBlock.vue';
+import TapBlockV2 from '@/components/TapBlockV2.vue';
 import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
 import UserSetting from '@/components/user/UserSetting.vue';
 import UserLevel from '@/components/user/UserLevel.vue';
@@ -19,6 +20,11 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 //   WebApp.showAlert(`Hello World! Current count is `)
 // }
 const show = ref(false)
+const startCoding = ref(false)
+
+const startCodingEmit = () => {
+  startCoding.value = !startCoding.value
+}
 
 onMounted(() => {
   show.value = !show.value
@@ -32,20 +38,25 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="flex flex-col items-center w-full p-[16px]">
-    <div class="flex items-center gap-[16px] justify-between w-full mb-[24px]">
-      <div class="max-w-[120px] min-w-[120px]">
-        <transition name="bounce">
-          <UserNameAvatar v-if="show" class="animation-block" :name="currentUserDataGetters.first_name" />
-        </transition>
+    <transition name="bounce">
+      <div v-if="!startCoding" class="flex flex-col w-full">
+        <div class="flex items-center gap-[16px] justify-between w-full mb-[24px]">
+          <div class="max-w-[120px] min-w-[120px]">
+            <transition name="bounce">
+              <UserNameAvatar v-if="show" class="animation-block" :name="currentUserDataGetters.first_name" />
+            </transition>
+          </div>
+          <div class="flex-grow max-w-[250px]">
+            <transition name="bounce-right">
+              <UserLevel v-if="show" :balance="currentUserDataGetters.balance" />
+            </transition>
+          </div>
+        </div>
+        <UserSetting class="mb-[32px]" />
+        <BtnTap @startCoding="startCodingEmit" />
       </div>
-      <div class="flex-grow max-w-[250px]">
-        <transition name="bounce-right">
-          <UserLevel v-if="show" :balance="currentUserDataGetters.balance" />
-        </transition>
-      </div>
-    </div>
-    <UserSetting class="mb-[32px]" />
-    <BtnTap />
+      <TapBlockV2 v-if="startCoding" />
+    </transition>
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
     </div>
