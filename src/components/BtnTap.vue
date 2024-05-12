@@ -2,9 +2,13 @@
 </script>
 
 <template>
-  <div class="flex flex-col justify-center items-center">
-    <div class="w-[100%] max-w-[250px] h-[250px] btn-animation relative">
-      <span class="text-center text-[20px] text-main-color">{{ 'Start Coding' }}</span>
+  <div class="flex flex-col justify-center items-center w-full">
+    <div class="w-[100%] max-w-[200px] h-[200px] btn-animation relative flex justify-center items-center">
+      <div class="text-center text-[20px] text-main-color flex justify-center items-center">
+        <span>{{ 'Start' }}</span>
+        <span>{{ 'Coding' }}</span>
+      </div>
+
     </div>
   </div>
 </template>
