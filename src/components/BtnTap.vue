@@ -1,11 +1,19 @@
 <script setup lang="ts">
 import WebApp from '@twa-dev/sdk';
+import { onMounted, onUnmounted } from 'vue';
 
 const emit = defineEmits(['startCoding'])
 const startCoding = () => {
   WebApp.HapticFeedback.impactOccurred('medium')
   emit('startCoding')
 }
+
+onMounted(() => {
+  WebApp.BackButton.show()
+})
+onUnmounted(() => {
+  WebApp.BackButton.hide()
+})
 </script>
 
 <template>
