@@ -7,6 +7,7 @@
 import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
 import UserSetting from '@/components/user/UserSetting.vue';
 import UserLevel from '@/components/user/UserLevel.vue';
+import BtnTap from '@/components/BtnTap.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
@@ -43,7 +44,8 @@ onBeforeUnmount(() => {
         </transition>
       </div>
     </div>
-    <UserSetting />
+    <UserSetting class="mb-[32px]" />
+    <BtnTap />
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
     </div>
