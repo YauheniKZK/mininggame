@@ -74,3 +74,12 @@ export const addMainStack = async (stack_id: number) => {
         return res
     }
 }
+
+export const levelCheck = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/levels/check`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}

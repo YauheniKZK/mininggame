@@ -7,13 +7,14 @@ import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
-const { actionMiningMoney, actionGetStackCategories } = appStore
+const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
 
 onMounted(() => {
   WebApp.expand()
   console.log('WebApp.initDataUnsafe.user?.photo_url', WebApp.initDataUnsafe.user?.photo_url)
   console.log('WebApp.version', WebApp.version)
   actionGetStackCategories()
+  actionLevelCheck()
 })
 
 onresize = (event) => {
