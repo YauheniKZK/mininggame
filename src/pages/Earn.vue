@@ -57,8 +57,13 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
           style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
           class="flex items-center justify-between mb-[16px] p-[8px] relative rounded-[8px] bg-[#232D3F] w-full"
         >
-          <div v-if="item.main_stack" class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
-            <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ item.main_stack }}</span>
+          <div class="flex items-center justify-end right-[16px] -top-[10px] absolute">
+            <div class="ml-[8px] h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
+              <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ item.main_stack || 'Java' }}</span>
+            </div>
+            <div v-if="item.level" class="ml-[8px] h-[20px] flex justify-center items-center rounded-[4px] p-[2px_8px]  bg-[#888]">
+              <span class="text-[#fff] text-[12px] leading-[24px] text-center">{{ item.level }}</span>
+            </div>
           </div>
           <div class="flex items-center">
             <div class="flex justify-center items-center mr-[12px]">
@@ -74,9 +79,6 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
             </div>
           </div>
           <div class="flex items-end justify-end">
-            <div v-if="item.level" class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[4px] p-[2px_8px]  bg-[#888]">
-              <span class="text-[#fff] text-[12px] leading-[24px] text-center">{{ item.level }}</span>
-            </div>
           </div>
     
         </div>
