@@ -6,12 +6,12 @@
 @tailwind utilities;
 
 :root {
-  --main-bg-color: #1D3E53;
-  --secondary-bg-color: #535474;
-  --main-text-color: #E4E4E4;
+  --main-bg-color: #1d1d1d;
+  --secondary-bg-color: #352c25;
+  --main-text-color: #e6e6e6;
   --main-shadow-color: #680747;
   --secondary-color-light: #54A4AF;
-  --chart-color: #F0C929;
+  --chart-color: #f8bb5a;
   --secondary-color2-light: #AA96B7;
 }
 
