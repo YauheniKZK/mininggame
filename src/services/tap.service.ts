@@ -1,5 +1,6 @@
 import api from '@/api/api'
 import { Config } from '@/config'
+import { ThemeApp } from '@/stores/application/applicationStore'
 import WebApp from '@twa-dev/sdk'
 
 export const getUserService = async () => {
@@ -50,6 +51,15 @@ export const checkinUserService = async () => {
 export const getStackCategories = async () => {
     if (WebApp) {
         const url = `${Config.REST_SERVER}/stacks/categories`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}
+
+export const chooseThemeApp = async (theme: ThemeApp) => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/player/theme/${theme}`
         const res = await api.get(url)
         console.log('res', res)    
         return res

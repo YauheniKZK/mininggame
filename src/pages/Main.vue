@@ -5,6 +5,7 @@
 // import TotalScore from '@/components/TotalScore.vue';
 // import TapBlock from '@/components/TapBlock.vue';
 import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
+import UserSetting from '@/components/user/UserSetting.vue';
 import UserLevel from '@/components/user/UserLevel.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
@@ -42,6 +43,7 @@ onBeforeUnmount(() => {
         </transition>
       </div>
     </div>
+    <UserSetting />
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
     </div>

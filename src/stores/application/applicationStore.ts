@@ -6,10 +6,13 @@ import {
   getLinkRefUserService,
   tapActionIncr,
   checkinUserService,
-  getStackCategories
+  getStackCategories,
+  chooseThemeApp
 } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
+
+export type ThemeApp = 'default' | 'dev1'
 
 export const useApplicationStore = defineStore('application', () => {
   // --------State---------
@@ -26,6 +29,11 @@ export const useApplicationStore = defineStore('application', () => {
   const lastCheckinUser = ref<any>(null)
   const currentCheckinUser = ref<any>(null)
   const isTaping = ref(false)
+  const currentThemeApp = ref<ThemeApp>('default')
+  const optionsThemeApp = ref<ThemeApp[]>([
+    'default',
+    'dev1'
+  ])
 
   // --------Getters---------
 
@@ -41,6 +49,8 @@ export const useApplicationStore = defineStore('application', () => {
   const currentCheckinUserGetters = computed(() => currentCheckinUser.value)
   const miningTotalScoreGetters = computed(() => miningTotalScore.value)
   const isTapingGetters = computed(() => isTaping.value)
+  const currentThemeAppGetters = computed(() => currentThemeApp.value)
+  const optionsThemeAppGetters = computed(() => optionsThemeApp.value)
 
   // --------Actions---------
 
@@ -64,6 +74,7 @@ export const useApplicationStore = defineStore('application', () => {
         currentUserData.value = res.data || null
         lastCheckinUser.value = res.data.checkin
         currentCheckinUser.value = res.data.server_time
+        currentThemeApp.value = res.data.theme || 'default'
         if (res.data.referrals) {
           referrals.value = res.data.referrals
         } else {
@@ -161,6 +172,19 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionChooseThemeApp(theme: ThemeApp) {
+    try {
+      const res = await chooseThemeApp(theme)
+      if (res?.data) {
+        switchThemeApp(theme)
+        console.log('chooseThemeApp', res)
+        // totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
   function updateTotalScore(value: number) {
     totalScore.value = value
   }
@@ -184,6 +208,10 @@ export const useApplicationStore = defineStore('application', () => {
 
   function actionIsTaping(status: boolean) {
     isTaping.value = status
+  }
+
+  function switchThemeApp(theme: ThemeApp) {
+    currentThemeApp.value = theme
   }
 
   return {
@@ -211,6 +239,10 @@ export const useApplicationStore = defineStore('application', () => {
     actionIsTaping,
     isTapingGetters,
     resetMiningTotalScore,
-    actionGetStackCategories
+    actionGetStackCategories,
+    currentThemeAppGetters,
+    switchThemeApp,
+    optionsThemeAppGetters,
+    actionChooseThemeApp
   }
 })

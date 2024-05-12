@@ -5,6 +5,7 @@ import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
+import UserSetting from '@/components/user/UserSetting.vue';
 // import WebApp from '@twa-dev/sdk'
 // import { tapActionIncr } from '@/services/tap.service';
 
@@ -92,6 +93,7 @@ onBeforeUnmount(async () => {
 
 <template>
   <div class="flex flex-col h-[calc(100vh-0px)]">
+    <UserSetting />
     <LoadingStart v-if="loadingGetUserGetters" />
     <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
     <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />

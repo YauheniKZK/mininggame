@@ -6,7 +6,7 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
-const { totalScoreGetters } = storeToRefs(appStore)
+const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories } = appStore
 
 onMounted(() => {
@@ -44,11 +44,11 @@ onBeforeUnmount(async () => {
 </script>
 
 <template>
-  <n-config-provider>
+  <n-config-provider :class="`${currentThemeAppGetters}-theme`">
     <n-loading-bar-provider>
       <n-message-provider :placement="'top-right'">
         <n-notification-provider>
-          <Main />
+          <Main class="bg-main" />
         </n-notification-provider>
       </n-message-provider>
     </n-loading-bar-provider>

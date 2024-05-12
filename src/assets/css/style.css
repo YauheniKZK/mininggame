@@ -5,15 +5,66 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
+/* :root {
   --main-bg-color: #1d1c22;
+  --main-text-color: #e6e6e6;
+
   --secondary-bg-color: #393c44;
   --secondary2-bg-color: #352c25;
-  --main-text-color: #e6e6e6;
+  
   --main-shadow-color: #680747;
   --secondary-color-light: #54A4AF;
   --chart-color: #f7bb0d;
   --secondary-color2-light: #AA96B7;
+} */
+
+.default-theme {
+  --main-bg-color: #1d1c22;
+  --main-text-color: #e6e6e6;
+
+  --main-shadow-color: #680747;
+
+  --secondary-bg-color: #28272f;
+
+  --chart-color: #f7bb0d;
+
+  --block-tag-text-color: #1d1c22;
+  --block-tag-bg-color: #f7bb0d;
+}
+
+.dev1-theme {
+  --main-bg-color: #2C3639;
+  --main-text-color: #DCD7C9;
+
+  --main-shadow-color: #000;
+
+  --secondary-bg-color: #3F4E4F;
+
+  --chart-color: #A27B5C;
+
+  --block-tag-text-color: #1d1c22;
+  --block-tag-bg-color: #f7bb0d;
+}
+
+.bg-main {
+  background: var(--main-bg-color);
+}
+
+.bg-secondary {
+  background: var(--secondary-bg-color);
+}
+
+.text-main-color {
+  color: var(--main-text-color);
+}
+
+.text-color-main {
+  background: var(--main-bg-color);
+}
+
+.block-tag {
+  background: var(--block-tag-bg-color);
+  color: var(--block-tag-text-color);
 }
 
 body, html {
@@ -21,7 +72,6 @@ body, html {
   height: 100%;
   padding: 0;
   margin: 0;
-  background: var(--main-bg-color);
   color: var(--main-text-color);
   font-family: "Ubuntu", sans-serif;
   font-style: normal;
