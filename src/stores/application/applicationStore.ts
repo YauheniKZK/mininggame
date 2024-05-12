@@ -34,6 +34,7 @@ export const useApplicationStore = defineStore('application', () => {
     'default',
     'dev1'
   ])
+  const allStacksApp = ref([])
 
   // --------Getters---------
 
@@ -51,6 +52,7 @@ export const useApplicationStore = defineStore('application', () => {
   const isTapingGetters = computed(() => isTaping.value)
   const currentThemeAppGetters = computed(() => currentThemeApp.value)
   const optionsThemeAppGetters = computed(() => optionsThemeApp.value)
+  const allStacksAppGetters = computed(() => allStacksApp.value)
 
   // --------Actions---------
 
@@ -165,6 +167,7 @@ export const useApplicationStore = defineStore('application', () => {
       const res = await getStackCategories()
       if (res) {
         console.log('getStackCategories', res)
+        allStacksApp.value = res.data
         // totalUserScore.value = res.data.balance || 0
       }      
     } catch (error) {
@@ -243,6 +246,7 @@ export const useApplicationStore = defineStore('application', () => {
     currentThemeAppGetters,
     switchThemeApp,
     optionsThemeAppGetters,
-    actionChooseThemeApp
+    actionChooseThemeApp,
+    allStacksAppGetters
   }
 })

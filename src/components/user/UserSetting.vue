@@ -5,17 +5,34 @@ import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
-const { optionsThemeAppGetters, currentThemeAppGetters } = storeToRefs(appStore)
+const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters } = storeToRefs(appStore)
 const { actionChooseThemeApp } = appStore
 
 const showModal = ref(false)
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
+const valueStack = ref(null)
 
 const options = computed(() => {
   return optionsThemeAppGetters.value.map((item) => {
     return {
       label: item,
       value: item
+    }
+  })
+})
+
+const optionsStack = computed(() => {
+  return allStacksAppGetters.value.map((item: any) => {
+    return {
+      type: 'group',
+      label: item.title,
+      key: item.title,
+      children: item.stacks.map((i: any) => {
+        return {
+          label: i.title,
+          value: i.title
+        }
+      })
     }
   })
 })
@@ -41,10 +58,17 @@ const updateTheme = (value: ThemeApp) => {
     </div>
     <n-drawer v-model:show="showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary">
       <n-drawer-content>
-        <div class="flex flex-col">
+        <div class="flex flex-col mb-[12px]">
+          <div class="flex mb-[24px]">
+            <span class="text-[18px] text-main-color">{{ 'Setting' }}</span>
+          </div>
           <div class="flex flex-col">
             <span class="text-[12px] text-main-color mb-[6px]">{{ 'Choose a theme for your app' }}</span>
             <n-select v-model:value="valueTheme" :options="options" @update:value="updateTheme" />
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[12px] text-main-color mb-[6px]">{{ 'Choose a theme for your app' }}</span>
+            <n-select v-model:value="valueStack" :options="optionsStack" @update:value="updateTheme" />
           </div>
         </div>
       </n-drawer-content>
