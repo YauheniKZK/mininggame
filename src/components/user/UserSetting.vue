@@ -55,7 +55,7 @@ const updateStack = async (value: string) => {
       <div v-if="currentUserDataGetters.main_stack" class="h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px] block-tag">
         <span class="text-[16px] font-[500] leading-[24px] text-center">{{ currentUserDataGetters.main_stack }}</span>
       </div>
-      <span v-if="!currentUserDataGetters.main_stack" class="text-[14px] text-[#ffffff7a]">{{ 'Select your main stack in your app settings' }}</span>
+      <span v-if="!currentUserDataGetters.main_stack" class="text-[14px] text-[#ffffff7a] w-[70%]">{{ 'Select your main stack in your app settings' }}</span>
     </div>
     <div class="flex">
       <button @click="showModal = true">
