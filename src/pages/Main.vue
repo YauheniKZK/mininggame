@@ -38,7 +38,7 @@ onBeforeUnmount(() => {
 
 <template>
   <div class="flex flex-col items-center w-full p-[16px]">
-    <transition name="bounce">
+    <transition name="slide-up">
       <div v-if="!startCoding" class="flex flex-col w-full">
         <div class="flex items-center gap-[16px] justify-between w-full mb-[24px]">
           <div class="max-w-[120px] min-w-[120px]">
@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
         <UserSetting class="mb-[32px]" />
         <BtnTap @startCoding="startCodingEmit" />
       </div>
-      <TapBlockV2 v-if="startCoding" />
+      <TapBlockV2 v-else-if="startCoding" />
     </transition>
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
@@ -106,5 +106,20 @@ onBeforeUnmount(() => {
 .bounce-right-enter-to, .bounce-right-leave-from {
   right: 0;
   transform: translateX(0); /* Конечное положение после отпрыгивания */
+}
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(30px);
+}
+
+.slide-up-leave-to {
+  opacity: 0;
+  transform: translateY(-30px);
 }
 </style>
