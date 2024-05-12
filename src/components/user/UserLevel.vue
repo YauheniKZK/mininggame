@@ -1,13 +1,13 @@
 <script setup lang="ts">
-// import { useApplicationStore } from '@/stores/application/applicationStore';
+import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { getImageUrl } from '@/utils/images';
-// import { storeToRefs } from 'pinia';
+import { storeToRefs } from 'pinia';
 // import { onMounted } from 'vue';
 
 const props = defineProps<{ balance: string }>()
 
-//const appStore = useApplicationStore()
-// const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
+const appStore = useApplicationStore()
+const { currentUserDataGetters } = storeToRefs(appStore)
 </script>
 
 <template>
@@ -24,7 +24,7 @@ const props = defineProps<{ balance: string }>()
       >
         <div class="flex flex-col items-center justify-center">
           <span class="text-[var(--main-text-color)] text-[11px] text-center">
-            {{ 'Junior' }}
+            {{ currentUserDataGetters.level || 'None' }}
           </span>
         </div>
 

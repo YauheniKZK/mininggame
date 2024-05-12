@@ -7,7 +7,8 @@ import {
   tapActionIncr,
   checkinUserService,
   getStackCategories,
-  chooseThemeApp
+  chooseThemeApp,
+  addMainStack
 } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -188,6 +189,18 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionAddMainStack(stack_id: number) {
+    try {
+      const res = await addMainStack(stack_id)
+      if (res?.data) {
+        console.log('chooseThemeApp', res)
+        // totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
   function updateTotalScore(value: number) {
     totalScore.value = value
   }
@@ -247,6 +260,7 @@ export const useApplicationStore = defineStore('application', () => {
     switchThemeApp,
     optionsThemeAppGetters,
     actionChooseThemeApp,
-    allStacksAppGetters
+    allStacksAppGetters,
+    actionAddMainStack
   }
 })

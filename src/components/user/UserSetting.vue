@@ -6,7 +6,7 @@ import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
 const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters } = storeToRefs(appStore)
-const { actionChooseThemeApp } = appStore
+const { actionChooseThemeApp, actionAddMainStack } = appStore
 
 const showModal = ref(false)
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
@@ -42,8 +42,9 @@ const updateTheme = (value: ThemeApp) => {
   actionChooseThemeApp(value)
 }
 
-const updateStack = (value: string) => {
+const updateStack = async (value: string) => {
   valueStack.value = value
+  await actionAddMainStack(Number(value))
 }
 </script>
 

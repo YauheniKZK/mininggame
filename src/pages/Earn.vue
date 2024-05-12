@@ -55,20 +55,27 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
           v-for="(item, index) in referralsGetters"
           :key="index"
           style="box-shadow: 7px 6px 5px 0px rgba(0, 0, 0, 0.1);"
-          class="flex items-center mb-[16px] p-[8px] relative rounded-[8px] bg-[#232D3F] w-full"
+          class="flex items-center justify-between mb-[16px] p-[8px] relative rounded-[8px] bg-[#232D3F] w-full"
         >
-          <div class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
-            <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ 'Javascript' }}</span>
+          <div v-if="item.main_stack" class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
+            <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ item.main_stack }}</span>
           </div>
-          <div class="flex justify-center items-center mr-[12px]">
-            <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[54px]" alt="" />
-          </div>
-          <div class="flex flex-col">
-            <div class="flex items-center">
-              <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
+          <div class="flex items-center">
+            <div class="flex justify-center items-center mr-[12px]">
+              <img :src="getImageUrl('img/invite_user1.png')" class="object-contain max-w-[54px]" alt="" />
             </div>
-            <div class="flex items-center">
-              <span class="text-[#fff] mr-[12px]">{{ item?.first_name }}</span>
+            <div class="flex flex-col">
+              <div class="flex items-center">
+                <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
+              </div>
+              <div class="flex items-center">
+                <span class="text-[#fff] mr-[12px]">{{ item?.first_name }}</span>
+              </div>
+            </div>
+          </div>
+          <div class="flex items-end justify-end">
+            <div v-if="item.level" class="right-[16px] -top-[10px] absolute h-[20px] flex justify-center items-center rounded-[4px] p-[2px_8px]  bg-[#888]">
+              <span class="text-[#fff] text-[12px] leading-[24px] text-center">{{ item.level }}</span>
             </div>
           </div>
     

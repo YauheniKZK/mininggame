@@ -65,3 +65,12 @@ export const chooseThemeApp = async (theme: ThemeApp) => {
         return res
     }
 }
+
+export const addMainStack = async (stack_id: number) => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/stacks/add-main/${stack_id}`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}
