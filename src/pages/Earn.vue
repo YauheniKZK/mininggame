@@ -22,6 +22,14 @@ const createLinkRef = async () => {
   await actionGetLinkRefUserService()
 }
 
+const balanceRef = (balance: number | null) => {
+  if (balance) {
+    return Number(balance / 100).toFixed(2)
+  } else {
+    return 0
+  }
+}
+
 watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
   if (newVal) {
     // WebApp.close()
@@ -71,7 +79,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
             </div>
             <div class="flex flex-col">
               <div class="flex items-center">
-                <span class="text-[#fff]">{{ '$ ' + item?.balance }}</span>
+                <span class="text-[#fff]">{{ '$ ' + balanceRef(item?.balance || null) }}</span>
               </div>
               <div class="flex items-center">
                 <span class="text-[#fff] mr-[12px]">{{ item?.first_name }}</span>

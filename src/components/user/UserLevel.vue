@@ -2,9 +2,18 @@
 import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
 // import { onMounted } from 'vue';
 
-const props = defineProps<{ balance: string }>()
+const props = defineProps<{ balance: number }>()
+
+const balanceRef = computed(() => {
+  if (props.balance) {
+    return Number(props.balance / 100).toFixed(2)
+  } else {
+    return 0
+  }
+})
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
@@ -34,7 +43,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
     <div class="flex flex-col p-[8px]">
       <div class="flex items-center flex-wrap text-[12px]">
         <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Balance: ' }}</span>
-        <span class="text-[var(--main-text-color)]">{{ props.balance + ' $' }}</span>
+        <span class="text-[var(--main-text-color)]">{{ balanceRef + ' $' }}</span>
       </div>
       <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
       <div class="flex items-center flex-wrap text-[12px]">
