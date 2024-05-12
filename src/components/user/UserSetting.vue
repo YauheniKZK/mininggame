@@ -3,7 +3,10 @@ import { getImageUrl } from '@/utils/images';
 import { ThemeApp, useApplicationStore } from '@/stores/application/applicationStore';
 import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
+import { useI18n } from 'vue-i18n'
 
+
+const { t } = useI18n()
 const appStore = useApplicationStore()
 const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters, currentUserDataGetters } = storeToRefs(appStore)
 const { actionChooseThemeApp, actionAddMainStack } = appStore
@@ -29,7 +32,7 @@ const optionsStack = computed(() => {
       key: item.title,
       children: item.stacks.map((i: any) => {
         return {
-          label: i.title,
+          label: t(i.title),
           value: i.id
         }
       })
