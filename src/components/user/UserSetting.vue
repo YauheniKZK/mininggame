@@ -10,7 +10,7 @@ const { actionChooseThemeApp } = appStore
 
 const showModal = ref(false)
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
-const valueStack = ref(null)
+const valueStack = ref<string | null>(null)
 
 const options = computed(() => {
   return optionsThemeAppGetters.value.map((item) => {
@@ -41,6 +41,10 @@ const updateTheme = (value: ThemeApp) => {
   valueTheme.value = value
   actionChooseThemeApp(value)
 }
+
+const updateStack = (value: string) => {
+  valueStack.value = value
+}
 </script>
 
 <template>
@@ -68,7 +72,7 @@ const updateTheme = (value: ThemeApp) => {
           </div>
           <div class="flex flex-col">
             <span class="text-[12px] text-main-color mb-[6px]">{{ 'Choose main stack' }}</span>
-            <n-select v-model:value="valueStack" :options="optionsStack" @update:value="updateTheme" />
+            <n-select v-model:value="valueStack" :options="optionsStack" @update:value="updateStack" />
           </div>
         </div>
       </n-drawer-content>
