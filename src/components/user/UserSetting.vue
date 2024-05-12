@@ -5,7 +5,7 @@ import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
-const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters } = storeToRefs(appStore)
+const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters, currentUserDataGetters } = storeToRefs(appStore)
 const { actionChooseThemeApp, actionAddMainStack } = appStore
 
 const showModal = ref(false)
@@ -51,10 +51,11 @@ const updateStack = async (value: string) => {
 <template>
   <div class="flex justify-between rounded-[16px] setting-block bg-secondary p-[12px] w-full" style="box-shadow: 0px 0px 15px -3px #1d1d1d;">
     <div class="flex flex-col justify-center">
-      <span class="text-[14px] text-main-color mb-[6px]">{{ 'Your stack' }}</span>
-      <div class="h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px] block-tag">
-        <span class="text-[16px] font-[500] leading-[24px] text-center">{{ 'Javascript' }}</span>
+      <span v-if="currentUserDataGetters.main_stack" class="text-[14px] text-main-color mb-[6px]">{{ 'Your stack' }}</span>
+      <div v-if="currentUserDataGetters.main_stack" class="h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px] block-tag">
+        <span class="text-[16px] font-[500] leading-[24px] text-center">{{ currentUserDataGetters.main_stack }}</span>
       </div>
+      <span v-if="!currentUserDataGetters.main_stack" class="text-[14px] text-[#ffffff7a]">{{ 'Select your main stack in your app settings' }}</span>
     </div>
     <div class="flex">
       <button @click="showModal = true">
