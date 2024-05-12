@@ -4,7 +4,7 @@
 <template>
   <div class="flex flex-col justify-center items-center w-full">
     <div class="w-[100%] max-w-[200px] h-[200px] btn-animation relative flex justify-center items-center">
-      <div class="text-center text-[20px] text-main-color flex justify-center items-center">
+      <div class="text-center text-[20px] text-main-color flex justify-center flex-col items-center z-[3]">
         <span>{{ 'Start' }}</span>
         <span>{{ 'Coding' }}</span>
       </div>
