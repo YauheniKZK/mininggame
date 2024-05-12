@@ -30,7 +30,7 @@ const optionsStack = computed(() => {
       children: item.stacks.map((i: any) => {
         return {
           label: i.title,
-          value: i.title
+          value: i.id
         }
       })
     }
