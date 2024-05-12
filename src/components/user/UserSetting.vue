@@ -10,7 +10,7 @@ const { actionChooseThemeApp, actionAddMainStack } = appStore
 
 const showModal = ref(false)
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
-const valueStack = ref<string | null>(null)
+const valueStack = ref<string | null>(currentUserDataGetters.value.main_stack || null)
 
 const options = computed(() => {
   return optionsThemeAppGetters.value.map((item) => {
