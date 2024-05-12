@@ -1,7 +1,10 @@
 <script setup lang="ts">
 // import { getImageUrl } from '@/utils/images';
-import { ref } from 'vue';
+import { onMounted, onUnmounted, ref } from 'vue';
 import VirtualKeyboard from './VirtualKeyboard.vue';
+import WebApp from '@twa-dev/sdk';
+
+const emit = defineEmits(['closeTaps'])
 
 const textGeneratedRef = ref<any>()
 const scrollbarContainer = ref()
@@ -19,6 +22,16 @@ const whiteText = () => {
   const scrollbar: any = document.querySelector('.scrollbarRef .n-scrollbar-content')
   scrollbarRef.value.scrollTo(0, scrollbar.scrollHeight)
 }
+
+onMounted(() => {
+  WebApp.BackButton.show()
+})
+WebApp.BackButton.onClick(() => {
+  emit('closeTaps')
+})
+onUnmounted(() => {
+  WebApp.BackButton.hide()
+})
 </script>
 
 <template>

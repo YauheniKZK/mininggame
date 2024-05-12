@@ -55,7 +55,7 @@ onBeforeUnmount(() => {
         <UserSetting class="mb-[32px]" />
         <BtnTap @startCoding="startCodingEmit" />
       </div>
-      <TapBlockV2 v-else-if="startCoding" />
+      <TapBlockV2 v-else-if="startCoding" @closeTaps="startCoding = false" />
     </transition>
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />

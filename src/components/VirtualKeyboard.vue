@@ -123,6 +123,7 @@ onUnmounted(() => {
   canvas.removeEventListener('touchend', handleTouchEnd);
 
 });
+
 </script>
 
 <template>
