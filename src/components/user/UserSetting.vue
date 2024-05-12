@@ -62,12 +62,12 @@ const updateTheme = (value: ThemeApp) => {
           <div class="flex mb-[24px]">
             <span class="text-[18px] text-main-color">{{ 'Setting' }}</span>
           </div>
-          <div class="flex flex-col">
+          <div class="flex flex-col mb-[12px]">
             <span class="text-[12px] text-main-color mb-[6px]">{{ 'Choose a theme for your app' }}</span>
             <n-select v-model:value="valueTheme" :options="options" @update:value="updateTheme" />
           </div>
           <div class="flex flex-col">
-            <span class="text-[12px] text-main-color mb-[6px]">{{ 'Choose a theme for your app' }}</span>
+            <span class="text-[12px] text-main-color mb-[6px]">{{ 'Choose main stack' }}</span>
             <n-select v-model:value="valueStack" :options="optionsStack" @update:value="updateTheme" />
           </div>
         </div>
