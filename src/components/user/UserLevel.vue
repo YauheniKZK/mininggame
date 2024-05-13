@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { useApplicationStore } from '@/stores/application/applicationStore';
-import { levels } from '@/utils/data';
+import { formatNumberWithSpaces, levels } from '@/utils/data';
 // import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
@@ -21,7 +21,7 @@ const setProcent = computed(() => {
 })
 
 const setLevelUp = computed(() => {
-  return levels[currentUserDataGetters.value.level] / 100 + ' $'
+  return levels[currentUserDataGetters.value.level] / 100
 })
 
 const appStore = useApplicationStore()
@@ -52,12 +52,12 @@ const { currentUserDataGetters } = storeToRefs(appStore)
     <div class="flex flex-col p-[8px]">
       <div class="flex items-center flex-wrap text-[12px]">
         <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ $t('BALANCE') + ': ' }}</span>
-        <span class="text-[var(--main-text-color)]">{{ balanceRef + ' $' }}</span>
+        <span class="text-[var(--main-text-color)]">{{ formatNumberWithSpaces(Number(balanceRef)) + ' $' }}</span>
       </div>
       <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
       <div class="flex items-center flex-wrap text-[12px]">
         <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ $t('up_level') + ': ' }}</span>
-        <span class="text-[var(--main-text-color)]">{{ setLevelUp }}</span>
+        <span class="text-[var(--main-text-color)]">{{ formatNumberWithSpaces(setLevelUp) + ' $' }}</span>
       </div>
     </div>
   </div>

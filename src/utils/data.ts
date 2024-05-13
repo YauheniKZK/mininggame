@@ -8,3 +8,15 @@ export const levels: any = {
   'level_7': 50000000,
   'level_8': 100000000,
 }
+
+export function formatNumberWithSpaces(number: number) {
+  let formattedNumber = number.toString()
+
+  const parts = formattedNumber.split(".")
+  const integerPart = parts[0];
+  const decimalPart = parts[1] || ""
+
+  const formattedIntegerPart = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+
+  return decimalPart ? `${formattedIntegerPart}.${decimalPart}` : formattedIntegerPart
+}
