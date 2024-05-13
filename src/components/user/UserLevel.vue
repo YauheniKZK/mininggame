@@ -17,9 +17,11 @@ const balanceRef = computed(() => {
 })
 
 const setProcent = computed(() => {
-  if (currentUserDataGetters.value.level === 'JUNIOR') {
-    return props.balance ? props.balance * 100 / levels['level_4'] : 0 
-  }
+  return props.balance ? props.balance * 100 / levels[currentUserDataGetters.value.level] : 0
+})
+
+const setLevelUp = computed(() => {
+  return levels[currentUserDataGetters.value.level] / 100 + ' $'
 })
 
 const appStore = useApplicationStore()
@@ -40,7 +42,6 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       >
         <div class="flex flex-col items-center justify-center">
           <span class="text-[var(--main-text-color)] text-[11px] text-center">
-            {{ setProcent }}
             {{ currentUserDataGetters.level ? $t(currentUserDataGetters.level) : 'None' }}
           </span>
         </div>
@@ -56,7 +57,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
       <div class="flex items-center flex-wrap text-[12px]">
         <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ $t('up_level') + ': ' }}</span>
-        <span class="text-[var(--main-text-color)]">{{ '100 000$' }}</span>
+        <span class="text-[var(--main-text-color)]">{{ setLevelUp }}</span>
       </div>
     </div>
   </div>
