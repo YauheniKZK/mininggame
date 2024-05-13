@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useApplicationStore } from '@/stores/application/applicationStore';
+import { levels } from '@/utils/data';
 // import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
 import { computed } from 'vue';
@@ -15,6 +16,12 @@ const balanceRef = computed(() => {
   }
 })
 
+const setProcent = computed(() => {
+  if (currentUserDataGetters.value.level === 'JUNIOR') {
+    return props.balance ? props.balance * 100 / levels['level_4'] : 0 
+  }
+})
+
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
 </script>
@@ -25,7 +32,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <n-progress
         type="circle"
         :gap-offset-degree="180"
-        :percentage="65"
+        :percentage="setProcent"
         :stroke-width="12"
         style="width: 60px"
         :color="['var(--chart-color)']"
@@ -33,7 +40,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       >
         <div class="flex flex-col items-center justify-center">
           <span class="text-[var(--main-text-color)] text-[11px] text-center">
-            {{ currentUserDataGetters.level || 'None' }}
+            {{ currentUserDataGetters.level ? $t(currentUserDataGetters.level) : 'None' }}
           </span>
         </div>
 
@@ -42,12 +49,12 @@ const { currentUserDataGetters } = storeToRefs(appStore)
     <div class="flex w-[1px] h-[60px] mx-[4px]" style="background: #54a4af52;"></div>
     <div class="flex flex-col p-[8px]">
       <div class="flex items-center flex-wrap text-[12px]">
-        <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Balance: ' }}</span>
+        <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ $t('BALANCE') + ': ' }}</span>
         <span class="text-[var(--main-text-color)]">{{ balanceRef + ' $' }}</span>
       </div>
       <div class="flex w-full h-[1px] my-[4px]" style="background: #54a4af52;"></div>
       <div class="flex items-center flex-wrap text-[12px]">
-        <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ 'Up level: ' }}</span>
+        <span class="flex mr-[8px] text-[var(--secondary-color2-light)]">{{ $t('up_level') + ': ' }}</span>
         <span class="text-[var(--main-text-color)]">{{ '100 000$' }}</span>
       </div>
     </div>

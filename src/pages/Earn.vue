@@ -47,7 +47,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
           {{ 'Hey, ' + currentUserDataGetters.first_name  }}
         </span>
         <span class="text-[14px] text-[var(--main-text-color)]">
-          {{ 'Invite friends and earn extra experience points' }}
+          {{ $t('invite_friends_text') }}
         </span>
       </div>
       <div class="flex justify-center items-center w-[53%]">
@@ -56,7 +56,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
     </div>
     <div class="flex flex-col w-full">
       <div class="flex items-center mb-[10px]">
-        <span class="text-[18px] text-[var(--main-text-color)]">{{ `Your referrals (${referralsGetters.length})` }}</span>
+        <span class="text-[18px] text-[var(--main-text-color)]">{{ $t('your_referrals') + ` (${referralsGetters.length})` }}</span>
       </div>
       <div v-if="referralsGetters.length > 0" class="w-full mb-[24px]">
         <div
@@ -67,10 +67,10 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
         >
           <div class="flex items-center justify-end right-[16px] -top-[10px] absolute">
             <div v-if="item.main_stack" class="ml-[8px] h-[20px] flex justify-center items-center rounded-[12px] p-[2px_8px]  bg-[#FEC260]">
-              <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ item.main_stack }}</span>
+              <span class="text-[#3B185F] text-[12px] leading-[24px] text-center">{{ $t(item.main_stack) }}</span>
             </div>
             <div v-if="item.level" class="ml-[8px] h-[20px] flex justify-center items-center rounded-[4px] p-[2px_8px]  bg-[#888]">
-              <span class="text-[#fff] text-[12px] leading-[24px] text-center">{{ item.level }}</span>
+              <span class="text-[#fff] text-[12px] leading-[24px] text-center">{{ $t(item.level) }}</span>
             </div>
           </div>
           <div class="flex items-center">
@@ -100,7 +100,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
     >
       <div class="flex items-center">
         <n-spin v-if="loadingGetLinkRefUserServiceGetters" :size="24" :stroke="'#fff'" class="mr-[8px]" />
-        <span class="text-[#fff] font-[600]">{{ 'Invite Friend' }}</span>
+        <span class="text-[#fff] font-[600]">{{ $t('invite_friend') }}</span>
       </div>
     </button>
   </div>
