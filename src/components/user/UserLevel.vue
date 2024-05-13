@@ -40,6 +40,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       >
         <div class="flex flex-col items-center justify-center">
           <span class="text-[var(--main-text-color)] text-[11px] text-center">
+            {{ setProcent }}
             {{ currentUserDataGetters.level ? $t(currentUserDataGetters.level) : 'None' }}
           </span>
         </div>
