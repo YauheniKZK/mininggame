@@ -9,10 +9,17 @@ const appStore = useApplicationStore()
 const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
 
+function setViewportData() {
+  console.log('window.innerWidth', window.innerWidth)
+  console.log('window.viewportStableHeight', WebApp.viewportStableHeight)
+  console.log('window.isExpanded', WebApp.isExpanded)
+}
+
 onMounted(() => {
   WebApp.expand()
   console.log('WebApp.initDataUnsafe.user?.photo_url', WebApp.initDataUnsafe.user?.photo_url)
   console.log('WebApp.version', WebApp.version)
+  WebApp.onEvent('viewportChanged', setViewportData)
   actionGetStackCategories()
   actionLevelCheck()
 })

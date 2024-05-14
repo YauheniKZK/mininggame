@@ -1,6 +1,7 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Fira+Mono:wght@400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -19,6 +20,7 @@
 } */
 
 .default-theme {
+  --main-font: "Ubuntu", sans-serif;
   --main-bg-color: #1d1c22;
   --main-text-color: #e6e6e6;
 
@@ -33,6 +35,22 @@
 }
 
 .dev1-theme {
+  --main-font: "Ubuntu", sans-serif;
+  --main-bg-color: #2C3639;
+  --main-text-color: #DCD7C9;
+
+  --main-shadow-color: #000;
+
+  --secondary-bg-color: #3F4E4F;
+
+  --chart-color: #A27B5C;
+
+  --block-tag-text-color: #1d1c22;
+  --block-tag-bg-color: #f7bb0d;
+}
+
+.cuberpunk-theme {
+  --main-font: "Orbitron", sans-serif;
   --main-bg-color: #2C3639;
   --main-text-color: #DCD7C9;
 

@@ -5,8 +5,11 @@ import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
+import eruda from 'eruda'
 // import WebApp from '@twa-dev/sdk'
 // import { tapActionIncr } from '@/services/tap.service';
+
+const erudaRef = ref()
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, miningTotalScoreGetters, totalScoreGetters, isTapingGetters } = storeToRefs(appStore)
@@ -19,7 +22,12 @@ onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
   // await actionCheckinUserService()
-  
+  if (eruda) {
+    eruda.init({
+      container: erudaRef.value,
+      tool: ['console', 'elements']
+  })
+  }
   if (!interval.value) {
     interval.value = setInterval(() => {
       // incrimentTotalScore()
@@ -95,6 +103,7 @@ onBeforeUnmount(async () => {
     <LoadingStart v-if="loadingGetUserGetters" />
     <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
     <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
+    <div ref="erudaRef"></div>
   </div>
 </template>
 
