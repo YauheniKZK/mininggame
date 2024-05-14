@@ -1,19 +1,27 @@
 <script setup lang="ts">
 import Main from '@/layout/Main.vue';
 import WebApp from '@twa-dev/sdk'
-import { onMounted, onBeforeUnmount, computed, watch } from 'vue';
+import { onMounted, onBeforeUnmount, computed, watch, ref } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
+const viewportHeight = ref(0)
 
 function setViewportData() {
   console.log('window.innerWidth', window.innerWidth)
   console.log('window.viewportStableHeight', WebApp.viewportStableHeight)
   console.log('window.isExpanded', WebApp.isExpanded)
+  if (WebApp.isExpanded) {
+    viewportHeight.value = WebApp.viewportStableHeight
+  }
   console.log('window.viewportHeight111111', WebApp.viewportHeight)
+  const procent = () => viewportHeight.value > 0 ? WebApp.viewportHeight * 100 / viewportHeight.value : 0
+  if (procent() !== 0 && procent() < 70) {
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA222');
+  }
 }
 
 onMounted(() => {
@@ -37,7 +45,7 @@ watch(() => webAppHeight.value, (newVal) => {
 
 WebApp.onEvent('viewportChanged', async (event: any) => {
   // console.log('event111', event)
-  if (WebApp.viewportHeight < 300) {
+  if (WebApp.viewportHeight < 400) {
     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA');
   }
   // let value = totalScoreGetters.value
