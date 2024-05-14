@@ -1,9 +1,4 @@
 <script setup lang="ts">
-// import { computed, ref } from 'vue';
-// import HelloWorld from './components/HelloWorld.vue'
-// import WebApp from '@twa-dev/sdk'
-// import TotalScore from '@/components/TotalScore.vue';
-// import TapBlock from '@/components/TapBlock.vue';
 import TapBlockV2 from '@/components/TapBlockV2.vue';
 import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
 import UserSetting from '@/components/user/UserSetting.vue';
