@@ -11,7 +11,7 @@ const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
 const viewportHeight = ref(0)
 
-async function setViewportData() {
+function setViewportData() {
   console.log('window.innerWidth', window.innerWidth)
   console.log('window.viewportStableHeight', WebApp.viewportStableHeight)
   console.log('window.isExpanded', WebApp.isExpanded)
@@ -22,7 +22,7 @@ async function setViewportData() {
   const procent = () => viewportHeight.value > 0 ? WebApp.viewportHeight * 100 / viewportHeight.value : 0
   if (procent() !== 0 && procent() < 70) {
     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA222');
-    await tapActionIncr(10)
+    tapActionIncr(10)
   }
 }
 
