@@ -6,6 +6,7 @@ import TopBlock from './components/TopBlock.vue';
 <template>
   <div class="flex flex-col w-full p-[16px]">
     <TopBlock />
+    <div class="w-full h-[1px] bg-[#63656661] mb-[16px]"></div>
   </div>
 </template>
 
