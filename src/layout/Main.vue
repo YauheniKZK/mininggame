@@ -12,8 +12,8 @@ import eruda from 'eruda'
 const erudaRef = ref()
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, miningTotalScoreGetters, totalScoreGetters, isTapingGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, actionMiningMoney, updateMiningTotalScore, resetMiningTotalScore, updateTotalScore } = appStore
+const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, isTapingGetters } = storeToRefs(appStore)
+const { actionGetUser, resetUserData } = appStore
 
 const interval = ref<any>(null)
 const interval2 = ref<any>(null)
@@ -28,22 +28,22 @@ onMounted(async () => {
       tool: ['console', 'elements']
   })
   }
-  if (!interval.value) {
-    interval.value = setInterval(() => {
-      // incrimentTotalScore()
-      actionMiningMoney(1)
-      // updateMiningTotalScore()
-      console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
-      console.log('totalScoreGetters', totalScoreGetters.value)
+  // if (!interval.value) {
+  //   interval.value = setInterval(() => {
+  //     // incrimentTotalScore()
+  //     actionMiningMoney(1)
+  //     // updateMiningTotalScore()
+  //     console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
+  //     console.log('totalScoreGetters', totalScoreGetters.value)
       
       
-      actionGetUser('page')
+  //     actionGetUser('page')
       
-    }, 1000)
-  } else {
-    // interval.value = null
-    clearInterval(interval.value)
-  }
+  //   }, 1000)
+  // } else {
+  //   // interval.value = null
+  //   clearInterval(interval.value)
+  // }
 })
 
 watch(() => successCurrentUserDataGetters.value, (newVal) => {
@@ -55,28 +55,28 @@ watch(() => successCurrentUserDataGetters.value, (newVal) => {
 watch(() => isTapingGetters.value, (newVal) => {
   if (newVal) {
     // interval.value = null
-    clearInterval(interval.value)
-    interval2.value = setInterval(() => {
-      updateMiningTotalScore()
+    // clearInterval(interval.value)
+    // interval2.value = setInterval(() => {
+    //   updateMiningTotalScore()
       
-    }, 1000)
+    // }, 1000)
   } else {
     // interval2.value = null
-    clearInterval(interval2.value)
-    resetMiningTotalScore()
+    // clearInterval(interval2.value)
+    // resetMiningTotalScore()
     
-    interval.value = setInterval(() => {
-      // incrimentTotalScore()
-      actionMiningMoney(1)
-      // updateMiningTotalScore()
-      console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
-      console.log('totalScoreGetters', totalScoreGetters.value)
+    // interval.value = setInterval(() => {
+    //   // incrimentTotalScore()
+    //   actionMiningMoney(1)
+    //   // updateMiningTotalScore()
+    //   console.log('miningTotalScoreGetters', miningTotalScoreGetters.value)
+    //   console.log('totalScoreGetters', totalScoreGetters.value)
       
       
-      actionGetUser('page')
-      updateTotalScore(0)
+    //   actionGetUser('page')
+    //   updateTotalScore(0)
       
-    }, 1000)
+    // }, 1000)
   }
 })
 
