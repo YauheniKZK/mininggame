@@ -37,7 +37,7 @@ watch(() => webAppHeight.value, (newVal) => {
 
 WebApp.onEvent('viewportChanged', async (event: any) => {
   // console.log('event111', event)
-  if (WebApp.viewportHeight < 200) {
+  if (WebApp.viewportHeight < 300) {
     console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA');
   }
   // let value = totalScoreGetters.value
