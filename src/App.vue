@@ -13,6 +13,7 @@ function setViewportData() {
   console.log('window.innerWidth', window.innerWidth)
   console.log('window.viewportStableHeight', WebApp.viewportStableHeight)
   console.log('window.isExpanded', WebApp.isExpanded)
+  console.log('window.viewportHeight111111', WebApp.viewportHeight)
 }
 
 onMounted(() => {
@@ -35,9 +36,9 @@ watch(() => webAppHeight.value, (newVal) => {
 })
 
 WebApp.onEvent('viewportChanged', async (event: any) => {
-  console.log('event111', event)
+  // console.log('event111', event)
   if (WebApp.viewportHeight < 200) {
-    // await actionCheckinUserService()
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA');
   }
   // let value = totalScoreGetters.value
   if (event.isStateStable) {
