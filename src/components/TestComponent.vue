@@ -66,7 +66,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <canvas ref="canvasBlock" style="border-radius: 16px;width: 100vh;height: 100vh;"></canvas>
+  <canvas ref="canvasBlock" width="384" height="590" class="z-0" style="border-radius: 16px;"></canvas>
 </template>
 
 <style>
