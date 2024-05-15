@@ -59,7 +59,9 @@ onMounted(() => {
     animate();
         // Запускаем анимацию каждые 500 миллисекунд
   }
-  createNumberAnimation()
+  setInterval(() => {
+    createNumberAnimation()
+  }, 800)
 })
 
 </script>
