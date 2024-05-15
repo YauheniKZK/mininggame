@@ -15,7 +15,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="flex flex-col pl-[16px]">
         <span class="text-[#fff] text-[16px]">{{ currentUserDataGetters.first_name }}</span>
         <div class="text-[#fff] flex items-center">
-          <span class="text-[#636566]">{{ 'Level: ' }}</span>
+          <span class="text-[#adaeb1]">{{ 'Level: ' }}</span>
           <span class="tag">{{ $t(currentUserDataGetters.level) }}</span>
         </div>
       </div>
