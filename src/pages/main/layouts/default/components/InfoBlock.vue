@@ -28,7 +28,7 @@ const ctx = ref<any>(null);
 const numbers = ref<any>([]);
 
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 100);
+  return Math.floor(Math.random() * 20);
 }
 
 function animate() {
@@ -43,7 +43,7 @@ function animate() {
     for (const number of numbers.value) {
       number.y -= 1; // Move up
       number.opacity = Math.max(0, number.y / canvasBlock.value.height); // Decrease opacity
-      ctx.value.fillStyle = `rgba(0, 0, 0, ${number.opacity})`;
+      ctx.value.fillStyle = `rgba(251, 221, 135, ${number.opacity})`;
       ctx.value.fillText(number.value, number.x, number.y);
     }
 
