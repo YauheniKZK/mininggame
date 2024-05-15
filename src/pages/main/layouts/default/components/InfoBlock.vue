@@ -60,6 +60,7 @@ onMounted(() => {
         // Запускаем анимацию каждые 500 миллисекунд
   }
   setInterval(() => {
+    console.log('1111 createNumberAnimation')
     createNumberAnimation()
   }, 800)
 })
