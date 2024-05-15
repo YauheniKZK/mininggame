@@ -13,9 +13,9 @@ const { currentUserDataGetters } = storeToRefs(appStore)
     <div class="flex items-center">
       <img :src="getImageUrl('img/avatars/cat2.png')" class="img-icon" alt="" />
       <div class="flex flex-col pl-[16px]">
-        <span class="text-[#fff] text-[18px]">{{ currentUserDataGetters.first_name }}</span>
+        <span class="text-[#fff] text-[16px]">{{ currentUserDataGetters.first_name }}</span>
         <div class="text-[#fff] flex items-center">
-          <span class="text-[#636566]">{{ 'level: ' }}</span>
+          <span class="text-[#636566]">{{ 'Level: ' }}</span>
           <span class="tag">{{ $t(currentUserDataGetters.level) }}</span>
         </div>
       </div>
@@ -43,8 +43,9 @@ const { currentUserDataGetters } = storeToRefs(appStore)
   margin-left: 8px;
   padding: 0px 8px;
   box-shadow: rgba(254, 225, 0, 0.1) 0px 4px 16px, rgba(254, 225, 0, 0.1) 0px 8px 24px, rgba(254, 225, 0, 0.1) 0px 16px 56px;
-  border-radius: 16px;
+  border-radius: 4px;
   background: #fee100;
   color: #8e8381;
+  font-size: 12px;
 }
 </style>

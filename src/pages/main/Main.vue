@@ -1,26 +1,26 @@
 <script setup lang="ts">
-import TapBlockV2 from '@/components/TapBlockV2.vue';
-import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
-import UserSetting from '@/components/user/UserSetting.vue';
-import UserLevel from '@/components/user/UserLevel.vue';
-import BtnTap from '@/components/BtnTap.vue';
-import { useApplicationStore } from '@/stores/application/applicationStore';
-import { storeToRefs } from 'pinia';
+// import TapBlockV2 from '@/components/TapBlockV2.vue';
+// import UserNameAvatar from '@/components/user/UserNameAvatar.vue';
+// import UserSetting from '@/components/user/UserSetting.vue';
+// import UserLevel from '@/components/user/UserLevel.vue';
+// import BtnTap from '@/components/BtnTap.vue';
+// import { useApplicationStore } from '@/stores/application/applicationStore';
+// import { storeToRefs } from 'pinia';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import MainDefault from './layouts/default/MainDefault.vue';
 
-const appStore = useApplicationStore()
-const { currentUserDataGetters } = storeToRefs(appStore)
+// const appStore = useApplicationStore()
+// const { currentUserDataGetters } = storeToRefs(appStore)
 
 // const handlebtn = () => {
 //   WebApp.showAlert(`Hello World! Current count is `)
 // }
 const show = ref(false)
-const startCoding = ref(false)
+// const startCoding = ref(false)
 
-const startCodingEmit = () => {
-  startCoding.value = !startCoding.value
-}
+// const startCodingEmit = () => {
+//   startCoding.value = !startCoding.value
+// }
 
 onMounted(() => {
   show.value = !show.value
@@ -35,7 +35,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="flex flex-col w-full">
     <MainDefault />
-    <transition name="slide-up">
+    <!-- <transition name="slide-up">
       <div v-if="!startCoding" class="flex flex-col w-full">
         <div class="flex items-center gap-[16px] justify-between w-full mb-[24px]">
           <div class="max-w-[120px] min-w-[120px]">
@@ -53,7 +53,7 @@ onBeforeUnmount(() => {
         <BtnTap @startCoding="startCodingEmit" />
       </div>
       <TapBlockV2 v-else-if="startCoding" @closeTaps="startCoding = false" />
-    </transition>
+    </transition> -->
     <!-- <div class="flex justify-center items-center w-full mb-[24px]">
       <TotalScore />
     </div>
