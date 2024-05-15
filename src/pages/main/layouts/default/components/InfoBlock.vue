@@ -82,7 +82,7 @@ onMounted(() => {
         </span>
       </div>
     </div>
-    <div class="flex items-end h-auto w-[70px] rounded-[4px]" style="border: 1px solid #adaeb1;">
+    <div class="flex items-end h-auto w-[72px] rounded-[4px]" style="border: 1px solid #adaeb1;">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
         <div class="flex w-full absolute justify-center -top-[9px] left-0">
           <span class="text-[10px] bg-[#373c41] text-center w-max p-[0_4px] text-[#adaeb1]">
@@ -91,7 +91,7 @@ onMounted(() => {
         </div>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
-        <canvas ref="canvasBlock" width="62" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
+        <canvas ref="canvasBlock" width="64" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
       </div>
     </div>
   </div>
