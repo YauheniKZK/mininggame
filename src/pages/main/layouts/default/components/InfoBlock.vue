@@ -25,44 +25,41 @@ const setProcent = computed(() => {
 })
 
 onMounted(() => {
-  if (canvasBlock.value) {
-    const ctx = canvasBlock.value.getContext('2d');
-    const numbers = ['0', '1'];
+  const ctx = canvasBlock.value.getContext('2d');
+  const numbers = ['0', '1'];
 
-    function getRandomNumber(min: number, max: number) {
-        return Math.floor(Math.random() * (max - min + 1)) + min;
+  function getRandomNumber(min: number, max: number) {
+      return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  function createNumberAnimation() {
+    const number = numbers[getRandomNumber(0, numbers.length - 1)];
+    const x = getRandomNumber(0, canvasBlock.value.width);
+    let y = canvasBlock.value.height;
+
+    ctx.font = '12px "M PLUS Rounded 1c"';
+    ctx.fillStyle = '#fbdd87';
+
+    function animate() {
+        ctx.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
+        ctx.fillText(number, x, y);
+
+        if (y > 0) {
+            y -= 1; // Скорость движения цифры
+            requestAnimationFrame(animate);
+        } else {
+            // Плавно уменьшаем прозрачность до нуля
+            ctx.globalAlpha -= 0.01;
+            if (ctx.globalAlpha > 0) {
+                requestAnimationFrame(animate);
+            }
+        }
     }
 
-    function createNumberAnimation() {
-      const number = numbers[getRandomNumber(0, numbers.length - 1)];
-      const x = getRandomNumber(0, canvasBlock.value.width);
-      let y = canvasBlock.value.height;
-
-      ctx.font = '10px "M PLUS Rounded 1c"';
-      ctx.fillStyle = '#fbdd87';
-
-      function animate() {
-          ctx.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
-          ctx.fillText(number, x, y);
-
-          if (y > 0) {
-              y -= 2; // Скорость движения цифры
-              requestAnimationFrame(animate);
-          } else {
-              // Плавно уменьшаем прозрачность до нуля
-              ctx.globalAlpha -= 0.01;
-              if (ctx.globalAlpha > 0) {
-                  requestAnimationFrame(animate);
-              }
-          }
-      }
-
-      animate();
+    animate();
+        // Запускаем анимацию каждые 500 миллисекунд
   }
-
-    // Запускаем анимацию каждые 500 миллисекунд
-    setInterval(createNumberAnimation, 1000);
-  }
+  setInterval(createNumberAnimation, 1000);
 })
 
 </script>
