@@ -85,10 +85,10 @@ onMounted(() => {
     <div class="flex items-end h-auto w-[100px]">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
         <div class="flex w-full absolute justify-center flex-col items-center -top-[12px] left-[4px]">
-          <span class="font-[10px] text-[#adaeb1]">
+          <span class="text-[10px] text-[#adaeb1]">
             {{ formatNumberWithSpaces(setLevelUp) }}
           </span>
-          <div class="w-full max-w-[100%] h-[1px] bg-[#63656661] mt-[1px]"></div>
+          <div class="w-[calc(100%-4px)] max-w-[100%] h-[1px] bg-[#63656661] mt-[1px]"></div>
         </div>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
