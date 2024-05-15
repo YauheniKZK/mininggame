@@ -27,38 +27,41 @@ const setProcent = computed(() => {
 onMounted(() => {
   if (canvasBlock.value) {
     const ctx = canvasBlock.value.getContext('2d');
-    const numbers = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
+    const numbers = ['0', '1'];
 
     function getRandomNumber(min: number, max: number) {
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
     function createNumberAnimation() {
-        const number = numbers[getRandomNumber(0, numbers.length - 1)];
-        const x = getRandomNumber(0, canvasBlock.value.width);
-        let y = canvasBlock.value.height;
+      const number = numbers[getRandomNumber(0, numbers.length - 1)];
+      const x = getRandomNumber(0, canvasBlock.value.width);
+      let y = canvasBlock.value.height;
 
-        ctx.font = '8px "M PLUS Rounded 1c"';
-        ctx.fillStyle = 'white';
-        ctx.fillText(number, x, y);
+      ctx.font = '24px Arial';
+      ctx.fillStyle = 'black';
 
-        const speed = getRandomNumber(1, 3); // Скорость движения цифры
+      function animate() {
+          ctx.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
+          ctx.fillText(number, x, y);
 
-        function animate() {
-            ctx.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
-            ctx.fillText(number, x, y);
+          if (y > 0) {
+              y -= 2; // Скорость движения цифры
+              requestAnimationFrame(animate);
+          } else {
+              // Плавно уменьшаем прозрачность до нуля
+              ctx.globalAlpha -= 0.01;
+              if (ctx.globalAlpha > 0) {
+                  requestAnimationFrame(animate);
+              }
+          }
+      }
 
-            if (y > 0) {
-                y -= speed;
-                requestAnimationFrame(animate);
-            }
-        }
-
-        animate();
-    }
+      animate();
+  }
 
     // Запускаем анимацию каждые 500 миллисекунд
-    setInterval(createNumberAnimation, 500);
+    setInterval(createNumberAnimation, 1000);
   }
 })
 
@@ -86,7 +89,7 @@ onMounted(() => {
     <div class="flex items-end h-auto w-[100px]">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end">
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] relative" :style="`height: ${setProcent}%`">
-          <canvas ref="canvasBlock" width="100" height="60"></canvas>
+          <canvas ref="canvasBlock" width="92" height="60" class="absolute bottom-0 left-0"></canvas>
         </div>
       </div>
     </div>
