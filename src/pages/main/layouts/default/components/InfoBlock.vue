@@ -18,6 +18,10 @@ const balanceRef = computed(() => {
 const setLevelUp = computed(() => {
   return levels[currentUserDataGetters.value.level] / 100
 })
+const setProcent = computed(() => {
+  return currentUserDataGetters.value.balance ? currentUserDataGetters.value.balance * 100 / levels[currentUserDataGetters.value.level] : 0
+})
+
 </script>
 
 <template>
@@ -37,6 +41,13 @@ const setLevelUp = computed(() => {
           {{ formatNumberWithSpaces(setLevelUp) }}
           <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
+      </div>
+    </div>
+    <div class="flex items-end h-full">
+      <div class="h-full p-[4px] rounded-[4px]">
+        <div class="w-full rounded-[4px]" :style="`height: ${setProcent}`">
+
+        </div>
       </div>
     </div>
   </div>
