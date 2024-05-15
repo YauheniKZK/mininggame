@@ -43,9 +43,9 @@ const setProcent = computed(() => {
         </span>
       </div>
     </div>
-    <div class="flex items-end h-full">
-      <div class="h-full p-[4px] rounded-[4px]">
-        <div class="w-full rounded-[4px]" :style="`height: ${setProcent}`">
+    <div class="flex items-end h-auto">
+      <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end">
+        <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87]" :style="`height: ${setProcent}%`">
 
         </div>
       </div>
