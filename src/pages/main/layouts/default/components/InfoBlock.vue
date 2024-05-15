@@ -82,10 +82,10 @@ onMounted(() => {
         </span>
       </div>
     </div>
-    <div class="flex items-end h-auto w-[70px]">
+    <div class="flex items-end h-auto w-[70px] rounded-[4px]" style="border: 1px solid #adaeb1;">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
         <div class="flex w-full absolute flex-col -top-[12px] left-[4px]">
-          <span class="text-[10px] text-center block w-full text-[#adaeb1]">
+          <span class="text-[10px] text-center block w-[calc(100%-8px)] text-[#adaeb1]">
             {{ formatNumberWithSpaces(setLevelUp) }}
           </span>
           <div class="w-[calc(100%-8px)] max-w-[100%] h-[1px] bg-[#63656661] mt-[1px]"></div>
