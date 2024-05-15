@@ -25,17 +25,17 @@ const setLevelUp = computed(() => {
     <div class="flex flex-col">
       <div class="flex flex-col">
         <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('BALANCE') + ': ' }}</span>
-        <span class="text-[20px] font-[600] text-[#fff]">
+        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
           {{ formatNumberWithSpaces(Number(balanceRef)) }}
-          <sup>{{ ' $' }}</sup>
+          <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
       </div>
-      <div class="w-full max-w-[160px] h-[1px] bg-[#63656661] my-[8px]"></div>
+      <div class="w-full max-w-[180px] h-[1px] bg-[#63656661] my-[8px]"></div>
       <div class="flex flex-col">
         <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('up_level') + ': ' }}</span>
-        <span class="text-[20px] font-[600] text-[#fff]">
+        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
           {{ formatNumberWithSpaces(setLevelUp) }}
-          <sup>{{ ' $' }}</sup>
+          <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
       </div>
     </div>

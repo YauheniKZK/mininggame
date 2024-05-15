@@ -31,6 +31,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 <style scoped>
 .img-icon {
   max-width: 50px;
+  min-width: 50px;
   object-fit: contain;
   height: 50px;
   background: linear-gradient(#fff, #fff) padding-box, linear-gradient(45deg, purple, orange) border-box;

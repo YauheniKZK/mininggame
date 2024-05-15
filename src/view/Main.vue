@@ -38,7 +38,7 @@ onMounted(async () => {
         :value="valueTab"
         animated
       >
-        <n-tab-pane name="main" class="w-full pt-0">
+        <n-tab-pane name="main" class="w-full" style="padding-top: 0;">
           <Main />
         </n-tab-pane>
         <n-tab-pane name="mining" class="w-full">
