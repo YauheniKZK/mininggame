@@ -28,7 +28,7 @@ const ctx = ref<any>(null);
 const numbers = ref<any>([]);
 
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 20);
+  return Math.floor(Math.random() * 5);
 }
 
 function animate() {
@@ -58,9 +58,7 @@ function animate() {
 
 onMounted(() => {
   ctx.value = canvasBlock.value.getContext('2d');
-  setInterval(() => {
-    animate();
-  }, 500)
+  animate();
 })
 
 </script>
