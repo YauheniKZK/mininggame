@@ -28,7 +28,7 @@ const ctx = ref<any>(null);
 const numbers = ref<any>([]);
 
 function generateRandomNumber() {
-  return Math.floor(Math.random() * 5);
+  return Math.floor(Math.random() * 4);
 }
 
 function animate() {
@@ -84,9 +84,10 @@ onMounted(() => {
     </div>
     <div class="flex items-end h-auto w-[100px]">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
+        <span class="flex w-full absolute top-0 left-[4px] font-[10px] text-[#adaeb1">{{ formatNumberWithSpaces(setLevelUp) }}</span>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
-        <canvas ref="canvasBlock" width="92" height="100" class="absolute bottom-0 left-0"></canvas>
+        <canvas ref="canvasBlock" width="92" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
       </div>
     </div>
   </div>
