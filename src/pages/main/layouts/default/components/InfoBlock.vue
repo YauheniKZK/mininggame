@@ -88,11 +88,11 @@ onMounted(() => {
           <span class="text-[10px] text-center block w-full text-[#adaeb1]">
             {{ formatNumberWithSpaces(setLevelUp) }}
           </span>
-          <div class="w-[calc(100%-4px)] max-w-[100%] h-[1px] bg-[#63656661] mt-[1px]"></div>
+          <div class="w-[calc(100%-8px)] max-w-[100%] h-[1px] bg-[#63656661] mt-[1px]"></div>
         </div>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
-        <canvas ref="canvasBlock" width="92" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
+        <canvas ref="canvasBlock" width="62" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
       </div>
     </div>
   </div>
