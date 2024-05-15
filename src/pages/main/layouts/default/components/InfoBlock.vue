@@ -24,45 +24,41 @@ const setProcent = computed(() => {
   return currentUserDataGetters.value.balance ? currentUserDataGetters.value.balance * 100 / levels[currentUserDataGetters.value.level] : 0
 })
 
-onMounted(() => {
-  const ctx = canvasBlock.value.getContext('2d');
-  const numbers = ['0', '1'];
+const ctx = ref<any>(null);
+const numbers = ref<any>([]);
 
-  function getRandomNumber(min: number, max: number) {
-      return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
+function generateRandomNumber() {
+  return Math.floor(Math.random() * 100);
+}
 
-  function createNumberAnimation() {
-    const number = numbers[getRandomNumber(0, numbers.length - 1)];
-    const x = getRandomNumber(0, canvasBlock.value.width);
-    let y = canvasBlock.value.height;
+function animate() {
+  // Clear canvas
+  if (ctx.value) {
+    ctx.value.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
+    // Generate new random number
+    const newNumber = generateRandomNumber();
+    numbers.value.push({ x: Math.random() * canvasBlock.value.width, y: canvasBlock.value.height, value: newNumber });
 
-    ctx.font = '12px "M PLUS Rounded 1c"';
-    ctx.fillStyle = '#fbdd87';
-
-    function animate() {
-        ctx.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
-        ctx.fillText(number, x, y);
-
-        if (y > 0) {
-            y -= 1; // Скорость движения цифры
-            requestAnimationFrame(animate);
-        } else {
-            // Плавно уменьшаем прозрачность до нуля
-            ctx.globalAlpha -= 0.01;
-            if (ctx.globalAlpha > 0) {
-                requestAnimationFrame(animate);
-            }
-        }
+    // Update animation
+    for (const number of numbers.value) {
+      number.y -= 1; // Move up
+      number.opacity = Math.max(0, number.y / canvasBlock.value.height); // Decrease opacity
+      ctx.value.fillStyle = `rgba(0, 0, 0, ${number.opacity})`;
+      ctx.value.fillText(number.value, number.x, number.y);
     }
 
-    animate();
-        // Запускаем анимацию каждые 500 миллисекунд
+    // Remove numbers that are out of the canvas
+    numbers.value = numbers.value.filter((number: { y: number; }) => number.y > 0);
+
+    // Request next frame
+    requestAnimationFrame(animate);
   }
-  setInterval(() => {
-    console.log('1111 createNumberAnimation')
-    createNumberAnimation()
-  }, 800)
+  
+}
+
+onMounted(() => {
+  ctx.value = canvasBlock.value.getContext('2d');
+  animate();
 })
 
 </script>
