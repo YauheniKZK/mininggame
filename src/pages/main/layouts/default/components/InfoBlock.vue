@@ -83,14 +83,23 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-end h-auto w-[100px]">
-      <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end">
-        <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] relative" :style="`height: ${setProcent}%`">
-          <canvas ref="canvasBlock" width="92" height="60" class="absolute bottom-0 left-0"></canvas>
+      <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
+        <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
+        <canvas ref="canvasBlock" width="92" height="100" class="absolute bottom-0 left-0"></canvas>
       </div>
     </div>
   </div>
 </template>
 
 <style scoped>
+.progress-block::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 10px;
+  background: linear-gradient(0deg, rgba(251,221,135,1) 0%, rgba(251,221,135,1) 10%, rgba(251,221,135,1) 24%, rgba(251,221,135,0) 100%);
+}
 </style>
