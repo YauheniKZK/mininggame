@@ -58,7 +58,9 @@ function animate() {
 
 onMounted(() => {
   ctx.value = canvasBlock.value.getContext('2d');
-  animate();
+  setInterval(() => {
+    animate();
+  }, 500)
 })
 
 </script>
@@ -93,13 +95,4 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.progress-block::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 10px;
-  background: linear-gradient(0deg, rgba(251,221,135,1) 0%, rgba(251,221,135,1) 10%, rgba(251,221,135,1) 24%, rgba(251,221,135,0) 100%);
-}
 </style>
