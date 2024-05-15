@@ -38,8 +38,8 @@ onMounted(() => {
       const x = getRandomNumber(0, canvasBlock.value.width);
       let y = canvasBlock.value.height;
 
-      ctx.font = '24px Arial';
-      ctx.fillStyle = 'black';
+      ctx.font = '10px "M PLUS Rounded 1c"';
+      ctx.fillStyle = '#fbdd87';
 
       function animate() {
           ctx.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
