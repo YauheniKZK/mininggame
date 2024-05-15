@@ -84,7 +84,12 @@ onMounted(() => {
     </div>
     <div class="flex items-end h-auto w-[100px]">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
-        <span class="flex w-full absolute top-0 left-[4px] font-[10px] text-[#adaeb1">{{ formatNumberWithSpaces(setLevelUp) }}</span>
+        <div class="flex w-full absolute justify-center flex-col items-center -top-[12px] left-[4px]">
+          <span class="font-[10px] text-[#adaeb1]">
+            {{ formatNumberWithSpaces(setLevelUp) }}
+          </span>
+          <div class="w-full max-w-[100%] h-[1px] bg-[#63656661] mt-[1px]"></div>
+        </div>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
         <canvas ref="canvasBlock" width="92" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
