@@ -2,8 +2,10 @@
 import { ChevronForward } from '@vicons/ionicons5'
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
+
 // import { storeToRefs } from 'pinia';
 import { ref } from 'vue';
+import TestComponent from '@/components/TestComponent.vue';
 // import VirtualKeyboard from '@/components/VirtualKeyboard.vue';
 // import TapBlockV2 from '@/components/TapBlockV2.vue';
 
@@ -44,8 +46,7 @@ const start = () => {
       <n-tab-pane name="slide1" class="w-full h-full">
         <div class="flex flex-col w-full h-full justify-center relative p-[16px]">
           <span class="text-[#fff] text-[32px] flex mb-[50px]">{{ 'Step 1 info description' }}</span>
-          <div class="w-[100%] max-w-[250px] h-[250px] btn-animation relative">
-          </div>
+          <TestComponent />
         </div>
       </n-tab-pane>
       <n-tab-pane name="slide2" class="w-full h-full">
