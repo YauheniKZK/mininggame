@@ -84,9 +84,13 @@ onMounted(() => {
     </div>
     <div class="flex items-end h-auto w-[72px] rounded-[4px]" style="border: 1px solid #adaeb1;">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
+        <span class="absolute justify-center -top-[9px] left-0 text-[10px] text-[#adaeb1]" style="writing-mode: vertical-rl;">
+          {{ $t('up_level') }}
+        </span>
         <div class="flex w-full absolute justify-center -top-[9px] left-0">
           <span class="text-[10px] bg-[#373c41] text-center w-max p-[0_4px] text-[#adaeb1]">
             {{ formatNumberWithSpaces(setLevelUp) }}
+            <sup class="font-[400]">{{ ' $' }}</sup>
           </span>
         </div>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
