@@ -86,7 +86,7 @@ onMounted(() => {
       <div class="flex flex-col">
         <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('profit_hour') + ': ' }}</span>
         <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
-          {{ formatNumberWithSpaces(Number(scoreRef)) }}
+          {{ '+ ' + formatNumberWithSpaces(Number(scoreRef)) }}
           <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
       </div>
