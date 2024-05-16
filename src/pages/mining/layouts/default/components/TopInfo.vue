@@ -1,0 +1,33 @@
+<script setup lang="ts">
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
+import { computed } from 'vue';
+import { getImageUrl } from '@/utils/images';
+import { formatNumberWithSpaces } from '@/utils/data';
+
+const appStore = useApplicationStore()
+const { currentUserDataGetters } = storeToRefs(appStore)
+const balanceRef = computed(() => {
+  if (currentUserDataGetters.value.balance) {
+    return Number(currentUserDataGetters.value.balance / 100).toFixed(2)
+  } else {
+    return 0
+  }
+})
+
+</script>
+
+<template>
+  <div class="flex justify-between p-[12px] rounded-[16px] bg-[#373c41]">
+    <div class="flex items-center">
+      <img :src="getImageUrl('img/avatars/cat2.png')" class="w-[40px] min-w-[40px] h-auto object-contain mr-[8px]" alt="" />
+      <span class="text-[16px] font-[600] text-[#fff] leading-[20px]">
+        {{ formatNumberWithSpaces(Number(balanceRef)) }}
+        <sup class="font-[400]">{{ ' $' }}</sup>
+      </span>
+    </div>
+  </div>
+</template>
+
+<style scoped>
+</style>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Main from '@/pages/main/Main.vue';
-import Mining from '@/pages/Mining.vue';
+import Mining from '@/pages/mining/Mining.vue';
 import Earn from '@/pages/Earn.vue';
 import Info from '@/pages/Info.vue';
 // import { useApplicationStore } from '@/stores/application/applicationStore';
