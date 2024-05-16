@@ -63,8 +63,10 @@ onMounted(() => {
       </div>
     </div>
     <n-modal v-model:show="showModal" transform-origin="center">
-      <div class="flex flex-col w-full h-full">
-        {{ 'Modal' }}
+      <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px]" style="filter: blur(2px);">
+        <div class="flex flex-col w-full h-full bg-[#0000009d] relative z-[2]">
+          <span class="text-[#fff]">{{ 'modal' }}</span>
+        </div>
       </div>
     </n-modal>
   </div>
