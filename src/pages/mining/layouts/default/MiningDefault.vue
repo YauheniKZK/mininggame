@@ -6,7 +6,7 @@ import TopInfo from './components/TopInfo.vue';
 
 <template>
   <div class="flex flex-col items-center w-full px-[16px]">
-    <TopInfo class="mb-[16px]" />
+    <TopInfo class="mb-[24px]" />
     <Tabs />
   </div>
 </template>
