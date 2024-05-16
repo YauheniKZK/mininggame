@@ -57,6 +57,7 @@ onMounted(() => {
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
         </span>
+        <span class="cursor"></span>
       </div>
     </div>
   </div>
@@ -84,6 +85,20 @@ onMounted(() => {
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
   border-radius: 50%;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 6px;
+  height: 1em;
+  background-color: #e7e0e09a;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
 }
 
 
