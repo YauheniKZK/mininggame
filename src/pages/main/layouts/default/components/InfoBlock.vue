@@ -17,6 +17,15 @@ const balanceRef = computed(() => {
     return 0
   }
 })
+
+const scoreRef = computed(() => {
+  if (currentUserDataGetters.value.score) {
+    return Number(currentUserDataGetters.value.score / 100).toFixed(2)
+  } else {
+    return 0
+  }
+})
+
 const setLevelUp = computed(() => {
   return levels[currentUserDataGetters.value.level] / 100
 })
@@ -75,16 +84,16 @@ onMounted(() => {
       </div>
       <div class="w-full max-w-[180px] h-[1px] bg-[#63656661] my-[8px]"></div>
       <div class="flex flex-col">
-        <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('up_level') + ': ' }}</span>
+        <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('profit_hour') + ': ' }}</span>
         <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
-          {{ formatNumberWithSpaces(setLevelUp) }}
+          {{ formatNumberWithSpaces(Number(scoreRef)) }}
           <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
       </div>
     </div>
     <div class="flex items-end h-auto w-[72px] rounded-[4px]" style="border: 1px solid #adaeb1;">
       <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
-        <span class="absolute justify-center -top-[9px] left-0 text-[10px] text-[#adaeb1]" style="writing-mode: vertical-rl;">
+        <span class="absolute justify-center bottom-[4px] -left-[21px] text-[14px] text-[#adaeb1] rotate-180" style="writing-mode: vertical-rl;">
           {{ $t('up_level') }}
         </span>
         <div class="flex w-full absolute justify-center -top-[9px] left-0">
