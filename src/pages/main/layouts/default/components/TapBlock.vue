@@ -63,7 +63,7 @@ onMounted(() => {
       </div>
     </div>
     <n-modal v-model:show="showModal" transform-origin="center">
-      <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px]" style="filter: blur(2px);">
+      <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
         <div class="flex flex-col w-full h-full bg-[#0000009d] relative z-[2]">
           <span class="text-[#fff]">{{ 'modal' }}</span>
         </div>
@@ -73,6 +73,15 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.before-block::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: blur(2px);
+  border-radius: 16px;
+  z-index: 1;
+}
 .btn-tap {
   --borderWidth: 3px;
   background: #1D1F20;
