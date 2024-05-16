@@ -1,10 +1,51 @@
 <script setup lang="ts">
+import { ref, onMounted } from 'vue';
+
+const phrases = ['cat', 'neo'];
+const currentPhrase = ref(phrases[0]);
+const animatedText = ref(currentPhrase.value);
+const chars = '!<>-_\\/[]{}—=+*^?#________';
+let charIndex = 0;
+let phraseIndex = 0;
+
+const scramble = (from: string | any[], to: string | any[]) => {
+  let text = '';
+  for (let i = 0; i < from.length || i < to.length; i++) {
+    if (i < from.length && (i < charIndex || Math.random() < 0.5)) {
+      text += from[i];
+    } else if (i < to.length) {
+      text += to[i];
+    } else {
+      text += chars[Math.floor(Math.random() * chars.length)];
+    }
+  }
+  return text;
+};
+
+const update = () => {
+  animatedText.value = scramble(currentPhrase.value, phrases[phraseIndex]);
+
+  if (charIndex < phrases[phraseIndex].length) {
+    charIndex++;
+    setTimeout(update, 50);
+  } else if (phraseIndex < phrases.length - 1) {
+    phraseIndex++;
+    charIndex = 0;
+    setTimeout(update, 1500);
+  }
+};
+
+onMounted(() => {
+  setTimeout(update, 1500);
+});
 </script>
 
 <template>
   <div class="flex justify-center items-center w-full">
-    <div class="btn-tap">
-      <span>{{ 'Wake up...' }}</span>
+    <div class="btn-tap flex justify-center items-center">
+      <span class="text-[#fff]">
+        {{ animatedText }}
+      </span>
     </div>
   </div>
 </template>
