@@ -1,51 +1,63 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue';
 
-const phrases = ['cat', 'neo'];
-const currentPhrase = ref(phrases[0]);
-const animatedText = ref(currentPhrase.value);
-const chars = '!<>-_\\/[]{}—=+*^?#________';
-let charIndex = 0;
-let phraseIndex = 0;
+const firstWord = 'neo';
+const secondWord = 'cat';
+const chars = 'awkjbdawdihawlduhauiwgduyawgd';
+const animatedText = ref([...firstWord].map(c => ({ char: c, isAnimating: false })));
+const animationSpeed = ref(100); // Настройте скорость анимации здесь (в миллисекундах)
 
-const scramble = (from: string | any[], to: string | any[]) => {
-  let text = '';
-  for (let i = 0; i < from.length || i < to.length; i++) {
-    if (i < from.length && (i < charIndex || Math.random() < 0.5)) {
-      text += from[i];
-    } else if (i < to.length) {
-      text += to[i];
-    } else {
-      text += chars[Math.floor(Math.random() * chars.length)];
+const getRandomChar = () => chars[Math.floor(Math.random() * chars.length)];
+
+const animate = () => {
+  const promises: any = [];
+
+  secondWord.split('').forEach((char, index) => {
+    let frame = 0;
+    const frames = Math.floor(Math.random() * 15) + 5;
+
+    const promise = new Promise<void>(resolve => {
+      const interval = setInterval(() => {
+        if (frame === frames) {
+          animatedText.value[index].char = char;
+          clearInterval(interval);
+          resolve();
+        } else {
+          animatedText.value[index].char = getRandomChar();
+          frame++;
+        }
+      }, animationSpeed.value);
+    });
+
+    promises.push(promise);
+  });
+
+  Promise.all(promises).then(() => {
+    if (secondWord.length < firstWord.length) {
+      animatedText.value.length = secondWord.length;
     }
-  }
-  return text;
-};
-
-const update = () => {
-  animatedText.value = scramble(currentPhrase.value, phrases[phraseIndex]);
-
-  if (charIndex < phrases[phraseIndex].length) {
-    charIndex++;
-    setTimeout(update, 50);
-  } else if (phraseIndex < phrases.length - 1) {
-    phraseIndex++;
-    charIndex = 0;
-    setTimeout(update, 1500);
-  }
+  });
 };
 
 onMounted(() => {
-  setTimeout(update, 1500);
+  setTimeout(() => {
+    animate()
+  }, 2000)
+  setInterval(() => {
+    animate()
+  }, 10000)
 });
 </script>
 
 <template>
   <div class="flex justify-center items-center w-full">
     <div class="btn-tap flex justify-center items-center">
-      <span class="text-[#fff]">
-        {{ animatedText }}
-      </span>
+      <div class="flex items-center text-[14px] text-[#fff]">
+        <span>{{ 'Wake up...' }}</span>
+        <span v-for="(char, index) in animatedText" :key="index">
+          {{ char.char }}
+        </span>
+      </div>
     </div>
   </div>
 </template>

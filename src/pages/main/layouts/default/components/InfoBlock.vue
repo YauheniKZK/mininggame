@@ -85,10 +85,13 @@ onMounted(() => {
       <div class="w-full max-w-[180px] h-[1px] bg-[#63656661] my-[8px]"></div>
       <div class="flex flex-col">
         <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('profit_hour') + ': ' }}</span>
-        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
-          {{ '+ ' + formatNumberWithSpaces(Number(scoreRef)) }}
-          <sup class="font-[400]">{{ ' $' }}</sup>
-        </span>
+        <div class="flex items-center">
+          <span class="text-[12px] text-[#fff] leading-[28px]">{{ '+ ' }}</span>
+          <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
+            {{ formatNumberWithSpaces(Number(scoreRef)) }}
+            <sup class="font-[400]">{{ ' $' }}</sup>
+          </span>
+        </div>
       </div>
     </div>
     <div class="flex items-end h-auto w-[72px] rounded-[4px]" style="border: 1px solid #adaeb1;">
