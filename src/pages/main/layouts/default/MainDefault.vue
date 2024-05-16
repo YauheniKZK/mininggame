@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import TopBlock from './components/TopBlock.vue';
 import InfoBlock from './components/InfoBlock.vue';
-import TapBlock from '@/components/TapBlock.vue';
+import TapBlock from './components/TapBlock.vue';
 
 </script>
 
