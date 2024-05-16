@@ -39,6 +39,8 @@ const animate = () => {
   });
 };
 
+const showModal = ref(false)
+
 onMounted(() => {
   setTimeout(() => {
     animate()
@@ -51,7 +53,7 @@ onMounted(() => {
 
 <template>
   <div class="flex justify-center items-center w-full">
-    <div class="btn-tap flex justify-center items-center">
+    <div class="btn-tap flex justify-center items-center" @click="showModal = true">
       <div class="flex items-center justify-center z-[1] text-[14px] text-[#fff] bg-[#1d1d1d] w-full h-full rounded-[50%]">
         <span>{{ 'Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
@@ -60,6 +62,11 @@ onMounted(() => {
         <span class="cursor"></span>
       </div>
     </div>
+    <n-modal v-model:show="showModal" transform-origin="center">
+      <div class="flex flex-col w-full h-full">
+        {{ 'Modal' }}
+      </div>
+    </n-modal>
   </div>
 </template>
 
@@ -81,7 +88,7 @@ onMounted(() => {
   width: calc(100% + var(--borderWidth) * 2);
   background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
   border-radius: calc(2 * var(--borderWidth));
-  z-index: -1;
+  z-index: 0;
   animation: animatedgradient 3s ease alternate infinite;
   background-size: 300% 300%;
   border-radius: 50%;
