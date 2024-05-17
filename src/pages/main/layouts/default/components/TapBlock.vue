@@ -76,16 +76,16 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-center gap-[16px]">
-      <div class="flex items-center text-custom z-[1] p-[16px] text-[18px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
+      <div class="flex text-custom z-[1] p-[16px] text-[18px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
         <span>{{ 'Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
         </span>
         <span class="cursor"></span>
       </div>
-      <div class="flex justify-center flex-col items-center w-[61px] h-[61px] min-w-[61px] rounded-[4px] btn-open" style="background-color: rgb(26, 255, 128, 0.75);">
-        <span class="text-[12px] text-[#fff]">{{ 'Open' }}</span>
-        <span class="text-[12px] text-[#fff]">{{ 'cat-pad' }}</span>
+      <div class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[61px] rounded-[4px] btn-open" style="background-color: rgb(26, 255, 128, 0.75);">
+        <span class="text-[12px] uppercase text-[#000]">{{ 'Open' }}</span>
+        <span class="text-[12px] uppercase text-[#000]">{{ 'cat-pad' }}</span>
       </div>
     </div>
     <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
@@ -115,7 +115,7 @@ onMounted(() => {
   border-radius: 4px;
   min-height: 22px;
   padding: 0 4px;
-  min-width: 116px;
+  min-width: 90px;
   position: relative;
   margin-right: 4px;
   flex-grow: 1;
@@ -149,6 +149,7 @@ onMounted(() => {
 .term-style {
   border: 1px solid #fbdd87;
   border-radius: 4px;
+  min-height: 70px
 }
 
 @keyframes blink {
@@ -163,6 +164,8 @@ onMounted(() => {
   background-color: #e7e0e09a;
   margin-left: 2px;
   animation: blink 1s step-end infinite;
+  position: relative;
+  top: 4px;
 }
 
 </style>
