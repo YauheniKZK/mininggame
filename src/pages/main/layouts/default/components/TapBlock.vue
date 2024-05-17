@@ -71,7 +71,10 @@ onMounted(() => {
         <span class="text-[#fff] text-[14px]">{{ ' 1$' }}</span>
       </div>
       <div class="flex items-center block-style2">
-        <span class="text-[14px] text-[#fbdd87]">{{ 'energy:' }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fbdd87" viewBox="0 0 24 24">
+          <path d="M13 2L3 14h8v8l10-12h-8z"></path>
+        </svg>
+        <span class="text-[14px] text-[#fbdd87]">{{ ':' }}</span>
         <span class="text-[#fff] text-[14px]">{{ ' 10/100' }}</span>
       </div>
     </div>
