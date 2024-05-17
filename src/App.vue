@@ -66,7 +66,6 @@ onBeforeUnmount(async () => {
     <n-loading-bar-provider>
       <n-message-provider :placement="'top-right'">
         <n-notification-provider>
-          <p>{{ WebApp.initData }}</p>
           <Main class="bg-main" />
         </n-notification-provider>
       </n-message-provider>
