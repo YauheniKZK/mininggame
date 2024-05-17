@@ -89,7 +89,6 @@ onMounted(() => {
           <span class="text-[12px] text-[#fff] leading-[28px]">{{ '+ ' }}</span>
           <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
             {{ formatNumberWithSpaces(Number(scoreRef)) }}
-            <sup class="font-[400]">{{ ' $' }}</sup>
           </span>
         </div>
       </div>

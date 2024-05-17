@@ -42,6 +42,10 @@ const animate = () => {
 
 const showModal = ref(false)
 
+const closeTapsEmit = () => {
+  showModal.value = false
+}
+
 onMounted(() => {
   setTimeout(() => {
     animate()
@@ -63,10 +67,10 @@ onMounted(() => {
         <span class="cursor"></span>
       </div>
     </div>
-    <n-modal v-model:show="showModal" transform-origin="center">
+    <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
       <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
-        <div class="flex flex-col w-full h-full bg-[#0000009d] relative z-[2] p-[16px]">
-          <TapBlockV3 />
+        <div class="flex flex-col w-full h-full bg-[#0000009d] relative z-[2] rounded-[16px] p-[16px]">
+          <TapBlockV3 @closeTaps="closeTapsEmit" />
         </div>
       </div>
     </n-modal>

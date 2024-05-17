@@ -10,6 +10,18 @@ const scrollbarContainer = ref()
 const scrollbarRef = ref()
 const keyboardContainer = ref()
 const textGenerated = ref('')
+function generateMatrixSymbol() {
+  const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
+  return characters.charAt(Math.floor(Math.random() * characters.length));
+}
+const whiteText = () => {
+  const symbol = generateMatrixSymbol()
+  textGenerated.value += symbol
+  textGeneratedRef.value.textContent = textGenerated.value
+  console.log('scrollbarContainer.value.scrollHeight', scrollbarContainer.value.scrollHeight)
+  const scrollbar: any = document.querySelector('.scrollbarRef .n-scrollbar-content')
+  scrollbarRef.value.scrollTo(0, scrollbar.scrollHeight)
+}
 
 onMounted(() => {
   WebApp.BackButton.show()
@@ -54,13 +66,15 @@ const buttonsArray = ref([
   createButtonObject('space', 300),
 ])
 
-const clickbtn = (index: number, type: 'press' | 'no') => {
-  if (type === 'press') {
-    buttonsArray.value[index].class = 'press-key'
-  }
-  if (type === 'no') {
-    buttonsArray.value[index].class = ''
-  }
+const clickbtnPress = (index: number) => {
+  buttonsArray.value[index].class = 'press-key'
+}
+
+const clickbtn = () => {
+  buttonsArray.value.forEach((item) => {
+    item.class = ''
+  })
+  whiteText()
 }
 
 onUnmounted(() => {
@@ -77,7 +91,7 @@ onUnmounted(() => {
         </n-scrollbar>
       </div>
     </div>
-    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] p-[4px]">
+    <div ref="keyboardContainer" class="w-full h-[260px] flex justify-center items-center rounded-[16px] bg-[#373c41] p-[4px]">
       <div class="w-full flex flex-wrap gap-[4px]">
         <div
           v-for="(btn, index) in buttonsArray"
@@ -86,8 +100,8 @@ onUnmounted(() => {
           :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
           :style="`min-width: ${btn.length}px;`"
           style="border: 1px solid #888;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
-          @touchstart="clickbtn(index, 'press')"
-          @touchend="clickbtn(index, 'no')"
+          @touchstart="clickbtnPress(index)"
+          @touchend="clickbtn()"
         >
           <span class="text-[#fff] text-[16px]">{{ btn.name }}</span>
         </div>
