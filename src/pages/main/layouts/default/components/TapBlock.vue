@@ -67,7 +67,7 @@ onMounted(() => {
         <span class="text-[14px] text-[#fbdd87]">{{ 'Term-001' }}</span>
       </div>
       <div class="flex items-center block-style2">
-        <span class="text-[14px] text-[#fbdd87]">{{ '$profit/tap:' }}</span>
+        <span class="text-[14px] text-[#fbdd87]">{{ '$/tap:' }}</span>
         <span class="text-[#fff] text-[14px]">{{ ' 1$' }}</span>
       </div>
       <div class="flex items-center block-style2">
@@ -76,14 +76,14 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-center gap-[16px]">
-      <div class="flex items-center z-[1] p-[16px] text-[18px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
+      <div class="flex items-center text-custom z-[1] p-[16px] text-[18px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
         <span>{{ 'Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
         </span>
         <span class="cursor"></span>
       </div>
-      <div class="flex justify-center flex-col items-center w-[61px] h-[61px] min-w-[61px] rounded-[4px] btn-open">
+      <div class="flex justify-center flex-col items-center w-[61px] h-[61px] min-w-[61px] rounded-[4px] btn-open" style="background-color: rgb(26, 255, 128, 0.75);">
         <span class="text-[12px] text-[#fff]">{{ 'Open' }}</span>
         <span class="text-[12px] text-[#fff]">{{ 'cat-pad' }}</span>
       </div>
@@ -99,6 +99,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.text-custom {
+  font-family: "Share Tech Mono", monospace, system-ui;
+  text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);
+}
 .container-block {
   padding: 12px;
   border-radius: 16px;
@@ -122,6 +126,7 @@ onMounted(() => {
   position: absolute;
   left: 9px;
   top: -10px;
+  text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);
 }
 .block-style2 {
   border-top: 2px solid #fbdd87;
@@ -134,6 +139,7 @@ onMounted(() => {
 }
 .block-style2 span {
   padding: 0 4px;
+  text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);
 }
 
 .btn-open {
