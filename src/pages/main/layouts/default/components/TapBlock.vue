@@ -1,11 +1,15 @@
 <script setup lang="ts">
 import TapBlockV3 from '@/components/TapBlockV3.vue';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
 import { ref, onMounted } from 'vue';
 
-const firstWord = 'neo';
+const appStore = useApplicationStore()
+const { currentUserDataGetters } = storeToRefs(appStore)
+const firstWord = ref(currentUserDataGetters.value?.first_name || 'neo');
 const secondWord = 'cat';
 const chars = 'awkjbdawdihawlduhauiwgduyawgd';
-const animatedText = ref([...firstWord].map(c => ({ char: c, isAnimating: false })));
+const animatedText = ref([...firstWord.value].map(c => ({ char: c, isAnimating: false })));
 const animationSpeed = ref(100); // Настройте скорость анимации здесь (в миллисекундах)
 
 const getRandomChar = () => chars[Math.floor(Math.random() * chars.length)];
@@ -34,7 +38,7 @@ const animate = () => {
   });
 
   Promise.all(promises).then(() => {
-    if (secondWord.length < firstWord.length) {
+    if (secondWord.length < firstWord.value.length) {
       animatedText.value.length = secondWord.length;
     }
   });
@@ -57,14 +61,31 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-center items-center w-full">
-    <div class="btn-tap flex justify-center items-center" @click="showModal = true">
-      <div class="flex items-center justify-center z-[1] text-[18px] text-[#fff] bg-[#1d1d1d] w-full h-full rounded-[50%]">
+  <div class="flex flex-col w-full container-block">
+    <div class="flex w-full mb-[16px]">
+      <div class="flex items-center block-style1">
+        <span class="text-[14px] text-[#fbdd87]">{{ 'Term-001' }}</span>
+      </div>
+      <div class="flex items-center block-style2">
+        <span class="text-[14px] text-[#fbdd87]">{{ '$profit/tap:' }}</span>
+        <span class="text-[#fff] text-[14px]">{{ ' 1$' }}</span>
+      </div>
+      <div class="flex items-center block-style2">
+        <span class="text-[14px] text-[#fbdd87]">{{ 'energy:' }}</span>
+        <span class="text-[#fff] text-[14px]">{{ ' 10/100' }}</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-[16px]">
+      <div class="flex items-center z-[1] p-[16px] text-[18px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
         <span>{{ 'Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
         </span>
         <span class="cursor"></span>
+      </div>
+      <div class="flex justify-center flex-col items-center w-[61px] h-[61px] min-w-[61px] rounded-[4px] btn-open">
+        <span class="text-[12px] text-[#fff]">{{ 'Open' }}</span>
+        <span class="text-[12px] text-[#fff]">{{ 'cat-pad' }}</span>
       </div>
     </div>
     <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
@@ -78,36 +99,50 @@ onMounted(() => {
 </template>
 
 <style scoped>
-.before-block::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  filter: blur(2px);
+.container-block {
+  padding: 12px;
   border-radius: 16px;
-  z-index: 1;
+  background: #373c41;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
-.btn-tap {
-  --borderWidth: 3px;
-  background: #1D1F20;
+.block-style1 {
+  border-top: 2px solid #fbdd87;
+  border-right: 2px solid #fbdd87;
+  border-radius: 4px;
+  min-height: 22px;
+  padding: 0 4px;
+  min-width: 116px;
   position: relative;
-  border-radius: 50%;
-  width: 250px;
-  height: 250px;
+  margin-right: 4px;
+  flex-grow: 1;
 }
-.btn-tap:after {
-  content: '';
+.block-style1 span {
+  background: #373c41;
+  padding: 0 4px;
   position: absolute;
-  top: calc(-1 * var(--borderWidth));
-  left: calc(-1 * var(--borderWidth));
-  height: calc(100% + var(--borderWidth) * 2);
-  width: calc(100% + var(--borderWidth) * 2);
-  background: linear-gradient(60deg, #f79533, #f37055, #ef4e7b, #a166ab, #5073b8, #1098ad, #07b39b, #6fba82);
-  border-radius: calc(2 * var(--borderWidth));
-  z-index: 0;
-  animation: animatedgradient 3s ease alternate infinite;
-  background-size: 300% 300%;
-  border-radius: 50%;
+  left: 9px;
+  top: -10px;
+}
+.block-style2 {
+  border-top: 2px solid #fbdd87;
+  border-right: 2px solid #fbdd87;
+  border-radius: 4px;
+  min-height: 22px;
+  padding: 0 4px;
+  position: relative;
+  margin-right: 4px;
+}
+.block-style2 span {
+  padding: 0 4px;
+}
+
+.btn-open {
+  border: 1px solid #fbdd87;
+}
+
+.term-style {
+  border: 1px solid #fbdd87;
+  border-radius: 4px;
 }
 
 @keyframes blink {
@@ -124,16 +159,4 @@ onMounted(() => {
   animation: blink 1s step-end infinite;
 }
 
-
-@keyframes animatedgradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
-}
 </style>
