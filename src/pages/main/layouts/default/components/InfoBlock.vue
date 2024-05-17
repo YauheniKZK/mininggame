@@ -73,7 +73,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-between p-[12px] rounded-[16px] bg-[#373c41]">
+  <div class="flex justify-between p-[12px] rounded-[16px] bg-[#373c41]" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
     <div class="flex flex-col">
       <div class="flex flex-col">
         <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('BALANCE') + ': ' }}</span>

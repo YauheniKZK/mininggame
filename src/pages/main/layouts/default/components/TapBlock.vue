@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import TapBlockV3 from '@/components/TapBlockV3.vue';
 import { ref, onMounted } from 'vue';
 
 const firstWord = 'neo';
@@ -64,8 +65,8 @@ onMounted(() => {
     </div>
     <n-modal v-model:show="showModal" transform-origin="center">
       <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
-        <div class="flex flex-col w-full h-full bg-[#0000009d] relative z-[2]">
-          <span class="text-[#fff]">{{ 'modal' }}</span>
+        <div class="flex flex-col w-full h-full bg-[#0000009d] relative z-[2] p-[16px]">
+          <TapBlockV3 />
         </div>
       </div>
     </n-modal>
