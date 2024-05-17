@@ -79,14 +79,18 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-center gap-[16px]">
-      <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
+      <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full">
         <span>{{ '> Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
         </span>
         <span class="cursor"></span>
       </div>
-      <div class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[70px] rounded-[4px] btn-open" style="background-color: rgb(26, 255, 128, 0.75);">
+      <div
+        class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[70px] rounded-[4px] btn-open"
+        style="background-color: rgb(26, 255, 128, 0.75);"
+        @click="showModal = true"
+      >
         <span class="text-[12px] uppercase text-[#000]">{{ 'Open' }}</span>
         <span class="text-[12px] uppercase text-[#000]">{{ 'cat-pad' }}</span>
       </div>
