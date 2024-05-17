@@ -8,7 +8,7 @@ const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
 const firstWord = ref(currentUserDataGetters.value?.first_name || 'neo');
 const secondWord = 'cat';
-const chars = 'awkjbdawdihawlduhauiwgduyawgd';
+const chars = 'TAS%_%%]/_:{_([|]%!?><,=%#<(C';
 const animatedText = ref([...firstWord.value].map(c => ({ char: c, isAnimating: false })));
 const animationSpeed = ref(100); // Настройте скорость анимации здесь (в миллисекундах)
 
@@ -76,14 +76,14 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex items-center gap-[16px]">
-      <div class="flex text-custom z-[1] p-[16px] text-[18px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
-        <span>{{ 'Wake up...' }}</span>
+      <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full" @click="showModal = true">
+        <span>{{ '> Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
         </span>
         <span class="cursor"></span>
       </div>
-      <div class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[61px] rounded-[4px] btn-open" style="background-color: rgb(26, 255, 128, 0.75);">
+      <div class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[70px] rounded-[4px] btn-open" style="background-color: rgb(26, 255, 128, 0.75);">
         <span class="text-[12px] uppercase text-[#000]">{{ 'Open' }}</span>
         <span class="text-[12px] uppercase text-[#000]">{{ 'cat-pad' }}</span>
       </div>
@@ -108,6 +108,7 @@ onMounted(() => {
   border-radius: 16px;
   background: #373c41;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  min-height: 260px;
 }
 .block-style1 {
   border-top: 2px solid #fbdd87;
@@ -144,6 +145,7 @@ onMounted(() => {
 
 .btn-open {
   border: 1px solid #fbdd87;
+  font-weight: 700;
 }
 
 .term-style {
