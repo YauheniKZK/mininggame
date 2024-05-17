@@ -21,7 +21,6 @@ function setViewportData() {
   console.log('window.viewportHeight111111', WebApp.viewportHeight)
   const procent = () => viewportHeight.value > 0 ? WebApp.viewportHeight * 100 / viewportHeight.value : 0
   if (procent() !== 0 && procent() < 70) {
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA222');
     tapActionIncr(10)
   }
 }
@@ -67,6 +66,7 @@ onBeforeUnmount(async () => {
     <n-loading-bar-provider>
       <n-message-provider :placement="'top-right'">
         <n-notification-provider>
+          <p>{{ WebApp.initData }}</p>
           <Main class="bg-main" />
         </n-notification-provider>
       </n-message-provider>
