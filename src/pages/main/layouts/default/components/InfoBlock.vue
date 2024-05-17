@@ -115,15 +115,18 @@ onMounted(() => {
 <style scoped>
 .bg-image {
   position: relative;
+  overflow: hidden;
 }
 .bg-image::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100px;
-  height: 100px;
+  top: -40px;
+  left: -85px;
+  width: 216px;
+  height: 216px;
   background: url('../../../../../assets/img/coin-bg.png') no-repeat center;
   background-size: contain;
+  z-index: -1;
+  transform: rotate(20deg);
 }
 </style>
