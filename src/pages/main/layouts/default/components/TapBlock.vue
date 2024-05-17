@@ -69,7 +69,7 @@ onMounted(() => {
     </div>
     <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
       <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
-        <div class="flex flex-col w-full h-full bg-[#000000b4] relative z-[2] rounded-[16px] p-[16px]">
+        <div class="flex flex-col w-full h-full bg-[#29442f] relative z-[2] rounded-[16px]">
           <TapBlockV3 @closeTaps="closeTapsEmit" />
         </div>
       </div>

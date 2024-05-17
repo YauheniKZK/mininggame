@@ -106,11 +106,11 @@ onUnmounted(() => {
           class="flex-grow p-[8px] flex rounded-[4px]"
           :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
           :style="`min-width: ${btn.length}px;`"
-          style="border: 1px solid #888;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+          style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
           @touchstart="clickbtnPress(index)"
           @touchend="clickbtn()"
         >
-          <span class="text-[#fff] text-[16px]">{{ btn.name }}</span>
+          <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
         </div>
       </div>
     </div>
@@ -198,6 +198,6 @@ p:last-child:after {
 }
 .press-key {
   box-shadow: none !important;
-  background: #455656;
+  background: #1ff37e44;
 }
 </style>
