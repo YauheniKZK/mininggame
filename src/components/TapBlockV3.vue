@@ -91,7 +91,7 @@ onUnmounted(() => {
         </n-scrollbar>
       </div>
     </div>
-    <div ref="keyboardContainer" class="w-full h-[260px] flex justify-center items-center rounded-[16px] bg-[#373c41] p-[4px]">
+    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] p-[4px]">
       <div class="w-full flex flex-wrap gap-[4px]">
         <div
           v-for="(btn, index) in buttonsArray"
