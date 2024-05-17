@@ -59,7 +59,7 @@ onMounted(() => {
 <template>
   <div class="flex justify-center items-center w-full">
     <div class="btn-tap flex justify-center items-center" @click="showModal = true">
-      <div class="flex items-center justify-center z-[1] text-[14px] text-[#fff] bg-[#1d1d1d] w-full h-full rounded-[50%]">
+      <div class="flex items-center justify-center z-[1] text-[18px] text-[#fff] bg-[#1d1d1d] w-full h-full rounded-[50%]">
         <span>{{ 'Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
