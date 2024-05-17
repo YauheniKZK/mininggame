@@ -77,12 +77,11 @@ const clickbtn = () => {
   whiteText()
 }
 
+const moveNone = (e: { preventDefault: () => void; }) => {
+  e.preventDefault()
+}
+
 onMounted(() => {
-  if (keyboardContainer.value) {
-    keyboardContainer.value.addEventListener('touchmove', function(e: { preventDefault: () => void; }) {
-      e.preventDefault(); // Предотвращает пролистывание
-    }, { passive: false })
-  }
 })
 
 onUnmounted(() => {
@@ -99,7 +98,7 @@ onUnmounted(() => {
         </n-scrollbar>
       </div>
     </div>
-    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] p-[4px]">
+    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] p-[4px]" @touchmove="moveNone">
       <div class="w-full flex flex-wrap gap-[4px]">
         <div
           v-for="(btn, index) in buttonsArray"
