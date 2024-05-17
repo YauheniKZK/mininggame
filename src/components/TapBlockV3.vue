@@ -77,6 +77,14 @@ const clickbtn = () => {
   whiteText()
 }
 
+onMounted(() => {
+  if (keyboardContainer.value) {
+    keyboardContainer.value.addEventListener('touchmove', function(e: { preventDefault: () => void; }) {
+      e.preventDefault(); // Предотвращает пролистывание
+    }, { passive: false })
+  }
+})
+
 onUnmounted(() => {
   WebApp.BackButton.hide()
 })
