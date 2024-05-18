@@ -153,6 +153,7 @@ onMounted(() => {
 .btn-open {
   border: 1px solid #fbdd87;
   font-weight: 700;
+  cursor: pointer;
 }
 
 .term-style {
