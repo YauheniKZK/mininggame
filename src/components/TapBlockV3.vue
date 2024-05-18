@@ -98,7 +98,7 @@ onUnmounted(() => {
         </n-scrollbar>
       </div>
     </div>
-    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] p-[4px]" @touchmove="moveNone">
+    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone">
       <div class="w-full flex flex-wrap gap-[4px]">
         <div
           v-for="(btn, index) in buttonsArray"
@@ -118,6 +118,12 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.keyboard-block {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  touch-action: none !important;
+}
 .screen {
   animation:colorPulse 5s infinite ease-in-out;
   background-image:radial-gradient(#444, #111);
