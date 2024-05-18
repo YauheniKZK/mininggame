@@ -66,24 +66,32 @@ const buttonsArray = ref([
   createButtonObject('space', 300),
 ])
 
-const clickbtnPress = (e: any, index: number) => {
+const clickbtnPress = (e: any) => {
   e.preventDefault()
-  buttonsArray.value.forEach((item) => {
-    item.class = ''
-  })
-  buttonsArray.value[index].class = 'press-key'
+  // buttonsArray.value.forEach((item) => {
+  //   item.class = ''
+  // })
+  // buttonsArray.value[index].class = 'press-key'
 }
 
 const clickbtn = (e: any) => {
   e.preventDefault()
-  buttonsArray.value.forEach((item) => {
-    item.class = ''
-  })
-  whiteText()
+  // buttonsArray.value.forEach((item) => {
+  //   item.class = ''
+  // })
+  // whiteText()
 }
 
-const pointerEvent = () => {
+const pointerEvent = (index: number) => {
  console.log('111111111111111')
+ buttonsArray.value[index].class = 'press-key'
+//  buttonsArray.value.forEach((item) => {
+//     item.class = ''
+//   })
+setTimeout(() => {
+  buttonsArray.value[index].class = ''
+}, 100)
+  whiteText()
 }
 
 const moveNone = (e: { preventDefault: () => void; }) => {
@@ -116,10 +124,10 @@ onUnmounted(() => {
           :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
           :style="`min-width: ${btn.length}px;`"
           style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
-          @touchstart="e => clickbtnPress(e, index)"
+          @touchstart="e => clickbtnPress(e)"
           @touchend="e => clickbtn(e)"
           @touchmove="moveNone"
-          @pointerup="pointerEvent"
+          @pointerup="pointerEvent(index)"
         >
           <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
         </div>
