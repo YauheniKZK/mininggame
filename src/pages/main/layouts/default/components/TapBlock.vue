@@ -5,7 +5,7 @@ import { storeToRefs } from 'pinia';
 import { ref, onMounted } from 'vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, maxTapsGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, maxTapsGetters, availableTapsGetters, earnPerTapGetters } = storeToRefs(appStore)
 const firstWord = ref(currentUserDataGetters.value?.first_name || 'neo');
 const secondWord = 'cat';
 const chars = 'TAS%_%%]/_:{_([|]%!?><,=%#<(C';
@@ -68,14 +68,14 @@ onMounted(() => {
       </div>
       <div class="flex items-center block-style2">
         <span class="text-[14px] text-[#fbdd87]">{{ '$/tap:' }}</span>
-        <span class="text-[#fff] text-[14px]">{{ ' 1$' }}</span>
+        <span class="text-[#fff] text-[14px]">{{ ' ' + earnPerTapGetters }}</span>
       </div>
       <div class="flex items-center block-style2">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fbdd87" viewBox="0 0 24 24">
           <path d="M13 2L3 14h8v8l10-12h-8z"></path>
         </svg>
         <span class="text-[14px] text-[#fbdd87]">{{ ':' }}</span>
-        <span class="text-[#fff] text-[14px]">{{ ' 10/' + maxTapsGetters }}</span>
+        <span class="text-[#fff] text-[14px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
       </div>
     </div>
     <div class="flex items-center gap-[16px]">
