@@ -8,9 +8,9 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
+/* * {
   touch-action: manipulation;
-}
+} */
 
 :root {
   --main-bg-color: #1d1c22;

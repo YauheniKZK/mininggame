@@ -130,6 +130,7 @@ onUnmounted(() => {
   -moz-user-select: none !important;
   user-select: none !important;
   touch-action: none !important;
+  -webkit-touch-callout: none !important;
 }
 .screen {
   animation:colorPulse 5s infinite ease-in-out;
