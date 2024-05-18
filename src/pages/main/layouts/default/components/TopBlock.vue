@@ -67,7 +67,7 @@ const updateStack = async (value: string) => {
         <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
       </button>
     </div>
-    <n-drawer v-model:show="showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary" style="    box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
+    <n-drawer v-model:show="showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary no-scroll-block" style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
       <n-drawer-content>
         <div class="flex flex-col mb-[12px]">
           <div class="flex mb-[24px]">
@@ -88,6 +88,13 @@ const updateStack = async (value: string) => {
 </template>
 
 <style scoped>
+
+.no-scroll-block {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  user-select: none !important;
+  touch-action: none !important;
+}
 .img-icon {
   max-width: 50px;
   min-width: 50px;
