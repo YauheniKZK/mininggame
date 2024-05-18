@@ -124,7 +124,7 @@ onMounted(() => {
   left: -110px;
   width: 337px;
   height: 337px;
-  background: url('../../../../../assets/img/coin-bg.png') no-repeat center;
+  background: url('../../../../../assets/img/coin-bg2.png') no-repeat center;
   background-size: contain;
   z-index: -1;
   transform: rotate(20deg);
