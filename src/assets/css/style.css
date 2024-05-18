@@ -189,3 +189,12 @@ body, html {
   --n-border-hover: 1px solid rgb(34 34 34) !important;
   border-radius: 16px;
 }
+
+.n-base-select-menu {
+  --n-color: rgb(34 34 34);
+  --n-option-text-color: rgb(230 230 230);
+  --n-option-text-color-active: rgb(230 230 230);
+  --n-option-text-color-disabled: rgb(230 230 230);
+  --n-option-text-color-pressed: rgb(230 230 230);
+  --n-border-radius: 4px !important;
+}
