@@ -66,7 +66,11 @@ const buttonsArray = ref([
   createButtonObject('space', 300),
 ])
 
-const clickbtnPress = (index: number) => {
+const clickbtnPress = (e: any, index: number) => {
+  e.preventDefault()
+  buttonsArray.value.forEach((item) => {
+    item.class = ''
+  })
   buttonsArray.value[index].class = 'press-key'
 }
 
@@ -107,7 +111,7 @@ onUnmounted(() => {
           :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
           :style="`min-width: ${btn.length}px;`"
           style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
-          @touchstart="clickbtnPress(index)"
+          @touchstart="e => clickbtnPress(e, index)"
           @touchend="clickbtn()"
           @touchmove="moveNone"
         >
