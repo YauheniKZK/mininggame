@@ -55,6 +55,7 @@ export const useApplicationStore = defineStore('application', () => {
   const currentThemeAppGetters = computed(() => currentThemeApp.value)
   const optionsThemeAppGetters = computed(() => optionsThemeApp.value)
   const allStacksAppGetters = computed(() => allStacksApp.value)
+  const maxTapsGetters = computed(() => currentUserData.value.max_taps)
 
   // --------Actions---------
 
@@ -275,6 +276,7 @@ export const useApplicationStore = defineStore('application', () => {
     actionChooseThemeApp,
     allStacksAppGetters,
     actionAddMainStack,
-    actionLevelCheck
+    actionLevelCheck,
+    maxTapsGetters
   }
 })

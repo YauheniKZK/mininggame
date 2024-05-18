@@ -128,6 +128,6 @@ onMounted(() => {
   background-size: contain;
   z-index: -1;
   transform: rotate(20deg);
-  opacity: 0.5;
+  opacity: 0.05;
 }
 </style>
