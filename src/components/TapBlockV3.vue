@@ -126,7 +126,10 @@ onUnmounted(() => {
 }
 
 .keyboard-block > * {
-  user-select: none;
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
+  user-select: none !important;
+  touch-action: none !important;
 }
 .screen {
   animation:colorPulse 5s infinite ease-in-out;
