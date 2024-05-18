@@ -174,3 +174,18 @@ body, html {
 .tabs-custom1 .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
   height: 100%;
 }
+
+.n-base-selection {
+  --n-height: 50px !important;
+  --n-font-size: 16px !important;
+  --n-text-color: rgb(230 230 230) !important;
+  --n-text-color-disabled: rgb(230 230 230) !important;
+  --n-color: rgb(34 34 34) !important;
+  --n-color-active: rgb(34 34 34) !important;
+  --n-color-disabled: rgb(34 34 34) !important;
+  --n-border: 1px solid rgb(34 34 34) !important;
+  --n-border-active: 1px solid rgb(34 34 34) !important;
+  --n-border-focus: 1px solid rgb(34 34 34) !important;
+  --n-border-hover: 1px solid rgb(34 34 34) !important;
+  border-radius: 16px;
+}
