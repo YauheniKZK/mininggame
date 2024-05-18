@@ -99,7 +99,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone">
-      <div class="w-full flex flex-wrap gap-[4px]">
+      <div class="w-full flex flex-wrap gap-[4px]" @touchmove="moveNone">
         <div
           v-for="(btn, index) in buttonsArray"
           :key="index"
@@ -109,6 +109,7 @@ onUnmounted(() => {
           style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
           @touchstart="clickbtnPress(index)"
           @touchend="clickbtn()"
+          @touchmove="moveNone"
         >
           <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
         </div>
