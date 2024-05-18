@@ -191,10 +191,15 @@ body, html {
 }
 
 .n-base-select-menu {
-  --n-color: rgb(34 34 34);
-  --n-option-text-color: rgb(230 230 230);
-  --n-option-text-color-active: rgb(230 230 230);
-  --n-option-text-color-disabled: rgb(230 230 230);
-  --n-option-text-color-pressed: rgb(230 230 230);
+  --n-color: rgb(34 34 34) !important;
+  --n-option-check-color: rgb(34 34 34) !important;
+  --n-option-color-pending: rgb(34 34 34) !important;
+  --n-option-color-active: rgb(34 34 34) !important;
+  --n-option-color-active-pending: rgb(34 34 34) !important;
+  --n-option-text-color: rgb(230 230 230) !important;
+  --n-option-text-color-active: rgb(230 230 230) !important;
+  --n-option-text-color-disabled: rgb(230 230 230) !important;
+  --n-option-text-color-pressed: rgb(230 230 230) !important;
   --n-border-radius: 4px !important;
+  --n-option-height: 40px !important;
 }
