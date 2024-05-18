@@ -115,8 +115,8 @@ onUnmounted(() => {
         </n-scrollbar>
       </div>
     </div>
-    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone">
-      <div class="w-full flex flex-wrap gap-[4px]" @touchmove="moveNone">
+    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
+      <div class="w-full flex flex-wrap gap-[4px]" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
         <div
           v-for="(btn, index) in buttonsArray"
           :key="index"
