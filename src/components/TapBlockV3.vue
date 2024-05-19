@@ -109,7 +109,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col justify-between relative w-full">
+  <div class="flex flex-col justify-between relative w-full h-full pb-[16px]">
     <div class="flex flex-col">
       <div class="flex mb-[24px] overflow-hidden relative">
         <div ref="scrollbarContainer" class="screen rounded-[16px]">
