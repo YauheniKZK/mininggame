@@ -85,7 +85,4 @@ const updateStack = async (value: string) => {
 </template>
 
 <style scoped>
-.item-setting {
-  border: 1px solid #D2649A;
-}
 </style>

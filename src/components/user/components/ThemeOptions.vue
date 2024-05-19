@@ -4,6 +4,8 @@ import { ThemeApp, useApplicationStore } from '@/stores/application/applicationS
 import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
+import WebApp from '@twa-dev/sdk';
+import { onUnmounted } from 'vue';
 
 
 const { t } = useI18n()
@@ -41,6 +43,19 @@ const optionsStack = computed(() => {
   })
 })
 
+const openOptions = () => {
+  showModal.value = true
+  WebApp.BackButton.show()
+}
+
+WebApp.BackButton.onClick(() => {
+  showModal.value = false
+})
+
+onUnmounted(() => {
+  WebApp.BackButton.hide()
+})
+
 const updateTheme = (value: ThemeApp) => {
   valueTheme.value = value
   actionChooseThemeApp(value)
@@ -53,7 +68,7 @@ const updateStack = async (value: string) => {
 </script>
 
 <template>
-  <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">
+  <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting" @click="openOptions">
     <span class="text-[14px] text-main-color">{{ $t('choose_theme_app') }}</span>
     <div class="flex">
       <n-icon :size="22" :color="'#D2649A'">
@@ -71,4 +86,7 @@ const updateStack = async (value: string) => {
 </template>
 
 <style scoped>
+.item-setting {
+  border: 1px solid #D2649A;
+}
 </style>
