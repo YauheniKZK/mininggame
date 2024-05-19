@@ -12,6 +12,7 @@ const scrollbarRef = ref()
 const keyboardContainer = ref()
 const textGenerated = ref('')
 const activeAutoCoding = ref(false)
+const pressAutoCoding = ref(false)
 function generateMatrixSymbol() {
   const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
   return characters.charAt(Math.floor(Math.random() * characters.length));
@@ -89,6 +90,7 @@ const intervalAutoCoding = ref<any>(null)
 
 const autoCodingStart = (e: any) => {
   e.preventDefault()
+  pressAutoCoding.value = true
   intervalAutoCoding.value = setInterval(() => {
     WebApp.HapticFeedback.impactOccurred('medium')
     whiteText()
@@ -97,6 +99,7 @@ const autoCodingStart = (e: any) => {
 
 const autoCodingEnd = (e: any) => {
   e.preventDefault()
+  pressAutoCoding.value = false
   clearInterval(intervalAutoCoding.value)
 }
 
@@ -158,7 +161,7 @@ onUnmounted(() => {
         style="touch-action: none !important;user-select: none;"
       >
         <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
-          <span class="text-[#fff] text-[22px]">{{ 'press and hold to start' }}</span>
+          <span :class="pressAutoCoding ? 'text-[#ffffffa6] text-[20px]' : 'text-[#fff] text-[22px]'">{{ 'press and hold to start' }}</span>
         </div>
         <div
           class="w-full flex flex-wrap gap-[4px]"
