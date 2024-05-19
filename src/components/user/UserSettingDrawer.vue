@@ -62,10 +62,10 @@ const updateStack = async (value: string) => {
           <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
         </div>
         <div class="flex flex-col mb-[12px]">
-          <div class="flex items-center justify-between p-[8px 16px]">
-            <span class="text-[12px] text-main-color mb-[6px]">{{ $t('choose_theme_app') }}</span>
+          <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">
+            <span class="text-[14px] text-main-color">{{ $t('choose_theme_app') }}</span>
             <div class="flex">
-              <n-icon>
+              <n-icon :size="22" :color="'#D2649A'">
                 <ChevronForward />
               </n-icon>
             </div>
@@ -73,10 +73,10 @@ const updateStack = async (value: string) => {
           
         </div>
         <div class="flex flex-col">
-          <div class="flex items-center justify-between p-[8px 16px]">
-            <span class="text-[12px] text-main-color mb-[6px]">{{ $t('choose_main_stack') }}</span>
+          <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">
+            <span class="text-[14px] text-main-color">{{ $t('choose_main_stack') }}</span>
             <div class="flex">
-              <n-icon>
+              <n-icon :size="22" :color="'#D2649A'">
                 <ChevronForward />
               </n-icon>
             </div>
@@ -88,4 +88,7 @@ const updateStack = async (value: string) => {
 </template>
 
 <style scoped>
+.item-setting {
+  border: 1px solid #D2649A;
+}
 </style>
