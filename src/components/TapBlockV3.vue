@@ -154,7 +154,6 @@ onUnmounted(() => {
         ref="keyboardContainer"
         class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px] relative"
         style="touch-action: none !important;user-select: none;"
-        @touchmove="moveNone"
       >
         <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
           <span>{{ 'press and hold to start' }}</span>
