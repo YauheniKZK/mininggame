@@ -24,14 +24,14 @@ const animate = () => {
     const promise = new Promise<void>(resolve => {
       const interval = setInterval(() => {
         if (frame === frames) {
-          if (animatedText.value[index].char) {
+          if (animatedText.value[index]?.char) {
             animatedText.value[index].char = char;
             clearInterval(interval);
             resolve();
           }
        
         } else {
-          if (animatedText.value[index].char) {
+          if (animatedText.value[index]?.char) {
             animatedText.value[index].char = getRandomChar();
             frame++;
           }
