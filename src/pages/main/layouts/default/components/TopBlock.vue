@@ -4,7 +4,7 @@ import { storeToRefs } from 'pinia';
 import { getImageUrl } from '@/utils/images';
 import { computed, ref } from 'vue';
 import { useI18n } from 'vue-i18n';
-
+import UserSettingDrawer from '@/components/user/UserSettingDrawer.vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, allStacksAppGetters, optionsThemeAppGetters, currentThemeAppGetters } = storeToRefs(appStore)
@@ -67,23 +67,7 @@ const updateStack = async (value: string) => {
         <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
       </button>
     </div>
-    <n-drawer v-model:show="showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary no-scroll-block" style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
-      <n-drawer-content>
-        <div class="flex flex-col mb-[12px]">
-          <div class="flex mb-[24px]">
-            <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
-          </div>
-          <div class="flex flex-col mb-[12px]">
-            <span class="text-[12px] text-main-color mb-[6px]">{{ $t('choose_theme_app') }}</span>
-            <n-select v-model:value="valueTheme" :options="options" @update:value="updateTheme" />
-          </div>
-          <div class="flex flex-col">
-            <span class="text-[12px] text-main-color mb-[6px]">{{ $t('choose_main_stack') }}</span>
-            <n-select v-model:value="valueStack" :options="optionsStack" @update:value="updateStack" />
-          </div>
-        </div>
-      </n-drawer-content>
-    </n-drawer>
+    <UserSettingDrawer :showModal="showModal" />
   </div>
 </template>
 

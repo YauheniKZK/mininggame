@@ -55,7 +55,7 @@ const updateStack = async (value: string) => {
 </script>
 
 <template>
-  <n-drawer v-model:show="props.showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary">
+  <n-drawer v-model:show="props.showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary no-scroll-block" style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
     <n-drawer-content>
       <div class="flex flex-col mb-[12px]">
         <div class="flex mb-[24px]">
