@@ -6,6 +6,7 @@ import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
 import WebApp from '@twa-dev/sdk';
 import { onUnmounted } from 'vue';
+import { watch } from 'vue';
 
 
 const { t } = useI18n()
@@ -53,6 +54,12 @@ WebApp.BackButton.onClick(() => {
   WebApp.BackButton.hide()
 })
 
+watch(() => showModal.value, (newVal) => {
+  if (!newVal) {
+    WebApp.BackButton.hide()
+  }
+})
+
 onUnmounted(() => {
   WebApp.BackButton.hide()
 })
@@ -80,7 +87,13 @@ const updateStack = async (value: string) => {
   <n-drawer v-model:show="showModal" :placement="'right'" width="90%" to="#containerForOptions" class="bg-secondary">
     <n-drawer-content>
       <div class="flex flex-col mb-[12px]">
-        {{ 'Themes' }}
+        <div
+          v-for="item in optionsThemeAppGetters"
+          :key="item"
+          class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+        >
+          <span class="text-[14px] text-main-color">{{ item }}</span>
+        </div>
       </div>
     </n-drawer-content>
   </n-drawer>
