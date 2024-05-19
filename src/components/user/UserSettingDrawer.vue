@@ -6,6 +6,7 @@ import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
 import { ChevronForward } from '@vicons/ionicons5'
 import ThemeOptions from './components/ThemeOptions.vue';
+import StackOptions from './components/StackOptions.vue';
 
 
 const { t } = useI18n()
@@ -77,14 +78,7 @@ const updateStack = async (value: string) => {
           <ThemeOptions />
         </div>
         <div class="flex flex-col">
-          <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">
-            <span class="text-[14px] text-main-color">{{ $t('choose_main_stack') }}</span>
-            <div class="flex">
-              <n-icon :size="22" :color="'#D2649A'">
-                <ChevronForward />
-              </n-icon>
-            </div>
-          </div>
+          <StackOptions />>
         </div>
       </div>
     </n-drawer-content>
