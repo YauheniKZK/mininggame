@@ -93,7 +93,7 @@ const updateStack = async (value: string) => {
           :key="item.key"
           class="flex flex-col"
         >
-          <span class="text-[16px] text-[#ffffffa6]">{{ item }}</span>
+          <span class="text-[16px] text-[#ffffffa6]">{{ item.label }}</span>
           <div class="flex flex-col pl-[16px]">
             <div
               v-for="stack in item.children"
