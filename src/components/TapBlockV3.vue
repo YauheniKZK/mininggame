@@ -72,7 +72,7 @@ const clickbtnPress = (e: any, index: number) => {
   // buttonsArray.value.forEach((item) => {
   //   item.class = ''
   // })
-  buttonsArray.value[index].class = 'press-key'
+  // buttonsArray.value[index].class = 'press-key'
 }
 
 const clickbtn = (e: any, index: number) => {
@@ -81,7 +81,7 @@ const clickbtn = (e: any, index: number) => {
   //   item.class = ''
   // })
   // whiteText()
-  buttonsArray.value[index].class = ''
+  // buttonsArray.value[index].class = ''
 }
 
 const pointerEvent = (e: any, index: number) => {
@@ -93,7 +93,7 @@ const pointerEvent = (e: any, index: number) => {
 //   })
 setTimeout(() => {
   buttonsArray.value[index].class = ''
-}, 100)
+}, 30)
   whiteText()
 }
 
