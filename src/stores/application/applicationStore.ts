@@ -55,9 +55,9 @@ export const useApplicationStore = defineStore('application', () => {
   const currentThemeAppGetters = computed(() => currentThemeApp.value)
   const optionsThemeAppGetters = computed(() => optionsThemeApp.value)
   const allStacksAppGetters = computed(() => allStacksApp.value)
-  const maxTapsGetters = computed(() => currentUserData.value.max_taps)
-  const availableTapsGetters = computed(() => currentUserData.value.available_taps)
-  const earnPerTapGetters = computed(() => currentUserData.value.earn_per_tap)
+  const maxTapsGetters = computed(() => currentUserData.value?.max_taps || 0)
+  const availableTapsGetters = computed(() => currentUserData.value?.available_taps || 0)
+  const earnPerTapGetters = computed(() => currentUserData.value?.earn_per_tap || 0)
   
 
   // --------Actions---------
