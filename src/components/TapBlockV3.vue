@@ -134,7 +134,13 @@ onUnmounted(() => {
           <span class="text-[#fff] text-[14px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
         </div>
       </div>
-      <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
+      <div
+        ref="keyboardContainer"
+        class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]"
+        style="touch-action: none !important;user-select: none;"
+        @touchmove="moveNone"
+        @touchstart="e => clickbtnPress(e)"
+      >
         <div
           class="w-full flex flex-wrap gap-[4px]"
           style="touch-action: none !important;user-select: none;"
@@ -150,10 +156,13 @@ onUnmounted(() => {
             style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;touch-action: none !important;user-select: none;"
             @touchstart="e => clickbtnPress(e)"
             @touchend="e => clickbtn(e)"
-            @touchmove="e => moveNone(e)"
+            @touchmove="moveNone"
             @pointerup="e => pointerEvent(e, index)"
           >
-            <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
+            <span
+              class="text-[#1ff37d] text-[16px]"
+              style="touch-action: none !important;user-select: none;"
+            >{{ btn.name }}</span>
           </div>
         </div>
       </div>
