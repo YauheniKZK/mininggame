@@ -67,20 +67,21 @@ const buttonsArray = ref([
   createButtonObject('space', 300),
 ])
 
-const clickbtnPress = (e: any) => {
+const clickbtnPress = (e: any, index: number) => {
   e.preventDefault()
   // buttonsArray.value.forEach((item) => {
   //   item.class = ''
   // })
-  // buttonsArray.value[index].class = 'press-key'
+  buttonsArray.value[index].class = 'press-key'
 }
 
-const clickbtn = (e: any) => {
+const clickbtn = (e: any, index: number) => {
   e.preventDefault()
   // buttonsArray.value.forEach((item) => {
   //   item.class = ''
   // })
   // whiteText()
+  buttonsArray.value[index].class = ''
 }
 
 const pointerEvent = (e: any, index: number) => {
@@ -139,13 +140,11 @@ onUnmounted(() => {
         class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]"
         style="touch-action: none !important;user-select: none;"
         @touchmove="moveNone"
-        @touchstart="e => clickbtnPress(e)"
       >
         <div
           class="w-full flex flex-wrap gap-[4px]"
           style="touch-action: none !important;user-select: none;"
           @touchmove="moveNone"
-          @touchstart="e => clickbtnPress(e)"
         >
           <div
             v-for="(btn, index) in buttonsArray"
@@ -154,8 +153,8 @@ onUnmounted(() => {
             :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
             :style="`min-width: ${btn.length}px;`"
             style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;touch-action: none !important;user-select: none;"
-            @touchstart="e => clickbtnPress(e)"
-            @touchend="e => clickbtn(e)"
+            @touchstart="e => clickbtnPress(e, index)"
+            @touchend="e => clickbtn(e, index)"
             @touchmove="moveNone"
             @pointerup="e => pointerEvent(e, index)"
           >
