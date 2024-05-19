@@ -9,19 +9,13 @@ import { tapActionIncr } from './services/tap.service';
 const appStore = useApplicationStore()
 const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
-const viewportHeight = ref(0)
 
 function setViewportData() {
   console.log('window.innerWidth', window.innerWidth)
   console.log('window.viewportStableHeight', WebApp.viewportStableHeight)
   console.log('window.isExpanded', WebApp.isExpanded)
   if (WebApp.isExpanded) {
-    viewportHeight.value = WebApp.viewportStableHeight
-  }
-  console.log('window.viewportHeight111111', WebApp.viewportHeight)
-  const procent = () => viewportHeight.value > 0 ? WebApp.viewportHeight * 100 / viewportHeight.value : 0
-  if (procent() !== 0 && procent() < 70) {
-    tapActionIncr(10)
+    // viewportHeight.value = WebApp.viewportStableHeight
   }
 }
 
