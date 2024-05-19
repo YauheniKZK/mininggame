@@ -185,9 +185,8 @@ onUnmounted(() => {
       </div>
       <div class="flex justify-end">
         <div class="flex items-center">
-          <n-switch v-model:value="activeAutoCoding">
-            <span>{{ 'auto-coding' }}</span>
-          </n-switch>
+          <n-switch v-model:value="activeAutoCoding" />
+          <span>{{ 'auto-coding' }}</span>
         </div>
       </div>
     </div>
