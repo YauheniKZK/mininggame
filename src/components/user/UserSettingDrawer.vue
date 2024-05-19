@@ -60,9 +60,16 @@ const updateStack = async (value: string) => {
       <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
     </button>
   </div>
-  <n-drawer v-model:show="showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary no-scroll-block" style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
+  <n-drawer
+    v-model:show="showModal"
+    :placement="'bottom'"
+    height="80%"
+    to=".n-config-provider"
+    class="bg-secondary no-scroll-block"
+    style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);"
+  >
     <n-drawer-content>
-      <div class="flex flex-col mb-[12px]">
+      <div id="containerForOptions" class="flex flex-col mb-[12px]">
         <div class="flex mb-[24px]">
           <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
         </div>

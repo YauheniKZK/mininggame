@@ -50,6 +50,7 @@ const openOptions = () => {
 
 WebApp.BackButton.onClick(() => {
   showModal.value = false
+  WebApp.BackButton.hide()
 })
 
 onUnmounted(() => {
@@ -76,7 +77,7 @@ const updateStack = async (value: string) => {
       </n-icon>
     </div>
   </div>
-  <n-drawer v-model:show="showModal" :placement="'right'" to=".n-config-provider" class="bg-secondary">
+  <n-drawer v-model:show="showModal" :placement="'right'" width="90%" to="#containerForOptions" class="bg-secondary">
     <n-drawer-content>
       <div class="flex flex-col mb-[12px]">
         {{ 'Themes' }}
