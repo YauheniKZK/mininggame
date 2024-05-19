@@ -7,7 +7,7 @@ import { ref, onMounted } from 'vue';
 const appStore = useApplicationStore()
 const { currentUserDataGetters, maxTapsGetters, availableTapsGetters, earnPerTapGetters } = storeToRefs(appStore)
 const firstWord = ref(currentUserDataGetters.value?.first_name || 'neo');
-const secondWord = 'cat';
+const secondWord = 'DevCat';
 const chars = 'TAS%_%%]/_:{_([|]%!?><,=%#<(C';
 const animatedText = ref([...firstWord.value].map(c => ({ char: c, isAnimating: false })));
 const animationSpeed = ref(100); // Настройте скорость анимации здесь (в миллисекундах)
@@ -98,7 +98,12 @@ onMounted(() => {
     <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
       <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
         <div class="flex flex-col w-full h-full bg-[#29442f] relative z-[2] rounded-[16px]">
-          <TapBlockV3 @closeTaps="closeTapsEmit" />
+          <TapBlockV3
+            @closeTaps="closeTapsEmit"
+            :earnPerTapGetters="earnPerTapGetters"
+            :availableTapsGetters="availableTapsGetters"
+            :maxTapsGetters="maxTapsGetters"
+          />
         </div>
       </div>
     </n-modal>

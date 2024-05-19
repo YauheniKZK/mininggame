@@ -106,7 +106,7 @@ onMounted(() => {
         </div>
         <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
-        <canvas ref="canvasBlock" width="64" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
+        <canvas ref="canvasBlock" width="62" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
       </div>
     </div>
   </div>

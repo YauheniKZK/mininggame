@@ -1,9 +1,10 @@
 <script setup lang="ts">
-// import { getImageUrl } from '@/utils/images';
+import { getImageUrl } from '@/utils/images';
 import { onMounted, onUnmounted, ref } from 'vue';
 import WebApp from '@twa-dev/sdk';
 
 const emit = defineEmits(['closeTaps'])
+defineProps<{ earnPerTapGetters: number, availableTapsGetters: number, maxTapsGetters: number }>()
 
 const textGeneratedRef = ref<any>()
 const scrollbarContainer = ref()
@@ -108,30 +109,53 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col relative w-full">
-    <div class="flex mb-[24px] overflow-hidden relative">
-      <div ref="scrollbarContainer" class="screen rounded-[16px]">
-        <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
-          <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
-        </n-scrollbar>
+  <div class="flex flex-col justify-between relative w-full">
+    <div class="flex flex-col">
+      <div class="flex mb-[24px] overflow-hidden relative">
+        <div ref="scrollbarContainer" class="screen rounded-[16px]">
+          <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
+            <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
+          </n-scrollbar>
+        </div>
+      </div>
+      <div class="flex w-full mb-[16px]">
+        <div class="flex items-center block-style1">
+          <span class="text-[14px] text-[#fbdd87]">{{ 'DevCat-Pad' }}</span>
+        </div>
+        <div class="flex items-center block-style2">
+          <span class="text-[14px] text-[#fbdd87]">{{ '$/tap:' }}</span>
+          <span class="text-[#fff] text-[14px]">{{ ' ' + earnPerTapGetters + '$' }}</span>
+        </div>
+        <div class="flex items-center block-style2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fbdd87" viewBox="0 0 24 24">
+            <path d="M13 2L3 14h8v8l10-12h-8z"></path>
+          </svg>
+          <span class="text-[14px] text-[#fbdd87]">{{ ':' }}</span>
+          <span class="text-[#fff] text-[14px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
+        </div>
+      </div>
+      <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
+        <div class="w-full flex flex-wrap gap-[4px]" style="touch-action: none !important;" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
+          <div
+            v-for="(btn, index) in buttonsArray"
+            :key="index"
+            class="flex-grow p-[8px] flex rounded-[4px]"
+            :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
+            :style="`min-width: ${btn.length}px;`"
+            style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;touch-action: none !important;"
+            @touchstart="e => clickbtnPress(e)"
+            @touchend="e => clickbtn(e)"
+            @touchmove="moveNone"
+            @pointerup="e => pointerEvent(e, index)"
+          >
+            <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
+          </div>
+        </div>
       </div>
     </div>
-    <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
-      <div class="w-full flex flex-wrap gap-[4px]" style="touch-action: none !important;" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
-        <div
-          v-for="(btn, index) in buttonsArray"
-          :key="index"
-          class="flex-grow p-[8px] flex rounded-[4px]"
-          :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
-          :style="`min-width: ${btn.length}px;`"
-          style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;touch-action: none !important;"
-          @touchstart="e => clickbtnPress(e)"
-          @touchend="e => clickbtn(e)"
-          @touchmove="moveNone"
-          @pointerup="e => pointerEvent(e, index)"
-        >
-          <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
-        </div>
+    <div class="flex justify-center">
+      <div class="w-[60px] min-w-[60px] h-[60px] cursor-pointer" @click="$emit('closeTaps')">
+        <img :src="getImageUrl('svg/off_button_close_icon.svg')" class=" object-contain" alt="" />
       </div>
     </div>
   </div>
@@ -233,5 +257,38 @@ p:last-child:after {
 .press-key {
   box-shadow: none !important;
   background: #1ff37e44;
+}
+
+.block-style1 {
+  border-top: 2px solid #fbdd87;
+  border-right: 2px solid #fbdd87;
+  border-radius: 4px;
+  min-height: 22px;
+  padding: 0 4px;
+  min-width: 90px;
+  position: relative;
+  margin-right: 4px;
+  flex-grow: 1;
+}
+.block-style1 span {
+  background: #373c41;
+  padding: 0 4px;
+  position: absolute;
+  left: 9px;
+  top: -10px;
+  text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);
+}
+.block-style2 {
+  border-top: 2px solid #fbdd87;
+  border-right: 2px solid #fbdd87;
+  border-radius: 4px;
+  min-height: 22px;
+  padding: 0 4px;
+  position: relative;
+  margin-right: 4px;
+}
+.block-style2 span {
+  padding: 0 4px;
+  text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);
 }
 </style>
