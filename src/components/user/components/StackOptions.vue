@@ -78,7 +78,7 @@ const updateStack = async (value: string) => {
 
 <template>
   <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting" @click="openOptions">
-    <span class="text-[14px] text-main-color">{{ $t('choose_theme_app') }}</span>
+    <span class="text-[14px] text-main-color">{{ $t('choose_main_stack') }}</span>
     <div class="flex">
       <n-icon :size="22" :color="'#D2649A'">
         <ChevronForward />
@@ -89,11 +89,20 @@ const updateStack = async (value: string) => {
     <n-drawer-content>
       <div class="flex flex-col mb-[12px]">
         <div
-          v-for="item in optionsThemeAppGetters"
-          :key="item"
-          class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+           v-for="item in optionsStack"
+          :key="item.key"
+          class="flex flex-col"
         >
-          <span class="text-[14px] text-main-color">{{ item }}</span>
+          <span class="text-[16px] text-[#ffffffa6]">{{ item }}</span>
+          <div class="flex flex-col pl-[16px]">
+            <div
+              v-for="stack in item.children"
+              :key="item.key"
+              class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+            >
+              <span class="text-[14px] text-main-color">{{ stack.label }}</span>
+            </div>
+          </div>
         </div>
       </div>
     </n-drawer-content>
