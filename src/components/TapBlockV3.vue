@@ -155,8 +155,8 @@ onUnmounted(() => {
         class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px] relative"
         style="touch-action: none !important;user-select: none;"
       >
-        <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
-          <span>{{ 'press and hold to start' }}</span>
+        <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
+          <span class="text-[#fff] text-[22px]">{{ 'press and hold to start' }}</span>
         </div>
         <div
           class="w-full flex flex-wrap gap-[4px]"
