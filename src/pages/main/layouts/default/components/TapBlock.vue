@@ -81,9 +81,9 @@ onMounted(() => {
     <div class="flex items-center gap-[16px]">
       <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full">
         <span>{{ '> Wake up...' }}</span>
-        <span v-for="(char, index) in animatedText" :key="index">
+        <!-- <span v-for="(char, index) in animatedText" :key="index">
           {{ char.char }}
-        </span>
+        </span> -->
         <span class="cursor"></span>
       </div>
       <div
