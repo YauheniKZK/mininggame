@@ -11,7 +11,6 @@ const { currentUserDataGetters, allStacksAppGetters, optionsThemeAppGetters, cur
 const { actionChooseThemeApp, actionAddMainStack } = appStore
 const { t } = useI18n()
 
-const showModal = ref(false)
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
 const valueStack = ref<string | null>(currentUserDataGetters.value.main_stack || null)
 const options = computed(() => {
@@ -62,12 +61,7 @@ const updateStack = async (value: string) => {
         </div>
       </div>
     </div>
-    <div class="flex">
-      <button @click="showModal = true">
-        <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
-      </button>
-    </div>
-    <UserSettingDrawer :showModal="showModal" />
+    <UserSettingDrawer />
   </div>
 </template>
 

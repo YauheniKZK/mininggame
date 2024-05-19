@@ -1,19 +1,19 @@
 <script setup lang="ts">
-// import { getImageUrl } from '@/utils/images';
+import { getImageUrl } from '@/utils/images';
 import { ThemeApp, useApplicationStore } from '@/stores/application/applicationStore';
 import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
 import { ChevronForward } from '@vicons/ionicons5'
+import ThemeOptions from './components/ThemeOptions.vue';
 
-
-
-const props = defineProps<{ showModal: boolean }>()
 
 const { t } = useI18n()
 const appStore = useApplicationStore()
 const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters, currentUserDataGetters } = storeToRefs(appStore)
 const { actionChooseThemeApp, actionAddMainStack } = appStore
+
+const showModal = ref(false)
 
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
 const valueStack = ref<string | null>(currentUserDataGetters.value.main_stack || null)
@@ -55,22 +55,19 @@ const updateStack = async (value: string) => {
 </script>
 
 <template>
-  <n-drawer v-model:show="props.showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary no-scroll-block" style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
+  <div class="flex">
+    <button @click="showModal = true">
+      <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
+    </button>
+  </div>
+  <n-drawer v-model:show="showModal" :placement="'bottom'" height="80%" to=".n-config-provider" class="bg-secondary no-scroll-block" style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);">
     <n-drawer-content>
       <div class="flex flex-col mb-[12px]">
         <div class="flex mb-[24px]">
           <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
         </div>
         <div class="flex flex-col mb-[12px]">
-          <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">
-            <span class="text-[14px] text-main-color">{{ $t('choose_theme_app') }}</span>
-            <div class="flex">
-              <n-icon :size="22" :color="'#D2649A'">
-                <ChevronForward />
-              </n-icon>
-            </div>
-          </div>
-          
+          <ThemeOptions />
         </div>
         <div class="flex flex-col">
           <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">

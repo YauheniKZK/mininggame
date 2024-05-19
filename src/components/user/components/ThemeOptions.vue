@@ -6,12 +6,12 @@ import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
 
 
-defineProps<{ showModal: boolean }>()
-
 const { t } = useI18n()
 const appStore = useApplicationStore()
 const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters, currentUserDataGetters } = storeToRefs(appStore)
 const { actionChooseThemeApp, actionAddMainStack } = appStore
+
+const showModal = ref(false)
 
 const valueTheme = ref(currentThemeAppGetters.value || 'default')
 const valueStack = ref<string | null>(currentUserDataGetters.value.main_stack || null)
@@ -53,20 +53,18 @@ const updateStack = async (value: string) => {
 </script>
 
 <template>
+  <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting">
+    <span class="text-[14px] text-main-color">{{ $t('choose_theme_app') }}</span>
+    <div class="flex">
+      <n-icon :size="22" :color="'#D2649A'">
+        <ChevronForward />
+      </n-icon>
+    </div>
+  </div>
   <n-drawer v-model:show="showModal" :placement="'right'" to=".n-config-provider" class="bg-secondary">
     <n-drawer-content>
       <div class="flex flex-col mb-[12px]">
-        <div class="flex mb-[24px]">
-          <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
-        </div>
-        <div class="flex flex-col mb-[12px]">
-          <span class="text-[12px] text-main-color mb-[6px]">{{ $t('choose_theme_app') }}</span>
-          <n-select v-model:value="valueTheme" :options="options" @update:value="updateTheme" />
-        </div>
-        <div class="flex flex-col">
-          <span class="text-[12px] text-main-color mb-[6px]">{{ $t('choose_main_stack') }}</span>
-          <n-select v-model:value="valueStack" :options="optionsStack" @update:value="updateStack" />
-        </div>
+        {{ 'Themes' }}
       </div>
     </n-drawer-content>
   </n-drawer>
