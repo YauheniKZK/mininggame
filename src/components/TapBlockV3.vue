@@ -135,21 +135,26 @@ onUnmounted(() => {
         </div>
       </div>
       <div ref="keyboardContainer" class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]" @touchmove="moveNone" @touchstart="e => clickbtnPress(e)">
-        <div class="w-full flex flex-wrap gap-[4px] min-h-[300px]" style="touch-action: none !important;user-select: none;" @touchmove="moveNone" @touchstart="moveNone">
-          <!-- <div
+        <div
+          class="w-full flex flex-wrap gap-[4px]"
+          style="touch-action: none !important;user-select: none;"
+          @touchmove="moveNone"
+          @touchstart="e => clickbtnPress(e)"
+        >
+          <div
             v-for="(btn, index) in buttonsArray"
             :key="index"
             class="flex-grow p-[8px] flex rounded-[4px]"
             :class="`${btn.class} ${btn.name === 'space' ? 'justify-center' : ''}`"
             :style="`min-width: ${btn.length}px;`"
-            style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;touch-action: none !important;"
+            style="border: 1px solid #1ff37d;box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;touch-action: none !important;user-select: none;"
             @touchstart="e => clickbtnPress(e)"
             @touchend="e => clickbtn(e)"
-            @touchmove="moveNone"
+            @touchmove="e => moveNone(e)"
             @pointerup="e => pointerEvent(e, index)"
           >
             <span class="text-[#1ff37d] text-[16px]">{{ btn.name }}</span>
-          </div> -->
+          </div>
         </div>
       </div>
     </div>
