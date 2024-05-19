@@ -11,6 +11,7 @@ const scrollbarContainer = ref()
 const scrollbarRef = ref()
 const keyboardContainer = ref()
 const textGenerated = ref('')
+const activeAutoCoding = ref(false)
 function generateMatrixSymbol() {
   const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
   return characters.charAt(Math.floor(Math.random() * characters.length));
@@ -84,6 +85,20 @@ const clickbtn = (e: any, index: number) => {
   // buttonsArray.value[index].class = ''
 }
 
+const intervalAutoCoding = ref<any>(null)
+
+const autoCodingStart = (e: any) => {
+  e.preventDefault()
+  intervalAutoCoding.value = setInterval(() => {
+    whiteText()
+  }, 200)
+}
+
+const autoCodingEnd = (e: any) => {
+  e.preventDefault()
+  clearInterval(intervalAutoCoding.value)
+}
+
 const pointerEvent = (e: any, index: number) => {
   e.preventDefault()
  console.log('111111111111111')
@@ -137,10 +152,13 @@ onUnmounted(() => {
       </div>
       <div
         ref="keyboardContainer"
-        class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px]"
+        class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px] relative"
         style="touch-action: none !important;user-select: none;"
         @touchmove="moveNone"
       >
+        <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
+          <span>{{ 'press and hold to start' }}</span>
+        </div>
         <div
           class="w-full flex flex-wrap gap-[4px]"
           style="touch-action: none !important;user-select: none;"
@@ -163,6 +181,13 @@ onUnmounted(() => {
               style="touch-action: none !important;user-select: none;"
             >{{ btn.name }}</span>
           </div>
+        </div>
+      </div>
+      <div class="flex justify-end">
+        <div class="flex items-center">
+          <n-switch v-model:value="activeAutoCoding">
+            <span>{{ 'auto-coding' }}</span>
+          </n-switch>
         </div>
       </div>
     </div>
