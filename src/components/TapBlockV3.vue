@@ -90,8 +90,9 @@ const intervalAutoCoding = ref<any>(null)
 const autoCodingStart = (e: any) => {
   e.preventDefault()
   intervalAutoCoding.value = setInterval(() => {
+    WebApp.HapticFeedback.impactOccurred('medium')
     whiteText()
-  }, 200)
+  }, 100)
 }
 
 const autoCodingEnd = (e: any) => {
@@ -109,6 +110,7 @@ const pointerEvent = (e: any, index: number) => {
 setTimeout(() => {
   buttonsArray.value[index].class = ''
 }, 30)
+  WebApp.HapticFeedback.impactOccurred('medium')
   whiteText()
 }
 
@@ -152,7 +154,7 @@ onUnmounted(() => {
       </div>
       <div
         ref="keyboardContainer"
-        class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px] relative"
+        class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px] mb-[16px] relative"
         style="touch-action: none !important;user-select: none;"
       >
         <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
@@ -182,10 +184,10 @@ onUnmounted(() => {
           </div>
         </div>
       </div>
-      <div class="flex justify-end">
+      <div class="flex justify-end pr-[8px]">
         <div class="flex items-center">
+          <span class="text-[#fff] mr-[8px]">{{ 'auto-coding' }}</span>
           <n-switch v-model:value="activeAutoCoding" />
-          <span>{{ 'auto-coding' }}</span>
         </div>
       </div>
     </div>
