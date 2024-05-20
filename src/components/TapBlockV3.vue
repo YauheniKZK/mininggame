@@ -13,6 +13,7 @@ const keyboardContainer = ref()
 const textGenerated = ref('')
 const activeAutoCoding = ref(false)
 const pressAutoCoding = ref(false)
+const pressClassBtnOff = ref('')
 function generateMatrixSymbol() {
   const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
   return characters.charAt(Math.floor(Math.random() * characters.length));
@@ -121,6 +122,17 @@ const moveNone = (e: { preventDefault: () => void; }) => {
   e.preventDefault()
 }
 
+const closePad = (type: 'start' | 'end') => {
+  if (type === 'start') {
+    pressClassBtnOff.value = 'press'
+  }
+  if (type === 'end') {
+    pressClassBtnOff.value = ''
+    emit('closeTaps')
+  }
+  
+}
+
 onMounted(() => {
 })
 
@@ -195,7 +207,12 @@ onUnmounted(() => {
       </div>
     </div>
     <div class="flex justify-center">
-      <div class="w-[60px] min-w-[60px] h-[60px] cursor-pointer" @click="$emit('closeTaps')">
+      <div
+        class="w-[60px] min-w-[60px] h-[60px] cursor-pointer button-off"
+        :class="pressClassBtnOff"
+        @touchstart="closePad('start')"
+        @touchend="closePad('end')"
+      >
         <img :src="getImageUrl('svg/off_button_close_icon.svg')" class=" object-contain" alt="" />
       </div>
     </div>
@@ -203,6 +220,20 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.button-off {
+  border-radius: 8px;
+  box-shadow: rgba(0, 0, 0, 0.4) 0px 2px 4px, rgba(0, 0, 0, 0.3) 0px 7px 13px -3px, rgba(0, 0, 0, 0.2) 0px -3px 0px inset;
+  background: #618c9a12;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.button-off.press {
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
+}
 .keyboard-block {
   -webkit-user-select: none !important;
   -moz-user-select: none !important;
