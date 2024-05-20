@@ -213,7 +213,7 @@ onUnmounted(() => {
         @touchstart="closePad('start')"
         @touchend="closePad('end')"
       >
-        <img :src="getImageUrl('svg/off_button_close_icon.svg')" class=" object-contain" alt="" />
+        <img :src="getImageUrl('svg/off_button_close_icon.svg')" class="max-w-[80%] object-contain" alt="" />
       </div>
     </div>
   </div>
