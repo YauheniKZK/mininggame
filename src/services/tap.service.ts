@@ -92,3 +92,12 @@ export const syncTapClaim = async () => {
         return res
     }
 }
+
+export const getStacksMain = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/stacks/main`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}

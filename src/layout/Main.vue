@@ -25,7 +25,8 @@ const {
   resetUserData,
   actionCheckinUserService,
   actionSyncTapClaim,
-  startPassiveEarn
+  startPassiveEarn,
+  actionGetStacksMain
 } = appStore
 
 const interval = ref<any>(null)
@@ -46,6 +47,7 @@ watch(() => successfullSyncTapClaimGetters.value, (newVal) => {
 onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
+  await actionGetStacksMain()
   await actionSyncTapClaim()
   await actionCheckinUserService()
 

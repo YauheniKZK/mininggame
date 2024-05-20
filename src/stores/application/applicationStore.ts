@@ -11,7 +11,8 @@ import {
   addMainStack,
   levelCheck,
   syncCheck,
-  syncTapClaim
+  syncTapClaim,
+  getStacksMain
 } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -267,6 +268,19 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionGetStacksMain() {
+    successfullSyncTapClaim.value = false
+    try {
+      const res = await getStacksMain()
+      if (res?.data && res?.status === 200) {
+        console.log('getStacksMain', res)
+      }
+      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
   function startPassiveEarn (value: number) {
     mainBalanceUser.value += value
   }
@@ -343,6 +357,7 @@ export const useApplicationStore = defineStore('application', () => {
     earnPassivePerSecGetters,
     mainBalanceUserGetters,
     earnPassivePerHourGetters,
-    currentUserLevelGetters
+    currentUserLevelGetters,
+    actionGetStacksMain
   }
 })
