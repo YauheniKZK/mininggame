@@ -21,8 +21,9 @@ const interval2 = ref<any>(null)
 onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
-  await actionCheckinUserService()
   await actionSyncTapClaim()
+  await actionCheckinUserService()
+
   // if (eruda) {
   //   eruda.init({
   //     container: erudaRef.value,
