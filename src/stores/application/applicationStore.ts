@@ -40,6 +40,12 @@ export const useApplicationStore = defineStore('application', () => {
   ])
   const allStacksApp = ref([])
 
+
+  const mainBalanceUser = ref(0)
+  const earnPassivePerSec = ref(0)
+
+  const successfullSyncTapClaim = ref(false)
+
   // --------Getters---------
 
   const currentUserDataGetters = computed(() => currentUserData.value)
@@ -66,6 +72,13 @@ export const useApplicationStore = defineStore('application', () => {
       return 0
     }
   })
+
+
+  const mainBalanceUserGetters = computed(() => mainBalanceUser.value)
+  const earnPassivePerSecGetters = computed(() => earnPassivePerSec.value)
+  const successfullSyncTapClaimGetters = computed(() => successfullSyncTapClaim.value)
+  
+
   
 
   // --------Actions---------
@@ -91,6 +104,9 @@ export const useApplicationStore = defineStore('application', () => {
         lastCheckinUser.value = res.data.checkin
         currentCheckinUser.value = res.data.server_time
         currentThemeApp.value = res.data.theme || 'default'
+
+        mainBalanceUser.value = res.data.balance
+        earnPassivePerSec.value = res.data.earn_passive_per_sec
         if (res.data.referrals) {
           referrals.value = res.data.referrals
         } else {
@@ -146,7 +162,7 @@ export const useApplicationStore = defineStore('application', () => {
   async function actionCheckinUserService() {
     try {
       const res = await syncCheck()
-      if (res) {
+      if (res?.status === 2000) {
         console.log('actionCheckinUserService', res)
         // totalUserScore.value = res.data.balance || 0
       }      
@@ -227,15 +243,23 @@ export const useApplicationStore = defineStore('application', () => {
   }
 
   async function actionSyncTapClaim() {
+    successfullSyncTapClaim.value = false
     try {
       const res = await syncTapClaim()
       if (res?.data) {
         console.log('syncTapClaim', res)
         // totalUserScore.value = res.data.balance || 0
-      }      
+        successfullSyncTapClaim.value = true
+      } else {}  
+      successfullSyncTapClaim.value = false
     } catch (error) {
+      successfullSyncTapClaim.value = false
       console.log('error')
     }
+  }
+
+  function startPassiveEarn (value: number) {
+    mainBalanceUser.value += value
   }
 
 
@@ -304,6 +328,8 @@ export const useApplicationStore = defineStore('application', () => {
     maxTapsGetters,
     availableTapsGetters,
     earnPerTapGetters,
-    actionSyncTapClaim
+    actionSyncTapClaim,
+    successfullSyncTapClaimGetters,
+    startPassiveEarn
   }
 })

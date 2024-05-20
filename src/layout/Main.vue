@@ -12,11 +12,36 @@ import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 // const erudaRef = ref()
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, isTapingGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, actionCheckinUserService, actionSyncTapClaim } = appStore
+const {
+  currentUserDataGetters,
+  loadingGetUserGetters,
+  successCurrentUserDataGetters,
+  isTapingGetters,
+  successfullSyncTapClaimGetters,
+  earnPassivePerSecGetters
+} = storeToRefs(appStore)
+const {
+  actionGetUser,
+  resetUserData,
+  actionCheckinUserService,
+  actionSyncTapClaim,
+  startPassiveEarn
+} = appStore
 
 const interval = ref<any>(null)
 const interval2 = ref<any>(null)
+
+const intervalPassiveEarn = ref<any>(null)
+
+watch(() => successfullSyncTapClaimGetters.value, (newVal) => {
+  if (newVal) {
+    intervalPassiveEarn.value = setInterval(() => {
+      startPassiveEarn(earnPassivePerSecGetters.value)
+    }, 1000)
+  } else {
+    clearInterval(intervalPassiveEarn.value)
+  }
+})
 
 onMounted(async () => {
   console.log('222222')
@@ -90,6 +115,9 @@ onBeforeUnmount(async () => {
   console.log('1111111111111111111')
   // actionMiningMoney(10)
   // await tapActionIncr(10)
+  if (intervalPassiveEarn.value) {
+    clearInterval(intervalPassiveEarn.value)
+  }
   if (interval.value) {
     clearInterval(interval.value)
     // interval.value = null
