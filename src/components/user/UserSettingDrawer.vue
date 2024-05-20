@@ -5,8 +5,11 @@ import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
 import { ChevronForward } from '@vicons/ionicons5'
+import WebApp from '@twa-dev/sdk';
 import ThemeOptions from './components/ThemeOptions.vue';
 import StackOptions from './components/StackOptions.vue';
+import { watch } from 'vue';
+import { onUnmounted } from 'vue';
 
 
 const { t } = useI18n()
@@ -44,6 +47,14 @@ const optionsStack = computed(() => {
   })
 })
 
+watch(() => showModal.value, (newVal) => {
+  if (newVal) {
+    WebApp.BackButton.show()
+  } else {
+    WebApp.BackButton.hide()
+  }
+})
+
 const updateTheme = (value: ThemeApp) => {
   valueTheme.value = value
   actionChooseThemeApp(value)
@@ -53,6 +64,10 @@ const updateStack = async (value: string) => {
   valueStack.value = value
   await actionAddMainStack(Number(value))
 }
+
+onUnmounted(() => {
+  WebApp.BackButton.hide()
+})
 </script>
 
 <template>
@@ -64,7 +79,7 @@ const updateStack = async (value: string) => {
   <n-drawer
     v-model:show="showModal"
     :placement="'bottom'"
-    height="80%"
+    height="100%"
     to=".n-config-provider"
     class="bg-secondary no-scroll-block"
     style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);"
