@@ -51,5 +51,6 @@
   "none_main_stack": "Select your main stack in your app settings",
   "profit_hour": "$прибыль/час",
   "MID_LEVEL": "Mibble",
-  "OPERATING_SYSTEM_OS": "Operating system OS"
+  "OPERATING_SYSTEM_OS": "Operating system OS",
+  "BEGINNER": "Beginner"
 }
