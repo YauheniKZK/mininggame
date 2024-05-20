@@ -13,7 +13,7 @@ import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
 
 const appStore = useApplicationStore()
 const { currentUserDataGetters, loadingGetUserGetters, successCurrentUserDataGetters, isTapingGetters } = storeToRefs(appStore)
-const { actionGetUser, resetUserData, actionCheckinUserService } = appStore
+const { actionGetUser, resetUserData, actionCheckinUserService, actionSyncTapClaim } = appStore
 
 const interval = ref<any>(null)
 const interval2 = ref<any>(null)
@@ -22,6 +22,7 @@ onMounted(async () => {
   console.log('222222')
   await actionGetUser('start')
   await actionCheckinUserService()
+  await actionSyncTapClaim()
   // if (eruda) {
   //   eruda.init({
   //     container: erudaRef.value,

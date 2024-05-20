@@ -83,3 +83,12 @@ export const syncCheck = async () => {
         return res
     }
 }
+
+export const syncTapClaim = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/mining/passive-earn`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}
