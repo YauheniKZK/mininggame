@@ -9,7 +9,8 @@ import {
   getStackCategories,
   chooseThemeApp,
   addMainStack,
-  levelCheck
+  levelCheck,
+  syncCheck
 } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -143,7 +144,7 @@ export const useApplicationStore = defineStore('application', () => {
 
   async function actionCheckinUserService() {
     try {
-      const res = await checkinUserService()
+      const res = await syncCheck()
       if (res) {
         console.log('actionCheckinUserService', res)
         // totalUserScore.value = res.data.balance || 0

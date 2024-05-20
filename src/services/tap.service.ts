@@ -39,15 +39,6 @@ export const getLinkRefUserService = async () => {
     }
 }
 
-export const checkinUserService = async () => {
-    if (WebApp) {
-        const url = `${Config.REST_SERVER}/mining/checkin`
-        const res = await api.get(url)
-        console.log('res', res)    
-        return res
-    }
-}
-
 export const getStackCategories = async () => {
     if (WebApp) {
         const url = `${Config.REST_SERVER}/stacks/categories`
@@ -78,6 +69,15 @@ export const addMainStack = async (stack_id: number) => {
 export const levelCheck = async () => {
     if (WebApp) {
         const url = `${Config.REST_SERVER}/levels/check`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}
+
+export const syncCheck = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/sync`
         const res = await api.get(url)
         console.log('res', res)    
         return res
