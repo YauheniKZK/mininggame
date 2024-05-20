@@ -60,7 +60,7 @@ export const useApplicationStore = defineStore('application', () => {
   const availableTapsGetters = computed(() => currentUserData.value?.available_taps || 0)
   const earnPerTapGetters = computed(() => {
     if (currentUserData.value?.earn_per_tap) {
-      return currentUserData.value?.earn_per_tap > 0 ? Number(Number(currentUserData.value?.earn_per_tap / 100).toFixed(0)) : 0
+      return currentUserData.value?.earn_per_tap > 0 ? Number(Number(currentUserData.value?.earn_per_tap / 100).toFixed(2)) : 0
     } else {
       return 0
     }
