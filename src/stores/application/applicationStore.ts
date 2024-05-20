@@ -10,7 +10,8 @@ import {
   chooseThemeApp,
   addMainStack,
   levelCheck,
-  syncCheck
+  syncCheck,
+  syncTapClaim
 } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -225,6 +226,19 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  async function actionSyncTapClaim() {
+    try {
+      const res = await syncTapClaim()
+      if (res?.data) {
+        console.log('syncTapClaim', res)
+        // totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
+
   function updateTotalScore(value: number) {
     totalScore.value = value
   }
@@ -289,6 +303,7 @@ export const useApplicationStore = defineStore('application', () => {
     actionLevelCheck,
     maxTapsGetters,
     availableTapsGetters,
-    earnPerTapGetters
+    earnPerTapGetters,
+    actionSyncTapClaim
   }
 })

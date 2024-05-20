@@ -87,24 +87,26 @@ const updateStack = async (value: string) => {
   </div>
   <n-drawer v-model:show="showModal" :placement="'right'" width="90%" to="#containerForOptions" class="bg-secondary">
     <n-drawer-content>
-      <div class="flex flex-col mb-[12px]">
-        <div
-           v-for="item in optionsStack"
-          :key="item.key"
-          class="flex flex-col"
-        >
-          <span class="text-[16px] text-[#ffffffa6] flex mb-[16px]">{{ item.label }}</span>
-          <div class="flex flex-col pl-[16px]">
-            <div
-              v-for="stack in item.children"
-              :key="item.key"
-              class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-            >
-              <span class="text-[14px] text-main-color">{{ stack.label }}</span>
+      <n-scrollbar style="max-height: 100vh">
+        <div class="flex flex-col mb-[12px]">
+          <div
+            v-for="item in optionsStack"
+            :key="item.key"
+            class="flex flex-col"
+          >
+            <span class="text-[16px] text-[#ffffffa6] flex mb-[16px]">{{ item.label }}</span>
+            <div class="flex flex-col pl-[16px]">
+              <div
+                v-for="stack in item.children"
+                :key="item.key"
+                class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+              >
+                <span class="text-[14px] text-main-color">{{ stack.label }}</span>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </n-scrollbar>
     </n-drawer-content>
   </n-drawer>
 </template>
