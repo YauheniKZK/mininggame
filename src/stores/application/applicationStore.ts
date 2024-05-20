@@ -165,9 +165,10 @@ export const useApplicationStore = defineStore('application', () => {
   async function actionCheckinUserService() {
     try {
       const res = await syncCheck()
-      if (res?.status === 2000) {
+      if (res?.data && res?.status === 200) {
         console.log('actionCheckinUserService', res)
         // totalUserScore.value = res.data.balance || 0
+        mainBalanceUser.value = res.data.balance
       }      
     } catch (error) {
       console.log('error')
