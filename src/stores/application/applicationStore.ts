@@ -44,6 +44,7 @@ export const useApplicationStore = defineStore('application', () => {
   const mainBalanceUser = ref(0)
   const earnPassivePerSec = ref(0)
   const earnPassivePerHour = ref(0)
+  const currentUserLevel = ref('BEGINNER')
 
   const successfullSyncTapClaim = ref(false)
 
@@ -79,6 +80,7 @@ export const useApplicationStore = defineStore('application', () => {
   const earnPassivePerSecGetters = computed(() => earnPassivePerSec.value)
   const successfullSyncTapClaimGetters = computed(() => successfullSyncTapClaim.value)
   const earnPassivePerHourGetters = computed(() => earnPassivePerHour.value)
+  const currentUserLevelGetters = computed(() => currentUserLevel.value)
   
 
   
@@ -110,6 +112,7 @@ export const useApplicationStore = defineStore('application', () => {
         mainBalanceUser.value = res.data.balance
         earnPassivePerSec.value = res.data.earn_passive_per_sec
         earnPassivePerHour.value = res.data.earn_passive_per_hour
+        currentUserLevel.value = res.data.level
         if (res.data.referrals) {
           referrals.value = res.data.referrals
         } else {
@@ -339,6 +342,7 @@ export const useApplicationStore = defineStore('application', () => {
     startPassiveEarn,
     earnPassivePerSecGetters,
     mainBalanceUserGetters,
-    earnPassivePerHourGetters
+    earnPassivePerHourGetters,
+    currentUserLevelGetters
   }
 })

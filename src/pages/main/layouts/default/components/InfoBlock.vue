@@ -6,7 +6,7 @@ import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, mainBalanceUserGetters, earnPassivePerHourGetters } = storeToRefs(appStore)
+const { mainBalanceUserGetters, earnPassivePerHourGetters, currentUserLevelGetters } = storeToRefs(appStore)
 
 const canvasBlock = ref()
 
@@ -27,10 +27,10 @@ const earnPassivePerHourGettersRef = computed(() => {
 })
 
 const setLevelUp = computed(() => {
-  return levels[currentUserDataGetters.value.level] / 100
+  return levels[currentUserLevelGetters.value] / 100
 })
 const setProcent = computed(() => {
-  return currentUserDataGetters.value.balance ? currentUserDataGetters.value.balance * 100 / levels[currentUserDataGetters.value.level] : 0
+  return mainBalanceUserGetters.value ? mainBalanceUserGetters.value * 100 / levels[currentUserLevelGetters.value] : 0
 })
 
 const ctx = ref<any>(null);
