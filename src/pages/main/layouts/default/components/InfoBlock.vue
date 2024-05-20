@@ -6,7 +6,7 @@ import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, mainBalanceUserGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, mainBalanceUserGetters, earnPassivePerSecGetters } = storeToRefs(appStore)
 
 const canvasBlock = ref()
 
@@ -18,9 +18,9 @@ const balanceRef = computed(() => {
   }
 })
 
-const scoreRef = computed(() => {
-  if (currentUserDataGetters.value.score) {
-    return Number(currentUserDataGetters.value.score / 100).toFixed(2)
+const earnPassivePerSecGettersRef = computed(() => {
+  if (earnPassivePerSecGetters.value) {
+    return Number(earnPassivePerSecGetters.value / 10).toFixed(2)
   } else {
     return 0
   }
@@ -88,7 +88,7 @@ onMounted(() => {
         <div class="flex items-center">
           <span class="text-[12px] text-[#fff] leading-[28px]">{{ '+ ' }}</span>
           <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
-            {{ formatNumberWithSpaces(Number(scoreRef)) }}
+            {{ formatNumberWithSpaces(Number(earnPassivePerSecGettersRef)) }}
           </span>
         </div>
       </div>
