@@ -330,6 +330,8 @@ export const useApplicationStore = defineStore('application', () => {
     earnPerTapGetters,
     actionSyncTapClaim,
     successfullSyncTapClaimGetters,
-    startPassiveEarn
+    startPassiveEarn,
+    earnPassivePerSecGetters,
+    mainBalanceUserGetters
   }
 })

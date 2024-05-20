@@ -6,13 +6,13 @@ import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, mainBalanceUserGetters } = storeToRefs(appStore)
 
 const canvasBlock = ref()
 
 const balanceRef = computed(() => {
-  if (currentUserDataGetters.value.balance) {
-    return Number(currentUserDataGetters.value.balance / 100).toFixed(2)
+  if (mainBalanceUserGetters.value) {
+    return Number(mainBalanceUserGetters.value / 100).toFixed(2)
   } else {
     return 0
   }
