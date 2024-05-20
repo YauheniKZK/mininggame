@@ -246,12 +246,14 @@ export const useApplicationStore = defineStore('application', () => {
     successfullSyncTapClaim.value = false
     try {
       const res = await syncTapClaim()
-      if (res?.data) {
+      if (res?.data && res?.status === 2000) {
         console.log('syncTapClaim', res)
         // totalUserScore.value = res.data.balance || 0
         successfullSyncTapClaim.value = true
-      } else {}  
-      successfullSyncTapClaim.value = false
+      } else {
+        successfullSyncTapClaim.value = false
+      }  
+      
     } catch (error) {
       successfullSyncTapClaim.value = false
       console.log('error')
