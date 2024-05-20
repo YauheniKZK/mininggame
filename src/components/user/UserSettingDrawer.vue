@@ -55,6 +55,11 @@ watch(() => showModal.value, (newVal) => {
   }
 })
 
+WebApp.BackButton.onClick(() => {
+  showModal.value = false
+  WebApp.BackButton.hide()
+})
+
 const updateTheme = (value: ThemeApp) => {
   valueTheme.value = value
   actionChooseThemeApp(value)
