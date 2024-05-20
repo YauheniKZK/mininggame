@@ -52,7 +52,7 @@ const updateStack = async (value: string) => {
             :key="item.id"
             class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
           >
-            <span class="text-[14px] text-main-color">{{ item.title }}</span>
+            <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
           </div>
         </div>
       </n-scrollbar>
