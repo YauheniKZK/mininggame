@@ -46,6 +46,7 @@ export const useApplicationStore = defineStore('application', () => {
   const earnPassivePerSec = ref(0)
   const earnPassivePerHour = ref(0)
   const currentUserLevel = ref('BEGINNER')
+  const mainStacks = ref<{ id: number, title: string }[]>([])
 
   const successfullSyncTapClaim = ref(false)
 
@@ -82,6 +83,7 @@ export const useApplicationStore = defineStore('application', () => {
   const successfullSyncTapClaimGetters = computed(() => successfullSyncTapClaim.value)
   const earnPassivePerHourGetters = computed(() => earnPassivePerHour.value)
   const currentUserLevelGetters = computed(() => currentUserLevel.value)
+  const mainStacksGetters = computed(() => mainStacks.value)
   
 
   
@@ -274,6 +276,7 @@ export const useApplicationStore = defineStore('application', () => {
       const res = await getStacksMain()
       if (res?.data && res?.status === 200) {
         console.log('getStacksMain', res)
+        mainStacks.value = res.data
       }
       
     } catch (error) {
@@ -358,6 +361,7 @@ export const useApplicationStore = defineStore('application', () => {
     mainBalanceUserGetters,
     earnPassivePerHourGetters,
     currentUserLevelGetters,
-    actionGetStacksMain
+    actionGetStacksMain,
+    mainStacksGetters
   }
 })

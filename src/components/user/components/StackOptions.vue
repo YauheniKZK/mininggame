@@ -1,49 +1,19 @@
 <script setup lang="ts">
 // import { getImageUrl } from '@/utils/images';
 import { ThemeApp, useApplicationStore } from '@/stores/application/applicationStore';
-import { computed, ref } from 'vue';
+import { ref } from 'vue';
 import { storeToRefs } from 'pinia';
-import { useI18n } from 'vue-i18n'
 import WebApp from '@twa-dev/sdk';
 import { onUnmounted } from 'vue';
 import { watch } from 'vue';
 import { ChevronForward } from '@vicons/ionicons5'
 
-
-const { t } = useI18n()
 const appStore = useApplicationStore()
-const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters, currentUserDataGetters } = storeToRefs(appStore)
+const { mainStacksGetters } = storeToRefs(appStore)
 const { actionChooseThemeApp, actionAddMainStack } = appStore
 
 const showModal = ref(false)
 
-const valueTheme = ref(currentThemeAppGetters.value || 'default')
-const valueStack = ref<string | null>(currentUserDataGetters.value.main_stack || null)
-
-const options = computed(() => {
-  return optionsThemeAppGetters.value.map((item) => {
-    return {
-      label: item,
-      value: item
-    }
-  })
-})
-
-const optionsStack = computed(() => {
-  return allStacksAppGetters.value.map((item: any) => {
-    return {
-      type: 'group',
-      label: t(item.title),
-      key: item.title,
-      children: item.stacks.map((i: any) => {
-        return {
-          label: t(i.title),
-          value: i.id
-        }
-      })
-    }
-  })
-})
 
 const openOptions = () => {
   showModal.value = true
@@ -52,26 +22,14 @@ const openOptions = () => {
 
 WebApp.BackButton.onClick(() => {
   showModal.value = false
-  WebApp.BackButton.hide()
 })
 
-watch(() => showModal.value, (newVal) => {
-  if (!newVal) {
-    WebApp.BackButton.hide()
-  }
-})
-
-onUnmounted(() => {
-  WebApp.BackButton.hide()
-})
 
 const updateTheme = (value: ThemeApp) => {
-  valueTheme.value = value
   actionChooseThemeApp(value)
 }
 
 const updateStack = async (value: string) => {
-  valueStack.value = value
   await actionAddMainStack(Number(value))
 }
 </script>
@@ -87,23 +45,14 @@ const updateStack = async (value: string) => {
   </div>
   <n-drawer v-model:show="showModal" :placement="'right'" width="90%" to="#containerForOptions" class="bg-secondary">
     <n-drawer-content>
-      <n-scrollbar style="max-height: 100vh">
-        <div class="flex flex-col mb-[12px]">
+      <n-scrollbar style="max-height: 100vh" @touchmove="(e: any) => e.prevetDefault()">
+        <div class="flex flex-col pl-[16px]">
           <div
-            v-for="item in optionsStack"
-            :key="item.key"
-            class="flex flex-col"
+            v-for="item in mainStacksGetters"
+            :key="item.id"
+            class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
           >
-            <span class="text-[16px] text-[#ffffffa6] flex mb-[16px]">{{ item.label }}</span>
-            <div class="flex flex-col pl-[16px]">
-              <div
-                v-for="stack in item.children"
-                :key="item.key"
-                class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-              >
-                <span class="text-[14px] text-main-color">{{ stack.label }}</span>
-              </div>
-            </div>
+            <span class="text-[14px] text-main-color">{{ item.title }}</span>
           </div>
         </div>
       </n-scrollbar>
