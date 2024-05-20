@@ -343,7 +343,7 @@ p:last-child:after {
   flex-grow: 1;
 }
 .block-style1 span {
-  background: #373c41;
+  background: #29442f;
   padding: 0 4px;
   position: absolute;
   left: 9px;
