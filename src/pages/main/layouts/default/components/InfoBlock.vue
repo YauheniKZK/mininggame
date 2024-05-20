@@ -12,7 +12,7 @@ const canvasBlock = ref()
 
 const balanceRef = computed(() => {
   if (mainBalanceUserGetters.value) {
-    return Number(mainBalanceUserGetters.value / 100).toFixed(2)
+    return Number(mainBalanceUserGetters.value / 100).toFixed(3)
   } else {
     return 0
   }
