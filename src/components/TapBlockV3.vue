@@ -140,6 +140,7 @@ const pointerEvent = (e: any, index: number) => {
       buttonsArray.value[index].class = ''
     }, 30)
     WebApp.HapticFeedback.impactOccurred('medium')
+    minusAvailableTaps()
     whiteText()
   }
 
