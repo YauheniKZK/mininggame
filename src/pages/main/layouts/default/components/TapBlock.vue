@@ -102,20 +102,26 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex flex-col w-full p-[16px] relative rounded-[4px]" style="border: 1px solid #fbdd87;">
-      <div class="flex w-full items-center mb-[8px]" style="text-shadow: 0 0 .1rem rgb(26, 255, 128), 0 0 0.1rem rgb(26, 255, 128);">
-        <span class="text-[14px] text-[#fbdd87]">{{ 'Item' }}</span>
+      <span class="text-[14px] text-[#fbdd87] infomation-span">{{ 'brief day' }}</span>
+      <div class="flex w-full items-center mb-[8px]">
+        <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'devcat online' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-        <span class="text-[14px] text-[#fbdd87]">{{ '0.6' }}</span>
+        <span class="text-[12px] text-[#fbdd87]">{{ '105 000' }}</span>
       </div>
-      <div class="flex w-full items-center mb-[8px]" style="text-shadow: 0 0 .1rem rgb(26, 255, 128), 0 0 0.1rem rgb(26, 255, 128);">
-        <span class="text-[14px] text-[#fbdd87]">{{ 'Item 1' }}</span>
+      <div class="flex w-full items-center mb-[8px]">
+        <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'available task' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-        <span class="text-[14px] text-[#fbdd87]">{{ '21' }}</span>
+        <span class="text-[12px] text-[#fbdd87]">{{ '3' }}</span>
       </div>
-      <div class="flex w-full items-center" style="text-shadow: 0 0 .1rem rgb(26, 255, 128), 0 0 0.1rem rgb(26, 255, 128);">
-        <span class="text-[14px] text-[#fbdd87]">{{ 'Item 2' }}</span>
+      <div class="flex w-full items-center">
+        <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'new events' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-        <span class="text-[14px] text-[#fbdd87]">{{ '26.8' }}</span>
+        <span class="text-[12px] text-[#fbdd87]">{{ '2' }}</span>
+      </div>
+      <div class="flex w-full items-center">
+        <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'new skills' }}</span>
+        <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
+        <span class="text-[12px] text-[#fbdd87]">{{ '1' }}</span>
       </div>
     </div>
     <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
@@ -157,6 +163,15 @@ onMounted(() => {
   flex-grow: 1;
 }
 .block-style1 span {
+  background: #373c41;
+  padding: 0 4px;
+  position: absolute;
+  left: 9px;
+  top: -10px;
+  text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);
+}
+
+.infomation-span {
   background: #373c41;
   padding: 0 4px;
   position: absolute;
