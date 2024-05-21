@@ -87,7 +87,7 @@ onMounted(() => {
           {{ formatNumberWithSpaces(Number(balanceRef)) }}
           <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
-        <div class="flex justify-end w-[150px] absolute -right-[50px]">
+        <div class="flex justify-end w-[70px] absolute right-0 top-[17px]">
           <transition name="fade">
             <p v-if="showText" class="animated-text text-[#fff] text-[10px]">{{ text }}</p>
           </transition>
@@ -155,7 +155,7 @@ onMounted(() => {
 @keyframes slideLeft {
   from {
     transform: translateX(100%);
-    opacity: 1;
+    opacity: 0.8;
   }
   to {
     transform: translateX(0);
