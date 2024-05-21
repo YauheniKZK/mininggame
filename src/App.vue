@@ -19,15 +19,6 @@ function setViewportData() {
   }
 }
 
-onMounted(() => {
-  WebApp.expand()
-  console.log('WebApp.initDataUnsafe.user?.photo_url', WebApp.initDataUnsafe.user?.photo_url)
-  console.log('WebApp.version', WebApp.version)
-  WebApp.onEvent('viewportChanged', setViewportData)
-  actionGetStackCategories()
-  actionLevelCheck()
-})
-
 onresize = (event) => {
   console.log('event onresize', event)
 }
@@ -57,6 +48,38 @@ document.body.style.height = window.innerHeight + overflow + "px"
 document.body.style.paddingBottom = `${overflow}px`
 window.scrollTo(0, overflow)
 
+const mainblock = ref()
+
+let ts: number | undefined
+const onTouchStart = (e: TouchEvent) => {
+  ts = e.touches[0].clientY
+}
+const onTouchMove = (e: TouchEvent) => {
+  if (mainblock.value) {
+    const scroll = mainblock.value.scrollTop
+    const te = e.changedTouches[0].clientY
+    if (scroll <= 0 && ts! < te) {
+      e.preventDefault()
+    }
+  } else {
+    e.preventDefault()
+  }
+}
+
+
+onMounted(() => {
+  WebApp.expand()
+  console.log('WebApp.initDataUnsafe.user?.photo_url', WebApp.initDataUnsafe.user?.photo_url)
+  console.log('WebApp.version', WebApp.version)
+  WebApp.onEvent('viewportChanged', setViewportData)
+  actionGetStackCategories()
+  actionLevelCheck()
+  if (mainblock.value) {
+    mainblock.value.addEventListener('touchstart', onTouchStart, { passive: false })
+  mainblock.value.addEventListener('touchmove', onTouchMove, { passive: false })
+  }
+})
+
 onBeforeUnmount(async () => {
   await actionMiningMoney(totalScoreGetters.value)
 })
@@ -68,7 +91,7 @@ onBeforeUnmount(async () => {
       <n-message-provider :placement="'top-right'">
         <n-notification-provider>
           <n-scrollbar style="max-height: 100vh">
-            <Main class="bg-main" />
+            <Main ref="mainblock" class="bg-main" />
           </n-scrollbar>
         </n-notification-provider>
       </n-message-provider>
