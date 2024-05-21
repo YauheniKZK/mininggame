@@ -53,7 +53,7 @@ const updateStack = async (value: string) => {
   <div class="flex justify-between">
     <div class="flex flex-col">
       <div class="flex items-center mb-[8px]">
-        <span class="text-[#fff] text-[14px] mr-[6px]">{{ 'Detected devcat, ' }}</span>
+        <span class="text-[#fff] text-[14px] mr-[6px]">{{ 'Detected devcat: ' }}</span>
         <span class="text-[#fff] text-[14px]">{{ currentUserDataGetters.first_name }}</span>
       </div>
       <div class="flex items-center">
