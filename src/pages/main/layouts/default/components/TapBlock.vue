@@ -5,12 +5,13 @@ import { storeToRefs } from 'pinia';
 import { ref, onMounted } from 'vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, maxTapsGetters, availableTapsGetters, earnPerTapGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, maxTapsGetters, availableTapsGetters, earnPerTapGettersFront } = storeToRefs(appStore)
 const firstWord = ref(currentUserDataGetters.value?.first_name || 'neo');
 const secondWord = 'DevCat';
 const chars = 'TAS%_%%]/_:{_([|]%!?><,=%#<(C';
 const animatedText = ref([...firstWord.value].map(c => ({ char: c, isAnimating: false })));
 const animationSpeed = ref(100); // Настройте скорость анимации здесь (в миллисекундах)
+
 
 const getRandomChar = () => chars[Math.floor(Math.random() * chars.length)];
 
@@ -73,7 +74,7 @@ onMounted(() => {
       </div>
       <div class="flex items-center block-style2">
         <span class="text-[14px] text-[#fbdd87]">{{ '$/tap:' }}</span>
-        <span class="text-[#fff] text-[14px]">{{ ' ' + earnPerTapGetters + '$' }}</span>
+        <span class="text-[#fff] text-[14px]">{{ ' ' + earnPerTapGettersFront + '$' }}</span>
       </div>
       <div class="flex items-center block-style2">
         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fbdd87" viewBox="0 0 24 24">
@@ -105,7 +106,7 @@ onMounted(() => {
         <div class="flex flex-col w-full h-full bg-[#29442f] relative z-[2] rounded-[16px]">
           <TapBlockV3
             @closeTaps="closeTapsEmit"
-            :earnPerTapGetters="earnPerTapGetters"
+            :earnPerTapGettersFront="earnPerTapGettersFront"
             :availableTapsGetters="availableTapsGetters"
             :maxTapsGetters="maxTapsGetters"
           />

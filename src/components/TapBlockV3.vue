@@ -2,9 +2,32 @@
 import { getImageUrl } from '@/utils/images';
 import { onMounted, onUnmounted, ref } from 'vue';
 import WebApp from '@twa-dev/sdk';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
+import { watch } from 'vue';
 
 const emit = defineEmits(['closeTaps'])
-defineProps<{ earnPerTapGetters: number, availableTapsGetters: number, maxTapsGetters: number }>()
+defineProps<{ earnPerTapGettersFront: number, availableTapsGetters: number, maxTapsGetters: number }>()
+
+const appStore = useApplicationStore()
+const { availableTapsGetters } = storeToRefs(appStore)
+const { minusAvailableTaps, plusAvailableTaps } = appStore
+
+const intervalAvailableTaps = ref<any>(null)
+
+watch(() => availableTapsGetters.value, (newVal) => {
+  if (newVal && newVal < 100) {
+    intervalAvailableTaps.value = setInterval(() => {
+      if (intervalAvailableTaps.value >= 100) {
+        clearInterval(intervalAvailableTaps.value)
+      } else {
+        plusAvailableTaps()
+      }
+      
+    })
+    
+  }
+})
 
 const textGeneratedRef = ref<any>()
 const scrollbarContainer = ref()
@@ -94,6 +117,7 @@ const autoCodingStart = (e: any) => {
   pressAutoCoding.value = true
   intervalAutoCoding.value = setInterval(() => {
     WebApp.HapticFeedback.impactOccurred('medium')
+    minusAvailableTaps()
     whiteText()
   }, 100)
 }
@@ -105,17 +129,20 @@ const autoCodingEnd = (e: any) => {
 }
 
 const pointerEvent = (e: any, index: number) => {
-  e.preventDefault()
- console.log('111111111111111')
- buttonsArray.value[index].class = 'press-key'
-//  buttonsArray.value.forEach((item) => {
-//     item.class = ''
-//   })
-setTimeout(() => {
-  buttonsArray.value[index].class = ''
-}, 30)
-  WebApp.HapticFeedback.impactOccurred('medium')
-  whiteText()
+  if (availableTapsGetters.value > 0) {
+    e.preventDefault()
+    console.log('111111111111111')
+    buttonsArray.value[index].class = 'press-key'
+    //  buttonsArray.value.forEach((item) => {
+    //     item.class = ''
+    //   })
+    setTimeout(() => {
+      buttonsArray.value[index].class = ''
+    }, 30)
+    WebApp.HapticFeedback.impactOccurred('medium')
+    whiteText()
+  }
+
 }
 
 const moveNone = (e: { preventDefault: () => void; }) => {
@@ -157,7 +184,7 @@ onUnmounted(() => {
         </div>
         <div class="flex items-center block-style2">
           <span class="text-[14px] text-[#fbdd87]">{{ '$/tap:' }}</span>
-          <span class="text-[#fff] text-[14px]">{{ ' ' + earnPerTapGetters + '$' }}</span>
+          <span class="text-[#fff] text-[14px]">{{ ' ' + earnPerTapGettersFront + '$' }}</span>
         </div>
         <div class="flex items-center block-style2">
           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#fbdd87" viewBox="0 0 24 24">
@@ -172,6 +199,9 @@ onUnmounted(() => {
         class="w-full flex justify-center items-center rounded-[16px] keyboard-block p-[4px] mb-[16px] relative"
         style="touch-action: none !important;user-select: none;"
       >
+        <div v-if="availableTapsGetters <= 0" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center">
+          <span class="text-[#fff] text-[22px]">{{ 'Need Energy. Please wait...' }}</span>
+        </div>
         <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
           <span :class="pressAutoCoding ? 'text-[#ffffffa6] text-[20px]' : 'text-[#fff] text-[22px]'">{{ 'press and hold to start' }}</span>
         </div>

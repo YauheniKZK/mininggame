@@ -47,6 +47,8 @@ export const useApplicationStore = defineStore('application', () => {
   const earnPassivePerHour = ref(0)
   const currentUserLevel = ref('BEGINNER')
   const mainStacks = ref<{ id: number, title: string }[]>([])
+  const availableTaps = ref(0)
+  const earnPerTap = ref(0)
 
   const successfullSyncTapClaim = ref(false)
 
@@ -68,14 +70,6 @@ export const useApplicationStore = defineStore('application', () => {
   const optionsThemeAppGetters = computed(() => optionsThemeApp.value)
   const allStacksAppGetters = computed(() => allStacksApp.value)
   const maxTapsGetters = computed(() => currentUserData.value?.max_taps || 0)
-  const availableTapsGetters = computed(() => currentUserData.value?.available_taps || 0)
-  const earnPerTapGetters = computed(() => {
-    if (currentUserData.value?.earn_per_tap) {
-      return currentUserData.value?.earn_per_tap > 0 ? Number(Number(currentUserData.value?.earn_per_tap / 100).toFixed(2)) : 0
-    } else {
-      return 0
-    }
-  })
 
 
   const mainBalanceUserGetters = computed(() => mainBalanceUser.value)
@@ -84,6 +78,16 @@ export const useApplicationStore = defineStore('application', () => {
   const earnPassivePerHourGetters = computed(() => earnPassivePerHour.value)
   const currentUserLevelGetters = computed(() => currentUserLevel.value)
   const mainStacksGetters = computed(() => mainStacks.value)
+  const availableTapsGetters = computed(() => availableTaps.value)
+  const earnPerTapGetters = computed(() => earnPerTap.value)
+
+  const earnPerTapGettersFront = computed(() => {
+    if (earnPerTapGetters.value) {
+      return earnPerTapGetters.value > 0 ? Number(Number(earnPerTapGetters.value / 100).toFixed(2)) : 0
+    } else {
+      return 0
+    }
+  })
   
 
   
@@ -116,6 +120,8 @@ export const useApplicationStore = defineStore('application', () => {
         earnPassivePerSec.value = res.data.earn_passive_per_sec
         earnPassivePerHour.value = res.data.earn_passive_per_hour
         currentUserLevel.value = res.data.level
+        availableTaps.value = res.data.available_taps
+        earnPerTap.value = res.data.earn_per_tap
         if (res.data.referrals) {
           referrals.value = res.data.referrals
         } else {
@@ -284,6 +290,22 @@ export const useApplicationStore = defineStore('application', () => {
     }
   }
 
+  function minusAvailableTaps () {
+    if (availableTaps.value <= 0) {
+      return false
+    } else {
+      availableTaps.value -= 1
+    }
+  }
+
+  function plusAvailableTaps () {
+    if (availableTaps.value < 100 && availableTaps.value > 0) {
+      availableTaps.value += 1
+    } else {
+      return false
+    }
+  }
+
   function startPassiveEarn (value: number) {
     mainBalanceUser.value += value
   }
@@ -362,6 +384,9 @@ export const useApplicationStore = defineStore('application', () => {
     earnPassivePerHourGetters,
     currentUserLevelGetters,
     actionGetStacksMain,
-    mainStacksGetters
+    mainStacksGetters,
+    earnPerTapGettersFront,
+    minusAvailableTaps,
+    plusAvailableTaps
   }
 })
