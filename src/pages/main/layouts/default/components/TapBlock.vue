@@ -107,12 +107,12 @@ onMounted(() => {
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
         <span class="text-[14px] text-[#fbdd87]">{{ '0.6' }}</span>
       </div>
-      <div class="flex w-full items-center mb-[8px]" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+      <div class="flex w-full items-center mb-[8px]" style="text-shadow: 0 0 .1rem rgb(26, 255, 128), 0 0 0.1rem rgb(26, 255, 128);">
         <span class="text-[14px] text-[#fbdd87]">{{ 'Item 1' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
         <span class="text-[14px] text-[#fbdd87]">{{ '21' }}</span>
       </div>
-      <div class="flex w-full items-center" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+      <div class="flex w-full items-center" style="text-shadow: 0 0 .1rem rgb(26, 255, 128), 0 0 0.1rem rgb(26, 255, 128);">
         <span class="text-[14px] text-[#fbdd87]">{{ 'Item 2' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
         <span class="text-[14px] text-[#fbdd87]">{{ '26.8' }}</span>
