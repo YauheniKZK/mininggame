@@ -17,10 +17,10 @@ const { minusAvailableTaps, plusAvailableTaps } = appStore
 const intervalAvailableTaps = ref<any>(null)
 
 watch(() => availableTapsGetters.value, (newVal) => {
-  if (newVal && newVal < 100) {
+  if (newVal && newVal < 200) {
     if (!intervalAvailableTaps.value) {
       intervalAvailableTaps.value = setInterval(() => {
-        if (intervalAvailableTaps.value >= 100) {
+        if (intervalAvailableTaps.value >= 200) {
           clearInterval(intervalAvailableTaps.value)
         } else {
           plusAvailableTaps()

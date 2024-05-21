@@ -299,7 +299,7 @@ export const useApplicationStore = defineStore('application', () => {
   }
 
   function plusAvailableTaps () {
-    if (availableTaps.value < 100 && availableTaps.value >= 0) {
+    if (availableTaps.value < 200 && availableTaps.value >= 0) {
       availableTaps.value += 1
     } else {
       return false
