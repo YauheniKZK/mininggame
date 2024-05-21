@@ -53,8 +53,8 @@ const updateStack = async (value: string) => {
   <div class="flex justify-between">
     <div class="flex flex-col">
       <div class="flex items-center mb-[8px]">
-        <span class="text-[#fff] text-[16px] mr-[6px]">{{ 'Welcome back, ' }}</span>
-        <span class="text-[#fff] text-[16px]">{{ currentUserDataGetters.first_name }}</span>
+        <span class="text-[#fff] text-[14px] mr-[6px]">{{ 'Detected devcat, ' }}</span>
+        <span class="text-[#fff] text-[14px]">{{ currentUserDataGetters.first_name }}</span>
       </div>
       <div class="flex items-center">
         <img :src="getImageUrl('img/avatars/cat2.png')" class="img-icon" alt="" />
@@ -105,7 +105,7 @@ const updateStack = async (value: string) => {
   font-size: 12px;
 }
 
-.tag {
+.tag2 {
   display: inline-block;
   margin-left: 8px;
   padding: 0px 8px;
