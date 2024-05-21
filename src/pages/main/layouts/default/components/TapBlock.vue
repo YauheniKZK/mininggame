@@ -149,7 +149,7 @@ onMounted(() => {
   border-radius: 16px;
   background: #373c41;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  min-height: 260px;
+  min-height: 380px;
 }
 .block-style1 {
   border-top: 2px solid #fbdd87;
