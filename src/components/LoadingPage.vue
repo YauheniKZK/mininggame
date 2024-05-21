@@ -3,16 +3,15 @@ import { getImageUrl } from '@/utils/images';
 </script>
 
 <template>
-  <div class="flex items-center justify-center w-full h-full">
-    <div class="flex relative w-[200px] h-[200px]">
-      <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-1" alt="">
-      <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-2" alt="">
-      <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-3" alt="">
-      <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-4" alt="">
-      <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-5" alt="">
-      <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-6" alt="">
-    </div>
+  <div class="flex relative w-[200px] h-[200px]">
+    <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-1" alt="">
+    <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-2" alt="">
+    <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-3" alt="">
+    <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-4" alt="">
+    <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-5" alt="">
+    <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-6" alt="">
   </div>
+  
 </template>
 
 <style scoped>

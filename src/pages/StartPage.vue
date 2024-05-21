@@ -53,7 +53,6 @@ onMounted(() => {
           <span class="text-[#fff] text-[32px] flex mb-[50px]">{{ 'Step 1 info description' }}</span>
           <!-- <TestComponent /> -->
           <UserSetting />
-          
      
         </div>
       </n-tab-pane>
