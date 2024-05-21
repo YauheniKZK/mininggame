@@ -12,7 +12,7 @@ const canvasBlock = ref()
 
 const balanceRef = computed(() => {
   if (mainBalanceUserGetters.value) {
-    return Number(mainBalanceUserGetters.value / 100).toFixed(3)
+    return Number(mainBalanceUserGetters.value / 100).toFixed(2)
   } else {
     return 0
   }
@@ -65,9 +65,15 @@ function animate() {
   
 }
 
+const showText = ref(true);
+const text = ref('0.01$');
+
 onMounted(() => {
   ctx.value = canvasBlock.value.getContext('2d');
   animate();
+  setInterval(() => {
+    showText.value = !showText.value;
+  }, 1000); // Переключение каждую секунду
 })
 
 </script>
@@ -75,12 +81,17 @@ onMounted(() => {
 <template>
   <div class="flex justify-between p-[12px] rounded-[16px] bg-[#373c41] bg-image" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
     <div class="flex flex-col">
-      <div class="flex flex-col">
+      <div class="flex flex-col relative">
         <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('BALANCE') + ': ' }}</span>
         <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
           {{ formatNumberWithSpaces(Number(balanceRef)) }}
           <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
+        <div class="flex justify-end w-[150px] absolute -right-[50px]">
+          <transition name="fade">
+            <p v-if="showText" class="animated-text text-[#fff] text-[10px]">{{ text }}</p>
+          </transition>
+        </div>
       </div>
       <div class="w-full max-w-[180px] h-[1px] bg-[#63656661] my-[8px]"></div>
       <div class="flex flex-col">
@@ -129,5 +140,26 @@ onMounted(() => {
   z-index: -1;
   transform: rotate(20deg);
   opacity: 0.05;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.animated-text {
+  width: 50px;
+  animation: slideLeft 1s infinite; /* Бесконечная анимация */
+}
+@keyframes slideLeft {
+  from {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 0;
+  }
 }
 </style>

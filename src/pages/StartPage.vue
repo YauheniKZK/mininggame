@@ -4,7 +4,7 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
 
 // import { storeToRefs } from 'pinia';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import TapBlock from './main/layouts/default/components/TapBlock.vue';
 import UserSetting from '@/components/user/UserSetting.vue';
 // import TestComponent from '@/components/TestComponent.vue';
@@ -40,6 +40,9 @@ const start = () => {
     showModal.value = false
   }, 3000)
 }
+
+onMounted(() => {
+})
 </script>
 
 <template>
@@ -50,6 +53,8 @@ const start = () => {
           <span class="text-[#fff] text-[32px] flex mb-[50px]">{{ 'Step 1 info description' }}</span>
           <!-- <TestComponent /> -->
           <UserSetting />
+          
+     
         </div>
       </n-tab-pane>
       <n-tab-pane name="slide2" class="w-full h-full">
@@ -153,4 +158,5 @@ const start = () => {
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
 }
+
 </style>
