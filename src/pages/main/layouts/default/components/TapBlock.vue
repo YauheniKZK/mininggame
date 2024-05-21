@@ -101,6 +101,23 @@ onMounted(() => {
         <span class="text-[12px] uppercase text-[#000]">{{ 'cat-pad' }}</span>
       </div>
     </div>
+    <div class="flex flex-col w-full p-[16px] relative rounded-[4px]" style="border: 1px solid #fbdd87;">
+      <div class="flex w-full items-center mb-[16px]" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+        <span class="text-[14px] text-[#fbdd87]">{{ 'Item' }}</span>
+        <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
+        <span class="text-[14px] text-[#fbdd87]">{{ '0.6' }}</span>
+      </div>
+      <div class="flex w-full items-center" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+        <span class="text-[14px] text-[#fbdd87]">{{ 'Item 1' }}</span>
+        <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
+        <span class="text-[14px] text-[#fbdd87]">{{ '21' }}</span>
+      </div>
+      <div class="flex w-full items-center" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+        <span class="text-[14px] text-[#fbdd87]">{{ 'Item 2' }}</span>
+        <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
+        <span class="text-[14px] text-[#fbdd87]">{{ '26.8' }}</span>
+      </div>
+    </div>
     <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
       <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
         <div class="flex flex-col w-full h-full bg-[#29442f] relative z-[2] rounded-[16px]">
