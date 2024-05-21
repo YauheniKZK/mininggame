@@ -102,7 +102,7 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex flex-col w-full p-[16px] relative rounded-[4px]" style="border: 1px solid #fbdd87;">
-      <span class="text-[14px] text-[#fbdd87] infomation-span">{{ 'brief day' }}</span>
+      <span class="text-[14px] text-[#fbdd87] infomation-span">{{ 'brief of day' }}</span>
       <div class="flex w-full items-center mb-[4px]">
         <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'devcat online' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>

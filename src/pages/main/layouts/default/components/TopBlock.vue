@@ -51,16 +51,28 @@ const updateStack = async (value: string) => {
 
 <template>
   <div class="flex justify-between">
-    <div class="flex items-center">
-      <img :src="getImageUrl('img/avatars/cat2.png')" class="img-icon" alt="" />
-      <div class="flex flex-col pl-[16px]">
+    <div class="flex flex-col">
+      <div class="flex items-center mb-[8px]">
+        <span class="text-[#fff] text-[16px] mr-[6px]">{{ 'Welcome back, ' }}</span>
         <span class="text-[#fff] text-[16px]">{{ currentUserDataGetters.first_name }}</span>
-        <div class="text-[#fff] flex items-center">
-          <span class="text-[#adaeb1]">{{ 'Level: ' }}</span>
-          <span class="tag">{{ $t(currentUserDataGetters.level) }}</span>
-        </div>
       </div>
+      <div class="flex items-center">
+        <img :src="getImageUrl('img/avatars/cat2.png')" class="img-icon" alt="" />
+        <div class="flex flex-col pl-[16px]">
+          <div class="text-[#fff] flex items-center">
+            <span class="text-[#adaeb1]">{{ 'Level: ' }}</span>
+            <span class="tag">{{ $t(currentUserDataGetters.level) }}</span>
+          </div>
+          <div class="text-[#fff] flex items-center">
+            <span class="text-[#adaeb1]">{{ 'Stack: ' }}</span>
+            <span class="tag2">{{ currentUserDataGetters?.main_stack ? $t(currentUserDataGetters?.main_stack) : '' }}</span>
+          </div>
+        </div>
+      
+      </div>
+        
     </div>
+
     <UserSettingDrawer />
   </div>
 </template>
@@ -87,10 +99,19 @@ const updateStack = async (value: string) => {
   display: inline-block;
   margin-left: 8px;
   padding: 0px 8px;
-  box-shadow: rgba(254, 225, 0, 0.1) 0px 4px 16px, rgba(254, 225, 0, 0.1) 0px 8px 24px, rgba(254, 225, 0, 0.1) 0px 16px 56px;
   border-radius: 4px;
   background: #fee100;
   color: #8e8381;
+  font-size: 12px;
+}
+
+.tag {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0px 8px;
+  border-radius: 4px;
+  background: #888;
+  color: #fff;
   font-size: 12px;
 }
 </style>
