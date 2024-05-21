@@ -84,7 +84,7 @@ onMounted(() => {
         <span class="text-[#fff] text-[14px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
       </div>
     </div>
-    <div class="flex items-center gap-[16px]">
+    <div class="flex items-center gap-[16px] mb-[16px]">
       <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full">
         <span>{{ '> Wake up...' }}</span>
         <span v-for="(char, index) in animatedText" :key="index">
@@ -102,12 +102,12 @@ onMounted(() => {
       </div>
     </div>
     <div class="flex flex-col w-full p-[16px] relative rounded-[4px]" style="border: 1px solid #fbdd87;">
-      <div class="flex w-full items-center mb-[16px]" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+      <div class="flex w-full items-center mb-[8px]" style="text-shadow: 0 0 .1rem rgb(26, 255, 128), 0 0 0.1rem rgb(26, 255, 128);">
         <span class="text-[14px] text-[#fbdd87]">{{ 'Item' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
         <span class="text-[14px] text-[#fbdd87]">{{ '0.6' }}</span>
       </div>
-      <div class="flex w-full items-center" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
+      <div class="flex w-full items-center mb-[8px]" style="text-shadow: 0 0 .25rem rgb(26, 255, 128), 0 0 1rem rgb(26, 255, 128);">
         <span class="text-[14px] text-[#fbdd87]">{{ 'Item 1' }}</span>
         <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
         <span class="text-[14px] text-[#fbdd87]">{{ '21' }}</span>
