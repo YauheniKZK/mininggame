@@ -45,17 +45,15 @@ const updateStack = async (value: string) => {
   </div>
   <n-drawer v-model:show="showModal" :placement="'right'" width="90%" to="#containerForOptions" class="bg-secondary">
     <n-drawer-content>
-      <n-scrollbar style="max-height: 100vh" @touchmove="(e: any) => e.prevetDefault()">
-        <div class="flex flex-col pl-[16px]">
-          <div
-            v-for="item in mainStacksGetters"
-            :key="item.id"
-            class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-          >
-            <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
-          </div>
+      <div class="flex flex-col pl-[16px]">
+        <div
+          v-for="item in mainStacksGetters"
+          :key="item.id"
+          class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+        >
+          <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
         </div>
-      </n-scrollbar>
+      </div>
     </n-drawer-content>
   </n-drawer>
 </template>

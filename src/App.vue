@@ -90,9 +90,7 @@ onBeforeUnmount(async () => {
     <n-loading-bar-provider>
       <n-message-provider :placement="'top-right'">
         <n-notification-provider>
-          <n-scrollbar style="max-height: 100vh">
-            <Main ref="mainblock" class="bg-main" />
-          </n-scrollbar>
+          <Main ref="mainblock" class="bg-main" />
         </n-notification-provider>
       </n-message-provider>
     </n-loading-bar-provider>
