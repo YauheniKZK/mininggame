@@ -15,20 +15,6 @@ const { minusAvailableTaps, plusAvailableTaps } = appStore
 
 const intervalAvailableTaps = ref<any>(null)
 
-watch(() => availableTapsGetters.value, (newVal) => {
-  if (newVal && newVal < 100) {
-    intervalAvailableTaps.value = setInterval(() => {
-      if (intervalAvailableTaps.value >= 100) {
-        clearInterval(intervalAvailableTaps.value)
-      } else {
-        plusAvailableTaps()
-      }
-      
-    })
-    
-  }
-})
-
 const textGeneratedRef = ref<any>()
 const scrollbarContainer = ref()
 const scrollbarRef = ref()
@@ -142,6 +128,14 @@ const pointerEvent = (e: any, index: number) => {
     WebApp.HapticFeedback.impactOccurred('medium')
     minusAvailableTaps()
     whiteText()
+    intervalAvailableTaps.value = setInterval(() => {
+      if (intervalAvailableTaps.value >= 100) {
+        clearInterval(intervalAvailableTaps.value)
+      } else {
+        plusAvailableTaps()
+      }
+      
+    })
   }
 
 }
