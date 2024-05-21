@@ -204,7 +204,7 @@ onUnmounted(() => {
         <div v-if="availableTapsGetters <= 0" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center">
           <span class="text-[#fff] text-[22px]">{{ 'Need Energy. Please wait...' }}</span>
         </div>
-        <div v-if="activeAutoCoding" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
+        <div v-if="activeAutoCoding && availableTapsGetters > 0" class="absolute left-0 top-0 w-full h-full bg-[#000000b3] flex justify-center items-center" @touchstart="autoCodingStart" @touchend="autoCodingEnd">
           <span :class="pressAutoCoding ? 'text-[#ffffffa6] text-[20px]' : 'text-[#fff] text-[22px]'">{{ 'press and hold to start' }}</span>
         </div>
         <div
