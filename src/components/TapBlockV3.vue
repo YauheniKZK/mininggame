@@ -182,19 +182,22 @@ onUnmounted(() => {
 <template>
   <div class="flex flex-col justify-between relative w-full h-full pb-[16px]">
     <div class="flex flex-col">
-      <div class="flex mb-[24px] overflow-hidden relative">
+      <div class="flex mb-[8px] overflow-hidden relative">
         <div ref="scrollbarContainer" class="screen rounded-[16px]">
           <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
             <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
           </n-scrollbar>
         </div>
       </div>
-      <div class="flex items-center py-[8px]">
-        <img :src="getImageUrl('img/coin1.png')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
-        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
-          {{ formatNumberWithSpaces(Number(balanceRef)) }}
-          <sup class="font-[400]">{{ ' $' }}</sup>
-        </span>
+      <div class="flex items-center mb-[16px] px-[8px]">
+        <div class="flex items-center p-[4px]" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+          <img :src="getImageUrl('img/coin1.png')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
+          <span class="text-[14px] font-[600] text-[#fff] leading-[20px]">
+            {{ formatNumberWithSpaces(Number(balanceRef)) }}
+            <sup class="font-[400]">{{ ' $' }}</sup>
+          </span>
+        </div>
+
       </div>
       <div class="flex w-full mb-[16px]">
         <div class="flex items-center block-style1">
@@ -241,7 +244,7 @@ onUnmounted(() => {
             @pointerup="e => pointerEvent(e, index)"
           >
             <span
-              class="text-[#1ff37d] text-[16px]"
+              class="text-[#1ff37d] text-[13px]"
               style="touch-action: none !important;user-select: none;"
             >{{ btn.name }}</span>
           </div>
