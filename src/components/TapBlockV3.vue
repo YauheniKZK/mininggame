@@ -1,16 +1,17 @@
 <script setup lang="ts">
 import { getImageUrl } from '@/utils/images';
-import { onMounted, onUnmounted, ref } from 'vue';
+import { computed, onMounted, onUnmounted, ref } from 'vue';
 import WebApp from '@twa-dev/sdk';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { watch } from 'vue';
+import { formatNumberWithSpaces } from '@/utils/data';
 
 const emit = defineEmits(['closeTaps'])
 defineProps<{ earnPerTapGettersFront: number, availableTapsGetters: number, maxTapsGetters: number }>()
 
 const appStore = useApplicationStore()
-const { availableTapsGetters } = storeToRefs(appStore)
+const { availableTapsGetters, mainBalanceUserGetters } = storeToRefs(appStore)
 const { minusAvailableTaps, plusAvailableTaps } = appStore
 
 const intervalAvailableTaps = ref<any>(null)
@@ -68,31 +69,39 @@ function createButtonObject(buttonName: string, buttonLength: number) {
 }
 
 const buttonsArray = ref([
-  createButtonObject('esc', 100),
-  createButtonObject('1', 40),
-  createButtonObject('2', 40),
-  createButtonObject('3', 40),
-  createButtonObject('4', 40),
-  createButtonObject('5', 40),
-  createButtonObject('6', 40),
-  createButtonObject('7', 40),
-  createButtonObject('8', 40),
-  createButtonObject('9', 40),
-  createButtonObject('A', 40),
-  createButtonObject('B', 40),
-  createButtonObject('C', 40),
-  createButtonObject('D', 40),
-  createButtonObject('E', 40),
-  createButtonObject('F', 40),
-  createButtonObject('G', 40),
-  createButtonObject('H', 40),
-  createButtonObject('I', 40),
-  createButtonObject('J', 40),
-  createButtonObject('K', 40),
-  createButtonObject('shift', 80),
-  createButtonObject('alt', 80),
+  createButtonObject('esc', 80),
+  createButtonObject('1', 30),
+  createButtonObject('2', 30),
+  createButtonObject('3', 30),
+  createButtonObject('4', 30),
+  createButtonObject('5', 30),
+  createButtonObject('6', 30),
+  createButtonObject('7', 30),
+  createButtonObject('8', 30),
+  createButtonObject('9', 30),
+  createButtonObject('A', 30),
+  createButtonObject('B', 30),
+  createButtonObject('C', 30),
+  createButtonObject('D', 30),
+  createButtonObject('E', 30),
+  createButtonObject('F', 30),
+  createButtonObject('G', 30),
+  createButtonObject('H', 30),
+  createButtonObject('I', 30),
+  createButtonObject('J', 30),
+  createButtonObject('K', 30),
+  createButtonObject('shift', 60),
+  createButtonObject('alt', 60),
   createButtonObject('space', 300),
 ])
+
+const balanceRef = computed(() => {
+  if (mainBalanceUserGetters.value) {
+    return Number(mainBalanceUserGetters.value / 100).toFixed(3)
+  } else {
+    return 0
+  }
+})
 
 const clickbtnPress = (e: any, index: number) => {
   e.preventDefault()
@@ -179,6 +188,13 @@ onUnmounted(() => {
             <p ref="textGeneratedRef" class="break-words">{{ textGenerated }}</p>
           </n-scrollbar>
         </div>
+      </div>
+      <div class="flex items-center py-[8px]">
+        <img :src="getImageUrl('img/coin1.png')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
+        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
+          {{ formatNumberWithSpaces(Number(balanceRef)) }}
+          <sup class="font-[400]">{{ ' $' }}</sup>
+        </span>
       </div>
       <div class="flex w-full mb-[16px]">
         <div class="flex items-center block-style1">
