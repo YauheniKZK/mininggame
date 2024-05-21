@@ -66,6 +66,10 @@ const onTouchMove = (e: TouchEvent) => {
   }
 }
 
+const touchMove = (e: TouchEvent) => {
+  e.preventDefault()
+}
+
 
 onMounted(() => {
   WebApp.expand()
@@ -75,9 +79,11 @@ onMounted(() => {
   actionGetStackCategories()
   actionLevelCheck()
   if (mainblock.value) {
-    mainblock.value.addEventListener('touchstart', onTouchStart, { passive: false })
-  mainblock.value.addEventListener('touchmove', onTouchMove, { passive: false })
+    // mainblock.value.addEventListener('touchstart', onTouchStart, { passive: false })
+    // mainblock.value.addEventListener('touchmove', onTouchMove, { passive: false })
+    
   }
+  document.addEventListener('touchmove', touchMove, { passive: false })
 })
 
 onBeforeUnmount(async () => {
