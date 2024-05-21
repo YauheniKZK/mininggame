@@ -90,10 +90,16 @@
   background: var(--block-tag-bg-color);
   color: var(--block-tag-text-color);
 }
+html {
+  height: auto;
+  overflow: hidden;
+}
 
-body, html {
+body {
   width: 100%;
+  min-height: 100vh;
   height: 100vh;
+  overflow: hidden;
   padding: 0;
   margin: 0;
   background: var(--main-bg-color);
@@ -108,7 +114,7 @@ body, html {
   margin: 0;
   max-width: 600px;
   margin: 0 auto;
-  height: 100vh;
+  overflow-y: scroll;
 }
 
 .tabs-custom {
