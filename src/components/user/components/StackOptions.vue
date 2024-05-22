@@ -48,6 +48,7 @@ const updateStack = async (value: string) => {
     :placement="'right'"
     width="90%"
     content-style="flex: 1 1 auto;"
+    :min-height="100"
     to=".n-config-provider"
     class="bg-secondary fixed overflow-auto"
     style="height: auto;"
