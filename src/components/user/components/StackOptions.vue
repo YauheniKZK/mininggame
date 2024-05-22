@@ -52,7 +52,7 @@ const updateStack = async (value: string) => {
     @touchmove="e => e.preventDefault()"
   >
     <n-drawer-content>
-      <div class="flex flex-col pl-[16px]">
+      <div class="flex flex-col pl-[16px] overflow-scroll h-screen">
         <div
           v-for="item in mainStacksGetters"
           :key="item.id"
