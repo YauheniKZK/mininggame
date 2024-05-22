@@ -55,12 +55,12 @@ WebApp.onEvent('viewportChanged', async (event: any) => {
   }
 })
 
-// const overflow = 100
-// document.body.style.overflowY = 'hidden'
-// document.body.style.marginTop = `${overflow}px`
-// document.body.style.height = window.innerHeight + overflow + "px"
-// document.body.style.paddingBottom = `${overflow}px`
-// window.scrollTo(0, overflow)
+const overflow = 100
+document.body.style.overflowY = 'hidden'
+document.body.style.marginTop = `${overflow}px`
+document.body.style.height = window.innerHeight + overflow + "px"
+document.body.style.paddingBottom = `${overflow}px`
+window.scrollTo(0, overflow)
 
 const mainblock = ref()
 
@@ -93,8 +93,8 @@ onMounted(() => {
   actionGetStackCategories()
   actionLevelCheck()
   if (mainblock.value) {
-    // mainblock.value.addEventListener('touchstart', onTouchStart, { passive: false })
-    // mainblock.value.addEventListener('touchmove', onTouchMove, { passive: false })
+    mainblock.value.addEventListener('touchstart', onTouchStart, { passive: false })
+    mainblock.value.addEventListener('touchmove', onTouchMove, { passive: false })
     
   }
   document.addEventListener('touchmove', touchMove, { passive: false })
