@@ -97,7 +97,8 @@ onMounted(() => {
     mainblock.value.addEventListener('touchmove', onTouchMove, { passive: false })
     
   }
-  document.addEventListener('touchmove', touchMove, { passive: false })
+  window.scrollTo(0, overflow)
+  // document.addEventListener('touchmove', touchMove, { passive: false })
 })
 
 onBeforeUnmount(async () => {
