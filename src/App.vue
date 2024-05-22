@@ -7,7 +7,7 @@ import { storeToRefs } from 'pinia';
 import { tapActionIncr } from './services/tap.service';
 
 const appStore = useApplicationStore()
-const { totalScoreGetters, currentThemeAppGetters } = storeToRefs(appStore)
+const { totalScoreGetters, currentThemeAppGetters, mainBalanceUserGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
 
 function setViewportData() {
@@ -18,6 +18,12 @@ function setViewportData() {
     // viewportHeight.value = WebApp.viewportStableHeight
   }
 }
+
+watch(() => mainBalanceUserGetters.value, (newVal) => {
+  if (newVal) {
+    console.log('newValGG', newVal)
+  }
+})
 
 onresize = (event) => {
   console.log('event onresize', event)
