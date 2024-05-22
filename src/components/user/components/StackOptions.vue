@@ -50,6 +50,7 @@ const updateStack = async (value: string) => {
     content-style="flex: 1 1 auto;"
     to=".n-config-provider"
     class="bg-secondary fixed overflow-auto"
+    style="height: auto;"
   >
     <n-drawer-content class="overflow-auto h-auto">
       <div class="flex flex-col pl-[16px] ">

@@ -136,6 +136,11 @@ body, html {
   overflow: auto !important;
 }
 
+.n-drawer .n-drawer-content.n-drawer-content--native-scrollbar .n-drawer-body-content-wrapper {
+  height: auto !important;
+  overflow: auto !important;
+}
+
 .tabs-custom {
   --n-color-segment: #50727B !important;
   --n-tab-padding: 6px 4px !important;
