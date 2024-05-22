@@ -49,7 +49,6 @@ const updateStack = async (value: string) => {
     width="90%"
     content-style="flex: 1 1 auto;height: 100vh"
     class="bg-secondary fixed"
-    @touchmove="e => e.preventDefault()"
   >
     <n-drawer-content>
       <div class="flex flex-col pl-[16px] overflow-scroll ">
