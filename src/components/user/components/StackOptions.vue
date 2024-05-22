@@ -43,7 +43,7 @@ const updateStack = async (value: string) => {
       </n-icon>
     </div>
   </div>
-  <n-drawer v-model:show="showModal" :placement="'right'" width="90%" class="bg-secondary">
+  <n-drawer v-model:show="showModal" :placement="'right'" width="90%" class="bg-secondary relative">
     <n-drawer-content>
       <div class="flex flex-col pl-[16px]">
         <div
