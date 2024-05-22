@@ -87,7 +87,7 @@ onUnmounted(() => {
     height="100vh"
     to=".n-config-provider"
     class="bg-secondary no-scroll-block fixed "
-    content-style="flex: 1 1 auto;"
+    content-style="flex: 1 1 auto;overflow: hidden;"
     style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);flex: 1 1 auto;"
   >
     <n-drawer-content>
