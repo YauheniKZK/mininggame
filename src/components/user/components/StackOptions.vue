@@ -49,9 +49,9 @@ const updateStack = async (value: string) => {
     width="90%"
     content-style="flex: 1 1 auto;"
     to=".n-config-provider"
-    class="bg-secondary fixed"
+    class="bg-secondary fixed overflow-auto"
   >
-    <n-drawer-content>
+    <n-drawer-content class="overflow-auto h-auto">
       <div class="flex flex-col pl-[16px] ">
         <div
           v-for="item in mainStacksGetters"
