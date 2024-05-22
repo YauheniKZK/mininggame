@@ -5,9 +5,10 @@ import { onMounted, onBeforeUnmount, computed, watch, ref } from 'vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { tapActionIncr } from './services/tap.service';
+import { levels } from './utils/data';
 
 const appStore = useApplicationStore()
-const { totalScoreGetters, currentThemeAppGetters, mainBalanceUserGetters } = storeToRefs(appStore)
+const { totalScoreGetters, currentThemeAppGetters, mainBalanceUserGetters, currentUserLevelGetters } = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
 
 function setViewportData() {
@@ -19,9 +20,14 @@ function setViewportData() {
   }
 }
 
+const setLevelUp = computed(() => {
+  return levels[currentUserLevelGetters.value] / 100
+})
+
 watch(() => mainBalanceUserGetters.value, (newVal) => {
   if (newVal) {
     console.log('newValGG', newVal)
+    console.log('setLevelUp', setLevelUp)
   }
 })
 
