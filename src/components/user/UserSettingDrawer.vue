@@ -93,9 +93,10 @@ onUnmounted(() => {
     class="bg-secondary no-scroll-block fixed "
     content-style="flex: 1 1 auto;"
     style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);flex: 1 1 auto;height: -webkit-fill-available;"
+    @touchmove="touchmoveEv"
   >
     <n-drawer-content>
-      <div id="containerForOptions" class="flex flex-col mb-[12px]" @touchmove="touchmoveEv">
+      <div id="containerForOptions" class="flex flex-col mb-[12px] overflow-scroll" >
         <div class="flex mb-[24px]">
           <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
         </div>
