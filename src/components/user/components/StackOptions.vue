@@ -7,7 +7,6 @@ import WebApp from '@twa-dev/sdk';
 import { onUnmounted } from 'vue';
 import { watch } from 'vue';
 import { ChevronForward } from '@vicons/ionicons5'
-import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
 const { mainStacksGetters } = storeToRefs(appStore)
@@ -25,9 +24,6 @@ WebApp.BackButton.onClick(() => {
   showModal.value = false
 })
 
-const nDrawerContent = ref()
-
-
 
 const updateTheme = (value: ThemeApp) => {
   actionChooseThemeApp(value)
@@ -36,17 +32,6 @@ const updateTheme = (value: ThemeApp) => {
 const updateStack = async (value: string) => {
   await actionAddMainStack(Number(value))
 }
-
-onMounted(() => {
-  if (nDrawerContent.value) {
-    const overflow = 100
-    nDrawerContent.value.style.overflowY = 'hidden'
-    nDrawerContent.value.style.marginTop = `${overflow}px`
-    nDrawerContent.value.style.height = window.innerHeight + overflow + "px"
-    nDrawerContent.value.style.paddingBottom = `${overflow}px`
-    nDrawerContent.value.scrollTo(0, overflow)
-  }
-})
 </script>
 
 <template>
@@ -58,7 +43,16 @@ onMounted(() => {
       </n-icon>
     </div>
   </div>
-  <n-drawer
+  <div v-if="showModal" class="flex flex-col pl-[16px] ">
+    <div
+      v-for="item in mainStacksGetters"
+      :key="item.id"
+      class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+    >
+      <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
+    </div>
+  </div>
+  <!-- <n-drawer
     v-model:show="showModal"
     :placement="'right'"
     width="90%"
@@ -68,7 +62,7 @@ onMounted(() => {
     class="bg-secondary fixed overflow-auto"
     style="height: auto;"
   >
-    <n-drawer-content class="overflow-auto h-auto" ref="nDrawerContent">
+    <n-drawer-content class="overflow-auto h-auto">
       <div class="flex flex-col pl-[16px] ">
         <div
           v-for="item in mainStacksGetters"
@@ -79,7 +73,7 @@ onMounted(() => {
         </div>
       </div>
     </n-drawer-content>
-  </n-drawer>
+  </n-drawer> -->
 </template>
 
 <style scoped>
