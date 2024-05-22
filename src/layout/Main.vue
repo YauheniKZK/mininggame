@@ -132,7 +132,7 @@ onBeforeUnmount(async () => {
 
 <template>
   <div class="flex flex-col h-screen">
-    <n-scrollbar style="max-height: 100vh" content-style="overflow: hidden;">
+    <n-scrollbar style="max-height: 100vh" content-style="height: auto;">
       <LoadingStart v-if="loadingGetUserGetters" />
       <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
       <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
