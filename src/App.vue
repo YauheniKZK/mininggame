@@ -20,14 +20,16 @@ function setViewportData() {
   }
 }
 
-const setLevelUp = computed(() => {
-  return levels[currentUserLevelGetters.value] / 100
+const getCurrentLevelUp = computed(() => {
+  return levels[currentUserLevelGetters.value]
 })
 
 watch(() => mainBalanceUserGetters.value, (newVal) => {
   if (newVal) {
-    console.log('newValGG', newVal)
-    console.log('setLevelUp', setLevelUp)
+    if (newVal > getCurrentLevelUp.value) {
+      console.log('setLevelUp', newVal > getCurrentLevelUp.value)
+      actionLevelCheck()
+    }
   }
 })
 
