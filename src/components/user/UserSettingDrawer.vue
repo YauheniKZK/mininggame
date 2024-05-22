@@ -86,7 +86,7 @@ onUnmounted(() => {
     :placement="'bottom'"
     height="100%"
     to=".n-config-provider"
-    class="bg-secondary no-scroll-block"
+    class="bg-secondary no-scroll-block fixed"
     style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);"
   >
     <n-drawer-content>
