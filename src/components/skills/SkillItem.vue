@@ -5,7 +5,7 @@ const props = defineProps<{ title: string, profit: number }>()
 </script>
 
 <template>
-  <div class="flex flex-col p-[12px] bg-[#a19bb5] rounded-[8px] w-[calc(50%-6px)]">
+  <div class="flex flex-col p-[12px] bg-[#a19bb5] rounded-[8px]">
     <div class="flex mb-[8px]">
       <div class="flex w-[40%] min-w-[40%]">
         {{ 'icon' }}
