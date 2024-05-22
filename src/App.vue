@@ -6,6 +6,7 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { tapActionIncr } from './services/tap.service';
 import { levels } from './utils/data';
+import { onUpdated } from 'vue';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters, currentThemeAppGetters, mainBalanceUserGetters, currentUserLevelGetters } = storeToRefs(appStore)
@@ -58,7 +59,7 @@ WebApp.onEvent('viewportChanged', async (event: any) => {
 
 const overflow = 100
 document.body.style.overflowY = 'hidden'
-// document.body.style.marginTop = `${overflow}px`
+document.body.style.marginTop = `${overflow}px`
 document.body.style.height = window.innerHeight + overflow + "px"
 document.body.style.paddingBottom = `${overflow}px`
 window.scrollTo(0, overflow)
@@ -100,6 +101,10 @@ onMounted(() => {
   }
   window.scrollTo(0, overflow)
   // document.addEventListener('touchmove', touchMove, { passive: false })
+})
+
+onUpdated(() => {
+  window.scrollTo(0, overflow)
 })
 
 onBeforeUnmount(async () => {
