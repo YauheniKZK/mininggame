@@ -1,8 +1,8 @@
 export const levels: any = {
   'BEGINNER': 10000,
-  'JUNIOR': 100000,
-  'MID_LEVEL': 2000000,
-  'level_5': 5000000,
+  'TRAINEE': 100000,
+  'JUNIOR': 2000000,
+  'MID_LEVEL': 5000000,
   'level_6': 10000000,
   'level_7': 50000000,
   'level_8': 100000000,
