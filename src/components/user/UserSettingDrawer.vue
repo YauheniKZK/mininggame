@@ -70,6 +70,11 @@ const updateStack = async (value: string) => {
   await actionAddMainStack(Number(value))
 }
 
+const touchmoveEv = (e) => {
+  e.preventDefault()
+  touchmoveEv(e)
+}
+
 onUnmounted(() => {
   WebApp.BackButton.hide()
 })
@@ -90,7 +95,7 @@ onUnmounted(() => {
     style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);flex: 1 1 auto;height: -webkit-fill-available;"
   >
     <n-drawer-content>
-      <div id="containerForOptions" class="flex flex-col mb-[12px]">
+      <div id="containerForOptions" class="flex flex-col mb-[12px]" @touchmove="touchmoveEv">
         <div class="flex mb-[24px]">
           <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
         </div>
