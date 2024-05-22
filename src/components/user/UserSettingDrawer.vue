@@ -84,6 +84,7 @@ onUnmounted(() => {
   <n-drawer
     v-model:show="showModal"
     :placement="'bottom'"
+    height="100vh"
     to=".n-config-provider"
     class="bg-secondary no-scroll-block fixed "
     content-style="flex: 1 1 auto;"
@@ -98,7 +99,7 @@ onUnmounted(() => {
           <ThemeOptions />
         </div>
         <div class="flex flex-col">
-          <StackOptions />>
+          <StackOptions />
         </div>
       </div>
     </n-drawer-content>
