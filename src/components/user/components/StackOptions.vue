@@ -47,12 +47,12 @@ const updateStack = async (value: string) => {
     v-model:show="showModal"
     :placement="'right'"
     width="90%"
-    content-style="flex: 1 1 auto;overflow: hidden;"
+    content-style="flex: 1 1 auto;height: 100vh"
     class="bg-secondary fixed"
     @touchmove="e => e.preventDefault()"
   >
     <n-drawer-content>
-      <div class="flex flex-col pl-[16px] overflow-scroll h-screen">
+      <div class="flex flex-col pl-[16px] overflow-scroll ">
         <div
           v-for="item in mainStacksGetters"
           :key="item.id"
