@@ -9,7 +9,7 @@ import { levels } from './utils/data';
 
 const appStore = useApplicationStore()
 const { totalScoreGetters, currentThemeAppGetters, mainBalanceUserGetters, currentUserLevelGetters } = storeToRefs(appStore)
-const { actionMiningMoney, actionGetStackCategories, actionLevelCheck } = appStore
+const { actionMiningMoney, actionGetStackCategories, actionLevelCheck, actionGetUser } = appStore
 
 function setViewportData() {
   console.log('window.innerWidth', window.innerWidth)
@@ -24,11 +24,12 @@ const getCurrentLevelUp = computed(() => {
   return levels[currentUserLevelGetters.value]
 })
 
-watch(() => mainBalanceUserGetters.value, (newVal) => {
+watch(() => mainBalanceUserGetters.value, async (newVal) => {
   if (newVal) {
     if (newVal > getCurrentLevelUp.value) {
       console.log('setLevelUp', newVal > getCurrentLevelUp.value)
-      actionLevelCheck()
+      await actionLevelCheck()
+      await actionGetUser('page')
     }
   }
 })
@@ -59,7 +60,7 @@ const overflow = 100
 document.body.style.overflowY = 'hidden'
 // document.body.style.marginTop = `${overflow}px`
 document.body.style.height = window.innerHeight + overflow + "px"
-// document.body.style.paddingBottom = `${overflow}px`
+document.body.style.paddingBottom = `${overflow}px`
 window.scrollTo(0, overflow)
 
 const mainblock = ref()
