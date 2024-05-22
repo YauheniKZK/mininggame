@@ -131,13 +131,11 @@ onBeforeUnmount(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col h-screen">
-    <n-scrollbar style="max-height: max-content" content-style="height: auto;">
-      <LoadingStart v-if="loadingGetUserGetters" />
-      <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
-      <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
-      <div ref="erudaRef"></div>
-    </n-scrollbar>
+  <div class="flex flex-col">
+    <LoadingStart v-if="loadingGetUserGetters" />
+    <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
+    <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
+    <div ref="erudaRef"></div>
   </div>
 </template>
 

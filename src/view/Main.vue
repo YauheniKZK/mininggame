@@ -29,12 +29,10 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer">
-    <div class="flex h-full">
+    <div class="flex">
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px]"
         :tab-class="'tab-class'"
-        :pane-wrapper-class="'h-full'"
-        :pane-class="'h-full'"
         :value="valueTab"
         animated
       >
@@ -78,18 +76,6 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 .footer-before {
   position: relative;
 }
