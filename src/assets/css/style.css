@@ -122,6 +122,20 @@ body, html {
   flex-direction: column;
 }
 
+.n-drawer.n-drawer--native-scrollbar .n-drawer-content-wrapper {
+  overflow: auto !important;
+  height: auto !important;
+}
+
+.n-drawer .n-drawer-content {
+  height: auto !important;
+}
+
+.n-drawer .n-drawer-content .n-drawer-body {
+  flex: 1 1 auto !important;
+  overflow: auto !important;
+}
+
 .tabs-custom {
   --n-color-segment: #50727B !important;
   --n-tab-padding: 6px 4px !important;
