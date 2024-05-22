@@ -84,10 +84,10 @@ onUnmounted(() => {
   <n-drawer
     v-model:show="showModal"
     :placement="'bottom'"
-    height="100%"
     to=".n-config-provider"
-    class="bg-secondary no-scroll-block fixed"
-    style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);"
+    class="bg-secondary no-scroll-block fixed "
+    content-style="flex: 1 1 auto;"
+    style="box-shadow: 0px -25px 20px -16px rgb(191 191 191 / 45%);flex: 1 1 auto;"
   >
     <n-drawer-content>
       <div id="containerForOptions" class="flex flex-col mb-[12px]">

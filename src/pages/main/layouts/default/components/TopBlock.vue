@@ -79,12 +79,12 @@ const updateStack = async (value: string) => {
 
 <style scoped>
 
-.no-scroll-block {
+/* .no-scroll-block {
   -webkit-user-select: none !important;
   -moz-user-select: none !important;
   user-select: none !important;
   touch-action: none !important;
-}
+} */
 .img-icon {
   max-width: 50px;
   min-width: 50px;
