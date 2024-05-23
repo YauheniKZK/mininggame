@@ -4,13 +4,13 @@
 // import UserSetting from '@/components/user/UserSetting.vue';
 // import UserLevel from '@/components/user/UserLevel.vue';
 // import BtnTap from '@/components/BtnTap.vue';
-// import { useApplicationStore } from '@/stores/application/applicationStore';
-// import { storeToRefs } from 'pinia';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import MainDefault from './layouts/default/MainDefault.vue';
 
-// const appStore = useApplicationStore()
-// const { currentUserDataGetters } = storeToRefs(appStore)
+const appStore = useApplicationStore()
+const { showModalSettingGetters } = storeToRefs(appStore)
 
 // const handlebtn = () => {
 //   WebApp.showAlert(`Hello World! Current count is `)
@@ -60,10 +60,41 @@ onBeforeUnmount(() => {
     <div class="flex justify-center">
       <TapBlock />
     </div> -->
+    <Transition name="slide-up">
+      <div v-if="showModalSettingGetters" id="containerForOptions" class="flex flex-col mb-[12px]" >
+        <div class="flex mb-[24px]">
+          <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+        </div>
+        <div class="flex flex-col mb-[12px]">
+          <ThemeOptions />
+        </div>
+        <div class="flex flex-col">
+          <StackOptions />
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+
+.slide-up-leave-to {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
+
 
 .bounce-enter-active, .bounce-leave-active {
   transition: left 0.3s, transform 0.3s; /* Анимация для входа и выхода */

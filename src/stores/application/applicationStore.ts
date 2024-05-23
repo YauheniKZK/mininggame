@@ -52,6 +52,8 @@ export const useApplicationStore = defineStore('application', () => {
 
   const successfullSyncTapClaim = ref(false)
 
+  const showModalSetting = ref(false)
+
   // --------Getters---------
 
   const currentUserDataGetters = computed(() => currentUserData.value)
@@ -89,7 +91,7 @@ export const useApplicationStore = defineStore('application', () => {
     }
   })
   
-
+  const showModalSettingGetters = computed(() => showModalSetting.value)
   
 
   // --------Actions---------
@@ -340,6 +342,10 @@ export const useApplicationStore = defineStore('application', () => {
     currentThemeApp.value = theme
   }
 
+  function switchModalSetting() {
+    showModalSetting.value = !showModalSetting.value
+  }
+
   return {
     totalScoreGetters,
     updateTotalScore,
@@ -387,6 +393,8 @@ export const useApplicationStore = defineStore('application', () => {
     mainStacksGetters,
     earnPerTapGettersFront,
     minusAvailableTaps,
-    plusAvailableTaps
+    plusAvailableTaps,
+    showModalSettingGetters,
+    switchModalSetting
   }
 })
