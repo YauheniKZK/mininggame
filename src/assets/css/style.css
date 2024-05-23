@@ -170,6 +170,10 @@ body, html {
   display: none;
 }
 
+.tabs-custom.none-tab > .n-tabs-nav {
+  display: none;
+}
+
 .tabs-custom .n-tabs-nav {
   display: flex !important;
 }
