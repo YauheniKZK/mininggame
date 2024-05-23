@@ -60,8 +60,8 @@ onMounted(() => {
     class="bg-secondary fixed"
     style="height: auto;"
   >
-    <n-drawer-content class="overflow-auto h-auto">
-      <div class="flex flex-col pl-[16px] overflow-scroll">
+    <n-drawer-content>
+      <div class="flex flex-col pl-[16px]">
         <div
           v-for="item in mainStacksGetters"
           :key="item.id"
