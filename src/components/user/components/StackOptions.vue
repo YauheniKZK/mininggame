@@ -51,7 +51,16 @@ onMounted(() => {
       </n-icon>
     </div>
   </div>
-  <n-drawer
+  <div v-if="showModal" class="flex flex-col pl-[16px]">
+    <div
+      v-for="item in mainStacksGetters"
+      :key="item.id"
+      class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+    >
+      <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
+    </div>
+  </div>
+  <!-- <n-drawer
     v-model:show="showModal"
     :placement="'right'"
     width="90%"
@@ -61,17 +70,9 @@ onMounted(() => {
     style="height: auto;"
   >
     <n-drawer-content>
-      <div class="flex flex-col pl-[16px]">
-        <div
-          v-for="item in mainStacksGetters"
-          :key="item.id"
-          class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-        >
-          <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
-        </div>
-      </div>
+      
     </n-drawer-content>
-  </n-drawer>
+  </n-drawer> -->
 </template>
 
 <style scoped>
