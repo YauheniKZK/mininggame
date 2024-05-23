@@ -3,15 +3,15 @@ import Main from '@/pages/main/Main.vue';
 import Mining from '@/pages/mining/Mining.vue';
 import Earn from '@/pages/Earn.vue';
 import Info from '@/pages/Info.vue';
-// import { useApplicationStore } from '@/stores/application/applicationStore';
-// import { storeToRefs } from 'pinia';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
 import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
-// const appStore = useApplicationStore()
-// const { totalScoreGetters } = storeToRefs(appStore)
+const appStore = useApplicationStore()
+const { showModalSettingGetters } = storeToRefs(appStore)
 // const { actionMiningMoney } = appStore
 
 
@@ -77,12 +77,39 @@ onMounted(async () => {
           </n-tab>
         </n-tabs>
       </div>
-
+      <Transition name="slide-up">
+        <div v-if="showModalSettingGetters" id="containerForOptions" class="flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000]" >
+          <div class="flex mb-[24px]">
+            <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+          </div>
+          <div class="flex flex-col mb-[12px]">
+            <ThemeOptions />
+          </div>
+          <div class="flex flex-col">
+            <StackOptions />
+          </div>
+        </div>
+      </Transition>
     </div>
   </div>
 </template>
 
 <style scoped>
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+
+.slide-up-leave-to {
+  opacity: 1;
+  transform: translateY(0);
+}
 .footer-before {
   position: relative;
 }
