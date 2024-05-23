@@ -10,6 +10,7 @@
 
 * {
   touch-action: manipulation;
+  scroll-behavior: smooth !important;
 }
 
 :root {
@@ -97,8 +98,7 @@
 
 body, html {
   width: 100%;
-  min-height: 100vh;
-  height: 100vh;
+  overflow-y: auto;
   padding: 0;
   margin: 0;
   background: var(--main-bg-color);
@@ -115,7 +115,7 @@ body, html {
 }
 
 .n-config-provider {
-  height: 100vh;
+  height: auto;
   flex: 1 1 auto;
   flex-direction: column;
 }

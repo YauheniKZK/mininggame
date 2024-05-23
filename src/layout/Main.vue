@@ -52,8 +52,8 @@ const containerForOptions = ref()
 onMounted(async () => {
   console.log('222222')
   if (containerForOptions.value) {
-    containerForOptions.value.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false })
-    containerForOptions.value.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
+    // containerForOptions.value.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false })
+    // containerForOptions.value.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
   }
 
   await actionGetUser('start')

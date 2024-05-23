@@ -94,17 +94,13 @@ onMounted(() => {
   WebApp.onEvent('viewportChanged', setViewportData)
   actionGetStackCategories()
   actionLevelCheck()
-  window.addEventListener('touchstart', onTouchStart, { passive: false })
-  window.addEventListener('touchmove', onTouchMove, { passive: false })
+  // window.addEventListener('touchstart', onTouchStart, { passive: false })
+  // window.addEventListener('touchmove', onTouchMove, { passive: false })
 
-  document.addEventListener('touchstart', onTouchStart, { passive: false })
-  document.addEventListener('touchmove', onTouchMove, { passive: false })
+  // document.addEventListener('touchstart', onTouchStart, { passive: false })
+  // document.addEventListener('touchmove', onTouchMove, { passive: false })
   // window.scrollTo(0, overflow)
   // document.addEventListener('touchmove', touchMove, { passive: false })
-})
-
-onUpdated(() => {
-  window.scrollTo(0, overflow)
 })
 
 onBeforeUnmount(async () => {
