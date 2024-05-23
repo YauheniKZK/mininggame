@@ -171,7 +171,7 @@ body, html {
 }
 
 .tabs-custom.none-tab > .n-tabs-nav {
-  display: none;
+  display: none !important;
 }
 
 .tabs-custom .n-tabs-nav {
