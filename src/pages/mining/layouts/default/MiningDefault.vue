@@ -71,19 +71,25 @@ const openMenu = () => {
   right: 16px;
 }
 
+.contaner-menu {
+  transform: translateX(100%);
+}
+
 .slide-up-enter-active,
 .slide-up-leave-active {
   transition: all 0.25s ease-out;
-  transform: translateX(100%);
-  opacity: 0;
 }
 
 .slide-up-enter-from {
+  opacity: 0;
   transition: all 0.25s ease-out;
+  transform: translateX(100%);
 }
 
 .slide-up-leave-to {
+  opacity: 1;
   transition: all 0.25s ease-out;
+  transform: translateX(0);
 }
 .item-setting {
   border: 1px solid #D2649A;
