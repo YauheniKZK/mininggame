@@ -8,6 +8,9 @@ import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
 import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
 
+import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
+import StackOptions from '@/components/user/components/StackOptions.vue';
+
 const versionApp = import.meta.env.PACKAGE_VERSION
 
 const appStore = useApplicationStore()
