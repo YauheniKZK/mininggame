@@ -6,10 +6,10 @@ import TopInfo from './components/TopInfo.vue';
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full px-[16px]">
+  <div class="flex flex-col items-center w-full px-[16px] h-full">
     <TopInfo class="mb-[24px]" />
-    <div class="btn-menu w-[50px] h-[50px] rounded-[50%] flex justify-center items-center">
-      <n-icon>
+    <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]">
+      <n-icon :size="26">
         <Menu />
       </n-icon>
     </div>
@@ -17,5 +17,9 @@ import TopInfo from './components/TopInfo.vue';
 </template>
 
 <style scoped>
-
+.btn-menu {
+  width: 50%;
+  height: 50px;
+  border-radius: 50%;
+}
 </style>

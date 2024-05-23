@@ -47,11 +47,12 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col justify-between container-drawer">
+  <div class="flex flex-col justify-between container-drawer h-full">
     <div class="flex">
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px]"
         :tab-class="'tab-class '"
+        :pane-class="'h-full'"
         :value="valueTab"
         animated
       >
