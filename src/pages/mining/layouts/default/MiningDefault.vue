@@ -10,6 +10,12 @@ const updateTab = (value: string) => {
   valueTab.value = value
 }
 const showModalTabs = ref(false)
+const activeMenu = ref('')
+
+const openMenu = () => {
+  showModalTabs.value = !showModalTabs.value
+  activeMenu.value = showModalTabs.value ? 'active' : ''
+}
 
 </script>
 
@@ -17,19 +23,18 @@ const showModalTabs = ref(false)
   <div class="flex flex-col items-center w-full px-[16px] h-full">
     <TopInfo class="mb-[8px]" />
     <Tabs :valueTab="valueTab" />
-    <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="showModalTabs = !showModalTabs">
-      <n-icon :size="26" class="icon-menu flex justify-center items-center">
-        <label for="check">
-          <input type="checkbox" id="check"/> 
+    <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="openMenu">
+      <n-icon :size="26" class="flex justify-center items-center">
+        <div class="icon-menu" :class="activeMenu">
           <span></span>
           <span></span>
           <span></span>
-        </label>
+        </div>
       </n-icon>
     </div>
     <Transition name="slide-up">
       <div
-        v-show="showModalTabs"
+        v-if="showModalTabs"
         ref="containerForOptions"
         class="z-[10] flex flex-col mb-[12px] fixed right-0 top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
         >
@@ -86,14 +91,14 @@ const showModalTabs = ref(false)
   border: 1px solid #D2649A;
 }
 
-.icon-menu label{
+.icon-menu {
  display:flex;
   flex-direction:column;
   width:70px;
   cursor:pointer;
 }
 
-.icon-menu label span{
+.icon-menu span{
   background: #fff;
   border-radius:10px;
   height: 3px;
@@ -105,7 +110,6 @@ const showModalTabs = ref(false)
 
 .icon-menu span:nth-of-type(1){
   width:50%;
-  
 }
 
 .icon-menu span:nth-of-type(2){
@@ -118,26 +122,20 @@ const showModalTabs = ref(false)
  
 }
 
-
-.icon-menu input[type="checkbox"]{
-  display:none;
-}
-
-
-.icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(1){
+.icon-menu.active span:nth-of-type(1){
   transform-origin:bottom;
   transform: rotate(45deg) translate(3px);
 }
 
 
-.icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(2){
+.icon-menu.active span:nth-of-type(2){
   
   transform-origin:top;
   transform:rotatez(-45deg)
 }
 
 
-.icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(3){
+.icon-menu.active span:nth-of-type(3){
   
   transform-origin:bottom;
   width:50%;
