@@ -29,7 +29,7 @@ const showModalTabs = ref(false)
     </div>
     <Transition name="slide-up">
       <div
-        v-if="showModalTabs"
+        v-show="showModalTabs"
         ref="containerForOptions"
         class="z-[10] flex flex-col mb-[12px] fixed right-0 top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
         >
