@@ -34,10 +34,15 @@ const updateStack = async (value: string) => {
   await actionAddMainStack(Number(value))
 }
 
+const stackContainer = ref()
+
 onMounted(() => {
   const doc = document.querySelector('.n-drawer-body-content-wrapper')
   if(doc) {
     doc.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
+  }
+  if(stackContainer.value) {
+    stackContainer.value.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false })
   }
 })
 </script>
@@ -52,7 +57,7 @@ onMounted(() => {
     </div>
   </div>
   <Transition name="slide-up">
-    <div v-if="showModal" class="flex flex-col p-[16px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-auto">
+    <div v-if="showModal" ref="stackContainer" class="flex flex-col p-[16px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-auto">
       <div
         v-for="item in mainStacksGetters"
         :key="item.id"
