@@ -6,6 +6,7 @@ import Info from '@/pages/Info.vue';
 // import { useApplicationStore } from '@/stores/application/applicationStore';
 // import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
+import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -45,6 +46,9 @@ onMounted(async () => {
         <n-tab-pane name="earn" class="w-full">
           <Earn />
         </n-tab-pane>
+        <n-tab-pane name="friends" class="w-full">
+          <EarnDefault />
+        </n-tab-pane>
         <n-tab-pane name="info" class="w-full">
           <Info />
         </n-tab-pane>
@@ -64,6 +68,9 @@ onMounted(async () => {
           </n-tab>
           <n-tab name="earn">
             Earn
+          </n-tab>
+          <n-tab name="friends">
+            friends
           </n-tab>
           <n-tab name="info">
             Info
