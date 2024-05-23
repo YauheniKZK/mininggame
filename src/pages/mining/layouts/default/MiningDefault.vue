@@ -18,7 +18,7 @@ const showModalTabs = ref(false)
     <TopInfo class="mb-[8px]" />
     <Tabs :valueTab="valueTab" />
     <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="showModalTabs = !showModalTabs">
-      <n-icon :size="26" class="icon-menu">
+      <n-icon :size="26" class="icon-menu flex justify-center items-center">
         <label for="check">
           <input type="checkbox" id="check"/> 
           <span></span>
@@ -96,8 +96,8 @@ const showModalTabs = ref(false)
 .icon-menu label span{
   background: #fff;
   border-radius:10px;
-  height:7px;
-  margin: 7px 0;
+  height: 3px;
+  margin: 2px 0;
   transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
 
 }
@@ -126,7 +126,7 @@ const showModalTabs = ref(false)
 
 .icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(1){
   transform-origin:bottom;
-  transform:rotatez(45deg) translate(8px,0px)
+  transform: rotate(45deg) translate(3px);
 }
 
 
@@ -141,7 +141,7 @@ const showModalTabs = ref(false)
   
   transform-origin:bottom;
   width:50%;
-  transform: translate(30px,-11px) rotatez(45deg);
+  transform: translate(11px,-3px) rotate(45deg);
 
 }
 </style>
