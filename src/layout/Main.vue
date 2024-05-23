@@ -5,6 +5,8 @@ import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
+import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
+import StackOptions from '@/components/user/components/StackOptions.vue';
 // import eruda from 'eruda'
 // import WebApp from '@twa-dev/sdk'
 // import { tapActionIncr } from '@/services/tap.service';
@@ -18,7 +20,8 @@ const {
   successCurrentUserDataGetters,
   isTapingGetters,
   successfullSyncTapClaimGetters,
-  earnPassivePerSecGetters
+  earnPassivePerSecGetters,
+  showModalSettingGetters
 } = storeToRefs(appStore)
 const {
   actionGetUser,
@@ -135,9 +138,35 @@ onBeforeUnmount(async () => {
     <LoadingStart v-if="loadingGetUserGetters" />
     <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
     <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
-    <div ref="erudaRef"></div>
+    <Transition name="slide-up">
+      <div v-if="showModalSettingGetters" id="containerForOptions" class="flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000]" >
+        <div class="flex mb-[24px]">
+          <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+        </div>
+        <div class="flex flex-col mb-[12px]">
+          <ThemeOptions />
+        </div>
+        <div class="flex flex-col">
+          <StackOptions />
+        </div>
+      </div>
+    </Transition>
   </div>
 </template>
 
 <style scoped>
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+
+.slide-up-leave-to {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
