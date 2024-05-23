@@ -48,7 +48,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
-    <div class="flex h-full">
+    <div class="flex h-auto">
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px] h-full"
         :tab-class="'tab-class '"
