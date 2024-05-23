@@ -166,7 +166,7 @@ body, html {
   height: 100%;
 }
 
-.tabs-custom1.none-tab .n-tabs-nav {
+.tabs-custom1.none-tab > .n-tabs-nav {
   display: none;
 }
 
