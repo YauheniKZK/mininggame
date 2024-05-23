@@ -18,15 +18,20 @@ const showModalTabs = ref(false)
     <TopInfo class="mb-[8px]" />
     <Tabs :valueTab="valueTab" />
     <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="showModalTabs = !showModalTabs">
-      <n-icon :size="26">
-        <Menu />
+      <n-icon :size="26" class="icon-menu">
+        <label for="check">
+          <input type="checkbox" id="check"/> 
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
       </n-icon>
     </div>
     <Transition name="slide-up">
       <div
         v-if="showModalTabs"
         ref="containerForOptions"
-        class="z-[10] flex flex-col mb-[12px] fixed right-[100%] top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
+        class="z-[10] flex flex-col mb-[12px] fixed right-[0] top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
         >
           <n-tabs placement="right" class="w-full" :value="valueTab" animated @update:value="updateTab">
             <n-tab name="dev">
@@ -79,5 +84,64 @@ const showModalTabs = ref(false)
 }
 .item-setting {
   border: 1px solid #D2649A;
+}
+
+.icon-menu label{
+ display:flex;
+  flex-direction:column;
+  width:70px;
+  cursor:pointer;
+}
+
+.icon-menu label span{
+  background: #fff;
+  border-radius:10px;
+  height:7px;
+  margin: 7px 0;
+  transition: .4s  cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+}
+
+
+.icon-menu span:nth-of-type(1){
+  width:50%;
+  
+}
+
+.icon-menu span:nth-of-type(2){
+  width:100%;
+}
+
+
+.icon-menu span:nth-of-type(3){
+  width:75%;
+ 
+}
+
+
+.icon-menu input[type="checkbox"]{
+  display:none;
+}
+
+
+.icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(1){
+  transform-origin:bottom;
+  transform:rotatez(45deg) translate(8px,0px)
+}
+
+
+.icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(2){
+  
+  transform-origin:top;
+  transform:rotatez(-45deg)
+}
+
+
+.icon-menu input[type="checkbox"]:checked ~ span:nth-of-type(3){
+  
+  transform-origin:bottom;
+  width:50%;
+  transform: translate(30px,-11px) rotatez(45deg);
+
 }
 </style>

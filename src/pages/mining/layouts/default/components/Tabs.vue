@@ -6,7 +6,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
 
 <template>
   <n-tabs
-    class="w-full tabs-custom none-tab mb-[24px] pb-[60px]"
+    class="w-full tabs-custom none-tab mb-[24px]"
     :value="props.valueTab"
     animated
     style="height: calc(100vh - 82px);"
