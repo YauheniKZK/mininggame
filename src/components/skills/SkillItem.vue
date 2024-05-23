@@ -10,23 +10,21 @@ const props = defineProps<{ title: string, profit: number }>()
       <div class="flex flex-col items-center pr-[8px]">
         <div class="w-[42px] h-[42px] rounded-[50%] bg-[#3b3b3b] mb-[6px]">
         </div>
-        <span class="text-[#fff] text-[12px]">{{ 'lvl: ' + '5' }}</span>
+        
       </div>
       <div class="flex flex-col">
-        <span class="text-[#7c5b5bc5] text-[12px]">{{ 'profit/hour' }}</span>
-        <span class="text-[#fff] text-[14px]">{{ props.profit + ' $' }}</span>
-        <div class="w-full max-w-[100px] h-[1px] bg-[#63656661] my-[4px]"></div>
-        <div class="flex flex-wrap items-center">
-          <span class="text-[#7c5b5bc5] text-[12px] mr-[4px]">{{ 'price' }}</span>
-          <span class="text-[#52f55f] text-[14px]">{{ props.profit + ' $' }}</span>
-        </div>
+        <span class="text-[#fff] text-[12px]">{{ 'lvl: ' + '5' }}</span>
+        <span class="text-[#fff] text-[16px]">{{ props.title }}</span>
 
       </div>
     </div>
-    <div class="flex">
-      <div class="flex w-[40%] min-w-[40%]">
-        <span class="text-[#fff] text-[16px]">{{ props.title }}</span>
-        
+    <div class="flex flex-col">
+      <span class="text-[#7c5b5bc5] text-[12px]">{{ 'profit/hour' }}</span>
+      <span class="text-[#fff] text-[14px]">{{ props.profit + ' $' }}</span>
+      <div class="w-full max-w-[100px] h-[1px] bg-[#63656661] my-[4px]"></div>
+      <div class="flex flex-wrap items-center">
+        <span class="text-[#7c5b5bc5] text-[12px] mr-[4px]">{{ 'price' }}</span>
+        <span class="text-[#52f55f] text-[14px]">{{ props.profit + ' $' }}</span>
       </div>
     </div>
   </div>
