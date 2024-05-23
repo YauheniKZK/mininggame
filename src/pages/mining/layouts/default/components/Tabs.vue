@@ -10,7 +10,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
     :value="props.valueTab"
     animated
     style="height: calc(100vh - 82px);"
-    :pane-class="'h-full overflow-auto'"
+    :pane-class="'h-full'"
   >
     <n-tab-pane name="dev" tab="Dev" class="w-full">
       <div class="flex flex-wrap gap-[16px]">
@@ -24,7 +24,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
       </div>
     </n-tab-pane>
     <n-tab-pane name="soft" tab="Soft Skills" class="w-full">
-      <div class="flex flex-col gap-[16px]">
+      <div class="flex flex-wrap gap-[16px]">
         <SkillItem
           v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
           :title="'Title'"
