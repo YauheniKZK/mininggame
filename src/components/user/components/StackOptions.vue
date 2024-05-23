@@ -51,7 +51,7 @@ onMounted(() => {
       </n-icon>
     </div>
   </div>
-  <div v-if="showModal" class="flex flex-col pl-[16px] overflow-y-auto">
+  <div v-if="showModal" class="flex flex-col pl-[16px] fixed left-0 top-0 w-full h-screen bg-[#000]">
     <div
       v-for="item in mainStacksGetters"
       :key="item.id"
