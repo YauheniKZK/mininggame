@@ -43,23 +43,13 @@ const updateStack = async (value: string) => {
       </n-icon>
     </div>
   </div>
-  <div v-if="showModal" class="flex flex-col pl-[16px] ">
-    <div
-      v-for="item in mainStacksGetters"
-      :key="item.id"
-      class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-    >
-      <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
-    </div>
-  </div>
-  <!-- <n-drawer
+  <n-drawer
     v-model:show="showModal"
     :placement="'right'"
     width="90%"
     content-style="flex: 1 1 auto;"
-    :min-height="100"
-    to=".n-config-provider"
-    class="bg-secondary fixed overflow-auto"
+    height="100vh"
+    class="bg-secondary fixed"
     style="height: auto;"
   >
     <n-drawer-content class="overflow-auto h-auto">
@@ -73,7 +63,7 @@ const updateStack = async (value: string) => {
         </div>
       </div>
     </n-drawer-content>
-  </n-drawer> -->
+  </n-drawer>
 </template>
 
 <style scoped>
