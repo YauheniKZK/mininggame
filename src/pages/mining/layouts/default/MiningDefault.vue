@@ -17,11 +17,19 @@ const openMenu = () => {
   activeMenu.value = showModalTabs.value ? 'active' : ''
 }
 
+const containerRef = ref()
+
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full px-[16px] h-full">
-    <TopInfo class="mb-[8px]" />
+  <div class="flex flex-col items-center w-full px-[16px] h-full" ref="containerRef">
+    <n-affix
+      :trigger-top="16"
+      position="absolute"
+      :listen-to="() => containerRef"
+    >
+      <TopInfo class="mb-[8px]" />
+    </n-affix>
     <Tabs :valueTab="valueTab" />
     <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="openMenu">
       <n-icon :size="26" class="flex justify-center items-center">
