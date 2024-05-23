@@ -139,7 +139,7 @@ onBeforeUnmount(async () => {
     <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
     <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
     <Transition name="slide-up">
-      <div v-if="showModalSettingGetters" id="containerForOptions" class="flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000]" >
+      <div v-if="showModalSettingGetters" id="containerForOptions" class="z-[1] flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000]" >
         <div class="flex mb-[24px]">
           <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
         </div>
