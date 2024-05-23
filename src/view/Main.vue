@@ -10,6 +10,7 @@ import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
 import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
 import StackOptions from '@/components/user/components/StackOptions.vue';
 import { watch } from 'vue';
+import WebApp from '@twa-dev/sdk';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -26,9 +27,15 @@ const updateTab = (value: string) => {
 watch(() => showModalSettingGetters.value, (newVal) => {
   if (newVal) {
     updateTab('setting')
+    WebApp.BackButton.show()
   } else {
     updateTab('main')
+    WebApp.BackButton.hide()
   }
+})
+
+WebApp.BackButton.onClick(() => {
+  updateTab('main')
 })
 
 onMounted(async () => {
@@ -81,7 +88,7 @@ onMounted(async () => {
     </Transition> -->
       </n-tabs>
     </div>
-    <div class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
+    <div v-if="valueTab !== 'setting'" class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
       <div class="flex justify-end p-[8px_12px]">
         <span class="text-[#fff]">{{ versionApp }}</span>
       </div>
