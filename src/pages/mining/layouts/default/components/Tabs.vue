@@ -5,7 +5,13 @@ import SkillItem from '@/components/skills/SkillItem.vue';
 </script>
 
 <template>
-  <n-tabs class="w-full tabs-custom none-tab mb-[24px]" :value="props.valueTab" animated>
+  <n-tabs
+    class="w-full tabs-custom none-tab mb-[24px]"
+    :value="props.valueTab"
+    animated
+    style="height: calc(100vh - 82px);"
+    :pane-class="'h-full overflow-auto'"
+  >
     <n-tab-pane name="dev" tab="Dev" class="w-full">
       <div class="flex flex-wrap gap-[16px]">
         <SkillItem

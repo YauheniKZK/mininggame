@@ -15,7 +15,7 @@ const showModalTabs = ref(false)
 
 <template>
   <div class="flex flex-col items-center w-full px-[16px] h-full">
-    <TopInfo class="mb-[24px]" />
+    <TopInfo class="mb-[8px]" />
     <Tabs :valueTab="valueTab" />
     <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="showModalTabs = !showModalTabs">
       <n-icon :size="26">
