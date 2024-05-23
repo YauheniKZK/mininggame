@@ -18,7 +18,7 @@ import TopInfo from './components/TopInfo.vue';
 
 <style scoped>
 .btn-menu {
-  width: 50%;
+  width: 50px;
   height: 50px;
   border-radius: 50%;
 }

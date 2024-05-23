@@ -48,9 +48,9 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
-    <div class="flex">
+    <div class="flex h-full">
       <n-tabs
-        class="w-full tabs-custom1 none-tab mb-[24px]"
+        class="w-full tabs-custom1 none-tab mb-[24px] h-full"
         :tab-class="'tab-class '"
         :pane-class="'h-full'"
         :value="valueTab"

@@ -138,7 +138,7 @@ onBeforeUnmount(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col">
+  <div class="flex flex-col h-full">
     <LoadingStart v-if="loadingGetUserGetters" />
     <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
     <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
