@@ -169,7 +169,7 @@ onBeforeUnmount(async () => {
 
 .slide-up-enter-from {
   opacity: 0;
-  transform: translateY(-100vh);
+  transform: translateY(100vh);
 }
 
 .slide-up-leave-to {

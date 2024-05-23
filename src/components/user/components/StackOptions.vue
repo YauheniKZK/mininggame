@@ -51,15 +51,18 @@ onMounted(() => {
       </n-icon>
     </div>
   </div>
-  <div v-if="showModal" class="flex flex-col p-[16px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-auto">
-    <div
-      v-for="item in mainStacksGetters"
-      :key="item.id"
-      class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-    >
-      <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
+  <Transition name="slide-up">
+    <div v-if="showModal" class="flex flex-col p-[16px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-auto">
+      <div
+        v-for="item in mainStacksGetters"
+        :key="item.id"
+        class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
+      >
+        <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
+      </div>
     </div>
-  </div>
+  </Transition>
+  
   <!-- <n-drawer
     v-model:show="showModal"
     :placement="'right'"
@@ -76,6 +79,21 @@ onMounted(() => {
 </template>
 
 <style scoped>
+
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateX(100vh);
+}
+
+.slide-up-leave-to {
+  opacity: 1;
+  transform: translateX(0);
+}
 .item-setting {
   border: 1px solid #D2649A;
 }
