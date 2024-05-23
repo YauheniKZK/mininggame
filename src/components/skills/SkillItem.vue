@@ -18,11 +18,13 @@ const props = defineProps<{ title: string, profit: number }>()
 
       </div>
     </div>
-    <div class="flex flex-col">
-      <span class="text-[#7c5b5bc5] text-[12px]">{{ 'profit/hour' }}</span>
-      <span class="text-[#fff] text-[14px]">{{ props.profit + ' $' }}</span>
-      <div class="w-full max-w-[100px] h-[1px] bg-[#63656661] my-[4px]"></div>
-      <div class="flex flex-wrap items-center">
+    <div class="flex items-center">
+      <div class="flex flex-col w-[calc(50%-2px)]">
+        <span class="text-[#7c5b5bc5] text-[12px]">{{ 'profit/hour' }}</span>
+        <span class="text-[#fff] text-[14px]">{{ props.profit + ' $' }}</span>
+      </div>
+      <div class="w-full max-w-[1px] h-[32px] bg-[#63656661] mx-[4px]"></div>
+      <div class="flex flex-col w-[calc(50%-2px)]">
         <span class="text-[#7c5b5bc5] text-[12px] mr-[4px]">{{ 'price' }}</span>
         <span class="text-[#52f55f] text-[14px]">{{ props.profit + ' $' }}</span>
       </div>
