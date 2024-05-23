@@ -31,7 +31,7 @@ const showModalTabs = ref(false)
       <div
         v-if="showModalTabs"
         ref="containerForOptions"
-        class="z-[10] flex flex-col mb-[12px] fixed right-[0] top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
+        class="z-[10] flex flex-col mb-[12px] fixed right-0 top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
         >
           <n-tabs placement="right" class="w-full" :value="valueTab" animated @update:value="updateTab">
             <n-tab name="dev">
