@@ -51,14 +51,14 @@ onMounted(async () => {
     <div class="flex">
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px]"
-        :tab-class="'tab-class'"
+        :tab-class="'tab-class '"
         :value="valueTab"
         animated
       >
         <n-tab-pane name="main" class="w-full" style="padding-top: 0;">
           <Main />
         </n-tab-pane>
-        <n-tab-pane name="mining" class="w-full">
+        <n-tab-pane name="mining" class="w-full h-full">
           <Mining />
         </n-tab-pane>
         <n-tab-pane name="earn" class="w-full">
@@ -104,7 +104,7 @@ onMounted(async () => {
             Earn
           </n-tab>
           <n-tab name="friends">
-            friends
+            Friends
           </n-tab>
           <n-tab name="info">
             Info

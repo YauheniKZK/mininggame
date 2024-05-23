@@ -6,7 +6,7 @@ import MiningDefault from './layouts/default/MiningDefault.vue';
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center w-full h-full">
     <MiningDefault />
   </div>
 </template>
