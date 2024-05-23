@@ -91,6 +91,20 @@ const openMenu = () => {
   transition: all 0.25s ease-out;
   transform: translateX(0);
 }
+
+.slide-up-leave-from {
+  opacity: 1;
+  transition: all 0.25s ease-out;
+  transform: translateX(0);
+}
+
+
+.slide-up-enter-to {
+  opacity: 0;
+  transition: all 0.25s ease-out;
+  transform: translateX(100%);
+}
+
 .item-setting {
   border: 1px solid #D2649A;
 }
