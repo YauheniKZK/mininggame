@@ -15,7 +15,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
       <div class="flex flex-wrap gap-[16px]">
         <SkillItem
           v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
-          :title="'Title'"
+          :title="'Title ' + item"
           :profit="42"
           :key="item"
           class="w-[calc(50%-8px)]"
@@ -26,7 +26,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
       <div class="flex flex-wrap gap-[16px]">
         <SkillItem
           v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
-          :title="'Title'"
+          :title="'Title ' + item"
           :profit="42"
           :key="item"
           class="w-[calc(50%-8px)]"
