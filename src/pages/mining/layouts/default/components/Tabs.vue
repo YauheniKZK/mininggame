@@ -7,13 +7,13 @@ import SkillItem from '@/components/skills/SkillItem.vue';
 <template>
   <n-tabs class="w-full tabs-custom .none-tab mb-[24px]" :value="props.valueTab" animated>
     <n-tab-pane name="dev" tab="Dev" class="w-full">
-      <div class="flex flex-col gap-[16px]">
+      <div class="flex flex-wrap gap-[16px]">
         <SkillItem
           v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
           :title="'Title'"
           :profit="42"
           :key="item"
-          class="mb-[16px] w-[50%]"
+          class="w-[calc(50%-8px)]"
         />
       </div>
     </n-tab-pane>
@@ -24,7 +24,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
           :title="'Title'"
           :profit="42"
           :key="item"
-          class="mb-[16px] w-[50%]"
+          class="w-[calc(50%-8px)]"
         />
       </div>
     </n-tab-pane>
