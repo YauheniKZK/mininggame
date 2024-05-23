@@ -7,6 +7,9 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
 import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
+import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
+import StackOptions from '@/components/user/components/StackOptions.vue';
+import { watch } from 'vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -19,6 +22,14 @@ const valueTab = ref('main')
 const updateTab = (value: string) => {
   valueTab.value = value
 }
+
+watch(() => showModalSettingGetters.value, (newVal) => {
+  if (newVal) {
+    updateTab('setting')
+  } else {
+    updateTab('main')
+  }
+})
 
 onMounted(async () => {
   // await actionGetUser()
@@ -52,6 +63,22 @@ onMounted(async () => {
         <n-tab-pane name="info" class="w-full">
           <Info />
         </n-tab-pane>
+        <n-tab-pane name="setting" class="w-full">
+          <div class="flex mb-[24px]">
+            <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+          </div>
+          <div class="flex flex-col mb-[12px]">
+            <ThemeOptions />
+          </div>
+          <div class="flex flex-col">
+            <StackOptions />
+          </div>
+        </n-tab-pane>
+        <!-- <Transition name="slide-up">
+      <div v-if="showModalSettingGetters" ref="containerForOptions" class="z-[10] flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-hidden" >
+        
+      </div>
+    </Transition> -->
       </n-tabs>
     </div>
     <div class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
