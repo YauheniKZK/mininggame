@@ -90,7 +90,7 @@ onMounted(async () => {
       </n-tabs>
     </div>
     <div v-if="valueTab !== 'setting'" class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
-      <div class="flex justify-end p-[8px_12px]">
+      <div class="flex justify-start p-[8px_12px]">
         <span class="text-[#fff]">{{ versionApp }}</span>
       </div>
       <div class="flex w-full h-[56px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
