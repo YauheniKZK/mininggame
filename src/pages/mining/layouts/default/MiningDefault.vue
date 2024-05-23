@@ -16,6 +16,7 @@ const showModalTabs = ref(false)
 <template>
   <div class="flex flex-col items-center w-full px-[16px] h-full">
     <TopInfo class="mb-[24px]" />
+    <Tabs :valueTab="valueTab" />
     <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="showModalTabs = !showModalTabs">
       <n-icon :size="26">
         <Menu />
@@ -29,19 +30,19 @@ const showModalTabs = ref(false)
         >
           <n-tabs placement="right" class="w-full" :value="valueTab" animated @update:value="updateTab">
             <n-tab name="dev">
-              Dev
+              <span class="text-[16px] text-[#fff]">{{ 'Dev' }}</span>
             </n-tab>
             <n-tab name="soft">
-              Soft
+              <span class="text-[16px] text-[#fff]">Soft</span>
             </n-tab>
             <n-tab name="media">
-              Media
+              <span class="text-[16px] text-[#fff]">Media</span>
             </n-tab>
             <n-tab name="experience">
-              Experience
+              <span class="text-[16px] text-[#fff]">Experience</span>
             </n-tab>
             <n-tab name="pets">
-              Pets
+              <span class="text-[16px] text-[#fff]">Pets</span>
             </n-tab>
           </n-tabs>
       </div>
@@ -67,11 +68,13 @@ const showModalTabs = ref(false)
 
 .slide-up-enter-from {
   opacity: 0;
+  transition: all 0.25s ease-out;
   transform: translateX(100vh);
 }
 
 .slide-up-leave-to {
   opacity: 1;
+  transition: all 0.25s ease-out;
   transform: translateX(0);
 }
 .item-setting {
