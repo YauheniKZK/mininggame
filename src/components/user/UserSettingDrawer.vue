@@ -86,7 +86,20 @@ onUnmounted(() => {
       <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
     </button>
   </div>
-  <n-drawer
+  <Transition name="slide-up">
+    <div v-if="showModal" id="containerForOptions" class="flex flex-col mb-[12px]" >
+      <div class="flex mb-[24px]">
+        <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+      </div>
+      <div class="flex flex-col mb-[12px]">
+        <ThemeOptions />
+      </div>
+      <div class="flex flex-col">
+        <StackOptions />
+      </div>
+    </div>
+  </Transition>
+  <!-- <n-drawer
     v-model:show="showModal"
     :placement="'bottom'"
     height="100vh"
@@ -107,8 +120,22 @@ onUnmounted(() => {
         </div>
       </div>
     </n-drawer-content>
-  </n-drawer>
+  </n-drawer> -->
 </template>
 
 <style scoped>
+.slide-up-enter-active,
+.slide-up-leave-active {
+  transition: all 0.25s ease-out;
+}
+
+.slide-up-enter-from {
+  opacity: 0;
+  transform: translateY(-100vh);
+}
+
+.slide-up-leave-to {
+  opacity: 1;
+  transform: translateY(0);
+}
 </style>
