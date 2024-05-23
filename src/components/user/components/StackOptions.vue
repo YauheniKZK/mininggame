@@ -7,6 +7,7 @@ import WebApp from '@twa-dev/sdk';
 import { onUnmounted } from 'vue';
 import { watch } from 'vue';
 import { ChevronForward } from '@vicons/ionicons5'
+import { onMounted } from 'vue';
 
 const appStore = useApplicationStore()
 const { mainStacksGetters } = storeToRefs(appStore)
@@ -32,6 +33,13 @@ const updateTheme = (value: ThemeApp) => {
 const updateStack = async (value: string) => {
   await actionAddMainStack(Number(value))
 }
+
+onMounted(() => {
+  const doc = document.querySelector('.n-drawer-body-content-wrapper')
+  if(doc) {
+    doc.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
+  }
+})
 </script>
 
 <template>
@@ -53,7 +61,7 @@ const updateStack = async (value: string) => {
     style="height: auto;"
   >
     <n-drawer-content class="overflow-auto h-auto">
-      <div class="flex flex-col pl-[16px] ">
+      <div class="flex flex-col pl-[16px] overflow-scroll">
         <div
           v-for="item in mainStacksGetters"
           :key="item.id"
