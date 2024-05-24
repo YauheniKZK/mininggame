@@ -49,7 +49,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
-    <div v-if="valueTab === 'mining'" class="sticky top-[16px] px-[16px] z-[1] block-before">
+    <div v-if="valueTab === 'mining'" class="sticky top-[16px] px-[16px] z-[1]]">
       <TopInfo class="mb-[8px] z-[2]" />
     </div>
     <div class="flex h-auto">
@@ -134,10 +134,6 @@ onMounted(async () => {
   height: 100%;
   background: #535474f2;
   border-radius: 12px;
-}
-
-.block-before {
-  backdrop-filter: blur(6px);
 }
 
 </style>
