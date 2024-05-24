@@ -1,9 +1,10 @@
 <script setup lang="ts">
 import Tabs from './components/Tabs.vue';
 
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 
 const valueTab = ref('dev')
+const containerTabsSkills = ref()
 
 const updateTab = (value: string) => {
   valueTab.value = value
@@ -16,8 +17,17 @@ const openMenu = () => {
   activeMenu.value = showModalTabs.value ? 'active' : ''
 }
 
+const checkClickOutside = (event: { target: any; }) => {
+  if (containerTabsSkills.value && !containerTabsSkills.value.contains(event.target)) {
+    showModalTabs.value = false;
+  }
+}
 
 const containerRef = ref()
+
+onMounted(() => {
+  window.addEventListener('click', checkClickOutside);
+})
 
 </script>
 
@@ -36,7 +46,7 @@ const containerRef = ref()
     <Transition name="slide-right">
       <div
         v-if="showModalTabs"
-        ref="containerForOptions"
+        ref="containerTabsSkills"
         class="z-[10] flex flex-col mb-[12px] fixed right-0 top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
         >
           <n-tabs placement="right" class="w-full" :value="valueTab" animated @update:value="updateTab">
