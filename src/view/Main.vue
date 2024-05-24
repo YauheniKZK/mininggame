@@ -49,8 +49,8 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
-    <div v-if="valueTab === 'mining'" class="sticky top-[8px] px-[16px]">
-      <TopInfo class="mb-[8px]" />
+    <div v-if="valueTab === 'mining'" class="sticky top-[16px] px-[16px] z-[1] block-before">
+      <TopInfo class="mb-[8px] z-[2]" />
     </div>
     <div class="flex h-auto">
       <n-tabs
@@ -126,6 +126,21 @@ onMounted(async () => {
   position: relative;
 }
 .footer-before::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #535474f2;
+  border-radius: 12px;
+}
+
+.block-before {
+  position: relative;
+}
+
+.block-before::before {
   content: '';
   position: absolute;
   left: 0;
