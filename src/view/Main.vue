@@ -13,6 +13,12 @@ import TopInfo from '@/pages/mining/layouts/default/components/TopInfo.vue';
 import { watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
 import { getImageUrl } from '@/utils/images';
+import HomeIcons from '@/assets/svg/components/HomeIcons.vue';
+import EarnIcons from '@/assets/svg/components/EarnIcons.vue';
+import FriendsIcon from '@/assets/svg/components/FriendsIcon.vue';
+import InfoIcon from '@/assets/svg/components/InfoIcon.vue';
+import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
+
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -108,31 +114,46 @@ onMounted(async () => {
         <n-tabs type="segment" class="w-full tabs-custom1 custom-bg-1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="main">
             <div class="flex flex-col items-center justify-center">
-              <img :src="getImageUrl('svg/homeIcon.svg')" alt="" />
+              <n-icon :size="26">
+                <HomeIcons :color="'#fff'" />
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
               <span>{{ 'Home' }}</span>
             </div>
           </n-tab>
           <n-tab name="mining">
             <div class="flex flex-col items-center justify-center">
-              <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" />
+              <n-icon :size="26">
+                <EarnIcons :color="'#fff'" />
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->
               <span>{{ 'Mining' }}</span>
             </div>
           </n-tab>
           <n-tab name="earn">
             <div class="flex flex-col items-center justify-center">
-              <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" />
+              <n-icon :size="26">
+                <FriendsIcon :color="'#fff'" />
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
               <span>{{ 'Earn' }}</span>
             </div>
           </n-tab>
           <n-tab name="friends">
             <div class="flex flex-col items-center justify-center">
-              <img :src="getImageUrl('svg/b2-friendsIcon.svg')" alt="" />
+              <n-icon :size="26">
+                <InfoIcon :color="'#fff'" />
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/b2-friendsIcon.svg')" alt="" /> -->
               <span>{{ 'Friends' }}</span>
             </div>
           </n-tab>
           <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
-              <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" />
+              <n-icon :size="26">
+                <MiningIcon :color="'#fff'" />
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" /> -->
               <span>{{ 'Info' }}</span>
             </div>
           </n-tab>
