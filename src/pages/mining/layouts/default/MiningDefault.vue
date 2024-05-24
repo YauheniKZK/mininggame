@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { Menu } from '@vicons/ionicons5';
 import Tabs from './components/Tabs.vue';
-import TopInfo from './components/TopInfo.vue';
+
 import { ref } from 'vue';
 
 const valueTab = ref('dev')
@@ -24,7 +24,6 @@ const containerRef = ref()
 
 <template>
   <div class="flex flex-col items-center w-full px-[16px] h-full" ref="containerRef">
-    <TopInfo class="mb-[8px]" />
     <Tabs :valueTab="valueTab" />
     <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="openMenu">
       <n-icon :size="26" class="flex justify-center items-center">

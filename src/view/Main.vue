@@ -9,6 +9,7 @@ import { onMounted, ref } from 'vue';
 import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
 import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
 import StackOptions from '@/components/user/components/StackOptions.vue';
+import TopInfo from '@/pages/mining/layouts/default/components/TopInfo.vue';
 import { watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
 
@@ -49,6 +50,7 @@ onMounted(async () => {
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
     <div class="flex h-auto">
+      <TopInfo v-if="valueTab === 'mining'" class="mb-[8px] sticky" />
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px] h-full"
         :tab-class="'tab-class '"
