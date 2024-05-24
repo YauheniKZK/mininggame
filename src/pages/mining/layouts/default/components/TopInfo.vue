@@ -25,7 +25,7 @@ const balanceRef = computed(() => {
     style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;backdrop-filter: blur(6px);"
   >
     <div class="flex items-center">
-      <n-icon :size="42" class="mr-[8px]">
+      <n-icon :size="46" class="mr-[8px]">
         <CoinIcon :color="'#fff'" />
       </n-icon>
       <span class="text-[22px] font-[500] text-[#fff] leading-[24px]">
