@@ -42,7 +42,7 @@ function generateRandomNumber() {
 
 function animate() {
   // Clear canvas
-  if (ctx.value) {
+  if (ctx.value && canvasBlock.value) {
     ctx.value.clearRect(0, 0, canvasBlock.value.width, canvasBlock.value.height);
     // Generate new random number
     const newNumber = generateRandomNumber();
