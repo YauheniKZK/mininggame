@@ -23,6 +23,9 @@ const { showModalSettingGetters } = storeToRefs(appStore)
 const valueTab = ref('main')
 const updateTab = (value: string) => {
   valueTab.value = value
+  if (value === 'setting') {
+    WebApp.BackButton.show()
+  }
 }
 
 watch(() => showModalSettingGetters.value, (newVal) => {
@@ -76,15 +79,18 @@ onMounted(async () => {
           <Info />
         </n-tab-pane>
         <n-tab-pane name="setting" class="w-full">
-          <div class="flex mb-[24px]">
-            <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+          <div class="flex flex-col p-[16px]">
+            <div class="flex mb-[24px]">
+              <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
+            </div>
+            <div class="flex flex-col mb-[12px]">
+              <ThemeOptions />
+            </div>
+            <div class="flex flex-col">
+              <StackOptions />
+            </div>
           </div>
-          <div class="flex flex-col mb-[12px]">
-            <ThemeOptions />
-          </div>
-          <div class="flex flex-col">
-            <StackOptions />
-          </div>
+          
         </n-tab-pane>
         <!-- <Transition name="slide-up">
       <div v-if="showModalSettingGetters" ref="containerForOptions" class="z-[10] flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-hidden" >
