@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { Menu } from '@vicons/ionicons5';
 import Tabs from './components/Tabs.vue';
 
 import { ref } from 'vue';
@@ -34,7 +33,7 @@ const containerRef = ref()
         </div>
       </n-icon>
     </div>
-    <Transition name="slide-up">
+    <Transition name="slide-right">
       <div
         v-if="showModalTabs"
         ref="containerForOptions"
@@ -77,21 +76,11 @@ const containerRef = ref()
   transform: translateX(100%);
 }
 
-.slide-up-enter-active,
-.slide-up-leave-active {
-  transition: all 0.25s ease-out;
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: transform 0.3s;
 }
-
-.slide-up-enter-from {
-  opacity: 0;
-  transition: all 0.25s ease-out;
+.slide-right-enter-from, .slide-right-leave-to {
   transform: translateX(100%);
-}
-
-.slide-up-leave-to {
-  opacity: 1;
-  transition: all 0.25s ease-out;
-  transform: translateX(0);
 }
 
 .item-setting {
