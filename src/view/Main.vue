@@ -137,17 +137,7 @@ onMounted(async () => {
 }
 
 .block-before {
-  position: relative;
+  backdrop-filter: blur(6px);
 }
 
-.block-before::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: #535474f2;
-  border-radius: 12px;
-}
 </style>
