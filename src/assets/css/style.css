@@ -197,6 +197,10 @@ body, html {
   --n-tab-color-segment: #541212 !important;
 }
 
+.tabs-custom1 .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
+  font-weight: 600 !important;
+}
+
 .tabs-custom1 .n-tabs-tab__label {
   white-space: normal;
   text-align: center;

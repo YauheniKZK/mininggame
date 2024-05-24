@@ -132,7 +132,7 @@ onMounted(async () => {
   top: 0;
   width: 100%;
   height: 100%;
-  background: #535474f2;
+  background: #413e41f0;
   border-radius: 12px;
 }
 
