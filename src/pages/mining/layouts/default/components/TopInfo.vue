@@ -18,7 +18,8 @@ const balanceRef = computed(() => {
 </script>
 
 <template>
-  <div class="flex justify-between p-[12px] rounded-[16px] bg-[#373c41] w-full" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+  <!-- bg-[#373c41] -->
+  <div class="flex justify-between p-[12px] rounded-[16px] w-full" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
     <div class="flex items-center">
       <img :src="getImageUrl('img/coin1.png')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
       <span class="text-[12px] font-[600] text-[#fff] leading-[20px]">
