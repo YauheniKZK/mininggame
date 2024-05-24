@@ -185,7 +185,7 @@ body, html {
   --n-tab-border-radius: 12px !important;
   --n-tab-text-color: #8B9A46 !important;
   --n-tab-text-color-active: #f7bb0d !important;
-  --n-tab-font-size: 14px !important;
+  --n-tab-font-size: 12px !important;
   --n-tab-color-segment: #4f607e !important;
   --n-tab-text-color-hover: #fff !important;
   --n-font-weight-strong: 600 !important;
@@ -198,6 +198,7 @@ body, html {
 }
 
 .tabs-custom1 .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
+  align-items: flex-end;
   font-weight: 600 !important;
 }
 
