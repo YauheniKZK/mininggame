@@ -115,7 +115,7 @@ onMounted(async () => {
           <n-tab name="main">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <HomeIcons :color="'#f7bb0d'" />
+                <HomeIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
               <span>{{ 'Home' }}</span>
@@ -124,7 +124,7 @@ onMounted(async () => {
           <n-tab name="mining">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <MiningIcon :color="'#f7bb0d'" />
+                <MiningIcon :color="'#fff'" />
                 
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->
@@ -134,7 +134,7 @@ onMounted(async () => {
           <n-tab name="earn">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <EarnIcons :color="'#f7bb0d'" />
+                <EarnIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
               <span>{{ 'Earn' }}</span>
@@ -143,7 +143,7 @@ onMounted(async () => {
           <n-tab name="friends">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <FriendsIcon :color="'#f7bb0d'" />
+                <FriendsIcon :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-friendsIcon.svg')" alt="" /> -->
               <span>{{ 'Friends' }}</span>
@@ -152,7 +152,7 @@ onMounted(async () => {
           <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <InfoIcon :color="'#f7bb0d'" />
+                <InfoIcon :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" /> -->
               <span>{{ 'Info' }}</span>
