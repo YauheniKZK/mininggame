@@ -5,6 +5,7 @@ import { onMounted, ref } from 'vue';
 
 const valueTab = ref('dev')
 const containerTabsSkills = ref()
+const btnMenuRef = ref()
 
 const updateTab = (value: string) => {
   valueTab.value = value
@@ -18,7 +19,7 @@ const openMenu = () => {
 }
 
 const checkClickOutside = (event: { target: any; }) => {
-  if (containerTabsSkills.value && !containerTabsSkills.value.contains(event.target)) {
+  if (btnMenuRef.value && !btnMenuRef.value.contains(event.target) && containerTabsSkills.value && !containerTabsSkills.value.contains(event.target)) {
     console.log('1111', containerTabsSkills.value.contains(event.target))
   }
 }
@@ -34,7 +35,7 @@ onMounted(() => {
 <template>
   <div class="flex flex-col items-center w-full px-[16px] h-full" ref="containerRef">
     <Tabs :valueTab="valueTab" />
-    <div class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="openMenu">
+    <div ref="btnMenuRef" class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="openMenu">
       <n-icon :size="26" class="flex justify-center items-center">
         <div class="icon-menu" :class="activeMenu">
           <span></span>
