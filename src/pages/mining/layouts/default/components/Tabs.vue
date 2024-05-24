@@ -9,7 +9,8 @@ import SkillItem from '@/components/skills/SkillItem.vue';
     class="w-full tabs-custom none-tab mb-[24px]"
     :value="props.valueTab"
     animated
-    :pane-class="'h-full pb-[60px]'"
+    :pane-class="'h-full '"
+    :pane-style="'padding-bottom: 60px'"
   >
     <n-tab-pane name="dev" tab="Dev" class="w-full">
       <div class="flex flex-wrap gap-[16px]">
