@@ -12,6 +12,7 @@ import StackOptions from '@/components/user/components/StackOptions.vue';
 import TopInfo from '@/pages/mining/layouts/default/components/TopInfo.vue';
 import { watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
+import { getImageUrl } from '@/utils/images';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -106,19 +107,34 @@ onMounted(async () => {
       <div class="flex w-full h-[56px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
         <n-tabs type="segment" class="w-full tabs-custom1 custom-bg-1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="main">
-            Main
+            <div class="flex flex-col items-center justify-center">
+              <img :src="getImageUrl('svg/homeIcon.svg')" alt="" />
+              <span>{{ 'Home' }}</span>
+            </div>
           </n-tab>
           <n-tab name="mining">
-            Mining
+            <div class="flex flex-col items-center justify-center">
+              <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" />
+              <span>{{ 'Mining' }}</span>
+            </div>
           </n-tab>
           <n-tab name="earn">
-            Earn
+            <div class="flex flex-col items-center justify-center">
+              <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" />
+              <span>{{ 'Earn' }}</span>
+            </div>
           </n-tab>
           <n-tab name="friends">
-            Friends
+            <div class="flex flex-col items-center justify-center">
+              <img :src="getImageUrl('svg/b2-friendsIcon.svg')" alt="" />
+              <span>{{ 'Friends' }}</span>
+            </div>
           </n-tab>
           <n-tab name="info">
-            Info
+            <div class="flex flex-col items-center justify-center">
+              <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" />
+              <span>{{ 'Info' }}</span>
+            </div>
           </n-tab>
         </n-tabs>
       </div>
