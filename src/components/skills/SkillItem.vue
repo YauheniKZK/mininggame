@@ -20,11 +20,11 @@ const props = defineProps<{ title: string, profit: number }>()
     </div>
     <div class="flex items-center">
       <div class="flex flex-col w-[60%]">
-        <span class="text-[#7c5b5bc5] text-[12px]">{{ 'profit/hour' }}</span>
+        <span class="text-[#eeeeee7a] text-[12px]">{{ 'profit/hour' }}</span>
         <span class="text-[#fff] text-[14px]">{{ props.profit + ' $' }}</span>
       </div>
       <div class="flex flex-col flex-grow bg-[#5d5b594f] p-[2px_8px] rounded-[4px]">
-        <span class="text-[#7c5b5bc5] text-[12px] mr-[4px]">{{ 'price' }}</span>
+        <span class="text-[#eeeeee7a] text-[12px] mr-[4px]">{{ 'price' }}</span>
         <span class="text-[#52f55f] text-[13px]">{{ props.profit + ' $' }}</span>
       </div>
     </div>

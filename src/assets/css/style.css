@@ -183,17 +183,18 @@ body, html {
   --n-color-segment: #2e3337 !important;
   --n-tab-padding: 6px 4px !important;
   --n-tab-border-radius: 12px !important;
-  --n-tab-text-color: #fff !important;
-  --n-tab-text-color-active: #fff !important;
-  --n-tab-font-size: 15px !important;
+  --n-tab-text-color: #8B9A46 !important;
+  --n-tab-text-color-active: #f7bb0d !important;
+  --n-tab-font-size: 14px !important;
   --n-tab-color-segment: #4f607e !important;
   --n-tab-text-color-hover: #fff !important;
+  --n-font-weight-strong: 600 !important;
 
 }
 
 .tabs-custom1.custom-bg-1 {
   --n-color-segment: #2e333700 !important;
-  --n-tab-color-segment: #662549 !important;
+  --n-tab-color-segment: #541212 !important;
 }
 
 .tabs-custom1 .n-tabs-tab__label {
