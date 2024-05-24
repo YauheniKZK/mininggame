@@ -114,7 +114,7 @@ onMounted(async () => {
         <n-tabs type="segment" class="w-full tabs-custom1 custom-bg-1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="main">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="26">
+              <n-icon :size="22">
                 <HomeIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
@@ -123,8 +123,9 @@ onMounted(async () => {
           </n-tab>
           <n-tab name="mining">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="26">
-                <EarnIcons :color="'#fff'" />
+              <n-icon :size="22">
+                <MiningIcon :color="'#fff'" />
+                
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->
               <span>{{ 'Mining' }}</span>
@@ -132,8 +133,9 @@ onMounted(async () => {
           </n-tab>
           <n-tab name="earn">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="26">
-                <FriendsIcon :color="'#fff'" />
+              <n-icon :size="22">
+                <InfoIcon :color="'#fff'" />
+                
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
               <span>{{ 'Earn' }}</span>
@@ -141,8 +143,8 @@ onMounted(async () => {
           </n-tab>
           <n-tab name="friends">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="26">
-                <InfoIcon :color="'#fff'" />
+              <n-icon :size="22">
+                <FriendsIcon :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-friendsIcon.svg')" alt="" /> -->
               <span>{{ 'Friends' }}</span>
@@ -150,8 +152,8 @@ onMounted(async () => {
           </n-tab>
           <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="26">
-                <MiningIcon :color="'#fff'" />
+              <n-icon :size="22">
+                <EarnIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" /> -->
               <span>{{ 'Info' }}</span>
