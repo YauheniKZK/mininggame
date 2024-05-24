@@ -62,7 +62,7 @@ onMounted(async () => {
     <div v-if="valueTab === 'mining'" class="sticky top-[16px] px-[16px] z-[1]">
       <TopInfo class="mb-[8px] z-[2]" />
     </div>
-    <div class="flex h-auto">
+    <div class="flex flex-grow">
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px] h-full"
         :tab-class="'tab-class '"
