@@ -18,14 +18,15 @@ import EarnIcons from '@/assets/svg/components/EarnIcons.vue';
 import FriendsIcon from '@/assets/svg/components/FriendsIcon.vue';
 import InfoIcon from '@/assets/svg/components/InfoIcon.vue';
 import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
-
+import Rating from '@/pages/Rating.vue'
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
 const appStore = useApplicationStore()
-const { showModalSettingGetters } = storeToRefs(appStore)
+const { showModalSettingGetters, showModalRatingGetters } = storeToRefs(appStore)
 // const { actionMiningMoney } = appStore
 
+const rulesTabs = ['setting', 'rating']
 
 const valueTab = ref('main')
 const updateTab = (value: string) => {
@@ -34,6 +35,16 @@ const updateTab = (value: string) => {
     WebApp.BackButton.show()
   }
 }
+
+watch(() => showModalRatingGetters.value, (newVal) => {
+  if (newVal) {
+    updateTab('rating')
+    WebApp.BackButton.show()
+  } else {
+    updateTab('main')
+    WebApp.BackButton.hide()
+  }
+})
 
 watch(() => showModalSettingGetters.value, (newVal) => {
   if (newVal) {
@@ -97,7 +108,9 @@ onMounted(async () => {
               <StackOptions />
             </div>
           </div>
-          
+        </n-tab-pane>
+        <n-tab-pane name="rating" class="w-full">
+          <Rating />
         </n-tab-pane>
         <!-- <Transition name="slide-up">
       <div v-if="showModalSettingGetters" ref="containerForOptions" class="z-[10] flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-hidden" >
@@ -106,7 +119,7 @@ onMounted(async () => {
     </Transition> -->
       </n-tabs>
     </div>
-    <div v-if="valueTab !== 'setting'" class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
+    <div v-if="!rulesTabs.includes(valueTab)" class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
       <div class="flex justify-start p-[8px_12px]">
         <span class="text-[#fff]">{{ versionApp }}</span>
       </div>

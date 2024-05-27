@@ -15,7 +15,7 @@ import { onUnmounted } from 'vue';
 const { t } = useI18n()
 const appStore = useApplicationStore()
 const { optionsThemeAppGetters, currentThemeAppGetters, allStacksAppGetters, currentUserDataGetters } = storeToRefs(appStore)
-const { actionChooseThemeApp, actionAddMainStack, switchModalSetting } = appStore
+const { actionChooseThemeApp, actionAddMainStack, switchModalSetting, switchModalRating } = appStore
 
 const showModal = ref(false)
 
@@ -82,14 +82,14 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col">
-    <button @click="switchModalSetting">
+    <button @click="switchModalSetting" class="flex justify-center items-center">
       <n-icon :color="'#fff'" :size="28">
         <CogOutline />
       </n-icon>
       <!-- <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" /> -->
     </button>
     <div class="w-[50px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
-    <button @click="switchModalSetting">
+    <button @click="switchModalRating" class="flex justify-center items-center">
       <n-icon :color="'#fff'" :size="22">
         <BarChartOutline />
       </n-icon>

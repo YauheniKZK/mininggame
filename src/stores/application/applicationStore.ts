@@ -53,6 +53,7 @@ export const useApplicationStore = defineStore('application', () => {
   const successfullSyncTapClaim = ref(false)
 
   const showModalSetting = ref(false)
+  const showModalRating = ref(false)
 
   // --------Getters---------
 
@@ -92,6 +93,7 @@ export const useApplicationStore = defineStore('application', () => {
   })
   
   const showModalSettingGetters = computed(() => showModalSetting.value)
+  const showModalRatingGetters = computed(() => showModalRating.value)
   
 
   // --------Actions---------
@@ -346,6 +348,10 @@ export const useApplicationStore = defineStore('application', () => {
     showModalSetting.value = !showModalSetting.value
   }
 
+  function switchModalRating() {
+    showModalRating.value = !showModalRating.value
+  }
+
   return {
     totalScoreGetters,
     updateTotalScore,
@@ -395,6 +401,8 @@ export const useApplicationStore = defineStore('application', () => {
     minusAvailableTaps,
     plusAvailableTaps,
     showModalSettingGetters,
-    switchModalSetting
+    switchModalSetting,
+    showModalRatingGetters,
+    switchModalRating
   }
 })
