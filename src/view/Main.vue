@@ -3,7 +3,7 @@ import Main from '@/pages/main/Main.vue';
 import Mining from '@/pages/mining/Mining.vue';
 import Earn from '@/pages/earn/layouts/Earn.vue';
 import Friends from '@/pages/friends/layouts/Friends.vue';
-import Info from '@/pages/Info.vue';
+import Info from '@/pages/info/layouts/Info.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
