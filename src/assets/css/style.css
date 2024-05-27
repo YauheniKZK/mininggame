@@ -276,3 +276,12 @@ body, html {
 .main-footer .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
   overflow: inherit;
 }
+
+.main-footer .n-tabs-rail .n-tabs-capsule::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30px;
+}
