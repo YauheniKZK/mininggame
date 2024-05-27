@@ -12,20 +12,19 @@
       :loop="false"
       slides-per-view="auto"
       centered-slides
-      draggable
       :show-dots="false"
     >
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center">{{ 'Beginner' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Beginner' }}</span>
       </n-carousel-item>
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center">{{ 'Trainer' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Trainer' }}</span>
       </n-carousel-item>
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center">{{ 'Junior' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Junior' }}</span>
       </n-carousel-item>
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center">{{ 'Mibble' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Mibble' }}</span>
       </n-carousel-item>
     </n-carousel>
   </div>
