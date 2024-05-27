@@ -1,11 +1,19 @@
 <script setup lang="ts">
+import ModalDialog from '@/components/ui/ModalDialog.vue';
+import { ref } from 'vue';
 
 const props = defineProps<{ title: string, profit: number }>()
+
+const showModal = ref(false)
+
+const openModal = () => {
+  showModal.value = true
+}
 
 </script>
 
 <template>
-  <div class="flex flex-col p-[12px] bg-[#3d3d3c85] rounded-[8px]" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
+  <div class="flex flex-col p-[12px] bg-[#3d3d3c85] rounded-[8px] cursor-pointer" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;" @click="openModal">
     <div class="flex mb-[8px]">
       <div class="flex flex-col items-center pr-[8px]">
         <div class="w-[42px] h-[42px] rounded-[50%] bg-[#3b3b3b] mb-[6px]">
@@ -29,7 +37,21 @@ const props = defineProps<{ title: string, profit: number }>()
       </div>
     </div>
   </div>
-  
+  <ModalDialog
+    :show-modal="showModal"
+    :width="'80%'"
+    :max-width="'90%'"
+    @close="showModal = false"
+  >
+    <template #content>
+      <span class="text-[22px] font-[600]">
+        {{ 'Modal' }}
+      </span>
+      <div class="flex flex-col py-[32px]">
+        <span>{{ 'Test' }}</span>
+      </div>
+    </template>
+  </ModalDialog>
 </template>
 
 <style scoped>
