@@ -255,3 +255,11 @@ body, html {
 .n-modal {
   --n-color-modal: #666666 !important;
 }
+
+.tasks-collapse .n-collapse-item__header {
+  height: 60px !important;
+  padding: 0px 16px 0 16px !important;
+  background: #3d3a3d !important;
+  border-radius: 16px !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+}

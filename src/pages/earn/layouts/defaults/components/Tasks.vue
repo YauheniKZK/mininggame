@@ -1,22 +1,22 @@
 <script setup lang="ts">
 import { getImageUrl } from '@/utils/images';
-import { ChevronDown } from '@vicons/ionicons5'
+import { ChevronForward } from '@vicons/ionicons5'
 </script>
 
 <template>
   <div class="flex flex-col w-full">
-    <n-collapse>
+    <n-collapse class="tasks-collapse">
       <n-collapse-item name="1">
         <template #arrow>
           <n-icon :color="'#fff'" :size="22">
-            <ChevronDown />
+            <ChevronForward />
           </n-icon>
         </template>
         <template #header>
           <span class="text-[#fff] text-[18px]">{{ 'Daily tasks' }}</span>
         </template>
         <template #header-extra>
-          <span class="text-[#fff] text-[18px]">{{ 'today: +5$' }}</span>
+          <span class="text-[#ffffffc0] text-[14px]">{{ 'today: +5$' }}</span>
         </template>
         <div class="flex">
           <span>{{ 'Tasks' }}</span>
@@ -25,14 +25,14 @@ import { ChevronDown } from '@vicons/ionicons5'
       <n-collapse-item title="right" name="2">
         <template #arrow>
           <n-icon :color="'#fff'" :size="22">
-            <ChevronDown />
+            <ChevronForward />
           </n-icon>
         </template>
         <template #header>
           <span class="text-[#fff] text-[18px]">{{ 'Main tasks' }}</span>
         </template>
         <template #header-extra>
-          <span>{{ 'no new tasks' }}</span>
+          <span class="text-[#ffffffc0] text-[14px]">{{ 'no new tasks' }}</span>
         </template>
         <div class="flex">
           <span class="text-[#fff] text-[18px]">{{ 'Tasks' }}</span>
