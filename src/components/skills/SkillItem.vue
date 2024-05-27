@@ -38,6 +38,7 @@ const openModal = () => {
     </div>
   </div>
   <ModalDialog
+    v-if="showModal"
     :show-modal="showModal"
     :width="'80%'"
     :max-width="'90%'"
