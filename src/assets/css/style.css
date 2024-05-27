@@ -267,3 +267,8 @@ body, html {
 .tasks-collapse .n-collapse-item:not(:first-child) {
   border: none !important;
 }
+
+.steps-info {
+  --n-description-text-color: rgb(130 196 107) !important;
+  --n-header-text-color: rgb(175 212 168) !important;
+}

@@ -8,7 +8,7 @@ const currentStatus = ref<StepsProps['status']>('process')
 
 <template>
   <div class="flex flex-col items-center w-full h-full p-[16px]">
-    <n-steps vertical :current="(current as number)" :status="currentStatus">
+    <n-steps vertical :current="(current as number)" :status="currentStatus" class="steps-info">
       <n-step
         title="Basic game"
         description="Development of the main mechanics of the game"
