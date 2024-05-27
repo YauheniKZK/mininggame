@@ -272,3 +272,7 @@ body, html {
   --n-description-text-color: rgb(130 196 107) !important;
   --n-header-text-color: rgb(175 212 168) !important;
 }
+
+.main-footer .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
+  overflow: inherit;
+}

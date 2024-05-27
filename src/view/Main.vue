@@ -111,7 +111,7 @@ onMounted(async () => {
         <span class="text-[#fff]">{{ versionApp }}</span>
       </div>
       <div class="flex w-full h-[56px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
-        <n-tabs type="segment" class="w-full tabs-custom1 custom-bg-1" :value="valueTab" animated @update:value="updateTab">
+        <n-tabs type="segment" class="w-full tabs-custom1 main-footer custom-bg-1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
@@ -134,11 +134,11 @@ onMounted(async () => {
 
           <n-tab name="main">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="22">
+              <n-icon :size="30">
                 <HomeIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
-              <span>{{ 'Home' }}</span>
+              <span class="text-[14px]">{{ 'Home' }}</span>
             </div>
           </n-tab>
 
