@@ -72,16 +72,16 @@ const arrayDays = ref([
         <template #header-extra>
           <span class="text-[#ffffffc0] text-[14px]">{{ 'today: +5$' }}</span>
         </template>
-        <div class="flex flex-wrap">
+        <div class="flex flex-wrap gap-[8px]">
           <div
             v-for="(day, index) in arrayDays"
             :key="index"
-            class="w-calc(20%-8px) flex flex-col p-[12px] rounded-[8px] justify-center items-center"
-            :class="day.isClaim ? 'bg-[#a52a2a]' : 'bg-[#3d3d3c85]'"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+            class="flex flex-col p-[8px] rounded-[8px] justify-center items-center"
+            :class="day.isClaim ? 'bg-[#9d869d]' : 'bg-[#3d3d3c85]'"
+            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: calc(25% - 7px);"
           >
-            <span class="text-[#fff] text-[16px] leading-[24px]">{{ day.label }}</span>
-            <span class="text-[#fff] text-[20px] leading-[24px]">{{ day.count }}</span>
+            <span class="text-[#ffffff9c] text-[12px] leading-[24px]">{{ day.label }}</span>
+            <span class="text-[#fff] text-[20px] leading-[24px] font-[500]">{{ day.count + '$' }}</span>
           </div>
         </div>
       </n-collapse-item>
