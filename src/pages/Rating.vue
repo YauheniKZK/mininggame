@@ -16,24 +16,25 @@ const updateSlide = (value: number) => {
       :touchable="false"
       :current-index="currentIndexSlide"
       :show-dots="false"
+      class="min-h-[120px]"
     >
       <n-carousel-item style="width: 100%">
-        <div class="flex justify-center items-center h-[60px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <span>{{ 'IMG Rating' }}</span>
         </div>
       </n-carousel-item>
       <n-carousel-item style="width: 100%">
-        <div class="flex justify-center items-center h-[60px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <span>{{ 'IMG Rating' }}</span>
         </div>
       </n-carousel-item>
       <n-carousel-item style="width: 100%">
-        <div class="flex justify-center items-center h-[60px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <span>{{ 'IMG Rating' }}</span>
         </div>
       </n-carousel-item>
       <n-carousel-item style="width: 100%">
-        <div class="flex justify-center items-center h-[60px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <span>{{ 'IMG Rating' }}</span>
         </div>
       </n-carousel-item>
