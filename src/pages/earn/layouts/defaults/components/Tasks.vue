@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { getImageUrl } from '@/utils/images';
 import { ChevronForward } from '@vicons/ionicons5'
+import ModalDialog from '@/components/ui/ModalDialog.vue';
 import { ref } from 'vue';
 
 const showModal = ref(false)
@@ -92,19 +93,19 @@ const arrayDays = ref([
           <span class="text-[#fff] text-[18px]">{{ 'Daily tasks' }}</span>
         </template>
         <template #header-extra>
-          <span class="text-[#ffffffc0] text-[14px]">{{ 'today: +5$' }}</span>
+          <span class="text-[#48ede7c0] text-[14px]">{{ 'today: +5$' }}</span>
         </template>
         <div class="flex flex-wrap gap-[8px]">
           <div
             v-for="(day, index) in arrayDays"
             :key="index"
-            class="flex flex-col p-[8px] rounded-[8px] justify-center items-center"
+            class="flex flex-col p-[4px] rounded-[8px] justify-center items-center"
             :class="day.isClaim ? 'bg-[#9d869d]' : 'bg-[#3d3d3c85]'"
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: calc(25% - 7px);"
             @click="showModal = true"
           >
             <span class="text-[#ffffff9c] text-[12px] leading-[24px]">{{ day.label }}</span>
-            <span class="text-[#9bff00] text-[18px] leading-[24px] p-[4px_2px] font-[500] flex justify-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
+            <span class="text-[#9bff00] text-[16px] leading-[24px] p-[4px_2px] font-[500] flex justify-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
               {{ day.count + '$' }}
             </span>
           </div>
@@ -120,7 +121,7 @@ const arrayDays = ref([
           <span class="text-[#fff] text-[18px]">{{ 'Main tasks' }}</span>
         </template>
         <template #header-extra>
-          <span class="text-[#ffffffc0] text-[14px]">{{ 'no new tasks' }}</span>
+          <span class="text-[#48ede7c0] text-[14px]">{{ 'no new tasks' }}</span>
         </template>
         <div class="flex">
           <span class="text-[#fff] text-[18px]">{{ 'Tasks' }}</span>
