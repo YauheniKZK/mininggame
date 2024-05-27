@@ -58,6 +58,29 @@ const arrayDays = ref([
     count: 3000
   }
 ])
+
+const tasks = ref([
+  {
+    label: 'Subscribe telegram channel',
+    isClaim: false,
+    count: 10
+  },
+  {
+    label: 'Join X',
+    isClaim: false,
+    count: 5
+  },
+  {
+    label: 'Change main stack',
+    isClaim: false,
+    count: 5
+  },
+  {
+    label: 'Invite 3 friends',
+    isClaim: false,
+    count: 50
+  }
+])
 </script>
 
 <template>
@@ -82,7 +105,7 @@ const arrayDays = ref([
         </div>
       </template>
     </ModalDialog>
-    <n-collapse class="tasks-collapse">
+    <n-collapse class="tasks-collapse" accordion>
       <n-collapse-item name="1">
         <template #arrow>
           <n-icon :color="'#fff'" :size="22">
@@ -123,8 +146,27 @@ const arrayDays = ref([
         <template #header-extra>
           <span class="text-[#48ede7c0] text-[14px]">{{ 'no new tasks' }}</span>
         </template>
-        <div class="flex">
-          <span class="text-[#fff] text-[18px]">{{ 'Tasks' }}</span>
+        <div class="flex flex-col">
+          <div
+            v-for="(item, index) in tasks"
+            :key="index"
+            class="flex justify-between mb-[8px]"
+          > 
+            <div class="flex items-center">
+              <div class="w-[40px] min-w-[40px] h-[40px] rounded-[50%] mr-[16px] bg-[#414141]">
+
+              </div>
+              <div class="flex flex-col">
+                <span class="text-[#ffffff9c] text-[14px] leading-[20px]">{{ item.label }}</span>
+                <span class="text-[#dbdbdb] text-[18px] leading-[22px]">{{ item.count + ' $' }}</span>
+              </div>
+            </div>
+            <div class="flex">
+              <n-icon :color="'#fff'" :size="20">
+                <ChevronForward />
+              </n-icon>
+            </div>
+          </div>
         </div>
       </n-collapse-item>
     </n-collapse>
