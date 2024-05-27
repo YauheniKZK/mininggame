@@ -268,7 +268,7 @@ body, html {
   border: none !important;
 }
 
-.steps-info {
+.steps-info .n-step {
   --n-description-text-color: rgb(130 196 107) !important;
   --n-header-text-color: rgb(175 212 168) !important;
 }
