@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import Main from '@/pages/main/Main.vue';
 import Mining from '@/pages/mining/Mining.vue';
-import Earn from '@/pages/Earn.vue';
+import Earn from '@/pages/earn/layouts/Earn.vue';
+import Friends from '@/pages/friends/layouts/Friends.vue';
 import Info from '@/pages/Info.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
-import EarnDefault from '@/pages/friends/layouts/defaults/EarnDefault.vue';
 import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
 import StackOptions from '@/components/user/components/StackOptions.vue';
 import TopInfo from '@/pages/mining/layouts/default/components/TopInfo.vue';
@@ -80,7 +80,7 @@ onMounted(async () => {
           <Earn />
         </n-tab-pane>
         <n-tab-pane name="friends" class="w-full">
-          <EarnDefault />
+          <Friends />
         </n-tab-pane>
         <n-tab-pane name="info" class="w-full">
           <Info />
