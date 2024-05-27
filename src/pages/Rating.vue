@@ -8,23 +8,23 @@
       <span>{{ 'IMG Rating' }}</span>
     </div>
     <n-carousel
-      :space-between="30"
+      :space-between="33.333"
       :loop="false"
       slides-per-view="auto"
       centered-slides
       draggable
     >
-      <n-carousel-item style="width: 30%">
-        <span class="text-[#fff]">{{ 'Beginner' }}</span>
+      <n-carousel-item style="width: 33.333%">
+        <span class="text-[#fff] flex justify-center">{{ 'Beginner' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 20%">
-        <span class="text-[#fff]">{{ 'Trainer' }}</span>
+      <n-carousel-item style="width: 33.333%">
+        <span class="text-[#fff] flex justify-center">{{ 'Trainer' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 30%">
-        <span class="text-[#fff]">{{ 'Junior' }}</span>
+      <n-carousel-item style="width: 33.333%">
+        <span class="text-[#fff] flex justify-center">{{ 'Junior' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 40%">
-        <span class="text-[#fff]">{{ 'Mibble' }}</span>
+      <n-carousel-item style="width: 33.333%">
+        <span class="text-[#fff] flex justify-center">{{ 'Mibble' }}</span>
       </n-carousel-item>
     </n-carousel>
   </div>
