@@ -81,7 +81,7 @@ const arrayDays = ref([
             style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: calc(25% - 7px);"
           >
             <span class="text-[#ffffff9c] text-[12px] leading-[24px]">{{ day.label }}</span>
-            <span class="text-[#fff] text-[20px] leading-[24px] font-[500]">{{ day.count + '$' }}</span>
+            <span class="text-[#9bff00] text-[18px] leading-[24px] font-[500]">{{ day.count + '$' }}</span>
           </div>
         </div>
       </n-collapse-item>
