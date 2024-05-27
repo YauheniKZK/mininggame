@@ -1,5 +1,10 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 
+const currentIndexSlide = ref(0)
+const updateSlide = () => {
+  currentIndexSlide.value++
+}
 </script>
 
 <template>
@@ -12,19 +17,21 @@
       :loop="false"
       slides-per-view="auto"
       centered-slides
+      :touchable="false"
+      :current-index="currentIndexSlide"
       :show-dots="false"
     >
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Beginner' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide">{{ 'Beginner' }}</span>
       </n-carousel-item>
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Trainer' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide">{{ 'Trainer' }}</span>
       </n-carousel-item>
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Junior' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide">{{ 'Junior' }}</span>
       </n-carousel-item>
       <n-carousel-item style="width: 33.333%">
-        <span class="text-[#fff] flex justify-center items-center h-full">{{ 'Mibble' }}</span>
+        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide">{{ 'Mibble' }}</span>
       </n-carousel-item>
     </n-carousel>
   </div>
