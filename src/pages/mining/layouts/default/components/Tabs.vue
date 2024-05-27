@@ -7,7 +7,6 @@ import { ref } from 'vue';
 const showModal = ref(false)
 
 const openModal = () => {
-  console.log('1111')
   showModal.value = true
 }
 
@@ -53,22 +52,22 @@ const openModal = () => {
     <n-tab-pane name="pets" tab="Pets" class="w-full">
       <span class="text-[#fff]">{{ 'Hard SKills' }}</span>
     </n-tab-pane>
-    <ModalDialog
-      :show-modal="showModal"
-      :width="'80%'"
-      :max-width="'90%'"
-      @close="showModal = false"
-    >
-      <template #content>
-        <span class="text-[22px] font-[600]">
-          {{ 'Modal' }}
-        </span>
-        <div class="flex flex-col py-[32px]">
-          <span>{{ 'Test' }}</span>
-        </div>
-      </template>
-    </ModalDialog>
   </n-tabs>
+  <ModalDialog
+    :show-modal="showModal"
+    :width="'80%'"
+    :max-width="'90%'"
+    @close="showModal = false"
+  >
+    <template #content>
+      <span class="text-[22px] font-[600]">
+        {{ 'Modal' }}
+      </span>
+      <div class="flex flex-col py-[32px]">
+        <span>{{ 'Test' }}</span>
+      </div>
+    </template>
+  </ModalDialog>
 </template>
 
 <style scoped>
