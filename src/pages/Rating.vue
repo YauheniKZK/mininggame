@@ -47,17 +47,18 @@ const updateSlide = (value: number) => {
       :current-index="currentIndexSlide"
       centered-slides
       :show-dots="false"
+      class="min-h-[60px]"
     >
-      <n-carousel-item style="width: 33.333%">
+      <n-carousel-item style="width: 33.333%;height: 60px;">
         <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(0)">{{ 'Beginner' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%">
+      <n-carousel-item style="width: 33.333%;height: 60px;">
         <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(1)">{{ 'Trainer' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%">
+      <n-carousel-item style="width: 33.333%;height: 60px;">
         <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(2)">{{ 'Junior' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%">
+      <n-carousel-item style="width: 33.333%;height: 60px;">
         <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(3)">{{ 'Mibble' }}</span>
       </n-carousel-item>
     </n-carousel>
