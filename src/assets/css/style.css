@@ -276,18 +276,3 @@ body, html {
 .main-footer .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
   overflow: inherit;
 }
-
-.main-footer .n-tabs-rail .n-tabs-tab-wrapper:nth-child(4) {
-  overflow: hidden;
-}
-
-.main-footer .n-tabs-rail .n-tabs-tab-wrapper:nth-child(4)::before {
-  content: "";
-  position: absolute;
-  top: -15px;
-  left: 17px;
-  width: 38px;
-  height: 40px;
-  background: #403e41;
-  border-radius: 16px;
-}
