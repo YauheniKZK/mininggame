@@ -163,7 +163,7 @@ const tasks = ref([
               </div>
             </div>
             <div class="flex">
-              <n-icon :color="'#fff'" :size="20">
+              <n-icon :color="'#fff'" :size="26">
                 <ChevronForward />
               </n-icon>
             </div>
