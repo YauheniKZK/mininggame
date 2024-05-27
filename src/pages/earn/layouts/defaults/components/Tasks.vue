@@ -150,7 +150,8 @@ const tasks = ref([
           <div
             v-for="(item, index) in tasks"
             :key="index"
-            class="flex justify-between mb-[8px]"
+            class="flex justify-between items-center mb-[8px] bg-[#496989] p-[8px] rounded-[8px]"
+            style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;"
           > 
             <div class="flex items-center">
               <div class="w-[40px] min-w-[40px] h-[40px] rounded-[50%] mr-[16px] bg-[#414141]">
