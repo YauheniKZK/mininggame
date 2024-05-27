@@ -124,11 +124,11 @@ const tasks = ref([
             :key="index"
             class="flex flex-col p-[4px] rounded-[8px] justify-center items-center"
             :class="day.isClaim ? 'bg-[#9d869d]' : 'bg-[#3d3d3c85]'"
-            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: calc(33.333% - 7px);"
+            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width: calc(33.333% - 6px);"
             @click="showModal = true"
           >
-            <span class="text-[#ffffff9c] text-[12px] leading-[24px]">{{ day.label }}</span>
-            <span class="text-[#9bff00] text-[16px] leading-[24px] p-[4px_2px] font-[500] flex justify-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
+            <span class="text-[#ffffff9c] text-[14px] leading-[38px]">{{ day.label }}</span>
+            <span class="text-[#9bff00] text-[16px] leading-[38px] p-[4px_2px] font-[500] flex justify-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
               {{ day.count + '$' }}
             </span>
           </div>
