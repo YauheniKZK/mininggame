@@ -4,15 +4,16 @@
 
 <template>
   <div class="flex flex-col w-full h-full px-[16px]">
-    <div class="flex justify-center items-center">
+    <div class="flex justify-center items-center h-[60px] bg-[#5757579a]">
       <span>{{ 'IMG Rating' }}</span>
     </div>
     <n-carousel
-      :space-between="33.333"
+      :space-between="0"
       :loop="false"
       slides-per-view="auto"
       centered-slides
       draggable
+      :show-dots="false"
     >
       <n-carousel-item style="width: 33.333%">
         <span class="text-[#fff] flex justify-center">{{ 'Beginner' }}</span>
