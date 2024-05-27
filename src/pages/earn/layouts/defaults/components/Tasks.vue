@@ -1,6 +1,60 @@
 <script setup lang="ts">
 import { getImageUrl } from '@/utils/images';
 import { ChevronForward } from '@vicons/ionicons5'
+import { ref } from 'vue';
+
+const arrayDays = ref([
+  {
+    label: 'Day 1',
+    isClaim: true,
+    count: 1
+  },
+  {
+    label: 'Day 2',
+    isClaim: false,
+    count: 3
+  },
+  {
+    label: 'Day 3',
+    isClaim: false,
+    count: 8
+  },
+  {
+    label: 'Day 4',
+    isClaim: false,
+    count: 14
+  },
+  {
+    label: 'Day 5',
+    isClaim: false,
+    count: 20
+  },
+  {
+    label: 'Day 6',
+    isClaim: false,
+    count: 50
+  },
+  {
+    label: 'Day 7',
+    isClaim: false,
+    count: 100
+  },
+  {
+    label: 'Day 8',
+    isClaim: false,
+    count: 500
+  },
+  {
+    label: 'Day 9',
+    isClaim: false,
+    count: 1000
+  },
+  {
+    label: 'Day 10',
+    isClaim: false,
+    count: 3000
+  }
+])
 </script>
 
 <template>
@@ -18,8 +72,17 @@ import { ChevronForward } from '@vicons/ionicons5'
         <template #header-extra>
           <span class="text-[#ffffffc0] text-[14px]">{{ 'today: +5$' }}</span>
         </template>
-        <div class="flex">
-          <span>{{ 'Tasks' }}</span>
+        <div class="flex flex-wrap">
+          <div
+            v-for="(day, index) in arrayDays"
+            :key="index"
+            class="w-calc(20%-8px) flex flex-col p-[12px] rounded-[8px] justify-center items-center"
+            :class="day.isClaim ? 'bg-[#a52a2a]' : 'bg-[#3d3d3c85]'"
+            style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+          >
+            <span class="text-[#fff] text-[16px] leading-[24px]">{{ day.label }}</span>
+            <span class="text-[#fff] text-[20px] leading-[24px]">{{ day.count }}</span>
+          </div>
         </div>
       </n-collapse-item>
       <n-collapse-item title="right" name="2">
