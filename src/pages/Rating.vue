@@ -13,7 +13,6 @@ const updateSlide = (value: number) => {
       :space-between="0"
       :loop="false"
       slides-per-view="auto"
-      centered-slides
       :touchable="false"
       :current-index="currentIndexSlide"
       :show-dots="false"
@@ -43,7 +42,6 @@ const updateSlide = (value: number) => {
       :space-between="0"
       :loop="false"
       slides-per-view="auto"
-      centered-slides
       :touchable="false"
       :current-index="currentIndexSlide"
       :show-dots="false"
