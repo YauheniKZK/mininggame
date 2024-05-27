@@ -112,34 +112,16 @@ onMounted(async () => {
       </div>
       <div class="flex w-full h-[56px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
         <n-tabs type="segment" class="w-full tabs-custom1 custom-bg-1" :value="valueTab" animated @update:value="updateTab">
-          <n-tab name="main">
+          <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <HomeIcons :color="'#fff'" />
+                <InfoIcon :color="'#fff'" />
               </n-icon>
-              <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
-              <span>{{ 'Home' }}</span>
+              <!-- <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" /> -->
+              <span>{{ 'Info' }}</span>
             </div>
           </n-tab>
-          <n-tab name="mining">
-            <div class="flex flex-col items-center justify-center">
-              <n-icon :size="22">
-                <MiningIcon :color="'#fff'" />
-                
-              </n-icon>
-              <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->
-              <span>{{ 'Mining' }}</span>
-            </div>
-          </n-tab>
-          <n-tab name="earn">
-            <div class="flex flex-col items-center justify-center">
-              <n-icon :size="22">
-                <EarnIcons :color="'#fff'" />
-              </n-icon>
-              <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
-              <span>{{ 'Earn' }}</span>
-            </div>
-          </n-tab>
+
           <n-tab name="friends">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
@@ -149,13 +131,35 @@ onMounted(async () => {
               <span>{{ 'Friends' }}</span>
             </div>
           </n-tab>
-          <n-tab name="info">
+
+          <n-tab name="main">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <InfoIcon :color="'#fff'" />
+                <HomeIcons :color="'#fff'" />
               </n-icon>
-              <!-- <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" /> -->
-              <span>{{ 'Info' }}</span>
+              <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
+              <span>{{ 'Home' }}</span>
+            </div>
+          </n-tab>
+
+          <n-tab name="earn">
+            <div class="flex flex-col items-center justify-center">
+              <n-icon :size="22">
+                <EarnIcons :color="'#fff'" />
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
+              <span>{{ 'Earn' }}</span>
+            </div>
+          </n-tab>
+
+          <n-tab name="mining">
+            <div class="flex flex-col items-center justify-center">
+              <n-icon :size="22">
+                <MiningIcon :color="'#fff'" />
+                
+              </n-icon>
+              <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->
+              <span>{{ 'Mining' }}</span>
             </div>
           </n-tab>
         </n-tabs>
