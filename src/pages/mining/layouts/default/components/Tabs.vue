@@ -63,13 +63,13 @@ const openModal = () => {
       <span class="text-[22px] font-[600] text-[#000]">
         {{ 'C++' }}
       </span>
-      <div class="flex flex-col py-[32px]">
+      <div class="flex flex-col pt-[16px]">
         <span class="text-[#000]">{{ 'level 5' + ' -> ' + 'level 6' }}</span>
         <span class="text-[#000]">{{ 'profit/hour: ' + ' 42$' }}</span>
         <span class="text-[#354f52] font-[500] text-[22px]">{{ '42$' }}</span>
         <div class="flex justify-end pt-[16px]">
-          <div class="min-w-[100px] h-[32px] flex justify-center items-center">
-            <span>{{ 'Up' }}</span>
+          <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px]" style="border: 2px solid #3b3b3b;">
+            <span class="text-[16px]">{{ 'Up' }}</span>
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@
     class="custom1-card"
     style="padding-bottom: 15px; border-radius: 8px"
     :style="`max-width: ${maxWidth}; width: ${width}`"
-    :content-style="'padding-left: 32px;padding-right: 32px;'"
+    :content-style="'padding-left: 16px;padding-right: 16px;'"
     :header-style="'padding-left: 16px;padding-right: 16px;padding-bottom: 0;'"
   >
     <template #header>{{ '' }}</template>

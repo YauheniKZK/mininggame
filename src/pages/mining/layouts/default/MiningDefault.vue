@@ -44,6 +44,7 @@ onMounted(() => {
         </div>
       </n-icon>
     </div>
+    <div class="background-layout" @click="showModalTabs = false"></div>
     <Transition name="slide-right">
       <div
         v-if="showModalTabs"
