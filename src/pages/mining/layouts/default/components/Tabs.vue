@@ -1,6 +1,14 @@
 <script setup lang="ts">
 const props = defineProps<{ valueTab: string }>()
 import SkillItem from '@/components/skills/SkillItem.vue';
+import ModalDialog from '@/components/ui/ModalDialog.vue';
+import { ref } from 'vue';
+
+const showModal = ref(false)
+
+const openModal = () => {
+  showModal.value = true
+}
 
 </script>
 
@@ -20,6 +28,7 @@ import SkillItem from '@/components/skills/SkillItem.vue';
           :profit="42"
           :key="item"
           class="w-[calc(50%-8px)]"
+          @click="openModal"
         />
       </div>
     </n-tab-pane>
@@ -43,6 +52,21 @@ import SkillItem from '@/components/skills/SkillItem.vue';
     <n-tab-pane name="pets" tab="Pets" class="w-full">
       <span class="text-[#fff]">{{ 'Hard SKills' }}</span>
     </n-tab-pane>
+    <ModalDialog
+      :show-modal="showModal"
+      :width="'80%'"
+      :max-width="'90%'"
+      @close="showModal = false"
+    >
+      <template #content>
+        <span class="text-[22px] font-[600]">
+          {{ 'Modal' }}
+        </span>
+        <div class="flex flex-col py-[32px]">
+          <span>{{ 'Test' }}</span>
+        </div>
+      </template>
+    </ModalDialog>
   </n-tabs>
 </template>
 
