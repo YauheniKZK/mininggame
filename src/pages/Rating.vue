@@ -45,6 +45,7 @@ const updateSlide = (value: number) => {
       slides-per-view="auto"
       :touchable="false"
       :current-index="currentIndexSlide"
+      centered-slides
       :show-dots="false"
     >
       <n-carousel-item style="width: 33.333%">
