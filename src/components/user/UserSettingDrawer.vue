@@ -4,7 +4,7 @@ import { ThemeApp, useApplicationStore } from '@/stores/application/applicationS
 import { computed, ref } from 'vue';
 import { storeToRefs } from 'pinia';
 import { useI18n } from 'vue-i18n'
-import { ChevronForward } from '@vicons/ionicons5'
+import { BarChartOutline, ChevronForward, CogOutline } from '@vicons/ionicons5'
 import WebApp from '@twa-dev/sdk';
 import ThemeOptions from './components/ThemeOptions.vue';
 import StackOptions from './components/StackOptions.vue';
@@ -81,9 +81,18 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex">
+  <div class="flex flex-col">
     <button @click="switchModalSetting">
-      <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" />
+      <n-icon :color="'#fff'" :size="20">
+        <CogOutline />
+      </n-icon>
+      <!-- <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" /> -->
+    </button>
+    <div class="w-[50px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
+    <button @click="switchModalSetting">
+      <n-icon :color="'#fff'" :size="20">
+        <BarChartOutline />
+      </n-icon>
     </button>
   </div>
   <!-- <n-drawer

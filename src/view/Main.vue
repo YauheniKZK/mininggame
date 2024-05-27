@@ -159,7 +159,7 @@ onMounted(async () => {
                 
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->
-              <span>{{ 'Mining' }}</span>
+              <span>{{ 'Skills' }}</span>
             </div>
           </n-tab>
         </n-tabs>
