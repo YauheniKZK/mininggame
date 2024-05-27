@@ -7,6 +7,7 @@ import { ref } from 'vue';
 const showModal = ref(false)
 
 const openModal = () => {
+  console.log('1111')
   showModal.value = true
 }
 
