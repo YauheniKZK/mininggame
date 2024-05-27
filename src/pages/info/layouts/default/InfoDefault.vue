@@ -2,7 +2,7 @@
 import { StepsProps } from 'naive-ui';
 import { ref } from 'vue';
 
-const current = ref<number | null>(1)
+const current = ref<number | null>(3)
 const currentStatus = ref<StepsProps['status']>('process')
 </script>
 
