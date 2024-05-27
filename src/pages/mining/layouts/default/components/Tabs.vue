@@ -60,11 +60,11 @@ const openModal = () => {
     @close="showModal = false"
   >
     <template #content>
-      <span class="text-[22px] font-[600]">
+      <span class="text-[22px] font-[600] text-[#000]">
         {{ 'Modal' }}
       </span>
       <div class="flex flex-col py-[32px]">
-        <span>{{ 'Test' }}</span>
+        <span class="text-[#000]">{{ 'Test' }}</span>
       </div>
     </template>
   </ModalDialog>

@@ -251,3 +251,7 @@ body, html {
   --n-border-radius: 4px !important;
   --n-option-height: 40px !important;
 }
+
+.n-modal {
+  --n-color-modal: #80ed99 !important;
+}
