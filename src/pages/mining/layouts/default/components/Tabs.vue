@@ -92,7 +92,10 @@ const openModal = () => {
             </template>
           </n-timeline-item>
         </n-timeline>
-        <div class="flex justify-end pt-[16px]">
+        <div class="flex justify-end">
+          <div class="w-[150px] h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
+        </div>
+        <div class="flex justify-end">
           <div class="flex items-center">
             <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">
               {{ '3$' }}
@@ -115,15 +118,15 @@ const openModal = () => {
 .price-before::before {
   content: "";
   position: absolute;
-  width: 21px;
-  height: 30px;
-  right: -20px;
+  width: 1px;
+  height: 36px;
+  right: -19px;
   z-index: -1;
-  top: 0;
-  background: #fee100;
+  top: -3px;
+  background: #5f5f5f;
   transform: skew(-25deg);
 }
-.price-before::after {
+/* .price-before::after {
   content: "";
   position: absolute;
   width: 21px;
@@ -133,7 +136,7 @@ const openModal = () => {
   top: 0;
   background: linear-gradient(270deg, #fee100, #fee100 8%, #fee10000);
   transform: skew(-25deg);
-}
+} */
 .tag {
   display: inline-block;
   padding: 1px 8px;
