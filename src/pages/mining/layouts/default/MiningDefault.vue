@@ -21,6 +21,7 @@ const openMenu = () => {
 const checkClickOutside = (event: { target: any; }) => {
   if (btnMenuRef.value && !btnMenuRef.value.contains(event.target) && containerTabsSkills.value && !containerTabsSkills.value.contains(event.target)) {
     showModalTabs.value = false
+    activeMenu.value = ''
   }
 }
 
