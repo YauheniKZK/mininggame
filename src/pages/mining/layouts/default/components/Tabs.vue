@@ -116,8 +116,10 @@ const openModal = () => {
               {{ '3' }}
               <sup>{{ '$' }}</sup>
             </span>
-            <div class="min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item cursor-pointer" @click="startFireworks">
-              
+            <div
+              class="z-[1] min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item cursor-pointer"
+              @click="startFireworks"
+            >
               <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
             </div>
           </div>
@@ -129,6 +131,7 @@ const openModal = () => {
           :style="{
             top: 0,
             left: 0,
+            zIndex: 0,
             width: '100%',
             height: '100%',
             position: 'absolute'
