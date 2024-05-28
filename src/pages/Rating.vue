@@ -1,10 +1,26 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
+import WebApp from '@twa-dev/sdk';
+import { onBeforeUnmount } from 'vue';
+
+const emit = defineEmits(['back'])
 
 const currentIndexSlide = ref(0)
 const updateSlide = (value: number) => {
   currentIndexSlide.value = value
 }
+
+onMounted(async () => {
+  WebApp.BackButton.show()
+})
+
+WebApp.BackButton.onClick(() => {
+  emit('back')
+})
+
+onBeforeUnmount(() => {
+  WebApp.BackButton.hide()
+})
 
 const arrayRating = ref([
   {

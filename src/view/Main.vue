@@ -110,7 +110,7 @@ onMounted(async () => {
           </div>
         </n-tab-pane>
         <n-tab-pane name="rating" class="w-full">
-          <Rating />
+          <Rating @back="updateTab('main')" />
         </n-tab-pane>
         <!-- <Transition name="slide-up">
       <div v-if="showModalSettingGetters" ref="containerForOptions" class="z-[10] flex flex-col mb-[12px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-hidden" >
