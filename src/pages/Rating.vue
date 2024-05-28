@@ -212,12 +212,12 @@ const arrayRating = ref([
           </div>
         </div>
         <div class="flex items-center">
-          <span class="text-[20px] text-[#fff]" :class="{
+          <span class="text-[20px] text-[#fff] z-0" :class="{
             'text-[#FFD700] font-[900] text-[30px] rating-item-1': index === 0,
             'text-[#C0C0C0] font-[900] text-[30px] rating-item-2': index === 1,
             'text-[#CD7F32] font-[900] text-[30px] rating-item-3': index === 2,
             'text-[#fff]': index > 2
-          }">{{ item.rating }}</span>
+          }" style="text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">{{ item.rating }}</span>
         </div>
       </div>
     </div>
@@ -238,12 +238,26 @@ const arrayRating = ref([
 .rating-item-1::before,
 .rating-item-2::before,
 .rating-item-3::before {
-  content: '';
-  bottom: 0;
+  content: "";
+  bottom: 4px;
   right: 0;
-  width: 20px;
+  width: 28px;
   height: 20px;
   position: absolute;
+  z-index: -1;
+  transform: skewY(-15deg) rotate(15deg) rotateX(45deg);
+  border-radius: 2px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.rating-item-1::before {
+  background: #FFD700;
+}
+.rating-item-2::before {
+  background: #C0C0C0;
+}
+.rating-item-3::before {
+  background: #CD7F32;
 }
 
 .active-slide {
