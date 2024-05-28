@@ -3,7 +3,22 @@ const props = defineProps<{ valueTab: string }>()
 import SkillItem from '@/components/skills/SkillItem.vue';
 import ModalDialog from '@/components/ui/ModalDialog.vue';
 import { TrendingUpOutline } from '@vicons/ionicons5';
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
+import { Fireworks } from '@fireworks-js/vue'
+import type { FireworksOptions } from '@fireworks-js/vue'
+
+const fw = ref<InstanceType<typeof Fireworks>>()
+const options = ref<FireworksOptions>({ opacity: 0.5 })
+const mounted = ref(true)
+
+async function startFireworks() {
+  if (!fw.value) return
+  fw.value.start()
+  await new Promise((resolve) => setTimeout(resolve, 1000))
+  await fw.value.waitStop()
+}
+
+watch(fw, () => startFireworks())
 
 const showModal = ref(false)
 
@@ -101,12 +116,26 @@ const openModal = () => {
               {{ '3' }}
               <sup>{{ '$' }}</sup>
             </span>
-            <div class="min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item">
+            <div class="min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item" @click="startFireworks">
               
               <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
             </div>
           </div>
         </div>
+        <Fireworks
+          ref="fw"
+          v-if="mounted"
+          :autostart="false"
+          :options="options"
+          :style="{
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            position: 'fixed',
+            background: '#000'
+          }"
+        />
       </div>
     </template>
   </ModalDialog>
