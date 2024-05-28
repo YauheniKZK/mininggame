@@ -94,8 +94,9 @@ const openModal = () => {
         </n-timeline>
         <div class="flex justify-end pt-[16px]">
           <div class="flex items-center">
-            <span class="text-[16px] text-[#fff]">{{ '3$' }}</span>
-            <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px] btn-item">
+            
+            <div class="min-w-[120px] h-[34px] flex justify-center items-center rounded-[4px] btn-item">
+              <span class="text-[16px] text-[#fff]">{{ '3$' }}</span>
               <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
             </div>
           </div>
@@ -136,17 +137,18 @@ const openModal = () => {
 }
 
 .btn-item {
-	--border-radius: 16px;
-	--border-width: 2px;
-
-	appearance: none;
-	position: relative;
-	padding: 1em 2em;
-	border: 0;
-	background-color: transparent;
-	font-size: 2em;
-	font-weight: 600;
-	color: #fff;
+  --border-radius: 8px;
+  --border-width: 2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  padding: 4px;
+  border: 0;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
 }
 
 .btn-item::after {
@@ -178,7 +180,7 @@ const openModal = () => {
 	-webkit-mask-composite: destination-out;
 
 	filter: hue-rotate(0);
-	animation: hue linear 500ms infinite;
+	animation: hue linear 1000ms infinite;
 	animation-play-state: running;
 }
 
