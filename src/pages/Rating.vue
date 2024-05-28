@@ -25,12 +25,10 @@ const arrayRating = ref([
 <template>
   <div class="flex flex-col w-full h-full px-[16px]">
     <n-carousel
-      :space-between="0"
       :loop="false"
-      slides-per-view="auto"
+      slides-per-view="1"
       :touchable="false"
       :current-index="currentIndexSlide"
-      centered-slides
       :show-dots="false"
       class="min-h-[120px]"
     >
@@ -66,7 +64,7 @@ const arrayRating = ref([
     <n-carousel
       :space-between="0"
       :loop="false"
-      slides-per-view="auto"
+      slides-per-view="3"
       :touchable="false"
       :current-index="currentIndexSlide"
       centered-slides
