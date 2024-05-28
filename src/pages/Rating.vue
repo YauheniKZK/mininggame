@@ -203,7 +203,12 @@ const arrayRating = ref([
           </div>
         </div>
         <div class="flex items-center">
-          <span class="text-[20px] text-[#fff]">{{ item.rating }}</span>
+          <span class="text-[20px] text-[#fff]" :class="{
+            'text-[#FFD700] font-[900] text-[30px]': index === 0,
+            'text-[#C0C0C0] font-[900] text-[30px]': index === 1,
+            'text-[#CD7F32] font-[900] text-[30px]': index === 2,
+            'text-[#fff]': index > 2
+          }">{{ item.rating }}</span>
         </div>
       </div>
     </div>
