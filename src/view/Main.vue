@@ -77,14 +77,14 @@ onMounted(async () => {
       <n-tabs
         class="w-full tabs-custom1 none-tab mb-[24px] h-full"
         :tab-class="'tab-class '"
-        :pane-class="'h-full'"
+        :pane-class="'h-screen'"
         :value="valueTab"
         animated
       >
         <n-tab-pane name="main" class="w-full" style="padding-top: 0;">
           <Main />
         </n-tab-pane>
-        <n-tab-pane name="mining" class="w-full h-full">
+        <n-tab-pane name="mining" class="w-full">
           <Mining />
         </n-tab-pane>
         <n-tab-pane name="earn" class="w-full">
