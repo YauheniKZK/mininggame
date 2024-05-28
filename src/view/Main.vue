@@ -75,9 +75,10 @@ onMounted(async () => {
     </div>
     <div class="flex flex-grow">
       <n-tabs
-        class="w-full tabs-custom1 none-tab mb-[24px] h-full"
+        class="w-full tabs-custom1 none-tab mb-[24px] h-full h-"
         :tab-class="'tab-class '"
-        :pane-class="'h-screen'"
+        :pane-style="'height: inherit;'"
+        :pane-wrapper-style="'height: inherit;'"
         :value="valueTab"
         animated
       >
