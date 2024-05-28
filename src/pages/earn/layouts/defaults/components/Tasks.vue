@@ -97,11 +97,13 @@ const tasks = ref([
       @close="showModal = false"
     >
       <template #content>
-        <span class="text-[22px] font-[600] text-[#fff]">
-          {{ 'Day 1' }}
-        </span>
-        <div class="flex flex-col pt-[16px]">
-          <span class="text-[#fff] font-[500] text-[22px]">{{ '1$' }}</span>
+        <div class="flex flex-col items-center pt-[16px]">
+          <img :src="getImageUrl('svg/daily_coin.svg')" class="w-[24px] min-w-[24px] h-auto object-contain mr-[4px]" alt="" />
+          <span class="text-[#fff]">{{ 'Day 1' }}</span>
+          <div class="flex items-center">
+            <img :src="getImageUrl('svg/coin-default.svg')" class="w-[24px] min-w-[24px] h-auto object-contain mr-[4px]" alt="" />
+            <span class="text-[#fff] font-[500] text-[22px]">{{ '1$' }}</span>
+          </div>
           <div class="flex justify-center pt-[16px]">
             <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px]" style="border: 2px solid #fbdd87;">
               <span class="text-[16px] text-[#fff]">{{ 'Claim' }}</span>
