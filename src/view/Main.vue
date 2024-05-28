@@ -16,6 +16,7 @@ import EarnIcons from '@/assets/svg/components/EarnIcons.vue';
 import FriendsIcon from '@/assets/svg/components/FriendsIcon.vue';
 import InfoIcon from '@/assets/svg/components/InfoIcon.vue';
 import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
+import TaskIcons from '@/assets/svg/components/TaskIcons.vue';
 import Rating from '@/pages/Rating.vue'
 import Settings from '@/pages/Settings.vue'
 
@@ -147,10 +148,10 @@ onMounted(async () => {
           <n-tab name="earn">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <EarnIcons :color="'#fff'" />
+                <TaskIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
-              <span>{{ 'Earn' }}</span>
+              <span>{{ 'Tasks' }}</span>
             </div>
           </n-tab>
 
