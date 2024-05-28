@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import WebApp from '@twa-dev/sdk';
+import { getImageUrl } from '@/utils/images';
 import { onBeforeUnmount } from 'vue';
 
 const emit = defineEmits(['back'])
@@ -204,7 +205,10 @@ const arrayRating = ref([
               }">{{ item.name }}</span>
               <span class="text-[#fff] tag2">{{ item.stack }}</span>
             </div>
-            <span class="text-[#fff]">{{ item.balance }}</span>
+            <div class="flex items-center">
+              <img :src="getImageUrl('img/Icon_Coin.svg')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
+              <span class="text-[#fff]">{{ item.balance + ' $' }}</span>
+            </div>
           </div>
         </div>
         <div class="flex items-center">
