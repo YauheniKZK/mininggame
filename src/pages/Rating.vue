@@ -101,16 +101,16 @@ const arrayRating = ref([
       :show-dots="false"
       class="min-h-[60px] pt-[16px]"
     >
-      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 0 ? 'active-slide' : ''};`" class="item-car">
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 0 ? 'active-slide' : ''}`" class="item-car">
         <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(0)">{{ 'Beginner' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 1 ? 'active-slide' : ''};`" class="item-car">
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 1 ? 'active-slide' : ''}`" class="item-car">
         <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(1)">{{ 'Trainer' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 2 ? 'active-slide' : ''};`" class="item-car">
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 2 ? 'active-slide' : ''}`" class="item-car">
         <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(2)">{{ 'Junior' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 3 ? 'active-slide' : ''};`" class="item-car">
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 3 ? 'active-slide' : ''}`" class="item-car">
         <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(3)">{{ 'Mibble' }}</span>
       </n-carousel-item>
     </n-carousel>
