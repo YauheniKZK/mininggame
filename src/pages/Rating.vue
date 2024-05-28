@@ -206,16 +206,16 @@ const arrayRating = ref([
               <span class="text-[#fff] tag2">{{ item.stack }}</span>
             </div>
             <div class="flex items-center">
-              <img :src="getImageUrl('img/Icon_Coin.svg')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
+              <img :src="getImageUrl('svg/Icon_Coin.svg')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
               <span class="text-[#fff]">{{ item.balance + ' $' }}</span>
             </div>
           </div>
         </div>
         <div class="flex items-center">
           <span class="text-[20px] text-[#fff]" :class="{
-            'text-[#FFD700] font-[900] text-[30px]': index === 0,
-            'text-[#C0C0C0] font-[900] text-[30px]': index === 1,
-            'text-[#CD7F32] font-[900] text-[30px]': index === 2,
+            'text-[#FFD700] font-[900] text-[30px] rating-item-1': index === 0,
+            'text-[#C0C0C0] font-[900] text-[30px] rating-item-2': index === 1,
+            'text-[#CD7F32] font-[900] text-[30px] rating-item-3': index === 2,
             'text-[#fff]': index > 2
           }">{{ item.rating }}</span>
         </div>
@@ -227,6 +227,23 @@ const arrayRating = ref([
 <style>
 .item-car {
   transition: all 0.3s ease-in-out;
+}
+
+.rating-item-1,
+.rating-item-2,
+.rating-item-3 {
+  position: relative;
+}
+
+.rating-item-1::before,
+.rating-item-2::before,
+.rating-item-3::before {
+  content: '';
+  bottom: 0;
+  right: 0;
+  width: 20px;
+  height: 20px;
+  position: absolute;
 }
 
 .active-slide {
