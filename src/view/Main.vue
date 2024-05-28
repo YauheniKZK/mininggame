@@ -7,8 +7,6 @@ import Info from '@/pages/info/layouts/Info.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
-import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
-import StackOptions from '@/components/user/components/StackOptions.vue';
 import TopInfo from '@/pages/mining/layouts/default/components/TopInfo.vue';
 import { watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
@@ -19,6 +17,7 @@ import FriendsIcon from '@/assets/svg/components/FriendsIcon.vue';
 import InfoIcon from '@/assets/svg/components/InfoIcon.vue';
 import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
 import Rating from '@/pages/Rating.vue'
+import Settings from '@/pages/Settings.vue'
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -97,17 +96,7 @@ onMounted(async () => {
           <Info />
         </n-tab-pane>
         <n-tab-pane name="setting" class="w-full">
-          <div class="flex flex-col p-[16px]">
-            <div class="flex mb-[24px]">
-              <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
-            </div>
-            <div class="flex flex-col mb-[12px]">
-              <ThemeOptions />
-            </div>
-            <div class="flex flex-col">
-              <StackOptions />
-            </div>
-          </div>
+          <Settings @back="updateTab('main')" />
         </n-tab-pane>
         <n-tab-pane name="rating" class="w-full">
           <Rating @back="updateTab('main')" />
