@@ -120,7 +120,7 @@ const tasks = ref([
           </n-icon>
         </template>
         <template #header>
-          <span class="text-[#fff] text-[18px]">{{ 'Daily tasks' }}</span>
+          <span class="text-[#fff] text-[16px]">{{ 'Daily tasks' }}</span>
         </template>
         <template #header-extra>
           <span class="text-[#48ede7c0] text-[14px]">{{ 'today: +5$' }}</span>
@@ -152,7 +152,7 @@ const tasks = ref([
           </n-icon>
         </template>
         <template #header>
-          <span class="text-[#fff] text-[18px]">{{ 'Main tasks' }}</span>
+          <span class="text-[#fff] text-[16px]">{{ 'Main tasks' }}</span>
         </template>
         <template #header-extra>
           <span class="text-[#48ede7c0] text-[14px]">{{ 'no new tasks' }}</span>
