@@ -191,7 +191,12 @@ const arrayRating = ref([
           </div>
           <div class="flex flex-col">
             <div class="flex items-center">
-              <span class="text-[#fff] mr-[6px]">{{ item.name }}</span>
+              <span class="text-[16px] mr-[6px]" :class="{
+                'text-[#FFD700]': index === 0,
+                'text-[#C0C0C0]': index === 1,
+                'text-[#CD7F32]': index === 2,
+                'text-[#fff]': index > 2
+              }">{{ item.name }}</span>
               <span class="text-[#fff] tag2">{{ item.stack }}</span>
             </div>
             <span class="text-[#fff]">{{ item.balance }}</span>
