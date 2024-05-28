@@ -20,7 +20,7 @@ async function startFireworks() {
   mounted.value = false
 }
 
-watch(fw, () => startFireworks())
+// watch(fw, () => startFireworks())
 
 const showModal = ref(false)
 
