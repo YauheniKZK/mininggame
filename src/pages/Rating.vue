@@ -48,6 +48,54 @@ const arrayRating = ref([
     balance: 24,
     rating: 7,
     stack: 'javascript'
+  },
+  {
+    name: 'name 8',
+    balance: 24,
+    rating: 8,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 9',
+    balance: 24,
+    rating: 9,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 10',
+    balance: 24,
+    rating: 10,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 11',
+    balance: 24,
+    rating: 11,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 12',
+    balance: 24,
+    rating: 12,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 13',
+    balance: 24,
+    rating: 13,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 14',
+    balance: 24,
+    rating: 14,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 45',
+    balance: 24,
+    rating: 15,
+    stack: 'javascript'
   }
 ])
 </script>
