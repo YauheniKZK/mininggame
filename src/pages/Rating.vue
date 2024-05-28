@@ -5,6 +5,21 @@ const currentIndexSlide = ref(0)
 const updateSlide = (value: number) => {
   currentIndexSlide.value = value
 }
+
+const arrayRating = ref([
+  {
+    name: 'name 1',
+    balance: 30,
+    rating: 1,
+    stack: 'php'
+  },
+  {
+    name: 'name 2',
+    balance: 29,
+    rating: 2,
+    stack: 'javascript'
+  }
+])
 </script>
 
 <template>
@@ -63,7 +78,27 @@ const updateSlide = (value: number) => {
       </n-carousel-item>
     </n-carousel>
     <div class="flex flex-col">
-      {{ 'Rating' }}
+      <div
+        v-for="item, index in arrayRating"
+        :key="index"
+        class="flex justify-between items-center w-full mb-[8px]"
+      >
+        <div class="flex items-center">
+          <div class="w-[40px] min-w-[40px] bg-[#868686b4] h-[40px] rounded-[50%] mr-[16px]">
+
+          </div>
+          <div class="flex flex-col">
+            <div class="flex items-center">
+              <span class="text-[#fff]">{{ item.name }}</span>
+              <span class="text-[#fff]">{{ item.balance }}</span>
+            </div>
+            <span class="text-[#fff]">{{ item.stack }}</span>
+          </div>
+        </div>
+        <div class="flex items-center">
+          <span>{{ item.rating }}</span>
+        </div>
+      </div>
     </div>
   </div>
 </template>
