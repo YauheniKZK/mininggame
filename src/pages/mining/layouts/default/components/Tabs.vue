@@ -2,6 +2,7 @@
 const props = defineProps<{ valueTab: string }>()
 import SkillItem from '@/components/skills/SkillItem.vue';
 import ModalDialog from '@/components/ui/ModalDialog.vue';
+import { TrendingUpOutline } from '@vicons/ionicons5';
 import { ref } from 'vue';
 
 const showModal = ref(false)
@@ -64,27 +65,36 @@ const openModal = () => {
         {{ 'Update' }}
       </span>
       <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
-      <div class="flex flex-col">
+      <div class="flex flex-col pt-[8px]">
         <n-timeline>
-          <n-timeline-item type="success">
+          <n-timeline-item type="success" :line-type="'dashed'">
             <template #header>
-              <span>{{ 'C++' }}</span>
+              <span class="tag">{{ 'C++' }}</span>
             </template>
           </n-timeline-item>
-          <n-timeline-item type="warning">
+          <n-timeline-item type="warning" :line-type="'dashed'">
             <template #header>
-              <span>{{ 'level 5' + ' -> ' + 'level 6' }}</span>
+              <div class="flex items-center">
+                <span class="text-[#fff]">{{ 'level 5 ' }}</span>
+                <n-icon :color="'#fff'" :size="16" class="mx-[8px]">
+                  <TrendingUpOutline />
+                </n-icon>
+                <span class="text-[#fff]">{{ ' level 6' }}</span>
+              </div>
             </template>
           </n-timeline-item>
-          <n-timeline-item type="info">
+          <n-timeline-item type="info" :line-type="'dashed'">
             <template #header>
-              <span>{{ 'profit/hour: ' + ' 42$' }}</span>
+              <div class="flex items-center">
+                <span class="text-[#fff] mr-[4px]">{{ 'profit/hour: ' }}</span>
+                <span class="text-[#fff]">{{ ' +0.5$' }}</span>
+              </div>
             </template>
           </n-timeline-item>
         </n-timeline>
         <div class="flex justify-end pt-[16px]">
           <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px]" style="border: 2px solid #fbdd87;">
-            <span class="text-[16px] text-[#fff]">{{ '42$ ' + ' Up' }}</span>
+            <span class="text-[16px] text-[#fff]">{{ '3$ ' + ' Up' }}</span>
           </div>
         </div>
       </div>
@@ -93,5 +103,12 @@ const openModal = () => {
 </template>
 
 <style scoped>
-
+.tag {
+  display: inline-block;
+  padding: 1px 8px;
+  border-radius: 4px;
+  background: #fee100;
+  color: #000000;
+  font-size: 14px;
+}
 </style>
