@@ -147,7 +147,7 @@ onMounted(async () => {
 
           <n-tab name="earn">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="22">
+              <n-icon :size="22" class="relative left-[3px]">
                 <TaskIcons :color="'#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
