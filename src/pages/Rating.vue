@@ -184,6 +184,11 @@ const arrayRating = ref([
         :key="index"
         class="flex justify-between items-center w-full mb-[8px] p-[8px] rounded-[16px] bg-[#2f2f2f]"
         style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+        :class="{
+          'border-[#FFD700] border-[1px]': index === 0,
+          'border-[#C0C0C0] border-[1px]': index === 1,
+          'border-[#CD7F32] border-[1px]': index === 2,
+        }"
       >
         <div class="flex items-center">
           <div class="w-[40px] min-w-[40px] bg-[#868686b4] h-[40px] rounded-[50%] mr-[16px]">
