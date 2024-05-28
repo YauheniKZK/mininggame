@@ -206,7 +206,7 @@ const arrayRating = ref([
               <span class="text-[#fff] tag2">{{ item.stack }}</span>
             </div>
             <div class="flex items-center">
-              <img :src="getImageUrl('svg/Icon_Coin.svg')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
+              <img :src="getImageUrl('svg/Icon_Coin.svg')" class="w-[30px] min-w-[30px] h-auto object-contain" alt="" />
               <span class="text-[#fff]">{{ item.balance + ' $' }}</span>
             </div>
           </div>
