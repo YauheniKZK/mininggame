@@ -191,7 +191,7 @@ onUnmounted(() => {
       </div>
       <div class="flex items-center mb-[16px] px-[8px]">
         <div class="flex items-center p-[4px]" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-          <img :src="getImageUrl('img/coin1.png')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
+          <img :src="getImageUrl('svg/coin-default.svg')" class="w-[30px] min-w-[30px] h-auto object-contain mr-[8px]" alt="" />
           <span class="text-[14px] font-[600] text-[#fff] leading-[20px]">
             {{ formatNumberWithSpaces(Number(balanceRef)) }}
             <sup class="font-[400]">{{ ' $' }}</sup>
