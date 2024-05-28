@@ -98,7 +98,8 @@ const openModal = () => {
         <div class="flex justify-end">
           <div class="flex items-center">
             <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">
-              {{ '3$' }}
+              {{ '3' }}
+              <sup>{{ ' $' }}</sup>
             </span>
             <div class="min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item">
               
