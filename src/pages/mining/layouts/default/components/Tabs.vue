@@ -107,7 +107,7 @@ const openModal = () => {
 </template>
 
 <style scoped>
-.price-before {
+.price-before::before {
   content: '';
   position: absolute;
   width: 1px;
