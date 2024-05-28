@@ -12,7 +12,7 @@
   >
     <template #header>{{ '' }}</template>
     <template #header-extra>
-      <n-icon :size="24" class="cursor-pointer" @click="$emit('close')">
+      <n-icon :size="24" class="cursor-pointer relative z-10" @click="$emit('close')">
         <img :src="getImageUrl('svg/Close.svg')" alt="" />
       </n-icon>
     </template>
