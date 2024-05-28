@@ -12,10 +12,12 @@ const options = ref<FireworksOptions>({ opacity: 0.5 })
 const mounted = ref(true)
 
 async function startFireworks() {
+  mounted.value = true
   if (!fw.value) return
   fw.value.start()
   await new Promise((resolve) => setTimeout(resolve, 1000))
   await fw.value.waitStop()
+  mounted.value = false
 }
 
 watch(fw, () => startFireworks())
