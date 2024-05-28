@@ -60,20 +60,27 @@ const openModal = () => {
     @close="showModal = false"
   >
     <template #content>
-      <span class="text-[22px] font-[600] text-[#fff]">
+      <span class="text-[18px] font-[600] text-[#fff]">
         {{ 'Update' }}
       </span>
-      <div class="flex flex-col pt-[16px]">
+      <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
+      <div class="flex flex-col">
         <n-timeline>
-          <n-timeline-item type="warning" content="C++" />
-          <n-timeline-item
-            type="warning"
-            :title="'level 5' + ' -> ' + 'level 6'"
-          />
-          <n-timeline-item
-            type="warning"
-            :content="'profit/hour: ' + ' 42$'"
-          />
+          <n-timeline-item type="success">
+            <template #header>
+              <span>{{ 'C++' }}</span>
+            </template>
+          </n-timeline-item>
+          <n-timeline-item type="warning">
+            <template #header>
+              <span>{{ 'level 5' + ' -> ' + 'level 6' }}</span>
+            </template>
+          </n-timeline-item>
+          <n-timeline-item type="info">
+            <template #header>
+              <span>{{ 'profit/hour: ' + ' 42$' }}</span>
+            </template>
+          </n-timeline-item>
         </n-timeline>
         <div class="flex justify-end pt-[16px]">
           <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px]" style="border: 2px solid #fbdd87;">
