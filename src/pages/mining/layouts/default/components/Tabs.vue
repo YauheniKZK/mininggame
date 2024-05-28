@@ -79,7 +79,7 @@ const openModal = () => {
                 <n-icon :color="'#fff'" :size="16" class="mx-[8px]">
                   <TrendingUpOutline />
                 </n-icon>
-                <span class="text-[#fff] item-before-lvl relative">{{ ' level 6' }}</span>
+                <span class="text-[#fff] item-before-lvl relative z-0">{{ ' level 6' }}</span>
               </div>
             </template>
           </n-timeline-item>
@@ -87,7 +87,7 @@ const openModal = () => {
             <template #header>
               <div class="flex items-center">
                 <span class="text-[#fff] mr-[4px]">{{ '$/hour: ' }}</span>
-                <span class="text-[#fff] item-before-profit relative">{{ ' +0.5$' }}</span>
+                <span class="text-[#fff] item-before-profit relative z-0">{{ ' +0.5$' }}</span>
               </div>
             </template>
           </n-timeline-item>
@@ -114,11 +114,21 @@ const openModal = () => {
 
 .item-before-lvl::before,
 .item-before-profit::before {
-  content: '';
+  content: "";
   position: absolute;
-  left: 0;
-  top: 0;
-  width: 30px;
+  left: 15px;
+  top: 0px;
+  width: 40px;
   height: 20px;
+  z-index: -1;
+  transform: skew(-20deg, 0deg);
+}
+
+.item-before-lvl::before {
+  background: #f0a02094;
+}
+
+.item-before-profit::before {
+  background: #2080f0;
 }
 </style>
