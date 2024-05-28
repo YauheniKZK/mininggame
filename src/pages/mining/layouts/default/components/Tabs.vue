@@ -61,15 +61,23 @@ const openModal = () => {
   >
     <template #content>
       <span class="text-[22px] font-[600] text-[#fff]">
-        {{ 'C++' }}
+        {{ 'Update' }}
       </span>
       <div class="flex flex-col pt-[16px]">
-        <span class="text-[#fff]">{{ 'level 5' + ' -> ' + 'level 6' }}</span>
-        <span class="text-[#fff]">{{ 'profit/hour: ' + ' 42$' }}</span>
-        <span class="text-[#fff] font-[500] text-[22px]">{{ '42$' }}</span>
+        <n-timeline>
+          <n-timeline-item type="warning" content="C++" />
+          <n-timeline-item
+            type="warning"
+            :title="'level 5' + ' -> ' + 'level 6'"
+          />
+          <n-timeline-item
+            type="warning"
+            :content="'profit/hour: ' + ' 42$'"
+          />
+        </n-timeline>
         <div class="flex justify-end pt-[16px]">
           <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px]" style="border: 2px solid #fbdd87;">
-            <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
+            <span class="text-[16px] text-[#fff]">{{ '42$ ' + ' Up' }}</span>
           </div>
         </div>
       </div>
