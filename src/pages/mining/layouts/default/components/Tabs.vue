@@ -62,7 +62,7 @@ const openModal = () => {
   >
     <template #content>
       <div class="flex pt-[8px]">
-        <span class="text-[12px] text-[#fff]">{{ 'text-[#fff]' }}</span>
+        <span class="text-[12px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
       </div>
       <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
       <div class="flex flex-col pt-[8px]">
