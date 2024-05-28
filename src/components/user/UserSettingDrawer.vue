@@ -81,15 +81,15 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col">
-    <button @click="switchModalSetting" class="flex justify-center items-center">
+  <div class="flex flex-col items-end">
+    <button @click="switchModalSetting" class="btn-item">
       <n-icon :color="'#fff'" :size="28">
         <CogOutline />
       </n-icon>
       <!-- <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" /> -->
     </button>
-    <div class="w-[50px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
-    <button @click="switchModalRating" class="flex justify-center items-center">
+    <div class="w-[36px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
+    <button @click="switchModalRating" class="btn-item">
       <n-icon :color="'#fff'" :size="22">
         <BarChartOutline />
       </n-icon>
@@ -120,4 +120,13 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+.btn-item {
+  height: 36px;
+  width: 36px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: #3f3f3f;
+}
 </style>

@@ -85,7 +85,7 @@ const tasks = ref([
 
 <template>
   <div class="flex flex-col w-full">
-    <div class="flex justify-center items-center bg-[#5757579a] min-h-[140px] mb-[16px]">
+    <div class="flex justify-center items-center bg-[#5757579a] min-h-[140px] mb-[16px] rounded-[8px]">
       <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
 
       </div>
@@ -133,9 +133,13 @@ const tasks = ref([
             @click="showModal = true"
           >
             <span class="text-[#ffffff9c] text-[14px] leading-[38px]">{{ day.label }}</span>
-            <span class="text-[#9bff00] text-[16px] leading-[38px] p-[4px_2px] font-[500] flex justify-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
-              {{ day.count + '$' }}
-            </span>
+            <div class="p-[4px_2px] flex justify-center items-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
+              <img :src="getImageUrl('svg/coin-default.svg')" class="w-[46px] min-w-[46px] h-auto object-contain" alt="" />
+                <span class="text-[#9bff00] text-[16px] leading-[38px]  font-[500]">
+                {{ day.count + '$' }}
+              </span>
+            </div>
+    
           </div>
         </div>
       </n-collapse-item>

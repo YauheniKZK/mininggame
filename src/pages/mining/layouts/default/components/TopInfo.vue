@@ -26,7 +26,8 @@ const balanceRef = computed(() => {
   >
     <div class="flex items-center">
       <n-icon :size="46" class="mr-[8px]">
-        <CoinIcon :color="'#fff'" />
+        <!-- <CoinIcon :color="'#fff'" /> -->
+        <img :src="getImageUrl('svg/coin-default.svg')" class="w-[46px] min-w-[46px] h-auto object-contain" alt="" />
       </n-icon>
       <span class="text-[22px] font-[500] text-[#fff] leading-[24px]">
         {{ formatNumberWithSpaces(Number(balanceRef)) }}

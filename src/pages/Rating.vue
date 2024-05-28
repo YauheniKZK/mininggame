@@ -125,31 +125,31 @@ const arrayRating = ref([
       :touchable="false"
       :current-index="currentIndexSlide"
       :show-dots="false"
-      class="min-h-[120px]"
+      class="min-h-[120px] rounded-[8px]"
     >
       <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
         </div>
       </n-carousel-item>
       <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
         </div>
       </n-carousel-item>
       <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
         </div>
       </n-carousel-item>
       <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
+        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
@@ -206,7 +206,7 @@ const arrayRating = ref([
               <span class="text-[#fff] tag2">{{ item.stack }}</span>
             </div>
             <div class="flex items-center">
-              <img :src="getImageUrl('svg/Icon_Coin.svg')" class="w-[30px] min-w-[30px] h-auto object-contain" alt="" />
+              <img :src="getImageUrl('svg/coin-default.svg')" class="w-[30px] min-w-[30px] h-auto object-contain" alt="" />
               <span class="text-[#fff]">{{ item.balance + ' $' }}</span>
             </div>
           </div>
