@@ -85,6 +85,11 @@ const tasks = ref([
 
 <template>
   <div class="flex flex-col w-full">
+    <div class="flex justify-center items-center bg-[#5757579a] min-h-[140px] mb-[16px]">
+      <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
+
+      </div>
+    </div>
     <ModalDialog
       :show-modal="showModal"
       :width="'80%'"
