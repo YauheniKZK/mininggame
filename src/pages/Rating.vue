@@ -18,6 +18,36 @@ const arrayRating = ref([
     balance: 29,
     rating: 2,
     stack: 'javascript'
+  },
+  {
+    name: 'name 3',
+    balance: 28,
+    rating: 3,
+    stack: 'JAVA'
+  },
+  {
+    name: 'name 4',
+    balance: 27,
+    rating: 4,
+    stack: 'c++'
+  },
+  {
+    name: 'name 5',
+    balance: 26,
+    rating: 5,
+    stack: 'c#'
+  },
+  {
+    name: 'name 6',
+    balance: 25,
+    rating: 6,
+    stack: 'javascript'
+  },
+  {
+    name: 'name 7',
+    balance: 24,
+    rating: 7,
+    stack: 'javascript'
   }
 ])
 </script>
@@ -71,17 +101,17 @@ const arrayRating = ref([
       :show-dots="false"
       class="min-h-[60px] pt-[16px]"
     >
-      <n-carousel-item style="width: 33.333%;height: 60px;" :style="`background: ${currentIndexSlide === 0 ? '#000' : ''};`" class="item-car">
-        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(0)">{{ 'Beginner' }}</span>
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 0 ? 'active-slide' : ''};`" class="item-car">
+        <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(0)">{{ 'Beginner' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%;height: 60px;" :style="`background: ${currentIndexSlide === 1 ? '#000' : ''};`" class="item-car">
-        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(1)">{{ 'Trainer' }}</span>
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 1 ? 'active-slide' : ''};`" class="item-car">
+        <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(1)">{{ 'Trainer' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%;height: 60px;" :style="`background: ${currentIndexSlide === 2 ? '#000' : ''};`" class="item-car">
-        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(2)">{{ 'Junior' }}</span>
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 2 ? 'active-slide' : ''};`" class="item-car">
+        <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(2)">{{ 'Junior' }}</span>
       </n-carousel-item>
-      <n-carousel-item style="width: 33.333%;height: 60px;" :style="`background: ${currentIndexSlide === 3 ? '#000' : ''};`" class="item-car">
-        <span class="text-[#fff] flex justify-center items-center h-full" @click="updateSlide(3)">{{ 'Mibble' }}</span>
+      <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 3 ? 'active-slide' : ''};`" class="item-car">
+        <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(3)">{{ 'Mibble' }}</span>
       </n-carousel-item>
     </n-carousel>
     <div class="flex flex-col pt-[16px]">
@@ -97,8 +127,8 @@ const arrayRating = ref([
           </div>
           <div class="flex flex-col">
             <div class="flex items-center">
-              <span class="text-[#fff]">{{ item.name }}</span>
-              <span class="text-[#fff]">{{ item.stack }}</span>
+              <span class="text-[#fff] mr-[6px]">{{ item.name }}</span>
+              <span class="text-[#fff] tag2">{{ item.stack }}</span>
             </div>
             <span class="text-[#fff]">{{ item.balance }}</span>
           </div>
@@ -114,5 +144,20 @@ const arrayRating = ref([
 <style>
 .item-car {
   transition: all 0.3s ease-in-out;
+}
+
+.active-slide {
+  background: rgb(81 79 79);
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+.tag2 {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 0 8px;
+  border-radius: 4px;
+  background: #888;
+  color: #fff;
+  font-size: 12px;
 }
 </style>
