@@ -30,31 +30,32 @@ const arrayRating = ref([
       slides-per-view="auto"
       :touchable="false"
       :current-index="currentIndexSlide"
+      centered-slides
       :show-dots="false"
       class="min-h-[120px]"
     >
-      <n-carousel-item style="width: 100%">
+      <n-carousel-item style="width: 100%;height: 120px;">
         <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
         </div>
       </n-carousel-item>
-      <n-carousel-item style="width: 100%">
+      <n-carousel-item style="width: 100%;height: 120px;">
         <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
         </div>
       </n-carousel-item>
-      <n-carousel-item style="width: 100%">
+      <n-carousel-item style="width: 100%;height: 120px;">
         <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
           </div>
         </div>
       </n-carousel-item>
-      <n-carousel-item style="width: 100%">
+      <n-carousel-item style="width: 100%;height: 120px;">
         <div class="flex justify-center items-center h-[120px] bg-[#5757579a]">
           <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
             <span>{{ 'IMG Rating' }}</span>
