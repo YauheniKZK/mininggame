@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import Tabs from './components/Tabs.vue';
 
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 
 const valueTab = ref('dev')
 const containerTabsSkills = ref()
@@ -11,17 +11,15 @@ const updateTab = (value: string) => {
   valueTab.value = value
 }
 const showModalTabs = ref(false)
-const activeMenu = ref('')
+const activeMenu = computed(() => showModalTabs.value ? 'active' : '')
 
 const openMenu = () => {
   showModalTabs.value = !showModalTabs.value
-  activeMenu.value = showModalTabs.value ? 'active' : ''
 }
 
 const checkClickOutside = (event: { target: any; }) => {
   if (btnMenuRef.value && !btnMenuRef.value.contains(event.target) && containerTabsSkills.value && !containerTabsSkills.value.contains(event.target)) {
     showModalTabs.value = false
-    activeMenu.value = ''
   }
 }
 
