@@ -93,8 +93,11 @@ const openModal = () => {
           </n-timeline-item>
         </n-timeline>
         <div class="flex justify-end pt-[16px]">
-          <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px]" style="border: 2px solid #fbdd87;">
-            <span class="text-[16px] text-[#fff]">{{ '3$ ' + ' Up' }}</span>
+          <div class="flex items-center">
+            <span class="text-[16px] text-[#fff]">{{ '3$' }}</span>
+            <div class="min-w-[100px] h-[34px] flex justify-center items-center rounded-[4px] btn-item" style="border: 2px solid #fbdd87;">
+              <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -130,5 +133,56 @@ const openModal = () => {
 
 .item-before-profit::before {
   background: #2080f0;
+}
+
+.btn-item {
+	--border-radius: 16px;
+	--border-width: 2px;
+
+	appearance: none;
+	position: relative;
+	padding: 1em 2em;
+	border: 0;
+	background-color: transparent;
+	font-size: 2em;
+	font-weight: 600;
+	color: #fff;
+}
+
+.btn-item::after {
+	--m-i: linear-gradient(#000, #000);
+	--m-o: content-box, padding-box;
+
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	padding: var(--border-width);
+	border-radius: var(--border-radius);
+	background-image: conic-gradient(
+		#488cfb,
+		#29dbbc,
+		#ddf505,
+		#ff9f0e,
+		#e440bb,
+		#655adc,
+		#488cfb
+	);
+
+	mask-image: var(--m-i), var(--m-i);
+	mask-origin: var(--m-o);
+	mask-clip: var(--m-o);
+	mask-composite: exclude;
+	-webkit-mask-composite: destination-out;
+
+	filter: hue-rotate(0);
+	animation: hue linear 500ms infinite;
+	animation-play-state: paused;
+}
+
+.btn-item:hover::after {
+	animation-play-state: running;
 }
 </style>
