@@ -108,14 +108,25 @@ const openModal = () => {
 
 <style scoped>
 .price-before::before {
-  content: '';
+  content: "";
   position: absolute;
-  width: 1px;
-  height: 50px;
-  right: 0;
-  top: 0;
-  background: #000000;
-  transform: rotate(45deg);
+  width: 21px;
+  height: 30px;
+  right: -19px;
+  top: 0px;
+  background: #fee100;
+  transform: skewX(-25deg);
+}
+.price-before::after {
+  content: "";
+  position: absolute;
+  width: 21px;
+  height: 30px;
+  right: -19px;
+  top: 0px;
+  background: rgb(254,225,0);
+  background: linear-gradient(270deg, rgba(254,225,0,1) 0%, rgba(254,225,0,1) 8%, rgba(254,225,0,0) 100%); 
+  transform: skewX(-25deg);
 }
 .tag {
   display: inline-block;
