@@ -94,7 +94,9 @@ const openModal = () => {
         </n-timeline>
         <div class="flex justify-end pt-[16px]">
           <div class="flex items-center">
-            <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">{{ '3$' }}</span>
+            <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">
+              {{ '3$' }}
+            </span>
             <div class="min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item">
               
               <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
@@ -107,6 +109,9 @@ const openModal = () => {
 </template>
 
 <style scoped>
+.price-before {
+  text-shadow: rgb(0 0 0) 0px 3px 8px;
+}
 .price-before::before {
   content: "";
   position: absolute;
