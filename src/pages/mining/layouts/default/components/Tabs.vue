@@ -9,7 +9,6 @@ import type { FireworksOptions } from '@fireworks-js/vue'
 
 const fw = ref<InstanceType<typeof Fireworks>>()
 const options = ref<FireworksOptions>({ opacity: 0.5 })
-const mounted = ref(true)
 
 async function startFireworks() {
   if (!fw.value) return
@@ -26,8 +25,8 @@ const loading = ref(false)
 const update = async () => {
   loading.value = true
   setTimeout(async () => {
-    await startFireworks()
     loading.value = false
+    await startFireworks()
   }, 1500)
 }
 
