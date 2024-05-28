@@ -21,6 +21,15 @@ async function startFireworks() {
 // watch(fw, () => startFireworks())
 
 const showModal = ref(false)
+const loading = ref(false)
+
+const update = async () => {
+  loading.value = true
+  setTimeout(async () => {
+    await startFireworks()
+    loading.value = false
+  }, 1500)
+}
 
 const openModal = () => {
   showModal.value = true
@@ -118,8 +127,9 @@ const openModal = () => {
             </span>
             <div
               class="z-[1] min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item cursor-pointer"
-              @click="startFireworks"
+              @click="update"
             >
+              <n-spin v-if="loading" :size="14" class="mr-[8px]" />
               <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
             </div>
           </div>
