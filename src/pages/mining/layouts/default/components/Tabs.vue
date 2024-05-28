@@ -182,4 +182,11 @@ const openModal = () => {
 	animation-play-state: running;
 }
 
+@keyframes hue {
+	to {
+		filter: hue-rotate(1turn);
+	}
+}
+
+
 </style>
