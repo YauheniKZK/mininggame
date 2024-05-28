@@ -94,9 +94,9 @@ const openModal = () => {
         </n-timeline>
         <div class="flex justify-end pt-[16px]">
           <div class="flex items-center">
-            
+            <span class="text-[16px] text-[#fff]">{{ '3$' }}</span>
             <div class="min-w-[120px] h-[34px] flex justify-center items-center rounded-[4px] btn-item">
-              <span class="text-[16px] text-[#fff]">{{ '3$' }}</span>
+              
               <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
             </div>
           </div>
