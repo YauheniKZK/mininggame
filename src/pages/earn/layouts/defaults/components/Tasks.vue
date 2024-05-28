@@ -97,9 +97,9 @@ const tasks = ref([
       @close="showModal = false"
     >
       <template #content>
-        <div class="flex flex-col items-center pt-[16px]">
-          <img :src="getImageUrl('svg/daily_coin.svg')" class="w-[24px] min-w-[24px] h-auto object-contain mr-[4px]" alt="" />
-          <span class="text-[#fff]">{{ 'Day 1' }}</span>
+        <div class="flex flex-col items-center">
+          <img :src="getImageUrl('svg/daily_coin.svg')" class="w-[82px] min-w-[82px] h-auto object-contain mb-[16px]" alt="" />
+          <span class="text-[#fff] font-[600] mb-[8px] text-[24px]">{{ 'Day 1' }}</span>
           <div class="flex items-center">
             <img :src="getImageUrl('svg/coin-default.svg')" class="w-[24px] min-w-[24px] h-auto object-contain mr-[4px]" alt="" />
             <span class="text-[#fff] font-[500] text-[22px]">{{ '1$' }}</span>
