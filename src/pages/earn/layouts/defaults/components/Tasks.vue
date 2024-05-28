@@ -134,7 +134,7 @@ const tasks = ref([
           >
             <span class="text-[#ffffff9c] text-[14px] leading-[38px]">{{ day.label }}</span>
             <div class="p-[4px_2px] flex justify-center items-center w-full bg-[#414141] rounded-[4px_4px_6px_6px]">
-              <img :src="getImageUrl('svg/coin-default.svg')" class="w-[46px] min-w-[46px] h-auto object-contain" alt="" />
+              <img :src="getImageUrl('svg/coin-default.svg')" class="w-[24px] min-w-[24px] h-auto object-contain mr-[4px]" alt="" />
                 <span class="text-[#9bff00] text-[16px] leading-[38px]  font-[500]">
                 {{ day.count + '$' }}
               </span>
