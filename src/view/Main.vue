@@ -71,11 +71,11 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
-    <div v-if="valueTab === 'mining'" class="px-[16px] pt-[16px] mb-[8px] z-[1]">
+    <div v-if="valueTab === 'mining'" class="px-[16px] pt-[16px] mb-[16px] z-[1]">
       <TopDescription />
     </div>
     <div v-if="valueTab === 'mining'" class="sticky top-[16px] px-[16px] z-[1]">
-      <TopInfo class="mb-[8px] z-[2]" />
+      <TopInfo class="z-[2]" />
     </div>
     <div class="flex flex-grow">
       <n-tabs
