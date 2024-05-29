@@ -8,6 +8,7 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
 import TopInfo from '@/pages/mining/layouts/default/components/TopInfo.vue';
+import TopDescription from '@/pages/mining/layouts/default/components/TopDescription.vue';
 import { watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
 import { getImageUrl } from '@/utils/images';
@@ -71,6 +72,7 @@ onMounted(async () => {
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
     <div v-if="valueTab === 'mining'" class="sticky top-[16px] px-[16px] z-[1]">
+      <TopDescription class="mb-[8px] z-[1]" />
       <TopInfo class="mb-[8px] z-[2]" />
     </div>
     <div class="flex flex-grow">
