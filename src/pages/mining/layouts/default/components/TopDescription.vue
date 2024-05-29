@@ -3,7 +3,7 @@ import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
 </script>
 
 <template>
-  <div class="flex justify-between">
+  <div class="flex justify-between items-center">
     <div class="flex pr-[24px]">
       <div class="flex min-w-[4px] w-[4px] h-auto bg-[#21ce70] mr-[8px]"></div>
       <div class="flex flex-col">
