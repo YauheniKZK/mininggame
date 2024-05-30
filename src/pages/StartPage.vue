@@ -94,7 +94,7 @@ onMounted(() => {
             </span>
           </div>
           <div class="flex justify-center w-full pt-[16px]">
-            <button class="btn z-[1]" @click="false">
+            <button class="btn red z-[1]" @click="false">
               <span class="btn__content text-[#fff] font-[600]">Start</span>
               <span class="btn__glitch"></span>
               <span class="btn__label">New</span>
@@ -312,6 +312,10 @@ onMounted(() => {
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 
+.btn.red {
+  background: var(--black-color);
+}
+
 .btn__content {
   display: flex;
   align-items: center;
@@ -329,7 +333,7 @@ onMounted(() => {
   background-color: var(--white-color);
 }
 
-.btn--secondary .btn__content {
+.btn.red .btn__content {
   background-color: var(--red-color);
   color: var(--white-color);
 }
@@ -345,7 +349,7 @@ onMounted(() => {
   border-left: 1px solid var(--blue-color);
 }
 
-.btn--secondary .btn__label {
+.btn.red .btn__label {
   background-color: var(--white-color);
   color: var(--black-color);
 }
@@ -361,7 +365,7 @@ onMounted(() => {
   filter: drop-shadow(-2px 3px #67e3f35b) drop-shadow(-1px -3px #02d7f37e) drop-shadow(2px 1px #02d7f363);
 }
 
-.btn--secondary .btn__glitch {
+.btn.red .btn__glitch {
   background-color: var(--red-color);
 }
 
