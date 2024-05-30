@@ -4,7 +4,9 @@ import StartPage from '@/pages/StartPage.vue';
 import LoadingStart from '@/components/LoadingStart.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { onMounted, onBeforeUnmount, watch, ref } from 'vue';
+import { onMounted, onBeforeUnmount, watch, ref, computed } from 'vue';
+import { Config } from '@/config';
+import TestPage from '@/pages/test/TestPage.vue';
 // import eruda from 'eruda'
 // import WebApp from '@twa-dev/sdk'
 // import { tapActionIncr } from '@/services/tap.service';
@@ -120,6 +122,11 @@ watch(() => isTapingGetters.value, (newVal) => {
 //   actionMiningMoney(10)
 // })
 
+const testMode = computed(() => {
+  console.log('Config.TEST_MODE',Config.TEST_MODE)
+  return Config.TEST_MODE === 'true'
+})
+
 onBeforeUnmount(async () => {
   console.log('1111111111111111111')
   // actionMiningMoney(10)
@@ -139,9 +146,10 @@ onBeforeUnmount(async () => {
 
 <template>
   <div class="flex flex-col h-full">
-    <LoadingStart v-if="loadingGetUserGetters" />
-    <StartPage v-if="!currentUserDataGetters && !loadingGetUserGetters" />
-    <Main v-if="currentUserDataGetters && !loadingGetUserGetters" />
+    <TestPage v-if="testMode" />
+    <LoadingStart v-if="!testMode && loadingGetUserGetters" />
+    <StartPage v-if="!testMode && !currentUserDataGetters && !loadingGetUserGetters" />
+    <Main v-if="!testMode && currentUserDataGetters && !loadingGetUserGetters" />
   </div>
 </template>
 
