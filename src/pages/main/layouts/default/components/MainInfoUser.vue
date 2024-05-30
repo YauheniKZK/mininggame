@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
+import { BarChartOutline, CogOutline } from '@vicons/ionicons5'
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
 
@@ -14,19 +15,34 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       </div>
       <div class="flex flex-col justify-between pl-[4px] flex-grow">
         <div class="flex flex-col">
-          <div class="level-block flex items-center mb-[4px]">
+          <div class="level-block flex items-center mb-[4px] text-[#fff]">
             <span class="title relative flex pr-[8px] mr-[8px] text-[16px] min-w-[42px]">{{ 'Level:' }}</span>
             <span class="value relative text-[16px] min-w-[42px] pl-[16px]">{{ 'beginer' }}</span>
           </div>
 
-          <div class="level-block flex items-center">
+          <div class="level-block flex items-center text-[#fff]">
             <span class="title relative flex pr-[8px] mr-[8px] text-[16px] min-w-[42px]">{{ 'Stack:' }}</span>
             <span class="value relative text-[16px] min-w-[42px] pl-[16px]">{{ 'Javascript' }}</span>
           </div>
         </div>
 
-        <div class="flex items-center min-h-[32px] w-full bg-[#ff1515]">
-
+        <div class="flex items-center justify-between min-h-[32px] w-full bg-[#ff1515] p-[2px_4px] text-[#000] text-[17px] font-[500]">
+          <div class="flex items-center">
+            <span>{{ 'Prefs & Rtg' }}</span>
+          </div>
+          <div class="flex items-center">
+            <button @click="false" class="flex">
+              <n-icon :color="'#000'" :size="28">
+                <CogOutline />
+              </n-icon>
+            </button>
+            <div class="w-[1px] h-[20px] bg-[#000] m-[0_12px_0_8px] z-[1]"></div>
+            <button @click="false" class="flex">
+              <n-icon :color="'#000'" :size="22">
+                <BarChartOutline />
+              </n-icon>
+            </button>
+          </div>
         </div>
       </div>
     </div>
