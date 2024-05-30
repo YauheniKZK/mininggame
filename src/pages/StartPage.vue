@@ -78,7 +78,7 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="flex flex-col start-page-img relative">
+      <div class="flex flex-col start-page-img relative h-screen">
         <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
         <div class="flex flex-col absolute bottom-[60px] left-0 w-full z-[1]">
           <div class="flex flex-col items-center relative mb-[24px] z-[1]">
