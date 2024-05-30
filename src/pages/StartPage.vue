@@ -56,7 +56,7 @@ onMounted(() => {
     <n-carousel :touchable="false" :current-index="currentIndex">
       <div class="flex flex-col start-page-img relative h-screen">
         <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />
-        <div class="flex flex-col absolute bottom-[60px] left-[100%] w-full z-[1]">
+        <div class="flex flex-col absolute bottom-[60px] left-0 w-full z-[1]">
           <div class="flex flex-col items-center relative mb-[24px] z-[1]">
             <span class="text-[26px] font-[500]">{{ 'Welcome to the city' }}</span>
             <span class="text-[36px] leading-[20px] font-[600]">{{ 'Cryptopia' }}</span>
@@ -80,7 +80,7 @@ onMounted(() => {
       </div>
       <div class="flex flex-col start-page-img relative">
         <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
-        <div class="flex flex-col absolute bottom-[60px] left-[100%] w-full z-[1]">
+        <div class="flex flex-col absolute bottom-[60px] left-0 w-full z-[1]">
           <div class="flex flex-col items-center relative mb-[24px] z-[1]">
             <span class="text-[26px] font-[500]">{{ 'Become the best' }}</span>
             <span class="text-[36px] leading-[20px] font-[600]">{{ 'DevCat' }}</span>
