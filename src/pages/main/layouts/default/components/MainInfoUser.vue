@@ -36,7 +36,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
                 <CogOutline />
               </n-icon>
             </button>
-            <div class="w-[1px] h-[20px] bg-[#000] m-[0_12px_0_8px] z-[1]"></div>
+            <div class="w-[1px] h-[16px] bg-[#000] m-[0_12px_0_8px] z-[1]"></div>
             <button @click="false" class="flex">
               <n-icon :color="'#000'" :size="22">
                 <BarChartOutline />
