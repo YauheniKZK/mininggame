@@ -52,7 +52,7 @@ onMounted(() => {
         <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />
         <div class="flex flex-col fixed bottom-[60px] left-[100%] w-full z-[1]">
           <div class="flex flex-col items-center relative mb-[24px] z-[1]">
-            <span class="text-[26px] font-[500]">{{ 'Welcome to' }}</span>
+            <span class="text-[26px] font-[500]">{{ 'Welcome to the city' }}</span>
             <span class="text-[36px] leading-[20px] font-[600]">{{ 'Cryptopia' }}</span>
           </div>
           <div class="flex flex-col z-[1] px-[16px] text-center">
@@ -147,13 +147,13 @@ onMounted(() => {
 
 <style>
 .start-page-img::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
-  bottom: 40vh;
+  bottom: 0;
   width: 100%;
-  height: 50vh;
-  background: linear-gradient(0deg, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 0) 100%);
+  height: 100vh;
+  background: linear-gradient(0deg, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 1) 30%, rgba(13, 13, 13, 0) 100%);
   z-index: 1;
 }
 
