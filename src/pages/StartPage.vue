@@ -47,13 +47,13 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col w-full h-full relative start-page bg-[#0d0d0d]">
-    <n-carousel show-arrow>
-      <div class="flex flex-col start-page-img relative">
+    <n-carousel>
+      <div class="flex flex-col start-page-img relative h-screen">
         <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />
-        <div class="flex flex-col">
-          <div class="flex flex-col items-center relative -top-[40px] z-[1]">
-            <span class="text-[26px]">{{ 'Welcome to' }}</span>
-            <span class="text-[36px] leading-[20px]">{{ 'Cryptopia' }}</span>
+        <div class="flex flex-col fixed bottom-[60px] left-[100%] w-full z-[1]">
+          <div class="flex flex-col items-center relative mb-[24px] z-[1]">
+            <span class="text-[26px] font-[500]">{{ 'Welcome to' }}</span>
+            <span class="text-[36px] leading-[20px] font-[600]">{{ 'Cryptopia' }}</span>
           </div>
           <div class="flex flex-col z-[1] px-[16px] text-center">
             <span>
@@ -150,10 +150,10 @@ onMounted(() => {
   content: '';
   position: absolute;
   left: 0;
-  bottom: 0;
+  bottom: 40vh;
   width: 100%;
-  height: 100%;
-  background: linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+  height: 50vh;
+  background: linear-gradient(0deg, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 0) 100%);
   z-index: 1;
 }
 
