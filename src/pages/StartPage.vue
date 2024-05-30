@@ -98,7 +98,7 @@ onMounted(() => {
             </span>
           </div>
           <div class="flex justify-center w-full pt-[16px]">
-            <button class="btn red z-[1]" @click="false">
+            <button class="btn red z-[1]" @click="start">
               <span class="btn__content text-[#fff] font-[600]">Start</span>
               <span class="btn__glitch"></span>
               <span class="btn__label">New</span>
