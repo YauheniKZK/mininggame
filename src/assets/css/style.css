@@ -4,6 +4,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -27,7 +28,7 @@
 }
 
 .default-theme {
-  --main-font: "M PLUS Rounded 1c", sans-serif;
+  --main-font: "Share Tech", sans-serif;;
   --main-bg-color: linear-gradient(0deg , #000000, #333333 100.00%);
   --main-text-color: #e6e6e6;
 
@@ -103,7 +104,7 @@ body, html {
   margin: 0;
   background: var(--main-bg-color);
   color: var(--main-text-color);
-  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Share Tech", sans-serif;;
   font-style: normal;
   display: flex;
   flex-flow: column;

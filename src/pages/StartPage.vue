@@ -54,8 +54,10 @@ onMounted(() => {
 <template>
   <div class="flex flex-col w-full h-full relative start-page bg-[#0d0d0d]">
     <n-carousel :touchable="false" :current-index="currentIndex">
-      <div class="flex flex-col start-page-img relative h-screen">
-        <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />
+      <div class="flex flex-col relative h-screen">
+        <div class="flex start-page-img">
+          <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />  
+        </div>
         <div class="flex flex-col absolute bottom-[60px] left-0 w-full z-[1]">
           <div class="flex flex-col items-center relative mb-[24px] z-[1]">
             <span class="text-[26px] font-[500]">{{ 'Welcome to the city' }}</span>
@@ -78,8 +80,10 @@ onMounted(() => {
           </div>
         </div>
       </div>
-      <div class="flex flex-col start-page-img relative h-screen">
-        <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
+      <div class="flex flex-col relative h-screen">
+        <div class="flex start-page-img">
+          <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
+        </div>
         <div class="flex flex-col absolute bottom-[60px] left-0 w-full z-[1]">
           <div class="flex flex-col items-center relative mb-[24px] z-[1]">
             <span class="text-[26px] font-[500]">{{ 'Become the best' }}</span>
@@ -168,8 +172,8 @@ onMounted(() => {
   left: 0;
   bottom: 0;
   width: 100%;
-  height: 100vh;
-  background: linear-gradient(0deg, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 1) 30%, rgba(13, 13, 13, 0) 100%);
+  height: 100%;
+  background: linear-gradient(0deg, rgba(13, 13, 13, 1) 43%, rgba(13, 13, 13, 1) 0%, rgba(13, 13, 13, 0) 90%);
   z-index: 1;
 }
 
