@@ -32,6 +32,12 @@ const updateTab = (value: string) => {
 }
 const showModal = ref(false)
 
+const currentIndex = ref(0)
+
+const updateCurrentIndex = (value: number) => {
+  currentIndex.value = value
+}
+
 const start = () => {
   showModal.value = true
   setTimeout(async () => {
@@ -47,7 +53,7 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col w-full h-full relative start-page bg-[#0d0d0d]">
-    <n-carousel>
+    <n-carousel :touchable="false" :current-index="currentIndex">
       <div class="flex flex-col start-page-img relative h-screen">
         <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />
         <div class="flex flex-col fixed bottom-[60px] left-[100%] w-full z-[1]">
@@ -64,7 +70,7 @@ onMounted(() => {
             </span>
           </div>
           <div class="flex justify-center w-full pt-[16px]">
-            <button class="btn z-[1]">
+            <button class="btn z-[1]" @click="updateCurrentIndex(1)">
               <span class="btn__content text-[#fff] font-[600]">Next</span>
               <span class="btn__glitch"></span>
               <span class="btn__label">DevCat</span>
@@ -74,15 +80,25 @@ onMounted(() => {
       </div>
       <div class="flex flex-col start-page-img relative">
         <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
-        <div class="flex flex-col">
-          <div class="flex flex-col items-center relative -top-[40px] z-[1]">
-            <span class="text-[26px]">{{ 'Become the best' }}</span>
-            <span class="text-[26px] leading-[20px]">{{ 'DevCat' }}</span>
+        <div class="flex flex-col fixed bottom-[60px] left-[100%] w-full z-[1]">
+          <div class="flex flex-col items-center relative mb-[24px] z-[1]">
+            <span class="text-[26px] font-[500]">{{ 'Become the best' }}</span>
+            <span class="text-[36px] leading-[20px] font-[600]">{{ 'DevCat' }}</span>
           </div>
           <div class="flex flex-col z-[1] px-[16px] text-center">
             <span>
-              {{ "Study new technologies and improve your skills, participate in events and create your own projects so as not to miss the opportunities that this city can provide. Get to the top and you'll get it all." }}
+              {{ "Study new technologies and improve your skills, participate in events and create your own projects so as not to miss the opportunities that this city can provide." }}
             </span>
+            <span>
+              {{ "Get to the top and you'll get it all." }}
+            </span>
+          </div>
+          <div class="flex justify-center w-full pt-[16px]">
+            <button class="btn z-[1]" @click="false">
+              <span class="btn__content text-[#fff] font-[600]">Start</span>
+              <span class="btn__glitch"></span>
+              <span class="btn__label">New</span>
+            </button>
           </div>
         </div>
       </div>
