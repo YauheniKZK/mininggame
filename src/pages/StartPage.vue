@@ -49,52 +49,36 @@ onMounted(() => {
   <div class="flex flex-col w-full h-full relative start-page bg-[#0d0d0d]">
     <n-carousel show-arrow>
       <div class="flex flex-col start-page-img relative">
-        <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
-        <div class="flex flex-col items-center relative -top-[40px] z-[1]">
-          <span class="text-[26px]">{{ 'Welcome to' }}</span>
-          <span class="text-[36px] leading-[20px]">{{ 'Cryptopia' }}</span>
-        </div>
-        <div class="flex flex-col z-[1] px-[16px] text-center">
-          <span>
-            {{ 'You are DevCat - a nomad who came from me. To the city of blockchain and airdrops, to the city of zeros and ones.' }}
-          </span>
-          <span>
-            {{ "You'll have to start all over again" }}
-          </span>
+        <img :src="getImageUrl('img/start/start_page-slide2.jpg')" alt="" />
+        <div class="flex flex-col">
+          <div class="flex flex-col items-center relative -top-[40px] z-[1]">
+            <span class="text-[26px]">{{ 'Welcome to' }}</span>
+            <span class="text-[36px] leading-[20px]">{{ 'Cryptopia' }}</span>
+          </div>
+          <div class="flex flex-col z-[1] px-[16px] text-center">
+            <span>
+              {{ 'You are DevCat - a nomad who came from me. To the city of blockchain and airdrops, to the city of zeros and ones.' }}
+            </span>
+            <span>
+              {{ "You'll have to start all over again" }}
+            </span>
+          </div>
         </div>
       </div>
       <div class="flex flex-col start-page-img relative">
         <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
-        <div class="flex flex-col items-center relative -top-[40px] z-[1]">
-          <span class="text-[26px]">{{ 'Become the best' }}</span>
-          <span class="text-[26px] leading-[20px]">{{ 'DevCat' }}</span>
-        </div>
-        <div class="flex flex-col z-[1] px-[16px] text-center">
-          <span>
-            {{ "Study new technologies and improve your skills, participate in events and create your own projects so as not to miss the opportunities that this city can provide. Get to the top and you'll get it all." }}
-          </span>
+        <div class="flex flex-col">
+          <div class="flex flex-col items-center relative -top-[40px] z-[1]">
+            <span class="text-[26px]">{{ 'Become the best' }}</span>
+            <span class="text-[26px] leading-[20px]">{{ 'DevCat' }}</span>
+          </div>
+          <div class="flex flex-col z-[1] px-[16px] text-center">
+            <span>
+              {{ "Study new technologies and improve your skills, participate in events and create your own projects so as not to miss the opportunities that this city can provide. Get to the top and you'll get it all." }}
+            </span>
+          </div>
         </div>
       </div>
-      <template #arrow="{ prev, next }">
-        <div class="custom-arrow">
-          <button type="button" class="custom-arrow--left" @click="prev">
-            <n-icon><ArrowBack /></n-icon>
-          </button>
-          <button type="button" class="custom-arrow--right" @click="next">
-            <n-icon><ArrowForward /></n-icon>
-          </button>
-        </div>
-      </template>
-      <template #dots="{ total, currentIndex, to }">
-        <ul class="custom-dots">
-          <li
-            v-for="index of total"
-            :key="index"
-            :class="{ ['is-active']: currentIndex === index - 1 }"
-            @click="to(index - 1)"
-          />
-        </ul>
-      </template>
     </n-carousel>
     <!-- <n-tabs
       class="w-full tabs-custom1 none-tab h-full"
