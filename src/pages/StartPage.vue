@@ -283,7 +283,7 @@ onMounted(() => {
 
 .btn {
   width: 230px;
-  height: 60px;
+  height: 42px;
   border: 0;
   outline: none;
   background: var(--yellow-color);
