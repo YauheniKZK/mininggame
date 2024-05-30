@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ChevronForward } from '@vicons/ionicons5'
+// import { ChevronForward } from '@vicons/ionicons5'
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
-
+import { ArrowBack, ArrowForward } from '@vicons/ionicons5'
 // import { storeToRefs } from 'pinia';
 import { onMounted, ref } from 'vue';
 import TapBlock from './main/layouts/default/components/TapBlock.vue';
@@ -46,13 +46,64 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex flex-col w-full h-full relative overflow-hidden">
-    <n-tabs class="w-full tabs-custom1 none-tab h-full" :pane-class="'h-full'" :value="valueTab" @update:value="updateTab" animated>
-      <n-tab-pane name="slide1" class="w-full h-full">
-        <div class="flex flex-col w-full h-full justify-center relative p-[16px]">
+  <div class="flex flex-col w-full h-full relative start-page bg-[#0d0d0d]">
+    <n-carousel show-arrow>
+      <div class="flex flex-col start-page-img relative">
+        <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
+        <div class="flex flex-col items-center relative -top-[40px] z-[1]">
+          <span class="text-[26px]">{{ 'Welcome to' }}</span>
+          <span class="text-[36px] leading-[20px]">{{ 'Cryptopia' }}</span>
+        </div>
+        <div class="flex flex-col z-[1] px-[16px] text-center">
+          <span>
+            {{ 'You are DevCat - a nomad who came from me. To the city of blockchain and airdrops, to the city of zeros and ones.' }}
+          </span>
+          <span>
+            {{ "You'll have to start all over again" }}
+          </span>
+        </div>
+      </div>
+      <div class="flex flex-col start-page-img relative">
+        <img :src="getImageUrl('img/start/start_page-slide1.jpg')" alt="" />
+        <div class="flex flex-col items-center relative -top-[40px] z-[1]">
+          <span class="text-[26px]">{{ 'Become the best' }}</span>
+          <span class="text-[26px] leading-[20px]">{{ 'DevCat' }}</span>
+        </div>
+        <div class="flex flex-col z-[1] px-[16px] text-center">
+          <span>
+            {{ "Study new technologies and improve your skills, participate in events and create your own projects so as not to miss the opportunities that this city can provide. Get to the top and you'll get it all." }}
+          </span>
+        </div>
+      </div>
+      <template #arrow="{ prev, next }">
+        <div class="custom-arrow">
+          <button type="button" class="custom-arrow--left" @click="prev">
+            <n-icon><ArrowBack /></n-icon>
+          </button>
+          <button type="button" class="custom-arrow--right" @click="next">
+            <n-icon><ArrowForward /></n-icon>
+          </button>
+        </div>
+      </template>
+      <template #dots="{ total, currentIndex, to }">
+        <ul class="custom-dots">
+          <li
+            v-for="index of total"
+            :key="index"
+            :class="{ ['is-active']: currentIndex === index - 1 }"
+            @click="to(index - 1)"
+          />
+        </ul>
+      </template>
+    </n-carousel>
+    <!-- <n-tabs
+      class="w-full tabs-custom1 none-tab h-full"
+      :pane-style="'height: inherit;'"
+      :pane-wrapper-style="'height: inherit;'"
+      @update:value="updateTab" animated>
+      <n-tab-pane name="slide1" class="w-full">
+        <div class="flex flex-col w-full justify-center h-full relative p-[16px]">
           <span class="text-[#fff] text-[32px] flex mb-[50px]">{{ 'Step 1 info description' }}</span>
-          <!-- <TestComponent /> -->
-          <UserSetting />
      
         </div>
       </n-tab-pane>
@@ -99,11 +150,22 @@ onMounted(() => {
           <span class="text-[#fff] font-[600]">{{ 'Start Game' }}</span>
         </button>
       </div>
-    </Transition>
+    </Transition> -->
   </div>
 </template>
 
 <style scoped>
+.start-page-img::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(0deg, rgba(13,13,13,1) 0%, rgba(13,13,13,0) 100%);
+  z-index: 1;
+}
+
 .slide-up-enter-active,
 .slide-up-leave-active {
   transition: all 0.25s ease-out;
@@ -156,6 +218,68 @@ onMounted(() => {
     0% { background-position: 0 0; }
     50% { background-position: 400% 0; }
     100% { background-position: 0 0; }
+}
+
+.carousel-img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.custom-arrow {
+  display: flex;
+  position: absolute;
+  bottom: 25px;
+  right: 10px;
+}
+
+.custom-arrow button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  margin-right: 12px;
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-width: 0;
+  border-radius: 8px;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.custom-arrow button:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+.custom-arrow button:active {
+  transform: scale(0.95);
+  transform-origin: center;
+}
+
+.custom-dots {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.custom-dots li {
+  display: inline-block;
+  width: 12px;
+  height: 4px;
+  margin: 0 3px;
+  border-radius: 4px;
+  background-color: rgba(255, 255, 255, 0.4);
+  transition: width 0.3s, background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+}
+
+.custom-dots li.is-active {
+  width: 40px;
+  background: #fff;
 }
 
 </style>
