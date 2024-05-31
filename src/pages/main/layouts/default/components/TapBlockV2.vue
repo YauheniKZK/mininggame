@@ -68,6 +68,8 @@ onMounted(() => {
 
 <template>
   <div class="flex flex-col w-full container-block">
+    <span class="corner-border-top-2"></span>
+    <span class="corner-border-bottom-2"></span>
     <div class="flex flex-col w-full">
       <div class="flex w-full mb-[16px] bg-[#ffffff54] p-[8px]">
         <div class="flex flex-grow items-center">
@@ -85,7 +87,7 @@ onMounted(() => {
           <span class="text-[#fff] text-[20px] leading-[16px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
         </div>
       </div>
-      <div class="flex items-center gap-[16px] mb-[16px]">
+      <div class="flex items-center gap-[16px] mb-[16px] px-[8px]">
         <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full">
           <span>{{ '> Wake up...' }}</span>
           <span v-for="(char, index) in animatedText" :key="index">
@@ -94,7 +96,7 @@ onMounted(() => {
           <span class="cursor"></span>
         </div>
         <div
-          class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[70px] rounded-[4px] btn-open"
+          class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[70px] btn-open"
           style="background-color: rgb(26, 255, 128, 0.75);"
           @click="showModal = true"
         >
@@ -102,7 +104,7 @@ onMounted(() => {
           <span class="text-[12px] uppercase text-[#000]">{{ 'cat-pad' }}</span>
         </div>
       </div>
-      <div class="flex flex-col w-full p-[16px] relative rounded-[4px]" style="border: 1px solid #fbdd87;">
+      <div class="flex flex-col w-full p-[16px] relative" style="border: 1px solid #fbdd87;">
         <span class="text-[14px] text-[#fbdd87] infomation-span">{{ 'brief of day' }}</span>
         <div class="flex w-full items-center mb-[4px]">
           <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'devcat online' }}</span>
@@ -156,20 +158,12 @@ onMounted(() => {
 .container-block {
   min-height: 380px;
   background: linear-gradient(to right, rgba(43, 237, 230, 0.1) 0%, rgba(43, 237, 230, 0) 100%);
-  border-left: 8px solid #ffffff54;
-  border-right: 8px solid #ffffff54;
-  padding: 8px 0px 8px 0px;
+  border-top: 1px solid 1px solid rgba(43, 237, 230, 0.28);
+  border-bottom: 1px solid 1px solid rgba(43, 237, 230, 0.28);
+  padding: 16px;
   position: relative;
 }
-.container-block::before {
-  content: '';
-  position: absolute;
-  top: 0px;
-  left: -8px;
-  width: calc(100% + 16px);
-  height: 10px;
-  background: #21bec3;
-}
+
 .block-style1 {
   border-top: 2px solid #fbdd87;
   border-right: 2px solid #fbdd87;
