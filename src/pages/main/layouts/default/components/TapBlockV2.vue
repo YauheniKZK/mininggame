@@ -97,36 +97,39 @@ onMounted(() => {
         </div>
         <div
           class="flex justify-center flex-col items-center w-[70px] h-[70px] p-[4px] min-w-[70px] btn-open"
-          style="background-color: rgb(26, 255, 128, 0.75);"
+          style="background-color: #ffffff54;"
           @click="showModal = true"
         >
-          <span class="text-[12px] uppercase text-[#000]">{{ 'Open' }}</span>
-          <span class="text-[12px] uppercase text-[#000]">{{ 'cat-pad' }}</span>
+          <span class="text-[12px] uppercase text-[#fff]">{{ 'Open' }}</span>
+          <span class="text-[12px] uppercase text-[#fff]">{{ 'cat-pad' }}</span>
         </div>
       </div>
-      <div class="flex flex-col w-full p-[16px] relative" style="border: 1px solid #fbdd87;">
-        <span class="text-[14px] text-[#fbdd87] infomation-span">{{ 'brief of day' }}</span>
-        <div class="flex w-full items-center mb-[4px]">
-          <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'devcat online' }}</span>
-          <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-          <span class="text-[12px] text-[#fbdd87]">{{ '105 000' }}</span>
-        </div>
-        <div class="flex w-full items-center mb-[4px]">
-          <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'available task' }}</span>
-          <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-          <span class="text-[12px] text-[#fbdd87]">{{ '3' }}</span>
-        </div>
-        <div class="flex w-full items-center mb-[4px]">
-          <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'new events' }}</span>
-          <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-          <span class="text-[12px] text-[#fbdd87]">{{ '2' }}</span>
-        </div>
-        <div class="flex w-full items-center">
-          <span class="text-[12px] text-[#000] bg-[#1aff80bf] font-[600] p-[0_12px_0_8px]">{{ 'new skills' }}</span>
-          <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #fbdd87"></div>
-          <span class="text-[12px] text-[#fbdd87]">{{ '1' }}</span>
+      <div class="px-[8px] flex w-full">
+        <div class="flex flex-col w-full p-[16px]  relative" style="border: 1px solid #ffffff54;">
+          <span class="text-[14px] text-[#ffffff] infomation-span">{{ 'brief of day' }}</span>
+          <div class="flex w-full items-center mb-[4px]">
+            <span class="text-[12px] text-[#fff] bg-[#ffffff54] p-[0_12px_0_8px]">{{ 'devcat online' }}</span>
+            <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #ffffff54"></div>
+            <span class="text-[12px] text-[#fbdd87]">{{ '105 000' }}</span>
+          </div>
+          <div class="flex w-full items-center mb-[4px]">
+            <span class="text-[12px] text-[#fff] bg-[#ffffff54] p-[0_12px_0_8px]">{{ 'available task' }}</span>
+            <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #ffffff54"></div>
+            <span class="text-[12px] text-[#fbdd87]">{{ '3' }}</span>
+          </div>
+          <div class="flex w-full items-center mb-[4px]">
+            <span class="text-[12px] text-[#fff] bg-[#ffffff54] p-[0_12px_0_8px]">{{ 'new events' }}</span>
+            <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #ffffff54"></div>
+            <span class="text-[12px] text-[#fbdd87]">{{ '2' }}</span>
+          </div>
+          <div class="flex w-full items-center">
+            <span class="text-[12px] text-[#fff] bg-[#ffffff54] p-[0_12px_0_8px]">{{ 'new skills' }}</span>
+            <div class="grow mx-[6px] relative top-[4px]" style="border: 1px dotted #ffffff54"></div>
+            <span class="text-[12px] text-[#fbdd87]">{{ '1' }}</span>
+          </div>
         </div>
       </div>
+
       <n-modal v-model:show="showModal" transform-origin="center" class="rounded-[16px]">
         <div class="flex flex-col absolute top-[16px] left-[16px] w-[calc(100%-32px)] h-[calc(100%-32px)] rounded-[16px] before-block">
           <div class="flex flex-col w-full h-full bg-[#29442f] relative z-[2] rounded-[16px]">
@@ -158,8 +161,8 @@ onMounted(() => {
 .container-block {
   min-height: 380px;
   background: linear-gradient(to right, rgba(43, 237, 230, 0.1) 0%, rgba(43, 237, 230, 0) 100%);
-  border-top: 1px solid 1px solid rgba(43, 237, 230, 0.28);
-  border-bottom: 1px solid 1px solid rgba(43, 237, 230, 0.28);
+  border-left: 1px solid rgba(43, 237, 230, 0.28);
+  border-right: 1px solid rgba(43, 237, 230, 0.28);
   padding: 16px;
   position: relative;
 }
@@ -206,13 +209,13 @@ onMounted(() => {
 }
 
 .btn-open {
-  border: 1px solid #fbdd87;
+  border: 1px solid #ffffff54;
   font-weight: 700;
   cursor: pointer;
 }
 
 .term-style {
-  border: 1px solid #fbdd87;
+  border: 1px solid #ffffff54;
   border-radius: 4px;
   min-height: 70px
 }
