@@ -307,26 +307,26 @@ body, html {
   border-left-width: 1px;
   border-top-width: 1px;
   left: 0;
-  top: -1px;
+  top: 0px;
 }
 
 .corner-border-top::after {
   border-right-width: 1px;
   border-top-width: 1px;
   right: 0;
-  top: -1px;
+  top: 0px;
 }
 
 .corner-border-bottom::before {
   border-bottom-width: 1px;
   border-left-width: 1px;
-  bottom: -1px;
+  bottom: 0px;
   left: 0;
 }
 
 .corner-border-bottom::after {
   border-bottom-width: 1px;
   border-right-width: 1px;
-  bottom: -1px;
+  bottom: 0px;
   right: 0;
 }
