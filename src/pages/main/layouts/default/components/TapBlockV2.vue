@@ -87,7 +87,7 @@ onMounted(() => {
           <span class="text-[#fff] text-[20px] leading-[16px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
         </div>
       </div>
-      <div class="flex items-center gap-[16px] mb-[16px] px-[8px]">
+      <div class="flex items-center gap-[16px] mb-[16px]">
         <div class="flex text-custom z-[1] p-[16px] text-[16px] term-style flex-grow text-[#fff] w-full h-full">
           <span>{{ '> Wake up...' }}</span>
           <span v-for="(char, index) in animatedText" :key="index">
@@ -104,7 +104,7 @@ onMounted(() => {
           <span class="text-[12px] uppercase text-[#fff]">{{ 'cat-pad' }}</span>
         </div>
       </div>
-      <div class="px-[8px] flex w-full">
+      <div class="flex w-full">
         <div class="flex flex-col w-full p-[16px]  relative" style="border: 1px solid #ffffff54;">
           <span class="text-[14px] text-[#ffffff] infomation-span">{{ 'brief of day' }}</span>
           <div class="flex w-full items-center mb-[4px]">

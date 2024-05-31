@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import TopBlock from './components/TopBlock.vue';
-import InfoBlock from './components/InfoBlock.vue';
-import TapBlock from './components/TapBlock.vue';
+// import TopBlock from './components/TopBlock.vue';
+// import InfoBlock from './components/InfoBlock.vue';
+// import TapBlock from './components/TapBlock.vue';
 import DetectedUser from './components/DetectedUser.vue';
 import MainInfoUser from './components/MainInfoUser.vue';
 import InfoBalanceUser from './components/InfoBalanceUser.vue';
@@ -15,10 +15,10 @@ import TapBlockV2 from './components/TapBlockV2.vue';
     <MainInfoUser class="z-[1] mb-[16px]" />
     <InfoBalanceUser class="z-[1] mb-[16px]" />
     <TapBlockV2 class="z-[1] mb-[16px]" />
-    <TopBlock class="z-[1]" />
+    <!-- <TopBlock class="z-[1]" />
     <div class="w-full h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
     <InfoBlock class="z-[1] mb-[16px]" />
-    <TapBlock />
+    <TapBlock /> -->
   </div>
 </template>
 
