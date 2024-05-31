@@ -79,13 +79,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-between p-[12px] container-block">
+  <div class="flex justify-between p-[12px] container-block bg-image">
     <span class="corner-border-top"></span>
     <span class="corner-border-bottom"></span>
     <div class="flex flex-col">
       <div class="flex flex-col relative">
-        <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('BALANCE') + ': ' }}</span>
-        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
+        <span class="text-[#adaeb1] text-[14px] leading-[14px]">{{ $t('BALANCE') + ': ' }}</span>
+        <span class="text-[20px] font-[600] text-[#fff] leading-[28px]" style="text-shadow: 3px 2px 0 #ffffff29;">
           {{ formatNumberWithSpaces(Number(balanceRef)) }}
           <sup class="font-[400]">{{ ' $' }}</sup>
         </span>
@@ -97,8 +97,8 @@ onMounted(() => {
       </div>
       <div class="w-full max-w-[180px] h-[1px] bg-[#63656661] my-[8px]"></div>
       <div class="flex flex-col">
-        <span class="text-[#adaeb1] text-[12px] leading-[8px]">{{ $t('profit_hour') + ': ' }}</span>
-        <div class="flex items-center">
+        <span class="text-[#adaeb1] text-[14px] leading-[14px]">{{ $t('profit_hour') + ': ' }}</span>
+        <div class="flex items-center" style="text-shadow: 3px 2px 0 #ffffff29;">
           <span class="text-[12px] text-[#fff] leading-[28px]">{{ '+ ' }}</span>
           <span class="text-[20px] font-[600] text-[#fff] leading-[28px]">
             {{ formatNumberWithSpaces(Number(earnPassivePerHourGettersRef)) }}
@@ -106,18 +106,20 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="flex items-end h-auto w-[72px] rounded-[4px]" style="border: 1px solid #adaeb1;">
-      <div class="h-full p-[4px] rounded-[4px] w-full flex flex-col justify-end relative">
+    <div class="flex items-end h-auto w-[72px]" style="border: 1px solid #adaeb1;border-top: 0px;">
+      <div class="h-full p-[4px] w-full flex flex-col justify-end relative">
         <span class="absolute justify-center bottom-[4px] -left-[21px] text-[14px] text-[#adaeb1] rotate-180" style="writing-mode: vertical-rl;">
           {{ $t('up_level') }}
         </span>
-        <div class="flex w-full absolute justify-center -top-[9px] left-0">
-          <span class="text-[10px] bg-[#373c41] text-center w-max p-[0_4px] text-[#adaeb1]">
+        <div class="flex w-full items-center absolute justify-center -top-[7px] left-0">
+          <div class="fle flex-grow h-[1px] bg-[#adaeb1]"></div>
+          <span class="text-[10px] text-center w-max p-[0_4px] text-[#adaeb1]">
             {{ formatNumberWithSpaces(setLevelUp) }}
             <sup class="font-[400]">{{ ' $' }}</sup>
           </span>
+          <div class="fle flex-grow h-[1px] bg-[#adaeb1]"></div>
         </div>
-        <div class="w-full rounded-[4px] min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
+        <div class="w-full min-h-[4px] bg-[#fbdd87] progress-block relative" :style="`height: ${setProcent}%`">
         </div>
         <canvas ref="canvasBlock" width="62" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
       </div>
