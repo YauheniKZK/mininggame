@@ -5,6 +5,7 @@ import MainInfoUser from '../main/layouts/default/components/MainInfoUser.vue';
 import { onMounted } from 'vue';
 import DotsLayout from '@/components/DotsLayout.vue';
 import InfoBalanceUser from '../main/layouts/default/components/InfoBalanceUser.vue';
+import TapBlockV2 from '../main/layouts/default/components/TapBlockV2.vue';
 
 
 </script>
@@ -14,7 +15,8 @@ import InfoBalanceUser from '../main/layouts/default/components/InfoBalanceUser.
     <DotsLayout />
     <DetectedUser />
     <MainInfoUser />
-    <InfoBalanceUser />
+    <InfoBalanceUser class="mb-[16px]" />
+    <TapBlockV2 />
   </div>
 </template>
 
