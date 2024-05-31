@@ -30,7 +30,7 @@ onMounted(() => {
 
 <template>
   <div ref="canvasContainer" class="flex flex-col w-full h-screen fixed left-0 top-0 bg-custom">
-    <canvas ref="canvas"></canvas>
+    <canvas ref="canvas" class="z-[1]"></canvas>
   </div>
 </template>
 
@@ -45,7 +45,7 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.5;
+  opacity: 0.3;
   background: url('../assets/img/image2.jpg') no-repeat top;
   background-size: cover;
   z-index: 0;
