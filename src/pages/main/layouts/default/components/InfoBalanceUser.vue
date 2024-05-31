@@ -79,7 +79,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex justify-between p-[12px] container-block bg-image">
+  <div class="flex justify-between p-[12px] container-block">
     <span class="corner-border-top"></span>
     <span class="corner-border-bottom"></span>
     <div class="flex flex-col">
