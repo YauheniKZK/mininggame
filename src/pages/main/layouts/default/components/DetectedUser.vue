@@ -7,7 +7,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 </script>
 
 <template>
-  <div class="flex (items-center mb-[8px] w-f)ull">
+  <div class="flex items-center mb-[8px] w-full">
     <div class="flex items-center detected-container relative">
       <div class="flex items-center mr-[8px]">
         <div class="item-detected"></div>

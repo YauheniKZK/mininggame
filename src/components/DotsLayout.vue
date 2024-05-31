@@ -29,10 +29,25 @@ onMounted(() => {
 </script>
 
 <template>
-  <div ref="canvasContainer" class="flex flex-col w-full h-screen fixed left-0 top-0">
+  <div ref="canvasContainer" class="flex flex-col w-full h-screen fixed left-0 top-0 bg-custom">
     <canvas ref="canvas"></canvas>
   </div>
 </template>
 
 <style scoped>
+.bg-custom {
+  z-index: 0;
+}
+.bg-custom::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.3;
+  background: url('../assets/img/image1.webp') no-repeat top;
+  background-size: cover;
+  z-index: 0;
+}
 </style>
