@@ -20,6 +20,7 @@ import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
 import TaskIcons from '@/assets/svg/components/TaskIcons.vue';
 import Rating from '@/pages/Rating.vue'
 import Settings from '@/pages/Settings.vue'
+import DotsLayout from '@/components/DotsLayout.vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
@@ -71,6 +72,7 @@ onMounted(async () => {
 
 <template>
   <div class="flex flex-col justify-between container-drawer h-full">
+    <DotsLayout />
     <div v-if="valueTab === 'mining'" class="px-[16px] pt-[16px] mb-[16px] z-[1]">
       <TopDescription />
     </div>

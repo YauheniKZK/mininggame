@@ -29,7 +29,7 @@
 
 .default-theme {
   --main-font: "Share Tech", sans-serif;;
-  --main-bg-color: linear-gradient(0deg , #000000, #333333 100.00%);
+  --main-bg-color: radial-gradient(47% 53% at 53% 47%, #042025 0, #002c2c .01%, #001f1f 100%);
   --main-text-color: #e6e6e6;
 
   --main-shadow-color: #680747;

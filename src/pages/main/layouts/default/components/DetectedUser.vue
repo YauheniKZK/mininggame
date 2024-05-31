@@ -16,7 +16,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
         <div class="item-detected"></div>
       </div>
       <span class="text-[#fff] text-[14px] mr-[6px]">{{ 'Detected devcat: ' }}</span>
-      <span class="text-[#fff] text-[14px]">{{ currentUserDataGetters?.first_name || 'name user' }}</span>
+      <span class="text-[#fff] text-[14px]">{{ '[' + currentUserDataGetters?.first_name || 'name user' + ']' }}</span>
     </div>
   </div>
 </template>
