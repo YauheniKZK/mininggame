@@ -66,7 +66,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
   top: 0;
   height: 100%;
   width: 100%;
-  border-top: 2px solid red;
+  border-top: 1px solid red;
 }
 .level-block .value::before {
   content: '';
@@ -75,8 +75,8 @@ const { currentUserDataGetters } = storeToRefs(appStore)
   top: 0;
   height: 100%;
   width: 100%;
-  border-bottom: 2px solid red;
-  border-left: 2px solid red;
+  border-bottom: 1px solid red;
+  border-left: 1px solid red;
   transform: skewX(35deg);
 }
 </style>
