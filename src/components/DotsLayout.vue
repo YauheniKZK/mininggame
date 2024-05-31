@@ -45,8 +45,8 @@ onMounted(() => {
   left: 0;
   width: 100%;
   height: 100%;
-  opacity: 0.3;
-  background: url('../assets/img/image1.webp') no-repeat top;
+  opacity: 0.5;
+  background: url('../assets/img/image2.jpg') no-repeat top;
   background-size: cover;
   z-index: 0;
 }
