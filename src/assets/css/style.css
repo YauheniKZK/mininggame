@@ -277,3 +277,56 @@ body, html {
 .main-footer .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
   overflow: inherit;
 }
+
+.corner-border-top {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.corner-border-bottom {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+.corner-border-top::before,
+.corner-border-top::after,
+.corner-border-bottom::before,
+.corner-border-bottom::after {
+  border: 0px solid #aafffc;
+  content: "";
+  height: 5px;
+  position: absolute;
+  width: 5px;
+}
+
+.corner-border-top::before {
+  border-left-width: 1px;
+  border-top-width: 1px;
+  left: 0;
+  top: -1px;
+}
+
+.corner-border-top::after {
+  border-right-width: 1px;
+  border-top-width: 1px;
+  right: 0;
+  top: -1px;
+}
+
+.corner-border-bottom::before {
+  border-bottom-width: 1px;
+  border-left-width: 1px;
+  bottom: -1px;
+  left: 0;
+}
+
+.corner-border-bottom::after {
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  bottom: -1px;
+  right: 0;
+}

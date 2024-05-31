@@ -8,7 +8,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
 </script>
 
 <template>
-  <div class="flex items-center mb-[8px] w-full">
+  <div class="flex items-center w-full">
     <div class="info-container w-full">
       <div class="flex w-[100px] min-w-[100px] h-[100px] bg-[#ff1515] img-block">
 
