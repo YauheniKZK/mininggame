@@ -34,20 +34,14 @@ const { currentUserDataGetters } = storeToRefs(appStore)
           </div>
         </div>
         
-        <div class="flex flex-col pt-[16px] relative">
-          <div class="flex items-end mb-[8px]">
-            <n-icon :color="'#909997'" :size="18" class="mr-[8px]">
-              <BarChartOutline />
-            </n-icon>
-            <span class="mr-[8px] text-[20px] leading-[20px] text-[#909997]">{{ 'Level: ' }}</span>
+        <div class="flex flex-col pt-[16px] pb-[16px] relative">
+          <div class="flex items-start mb-[8px]">
             <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Beginer ]' }}</span>
+            <span class="ml-[8px] text-[16px] leading-[18px] text-[#909997]">{{ 'level' }}</span>
           </div>
-          <div class="flex items-end">
-            <n-icon :color="'#909997'" :size="18" class="mr-[8px]">
-              <BarChartOutline />
-            </n-icon>
-            <span class="mr-[8px] text-[20px] leading-[20px] text-[#909997]">{{ 'Stack: ' }}</span>
+          <div class="flex items-start">
             <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Javascript ]' }}</span>
+            <span class="ml-[8px] text-[16px] leading-[18px] text-[#909997]">{{ 'stack' }}</span>
           </div>
           <div class="flex items-center absolute -left-[16px] w-[calc(100%+32px)] -bottom-[24px] h-[16px] bg-[#ccd1c34a] p-[2px_8px]">
             <span class="text-[10px] text-[#fff] leading-[12px]">{{ 'cryptopia' }}</span>
