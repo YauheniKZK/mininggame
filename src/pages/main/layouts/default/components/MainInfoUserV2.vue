@@ -34,7 +34,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
           </div>
         </div>
         
-        <div class="flex flex-col pt-[16px]">
+        <div class="flex flex-col pt-[16px] relative">
           <div class="flex items-end mb-[8px]">
             <n-icon :color="'#909997'" :size="18" class="mr-[8px]">
               <BarChartOutline />
@@ -48,6 +48,9 @@ const { currentUserDataGetters } = storeToRefs(appStore)
             </n-icon>
             <span class="mr-[8px] text-[20px] leading-[20px] text-[#909997]">{{ 'Stack: ' }}</span>
             <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Javascript ]' }}</span>
+          </div>
+          <div class="flex items-center absolute -left-[16px] w-[calc(100%+32px)] -bottom-[24px] h-[16px] bg-[#ccd1c34a] p-[2px_8px]">
+            <span class="text-[10px] text-[#fff] leading-[12px]">{{ 'cryptopia' }}</span>
           </div>
         </div>
       </div>
