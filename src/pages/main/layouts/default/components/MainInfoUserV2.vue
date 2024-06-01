@@ -63,7 +63,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
   min-width: 130px;
   left: -32px;
   top: -8px;
-  padding: 16px;
+  padding: 4px 16px;
   border-left: 1px solid #ffffff4d;
   border-top: 1px solid #ffffff4d;
   /* -webkit-clip-path: polygon(0 0px, 0px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, 0 100%);
@@ -75,7 +75,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
   right: 0;
   top: 0;
   width: 1px;
-  height: 38px;
+  height: 28px;
   background: #ffffff4d;
 }
 .header-container::after {
