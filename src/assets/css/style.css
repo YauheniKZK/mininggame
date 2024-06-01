@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@300;400;500;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Share+Tech&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:ital,wght@0,100..900;1,100..900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,7 +29,7 @@
 }
 
 .default-theme {
-  --main-font: "Share Tech", sans-serif;;
+  --main-font: "Exo 2", sans-serif;
   --main-bg-color: radial-gradient(47% 53% at 53% 47%, #042025 0, #002c2c .01%, #001f1f 100%);
   --main-text-color: #e6e6e6;
 
@@ -276,6 +277,35 @@ body, html {
 
 .main-footer .n-tabs-rail .n-tabs-tab-wrapper .n-tabs-tab {
   overflow: inherit;
+}
+
+.corner-border-top-v3 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.corner-border-top-v3::before,
+.corner-border-top-v3::after {
+  background: #ccd1c3;
+  content: "";
+  height: 3px;
+  position: absolute;
+
+}
+
+.corner-border-top-v3::after {
+  top: 0px;
+  right: 0;
+  width: 20px;
+}
+
+
+.corner-border-top-v3::before {
+  left: 0;
+  top: 0px;
+  width: 50px;
 }
 
 .corner-border-top {

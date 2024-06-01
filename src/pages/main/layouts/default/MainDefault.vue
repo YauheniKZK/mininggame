@@ -4,6 +4,10 @@
 // import TapBlock from './components/TapBlock.vue';
 import DetectedUser from './components/DetectedUser.vue';
 import MainInfoUser from './components/MainInfoUser.vue';
+
+import DetectedUserV2 from './components/DetectedUserV2.vue';
+import MainInfoUserV2 from './components/MainInfoUserV2.vue';
+
 import InfoBalanceUser from './components/InfoBalanceUser.vue';
 import TapBlockV2 from './components/TapBlockV2.vue';
 
@@ -11,6 +15,8 @@ import TapBlockV2 from './components/TapBlockV2.vue';
 
 <template>
   <div class="flex flex-col w-full p-[16px_16px_60px_16px]">
+    <DetectedUserV2 class="z-[1] mb-[16px]" />
+    <MainInfoUserV2 class="z-[1] mb-[16px]" />
     <DetectedUser class="z-[1] mb-[16px]" />
     <MainInfoUser class="z-[1] mb-[16px]" />
     <InfoBalanceUser class="z-[1] mb-[16px]" />
