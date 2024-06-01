@@ -8,6 +8,7 @@ import { onMounted } from 'vue';
 import DotsLayout from '@/components/DotsLayout.vue';
 import InfoBalanceUser from '../main/layouts/default/components/InfoBalanceUser.vue';
 import TapBlockV2 from '../main/layouts/default/components/TapBlockV2.vue';
+import TapsInfoUser from '../main/layouts/default/components/TapsInfoUser.vue';
 
 
 </script>
@@ -17,6 +18,7 @@ import TapBlockV2 from '../main/layouts/default/components/TapBlockV2.vue';
     <DotsLayout />
     <DetectedUserV2 class="mb-[16px]" />
     <MainInfoUserV2 class="mb-[16px]" />
+    <TapsInfoUser  class="z-[1] mb-[16px]" />
     <DetectedUser />
     <MainInfoUser />
     <InfoBalanceUser class="mb-[16px]" />

@@ -10,6 +10,7 @@ import MainInfoUserV2 from './components/MainInfoUserV2.vue';
 
 import InfoBalanceUser from './components/InfoBalanceUser.vue';
 import TapBlockV2 from './components/TapBlockV2.vue';
+import TapsInfoUser from './components/TapsInfoUser.vue';
 
 </script>
 
@@ -17,6 +18,7 @@ import TapBlockV2 from './components/TapBlockV2.vue';
   <div class="flex flex-col w-full p-[16px_16px_60px_16px]">
     <DetectedUserV2 class="z-[1] mb-[16px]" />
     <MainInfoUserV2 class="z-[1] mb-[16px]" />
+    <TapsInfoUser  class="z-[1] mb-[16px]" />
     <DetectedUser class="z-[1] mb-[16px]" />
     <MainInfoUser class="z-[1] mb-[16px]" />
     <InfoBalanceUser class="z-[1] mb-[16px]" />

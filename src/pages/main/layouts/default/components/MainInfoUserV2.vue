@@ -2,55 +2,49 @@
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { BarChartOutline, CogOutline } from '@vicons/ionicons5'
+import CardContainer from '@/components/CardContainer.vue'
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
 
 </script>
 
 <template>
-  <div class="flex items-center w-full">
-    <div class="relative pl-[16px] w-full">
-      <div class="flex flex-col bg-[#3c4f5f85] custom-block p-[8px_16px_24px_16px]">
-        <div class="flex justify-between">
-          <div class="flex items-center header-container relative w-full">
-            <span class="corner-border-top-v3"></span>
-            <span class="text-[#909997] text-[16px] mr-[6px]">{{ 'DevCat' }}</span>
-          </div>
-          <div class="flex flex-col items-end">
-            <span class="text-[#909997] text-[14px]">{{ 'Prefs & Rtg' }}</span>
-            <div class="flex items-center justify-end">
-              <button @click="false" class="flex">
-                <n-icon :color="'#909997'" :size="26">
-                  <CogOutline />
-                </n-icon>
-              </button>
-              <div class="w-[1px] h-[16px] bg-[#909997] m-[0_12px_0_8px] z-[1]"></div>
-              <button @click="false" class="flex">
-                <n-icon :color="'#909997'" :size="20">
-                  <BarChartOutline />
-                </n-icon>
-              </button>
-            </div>
-          </div>
+  <CardContainer :headerWidth="130" class="w-full">
+    <template #header>
+      <span class="text-[#909997] text-[16px] mr-[6px]">{{ 'DevCat' }}</span>
+    </template>
+    <template #extra-header>
+      <span class="text-[#909997] text-[14px]">{{ 'Prefs & Rtg' }}</span>
+      <div class="flex items-center justify-end">
+        <button @click="false" class="flex">
+          <n-icon :color="'#909997'" :size="26">
+            <CogOutline />
+          </n-icon>
+        </button>
+        <div class="w-[1px] h-[16px] bg-[#909997] m-[0_12px_0_8px] z-[1]"></div>
+        <button @click="false" class="flex">
+          <n-icon :color="'#909997'" :size="20">
+            <BarChartOutline />
+          </n-icon>
+        </button>
+      </div>
+    </template>
+    <template #content>
+      <div class="flex flex-col pt-[16px] pb-[16px] relative">
+        <div class="flex items-start mb-[8px]">
+          <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Beginer ]' }}</span>
+          <span class="ml-[8px] text-[16px] leading-[18px] text-[#909997]">{{ 'level' }}</span>
         </div>
-        
-        <div class="flex flex-col pt-[16px] pb-[16px] relative">
-          <div class="flex items-start mb-[8px]">
-            <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Beginer ]' }}</span>
-            <span class="ml-[8px] text-[16px] leading-[18px] text-[#909997]">{{ 'level' }}</span>
-          </div>
-          <div class="flex items-start">
-            <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Javascript ]' }}</span>
-            <span class="ml-[8px] text-[16px] leading-[18px] text-[#909997]">{{ 'stack' }}</span>
-          </div>
-          <div class="flex items-center absolute -left-[16px] w-[calc(100%+32px)] -bottom-[24px] h-[16px] bg-[#ccd1c34a] p-[2px_8px]">
-            <span class="text-[10px] text-[#fff] leading-[12px]">{{ 'cryptopia' }}</span>
-          </div>
+        <div class="flex items-start">
+          <span class="text-[#ebeeda] text-[24px] leading-[28px]">{{ '[ Javascript ]' }}</span>
+          <span class="ml-[8px] text-[16px] leading-[18px] text-[#909997]">{{ 'stack' }}</span>
+        </div>
+        <div class="flex items-center absolute -left-[16px] w-[calc(100%+32px)] -bottom-[24px] h-[16px] bg-[#ccd1c34a] p-[2px_8px]">
+          <span class="text-[10px] text-[#fff] leading-[12px]">{{ 'cryptopia' }}</span>
         </div>
       </div>
-      
-    </div>
-  </div>
+    </template>
+  </CardContainer>
 </template>
 
 <style scoped>
