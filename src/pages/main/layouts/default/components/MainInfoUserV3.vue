@@ -31,8 +31,9 @@ const { currentUserDataGetters } = storeToRefs(appStore)
             </span>
           </div>
           <div class="flex items-center">
-            <span class="text-[#050914] text-[14px] leading-[20px]">
-              {{ '$/h: +0.01' }}
+            <span class="text-[#050914] text-[14px] mr-[8px]">{{ '$/h:' }}</span>
+            <span class="text-[#fff] text-[14px] leading-[20px] bg-[#050914] flex rounded-[2px] px-[4px]">
+              {{ '+0.01' }}
             </span>
           </div>
         </div>
@@ -44,15 +45,15 @@ const { currentUserDataGetters } = storeToRefs(appStore)
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>
-          <span class="text-[22px] text-[#ff leading-[26px]">{{ '200/200' }}</span>
+          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '200/200' }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Up level' }}</span>
-          <span class="text-[22px] text-[#ff leading-[26px]">{{ '1000' }}</span>
+          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '1000' }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Online' }}</span>
-          <span class="text-[22px] text-[#ff leading-[26px]">{{ '500' }}</span>
+          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '500' }}</span>
         </div>
       </div>
     </div>
