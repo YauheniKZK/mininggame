@@ -17,7 +17,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="flex flex-col bg-[#f4c543] p-[8px]">
         <div class="flex items-center justify-between mb-[4px]">
           <span class="text-[#050914] text-[18px] leading-[18px]">{{ 'DevCat: [User Name]' }}</span>
-          <div class="flex items-center bg-[#050914] rounded-[2px] px-[4px] text-[12px]">
+          <div class="flex items-center bg-[#050914] text-[#fff] rounded-[2px] px-[4px] text-[12px]">
             {{ 'ip: 215.y.566.89.T.0' }}
           </div>
         </div>
@@ -44,15 +44,15 @@ const { currentUserDataGetters } = storeToRefs(appStore)
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>
-          <span class="text-[22px] leading-[26px]">{{ '200/200' }}</span>
+          <span class="text-[22px] text-[#ff leading-[26px]">{{ '200/200' }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Up level' }}</span>
-          <span class="text-[22px] leading-[26px]">{{ '1000' }}</span>
+          <span class="text-[22px] text-[#ff leading-[26px]">{{ '1000' }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Online' }}</span>
-          <span class="text-[22px] leading-[26px]">{{ '500' }}</span>
+          <span class="text-[22px] text-[#ff leading-[26px]">{{ '500' }}</span>
         </div>
       </div>
     </div>
