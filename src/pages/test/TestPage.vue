@@ -13,6 +13,7 @@ import InfoBalanceUserV2 from '../main/layouts/default/components/InfoBalanceUse
 import ProgressUser from '../main/layouts/default/components/ProgressUser.vue';
 import TapBlockV2 from '../main/layouts/default/components/TapBlockV2.vue';
 import TapsInfoUser from '../main/layouts/default/components/TapsInfoUser.vue';
+import TapBlockV3 from '../main/layouts/default/components/TapBlockV3.vue';
 
 
 </script>
@@ -24,6 +25,7 @@ import TapsInfoUser from '../main/layouts/default/components/TapsInfoUser.vue';
     <MainInfoUserV3 class="z-[1] mb-[16px]" />
     <ProgressUser class="z-[1] mb-[16px]" />
     <InfoBalanceUserV2 class="z-[1] mb-[16px]" />
+    <TapBlockV3 class="z-[1] mb-[16px]" />
     <DetectedUserV2 class="mb-[16px]" />
     <MainInfoUserV2 class="mb-[16px]" />
     <TapsInfoUser  class="z-[1] mb-[16px]" />
