@@ -21,11 +21,12 @@ import TaskIcons from '@/assets/svg/components/TaskIcons.vue';
 import Rating from '@/pages/Rating.vue'
 import Settings from '@/pages/Settings.vue'
 import DotsLayout from '@/components/DotsLayout.vue';
+import MiningSystem from '@/components/MiningSystem.vue';
 
 const versionApp = import.meta.env.PACKAGE_VERSION
 
 const appStore = useApplicationStore()
-const { showModalSettingGetters, showModalRatingGetters } = storeToRefs(appStore)
+const { showModalSettingGetters, showModalRatingGetters, showMiningSystemGetters } = storeToRefs(appStore)
 // const { actionMiningMoney } = appStore
 
 const rulesTabs = ['setting', 'rating']
@@ -116,6 +117,11 @@ onMounted(async () => {
     </Transition> -->
       </n-tabs>
     </div>
+    <n-drawer v-model:show="showMiningSystemGetters" :height="'100vh'" :placement="'bottom'" class="mining-system">
+      <n-drawer-content>
+        <MiningSystem />
+      </n-drawer-content>
+    </n-drawer>
     <div v-if="!rulesTabs.includes(valueTab)" class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
       <div class="flex w-full h-[56px] items-center rounded-[12px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
         <n-tabs type="segment" class="w-full tabs-custom1 main-footer custom-bg-1" :value="valueTab" animated @update:value="updateTab">

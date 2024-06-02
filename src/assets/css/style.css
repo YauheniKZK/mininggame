@@ -362,6 +362,11 @@ body, html {
   right: 0;
 }
 
+.mining-system {
+  --n-color: var(--main-bg-color) !important;
+  --n-body-padding: 16px 16px !important;
+}
+
 
 
 

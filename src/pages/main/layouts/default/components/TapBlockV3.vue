@@ -1,10 +1,13 @@
 <script setup lang="ts">
+import { useApplicationStore } from '@/stores/application/applicationStore';
 
+const appStore = useApplicationStore()
+const { switchModalMiningSystem } = appStore
 </script>
 
 <template>
   <div class="flex flex-col w-full">
-    <button class="btn red z-[1] overflow-hidden" @click="false">
+    <button class="btn red z-[1] overflow-hidden" @click="switchModalMiningSystem">
       <span class="btn__content text-[#fff] font-[600]"></span>
       <span class="flex absolute -top-[22px] -left-[4px] font-[500] text-[54px] -tracking-[5px]">{{ 'Dev_Pad' }}</span>
       <span class="btn__glitch"></span>

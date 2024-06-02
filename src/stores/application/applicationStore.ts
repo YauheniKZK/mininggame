@@ -54,6 +54,7 @@ export const useApplicationStore = defineStore('application', () => {
 
   const showModalSetting = ref(false)
   const showModalRating = ref(false)
+  const showMiningSystem = ref(false)
 
   // --------Getters---------
 
@@ -94,6 +95,7 @@ export const useApplicationStore = defineStore('application', () => {
   
   const showModalSettingGetters = computed(() => showModalSetting.value)
   const showModalRatingGetters = computed(() => showModalRating.value)
+  const showMiningSystemGetters = computed(() => showMiningSystem.value)
   
 
   // --------Actions---------
@@ -352,6 +354,10 @@ export const useApplicationStore = defineStore('application', () => {
     showModalRating.value = !showModalRating.value
   }
 
+  function switchModalMiningSystem() {
+    showMiningSystem.value = !showMiningSystem.value
+  }
+
   return {
     totalScoreGetters,
     updateTotalScore,
@@ -403,6 +409,8 @@ export const useApplicationStore = defineStore('application', () => {
     showModalSettingGetters,
     switchModalSetting,
     showModalRatingGetters,
-    switchModalRating
+    switchModalRating,
+    showMiningSystemGetters,
+    switchModalMiningSystem
   }
 })
