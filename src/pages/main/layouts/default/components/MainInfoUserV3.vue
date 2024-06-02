@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
-import { CodeWorkingOutline, CogOutline } from '@vicons/ionicons5'
+import { CodeWorkingOutline, Cube } from '@vicons/ionicons5'
 import CardContainer from '@/components/CardContainer.vue'
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
@@ -31,9 +31,11 @@ const { currentUserDataGetters } = storeToRefs(appStore)
             </span>
           </div>
           <div class="flex items-center">
-            <span class="text-[#050914] text-[14px] mr-[8px]">{{ '$/h:' }}</span>
+            <n-icon :color="'#050914'" :size="20" class="mr-[4px]">
+              <Cube />
+            </n-icon>
             <span class="text-[#fff] text-[14px] leading-[20px] bg-[#050914] flex rounded-[2px] px-[4px]">
-              {{ '+0.01' }}
+              {{ 'Javascript' }}
             </span>
           </div>
         </div>
@@ -41,7 +43,11 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="flex items-center justify-between p-[12px_8px_8px_8px]">
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ '$/tap' }}</span>
-          <span class="text-[22px] text-[#f4c543] leading-[26px]">{{ '0.01' }}</span>
+          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '0.01' }}</span>
+        </div>
+        <div class="flex flex-col">
+          <span class="text-[#ffffff91] text-[12px]">{{ '$/hour' }}</span>
+          <span class="text-[22px] text-[#f4c543] leading-[26px]">{{ '+0.01' }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>
@@ -51,10 +57,7 @@ const { currentUserDataGetters } = storeToRefs(appStore)
           <span class="text-[#ffffff91] text-[12px]">{{ 'Up level' }}</span>
           <span class="text-[22px] text-[#fff] leading-[26px]">{{ '1000' }}</span>
         </div>
-        <div class="flex flex-col">
-          <span class="text-[#ffffff91] text-[12px]">{{ 'Online' }}</span>
-          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '500' }}</span>
-        </div>
+
       </div>
     </div>
   </div>

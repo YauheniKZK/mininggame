@@ -5,6 +5,7 @@ import { formatNumberWithSpaces, levels } from '@/utils/data';
 import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 import { getImageUrl } from '@/utils/images';
+import { ExpandOutline } from '@vicons/ionicons5'
 
 const appStore = useApplicationStore()
 const { mainBalanceUserGetters, earnPassivePerHourGetters, currentUserLevelGetters } = storeToRefs(appStore)
@@ -81,20 +82,27 @@ onMounted(() => {
 
 <template>
   <div class="flex w-full">
-    <div class="w-[100px] h-[130px] relative bg-[#1f1f1f] flex flex-col justify-center items-center mr-[16px] overflow-hidden">
+    <div class="w-[100px] h-[130px] relative bg-[#1f1f1f] rounded-[2px] flex flex-col justify-center items-center mr-[16px] overflow-hidden">
       <span class="text-[12px] text-[#ffffff7a] absolute uppercase left-[4px] top-[4px]">{{ 'balance' }}</span>
-      <img :src="getImageUrl('img/coin-bg2.png')" class="w-[190px] max-w-none opacity-[0.01]" alt="" />
+      <img :src="getImageUrl('img/coin-bg2.png')" class="w-[190px] max-w-none opacity-[0.03]" alt="" />
+      <n-icon :color="'#f4c543'" :size="20" class="absolute right-[4px] bottom-[4px]">
+        <ExpandOutline />
+      </n-icon>
     </div>
-    <div class="flex items-center">
-      <span class="text-[42px] font-[600] text-[#fff] leading-[28px]" style="text-shadow: 3px 2px 0 #ffffff29;">
-        {{ formatNumberWithSpaces(Number(balanceRef)) }}
-        <sup class="font-[400]">{{ ' $' }}</sup>
-      </span>
-      <div class="flex justify-end w-[70px] absolute right-0 top-[17px]">
-        <transition name="fade">
-          <p v-if="showText" class="animated-text text-[#fff] text-[10px]">{{ text }}</p>
-        </transition>
+    <div class="flex items-center relative flex-grow before-item">
+      <span class="line"></span>
+      <div class="flex items-center relative">
+        <span class="text-[42px] font-[600] text-[#fff] leading-[28px]" style="text-shadow: 3px 2px 0 #ffffff29;">
+          {{ formatNumberWithSpaces(Number(balanceRef)) }}
+          <sup class="font-[400]">{{ ' $' }}</sup>
+        </span>
+        <div class="flex justify-end w-[70px] absolute right-0 top-[0px]">
+          <transition name="fade">
+            <p v-if="showText" class="animated-text text-[#fff] text-[10px]">{{ text }}</p>
+          </transition>
+        </div>
       </div>
+
     </div>
 
     <!-- <div class="flex flex-col">
@@ -143,6 +151,35 @@ onMounted(() => {
 </template>
 
 <style scoped>
+.before-item::before {
+  border: 0px solid #aafffc;
+  content: "";
+  height: 10px;
+  position: absolute;
+  width: 10px;
+  border-bottom-width: 1px;
+  border-right-width: 1px;
+  bottom: 0px;
+  right: 0;
+}
+.line {
+  position: absolute;
+  left: 0;
+  top: 12px;
+  height: 1px;
+  width: 100%;
+  background: #ffffff3b;
+}
+
+.line::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  background: #ffffff3b;
+}
 .container-block {
   position: relative;
   width: 100%;
