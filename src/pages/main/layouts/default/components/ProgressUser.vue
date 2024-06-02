@@ -51,9 +51,9 @@ onMounted(() => {
 <template>
   <div class="flex flex-col w-full">
     <div class="line-top"></div>
-    <span class="mb-[4px] text-[10px]">{{ 'Next level' }}</span>
+    <span class="mb-[4px] text-[10px] text-[#ffffffad]">{{ 'Next level' }}</span>
     <div class="flex h-[20px] relative progress-block">
-      <div class="w-full min-w-[10px] h-full bg-[#fbdd87] relative" :style="`width: ${setProcent}%`"></div>
+      <div class="w-full min-w-[10px] h-full bg-[#f4c543] relative" :style="`width: ${setProcent}%`"></div>
     </div>
     <div class="line-bottom"></div>
   </div>
