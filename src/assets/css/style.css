@@ -30,7 +30,8 @@
 
 .default-theme {
   --main-font: "Exo 2", sans-serif;
-  --main-bg-color: radial-gradient(47% 53% at 53% 47%, #042025 0, #002c2c .01%, #001f1f 100%);
+  --main-bg-color: #0C0C0C;
+  /* --main-bg-color: radial-gradient(47% 53% at 53% 47%, #042025 0, #002c2c .01%, #001f1f 100%); */
   --main-text-color: #e6e6e6;
 
   --main-shadow-color: #680747;
