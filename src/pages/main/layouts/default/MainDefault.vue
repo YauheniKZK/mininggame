@@ -25,11 +25,6 @@ import TapsInfoUser from './components/TapsInfoUser.vue';
     <MainInfoUserV3 class="z-[1] mb-[16px]" />
     <ProgressUser class="z-[1] mb-[16px]" />
     <InfoBalanceUserV2 class="z-[1] mb-[16px]" />
-    <TapsInfoUser  class="z-[1] mb-[16px]" />
-    <DetectedUser class="z-[1] mb-[16px]" />
-    <MainInfoUser class="z-[1] mb-[16px]" />
-    <InfoBalanceUser class="z-[1] mb-[16px]" />
-    <TapBlockV2 class="z-[1] mb-[16px]" />
     <!-- <TopBlock class="z-[1]" />
     <div class="w-full h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
     <InfoBlock class="z-[1] mb-[16px]" />
