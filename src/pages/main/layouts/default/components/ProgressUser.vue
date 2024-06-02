@@ -52,7 +52,8 @@ onMounted(() => {
   <div class="flex flex-col w-full">
     <div class="line-top"></div>
     <span class="mb-[4px] text-[10px] text-[#ffffffad]">{{ 'Next level' }}</span>
-    <div class="flex h-[20px] relative progress-block">
+    <div class="flex h-[20px] relative progress-block overflow-hidden">
+      <span class="flex absolute right-0 -top-[16px] text-[#ffffff21] text-[16px] font-[900]">{{ '1000' }}</span>
       <div class="w-full min-w-[10px] h-full bg-[#f4c543] relative" :style="`width: ${setProcent}%`"></div>
     </div>
     <div class="line-bottom"></div>
