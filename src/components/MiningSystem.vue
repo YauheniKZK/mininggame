@@ -1,23 +1,41 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
+import WebApp from '@twa-dev/sdk';
+import { useApplicationStore } from '@/stores/application/applicationStore';
+import { onUnmounted } from 'vue';
+
+const appStore = useApplicationStore()
+const { switchModalMiningSystem } = appStore
 
 const mainContainer = ref()
 const monitorActive = ref('')
 
+WebApp.BackButton.onClick(() => {
+  switchModalMiningSystem()
+})
+
 onMounted(() => {
+  WebApp.BackButton.show()
   monitorActive.value = 'active'
+})
+
+onUnmounted(() => {
+  WebApp.BackButton.hide()
 })
 </script>
 
 <template>
   <div ref="mainContainer" class="flex flex-col w-full">
-    <div class="flex monitor-block relative w-full p-[16px_8px]" :class="monitorActive">
+    <div class="flex monitor-block relative w-full p-[16px_8px] mb-[16px]" :class="monitorActive">
       <div class="line-1"></div>
       <div class="line-2"></div>
       <div class="line-3"></div>
       <div class="sub-monitor-block w-full">
         <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span>
       </div>
+    </div>
+    <div class="flex bg-[#ffffff08] min-h-[40px]">
+
     </div>
   </div>
 </template>
