@@ -40,6 +40,7 @@ const showText = ref(true);
 const text = ref('0.01$');
 
 onMounted(() => {
+
   setInterval(() => {
     showText.value = !showText.value;
   }, 1000); // Переключение каждую секунду
@@ -48,29 +49,14 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex w-full">
-    <div class="w-[100px] h-[130px] relative bg-[#1f1f1f] rounded-[2px] flex flex-col justify-center items-center mr-[16px] overflow-hidden">
-      <span class="text-[12px] text-[#ffffff7a] absolute uppercase left-[4px] top-[4px]">{{ 'balance' }}</span>
-      <img :src="getImageUrl('img/coin-bg2.png')" class="w-[190px] max-w-none opacity-[0.03]" alt="" />
-      <n-icon :color="'#f4c543'" :size="20" class="absolute right-[4px] bottom-[4px]">
-        <ExpandOutline />
-      </n-icon>
+  <div class="flex flex-col w-full">
+    <div class="line-top"></div>
+    <span class="mb-[4px] text-[10px]">{{ 'Next level' }}</span>
+    <div class="flex h-[20px] relative progress-block">
+      <div class="w-full min-w-[10px] h-full bg-[#fbdd87] relative" :style="`width: ${setProcent}%`"></div>
     </div>
-    <div class="flex items-center relative flex-grow before-item">
-      <span class="line"></span>
-      <div class="flex items-center relative">
-        <span class="text-[42px] font-[600] text-[#fff] leading-[28px]" style="text-shadow: 3px 2px 0 #ffffff29;">
-          {{ formatNumberWithSpaces(Number(balanceRef)) }}
-          <sup class="font-[400]">{{ ' $' }}</sup>
-        </span>
-        <div class="flex justify-end w-[70px] absolute right-0 top-[0px]">
-          <transition name="fade">
-            <p v-if="showText" class="animated-text text-[#fff] text-[10px]">{{ text }}</p>
-          </transition>
-        </div>
-      </div>
-
-    </div>
+    <div class="line-bottom"></div>
+  </div>
 
     <!-- <div class="flex flex-col">
       <div class="flex flex-col relative">
@@ -114,10 +100,28 @@ onMounted(() => {
         <canvas ref="canvasBlock" width="62" height="80" class="absolute bottom-[4px] left-[4px]"></canvas>
       </div>
     </div> -->
-  </div>
 </template>
 
 <style scoped>
+@keyframes skeleton {
+  0%,
+  10% {
+    background-position: -150% 0;
+  }
+  100% {
+    background-position: 350% 0;
+  }
+}
+.progress-block {
+  background: #ffffff21;
+  background-image: linear-gradient(80deg, rgba(13, 13, 13, 0) 0%, rgb(176 179 178 / 9%) 50%, rgba(13, 13, 13, 0) 100%);
+  background-size: 180px;
+  background-repeat: no-repeat;
+  will-change: background-position;
+  clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, -10% 100%);
+  background-position: -150% 0;
+  animation: skeleton 3s cubic-bezier(0.57, 0.21, 0.69, 1.25) forwards infinite;
+}
 .before-item::before {
   border: 0px solid #aafffc;
   content: "";
