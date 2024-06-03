@@ -14,6 +14,9 @@ WebApp.BackButton.onClick(() => {
   switchModalMiningSystem()
 })
 
+const topContainer = ref()
+const bottomContainer = ref()
+
 const canvas = ref(null);
 const animations = []; // Массив для хранения всех анимаций
 
@@ -83,6 +86,10 @@ function getRandomColor() {
 }
 
 onMounted(() => {
+  if (bottomContainer.value) {
+    canvas.value.width = bottomContainer.value.clientWidth
+    canvas.value.height = bottomContainer.value.clientHeight
+  }
   WebApp.BackButton.show()
   monitorActive.value = 'active'
 
@@ -114,20 +121,22 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="mainContainer" class="flex flex-col w-full">
-    <div class="flex monitor-block relative w-full p-[16px_8px] mb-[16px]" :class="monitorActive">
-      <div class="line-1"></div>
-      <div class="line-2"></div>
-      <div class="line-3"></div>
-      <div class="sub-monitor-block w-full">
-        <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span>
+  <div ref="mainContainer" class="flex flex-col w-full" style="height: calc(100vh - 32px);">
+    <div ref="topContainer" class="flex flex-col w-full h-[40%]">
+      <div class="flex monitor-block relative w-full p-[16px_8px] mb-[16px]" :class="monitorActive">
+        <div class="line-1"></div>
+        <div class="line-2"></div>
+        <div class="line-3"></div>
+        <div class="sub-monitor-block w-full">
+          <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span>
+        </div>
+      </div>
+      <div class="flex bg-[#ffffff08] min-h-[40px]">
+
       </div>
     </div>
-    <div class="flex bg-[#ffffff08] min-h-[40px]">
-
-    </div>
-    <div class="flex">
-      <canvas ref="canvas" height="300" @touchend="drawCircle"></canvas>
+    <div ref="bottomContainer" class="flex h-[60%]">
+      <canvas ref="canvas" @touchend="drawCircle"></canvas>
     </div>
   </div>
 </template>
