@@ -198,6 +198,10 @@ onUnmounted(() => {
     <div ref="bottomContainer" class="flex h-[50%] relative">
       <canvas ref="canvas" class="relative z-[1]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3]" alt="">
+      <video width="320" height="240" autoplay muted class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3]">
+        <source :src="getImageUrl('video/bg_tiny.mp4')" type="video/mp4">
+        Your browser does not support the video tag.
+      </video> 
     </div>
   </div>
 </template>
