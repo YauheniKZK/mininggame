@@ -71,7 +71,7 @@ function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
   // ctx.shadowColor = shadowColor;
   // ctx.shadowBlur = 10;
   ctx.beginPath();
-  ctx.arc(x, y, radius, Math.PI, 0, isOuter);
+  ctx.arc(Math.round(x), Math.round(y), Math.round(radius), Math.PI, 0, isOuter);
   ctx.stroke();
   ctx.closePath();
 }
@@ -86,14 +86,17 @@ function getRandomColor() {
 }
 
 onMounted(() => {
+  const dpr = window.devicePixelRatio || 1;
   if (bottomContainer.value) {
-    canvas.value.width = bottomContainer.value.clientWidth
-    canvas.value.height = bottomContainer.value.clientHeight
+    
+    canvas.value.width = bottomContainer.value.clientWidth * dpr
+    canvas.value.height = bottomContainer.value.clientHeight * dpr;
   }
   WebApp.BackButton.show()
   monitorActive.value = 'active'
 
   const ctx = canvas.value.getContext('2d');
+  ctx.scale(dpr, dpr)
   const animationLoop = () => {
     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
     animations.forEach((anim, animIndex) => {
