@@ -202,16 +202,16 @@ onUnmounted(() => {
       </div>
     </div>
     <div ref="bottomContainer" class="flex h-[50%] relative">
-      <canvas ref="canvas" class="relative z-[1]" @touchend="e => action(e)"></canvas>
+      <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
       <span v-if="loadingVideo" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
       <video v-show="!loadingVideo" ref="video" width="320" height="240" autoplay muted class="absolute z-[0] left-0 top-0 object-cover w-full h-full opacity-[0.3]">
         <source :src="getImageUrl('video/bg_tiny2.mp4')" type="video/mp4">
         Your browser does not support the video tag.
       </video>
-      <!-- <video
+      <video
         v-show="!loadingVideo"
-        ref="video"
+        ref="video1"
         width="320"
         height="240"
         autoplay
@@ -220,7 +220,7 @@ onUnmounted(() => {
       >
         <source :src="getImageUrl('video/bg_tiny.mp4')" type="video/mp4">
         Your browser does not support the video tag.
-      </video>  -->
+      </video> 
     </div>
   </div>
 </template>
