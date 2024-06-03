@@ -10,6 +10,24 @@ const { switchModalMiningSystem } = appStore
 const mainContainer = ref()
 const monitorActive = ref('')
 
+const scrollbarContainer = ref()
+const scrollbarRef = ref()
+const textGeneratedRef = ref<any>()
+const textGenerated = ref('')
+function generateMatrixSymbol() {
+  const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
+  return characters.charAt(Math.floor(Math.random() * characters.length));
+}
+
+const whiteText = () => {
+  const symbol = generateMatrixSymbol()
+  textGenerated.value += symbol
+  textGeneratedRef.value.textContent = textGenerated.value
+  console.log('scrollbarContainer.value.scrollHeight', scrollbarContainer.value.scrollHeight)
+  const scrollbar: any = document.querySelector('.scrollbarRef .n-scrollbar-content')
+  scrollbarRef.value.scrollTo(0, scrollbar.scrollHeight)
+}
+
 WebApp.BackButton.onClick(() => {
   switchModalMiningSystem()
 })
@@ -46,6 +64,7 @@ function drawCircle(event) {
   const innerRotationSpeeds = new Array(count).fill(null).map(() => Math.random() * 0.2 - 0.1);
   createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerRotationSpeeds, count);
   ripples.push({ x, y, radius: 0, opacity: 0.3 });
+  whiteText()
 }
 
 function drawRotatingCircles(ctx, circle) {
@@ -160,7 +179,10 @@ onUnmounted(() => {
         <div class="line-2"></div>
         <div class="line-3"></div>
         <div class="sub-monitor-block w-full">
-          <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span>
+          <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
+            <p ref="textGeneratedRef" class="break-words text-term" :class="monitorActive">{{ textGenerated }}</p>
+          </n-scrollbar>
+          <!-- <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span> -->
         </div>
       </div>
       <div class="flex bg-[#ffffff08] min-h-[40px]">
@@ -179,12 +201,11 @@ onUnmounted(() => {
   color: #ffffff85;
   font-size: 22px;
   letter-spacing: -2px;
-  line-height: 16px;
-  text-shadow: 4px 4px #ffffff12;
+  line-height: 20px;
+  text-shadow: 1px 1px #ffffff12;
   opacity: 0;
   display: none;
   transition: all 1.5s ease-in-out;
-  white-space: nowrap;
 }
 
 .text-term.active {
