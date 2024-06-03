@@ -96,7 +96,7 @@ onMounted(() => {
         } else {
           ctx.globalAlpha = circle.opacity;
           drawRotatingCircles(ctx, circle);
-          circle.opacity -= 0.04; // Плавное уменьшение прозрачности
+          circle.opacity -= 0.03; // Плавное уменьшение прозрачности
         }
       });
       if (anim.circles.length === 0) {
