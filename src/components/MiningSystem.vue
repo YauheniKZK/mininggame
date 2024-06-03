@@ -65,8 +65,8 @@ function drawRotatingCircles(ctx, circle) {
 
 function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
   ctx.strokeStyle = color;
-  ctx.shadowColor = shadowColor;
-  ctx.shadowBlur = 10;
+  // ctx.shadowColor = shadowColor;
+  // ctx.shadowBlur = 10;
   ctx.beginPath();
   ctx.arc(x, y, radius, Math.PI, 0, isOuter);
   ctx.stroke();
@@ -96,7 +96,7 @@ onMounted(() => {
         } else {
           ctx.globalAlpha = circle.opacity;
           drawRotatingCircles(ctx, circle);
-          circle.opacity -= 0.03; // Плавное уменьшение прозрачности
+          circle.opacity -= 0.035; // Плавное уменьшение прозрачности
         }
       });
       if (anim.circles.length === 0) {
