@@ -71,7 +71,7 @@ function drawRotatingCircles(ctx, circle) {
   ctx.font = '18px Arial'; // Шрифт и размер буквы
   ctx.textAlign = 'center';
   ctx.textBaseline = 'middle';
-  ctx.fillText(getRandomLetter(), circle.x, circle.y)
+  ctx.fillText(getRandomSymbol(symbolsArr), circle.x, circle.y)
 }
 
 function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
@@ -83,10 +83,9 @@ function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
   ctx.stroke();
   ctx.closePath();
 }
-
-function getRandomLetter() {
-  const letters = '0BCDEFG8JKL1NOP2STUVWX9Za1cdefghijklmn6opqr7tuvw8xyz';
-  return letters[Math.floor(Math.random() * letters.length)];
+const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{}', 'l', 'ar', 'func', '>', 'sync', 'dev', '{', '(', '()', '?']; // Ваш список символов
+function getRandomSymbol(symbols: string[]) {
+  return symbols[Math.floor(Math.random() * symbols.length)];
 }
 
 function getRandomColor() {
