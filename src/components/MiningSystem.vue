@@ -83,7 +83,7 @@ function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
   ctx.stroke();
   ctx.closePath();
 }
-const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{}', 'l', 'ar', 'func', '>', 'sync', 'dev', '{', '(', '()', '?']; // Ваш список символов
+const symbolsArr = ['%', '$', '#', '@', '!', '/', ')', '{','num', 'l', 'a', 'f', '>', 's', 'd', '{', '(', ')', '?', 'func', 'num', 'var', 'let', 'flo']; // Ваш список символов
 function getRandomSymbol(symbols: string[]) {
   return symbols[Math.floor(Math.random() * symbols.length)];
 }
