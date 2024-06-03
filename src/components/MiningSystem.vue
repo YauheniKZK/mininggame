@@ -15,31 +15,58 @@ WebApp.BackButton.onClick(() => {
 })
 
 const canvas = ref(null);
-const circles = [];
+const animations = []; // Массив для хранения всех анимаций
+
+function createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerRotationSpeeds, count) {
+  const circles = [];
+  for (let i = 0; i < count; i++) {
+    circles.push({
+      x, y, opacity: 1, outerAngle: 0, innerAngle: 0,
+      color: colors[i], shadowColor: shadowColors[i],
+      outerRotationSpeed: outerRotationSpeeds[i], innerRotationSpeed: innerRotationSpeeds[i],
+      radius: 15 + i * 15 // Размеры кругов увеличиваются с каждым новым кругом
+    });
+  }
+  animations.push({ circles });
+}
 
 function drawCircle(event) {
   const rect = canvas.value.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const y = event.clientY - rect.top;
-  const color = getRandomColor();
-  const shadowColor = getRandomColor(); // Генерируем случайный цвет тени
-  circles.push({ x, y, opacity: 1, angle: 0, color, shadowColor });
+  const touch = event.changedTouches[0]
+  const x = Math.round(touch.clientX - rect.left);
+  const y = Math.round(touch.clientY - rect.top);
+  const count = 3; // Задаем количество кругов в анимации
+  const colors = new Array(count).fill(null).map(getRandomColor);
+  const shadowColors = new Array(count).fill(null).map(getRandomColor);
+  const outerRotationSpeeds = new Array(count).fill(null).map(() => Math.random() * 0.2 - 0.1);
+  const innerRotationSpeeds = new Array(count).fill(null).map(() => Math.random() * 0.2 - 0.1);
+  createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerRotationSpeeds, count);
 }
 
-function drawRotatingCircles(ctx, circle, color, shadowColor) {
+function drawRotatingCircles(ctx, circle) {
   ctx.save();
   ctx.translate(circle.x, circle.y);
-  ctx.rotate(circle.angle);
-  drawHollowHalfCircle(ctx, 0, 0, 30, true, color, shadowColor);
-  drawHollowHalfCircle(ctx, 0, 0, 15, false, color, shadowColor);
+  // Вращаем внешний круг
+  ctx.rotate(circle.outerAngle);
+  drawHollowHalfCircle(ctx, 0, 0, 30, true, circle.color, circle.shadowColor);
   ctx.restore();
-  circle.angle += 0.05;
+  
+  ctx.save();
+  ctx.translate(circle.x, circle.y);
+  // Вращаем внутренний круг в противоположном направлении
+  ctx.rotate(-circle.innerAngle);
+  drawHollowHalfCircle(ctx, 0, 0, 15, false, circle.color, circle.shadowColor);
+  ctx.restore();
+  
+  // Обновляем углы для следующего кадра
+  circle.outerAngle += circle.outerRotationSpeed;
+  circle.innerAngle += circle.innerRotationSpeed;
 }
 
 function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
   ctx.strokeStyle = color;
-  ctx.shadowColor = shadowColor; // Устанавливаем цвет тени
-  ctx.shadowBlur = 10; // Размытие тени
+  ctx.shadowColor = shadowColor;
+  ctx.shadowBlur = 10;
   ctx.beginPath();
   ctx.arc(x, y, radius, Math.PI, 0, isOuter);
   ctx.stroke();
@@ -62,13 +89,18 @@ onMounted(() => {
   const ctx = canvas.value.getContext('2d');
   const animationLoop = () => {
     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
-    circles.forEach((circle, index) => {
-      if (circle.opacity <= 0) {
-        circles.splice(index, 1);
-      } else {
-        ctx.globalAlpha = circle.opacity;
-        drawRotatingCircles(ctx, circle, circle.color, circle.shadowColor); // Передаем цвет и тень круга
-        circle.opacity -= 0.01;
+    animations.forEach((anim, animIndex) => {
+      anim.circles.forEach((circle, circleIndex) => {
+        if (circle.opacity <= 0) {
+          anim.circles.splice(circleIndex, 1);
+        } else {
+          ctx.globalAlpha = circle.opacity;
+          drawRotatingCircles(ctx, circle);
+          circle.opacity -= 0.01; // Плавное уменьшение прозрачности
+        }
+      });
+      if (anim.circles.length === 0) {
+        animations.splice(animIndex, 1);
       }
     });
     requestAnimationFrame(animationLoop);
@@ -95,7 +127,7 @@ onUnmounted(() => {
 
     </div>
     <div class="flex">
-      <canvas ref="canvas" height="300" @click="drawCircle"></canvas>
+      <canvas ref="canvas" height="300" @touchend="drawCircle"></canvas>
     </div>
   </div>
 </template>
