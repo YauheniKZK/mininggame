@@ -14,9 +14,66 @@ WebApp.BackButton.onClick(() => {
   switchModalMiningSystem()
 })
 
+const canvas = ref(null);
+const circles = [];
+
+function drawCircle(event) {
+  const rect = canvas.value.getBoundingClientRect();
+  const x = event.clientX - rect.left;
+  const y = event.clientY - rect.top;
+  const color = getRandomColor();
+  const shadowColor = getRandomColor(); // Генерируем случайный цвет тени
+  circles.push({ x, y, opacity: 1, angle: 0, color, shadowColor });
+}
+
+function drawRotatingCircles(ctx, circle, color, shadowColor) {
+  ctx.save();
+  ctx.translate(circle.x, circle.y);
+  ctx.rotate(circle.angle);
+  drawHollowHalfCircle(ctx, 0, 0, 30, true, color, shadowColor);
+  drawHollowHalfCircle(ctx, 0, 0, 15, false, color, shadowColor);
+  ctx.restore();
+  circle.angle += 0.05;
+}
+
+function drawHollowHalfCircle(ctx, x, y, radius, isOuter, color, shadowColor) {
+  ctx.strokeStyle = color;
+  ctx.shadowColor = shadowColor; // Устанавливаем цвет тени
+  ctx.shadowBlur = 10; // Размытие тени
+  ctx.beginPath();
+  ctx.arc(x, y, radius, Math.PI, 0, isOuter);
+  ctx.stroke();
+  ctx.closePath();
+}
+
+function getRandomColor() {
+  const letters = '0123456789ABCDEF';
+  let color = '#';
+  for (let i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+
 onMounted(() => {
   WebApp.BackButton.show()
   monitorActive.value = 'active'
+
+  const ctx = canvas.value.getContext('2d');
+  const animationLoop = () => {
+    ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
+    circles.forEach((circle, index) => {
+      if (circle.opacity <= 0) {
+        circles.splice(index, 1);
+      } else {
+        ctx.globalAlpha = circle.opacity;
+        drawRotatingCircles(ctx, circle, circle.color, circle.shadowColor); // Передаем цвет и тень круга
+        circle.opacity -= 0.01;
+      }
+    });
+    requestAnimationFrame(animationLoop);
+  };
+  animationLoop();
 })
 
 onUnmounted(() => {
@@ -36,6 +93,9 @@ onUnmounted(() => {
     </div>
     <div class="flex bg-[#ffffff08] min-h-[40px]">
 
+    </div>
+    <div class="flex">
+      <canvas ref="canvas" height="300" @click="drawCircle"></canvas>
     </div>
   </div>
 </template>
