@@ -12,7 +12,9 @@ const mainContainer = ref()
 const monitorActive = ref('')
 
 const video = ref()
-const loadingVideo = ref(true)
+const video2 = ref()
+const loadingVideo1 = ref(true)
+const loadingVideo2 = ref(true)
 const activeVideo = ref(true)
 
 const scrollbarContainer = ref()
@@ -156,7 +158,10 @@ function drawRipple(ctx, ripple) {
 
 onMounted(() => {
   video.value.addEventListener('canplaythrough', function() {
-    loadingVideo.value = false
+    loadingVideo1.value = false
+    video2.value.addEventListener('canplaythrough', function() {
+      loadingVideo2.value = false
+    })
   })
   const dpr = window.devicePixelRatio || 1;
   if (bottomContainer.value) {
@@ -226,9 +231,9 @@ onUnmounted(() => {
     <div ref="bottomContainer" class="flex h-[50%] relative">
       <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
-      <span v-if="loadingVideo" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
+      <span v-if="loadingVideo1 && loadingVideo2" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
       <video
-        v-show="!loadingVideo"
+        v-show="!loadingVideo1 && !loadingVideo2"
         ref="video"
         width="320"
         height="240"
@@ -242,8 +247,8 @@ onUnmounted(() => {
         Your browser does not support the video tag.
       </video>
       <video
-        v-show="!loadingVideo"
-        ref="video1"
+        v-show="!loadingVideo1 && !loadingVideo2"
+        ref="video2"
         width="320"
         height="240"
         autoplay
