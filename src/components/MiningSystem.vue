@@ -1,12 +1,14 @@
 <script setup lang="ts">
-import { onMounted, ref, watch } from 'vue';
+import { computed, onMounted, ref, watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { onUnmounted } from 'vue';
 import { getImageUrl } from '@/utils/images';
+import { storeToRefs } from 'pinia';
 
 const appStore = useApplicationStore()
-const { switchModalMiningSystem } = appStore
+const { availableTapsGetters, maxTapsGetters } = storeToRefs(appStore)
+const { switchModalMiningSystem, minusAvailableTaps, plusAvailableTaps } = appStore
 
 const mainContainer = ref()
 const monitorActive = ref('')
@@ -39,6 +41,10 @@ WebApp.BackButton.onClick(() => {
   switchModalMiningSystem()
 })
 
+const setProcent = computed(() => {
+  return (availableTapsGetters.value * 100) / maxTapsGetters.value
+})
+
 let num = 0
 const timer = ref(0)
 const interval = ref<any>(null)
@@ -50,6 +56,23 @@ watch(() => timer.value, async (newVal) => {
       clearInterval(interval.value)
       timer.value = 0
       activeVideo.value = true
+    }
+  }
+})
+
+const intervalAvailableTaps = ref<any>(null)
+
+watch(() => availableTapsGetters.value, (newVal) => {
+  if (newVal && newVal < 200) {
+    if (!intervalAvailableTaps.value) {
+      intervalAvailableTaps.value = setInterval(() => {
+        if (intervalAvailableTaps.value >= 200) {
+          clearInterval(intervalAvailableTaps.value)
+        } else {
+          plusAvailableTaps()
+        }
+        
+      }, 1000)
     }
   }
 })
@@ -81,6 +104,7 @@ const action = (e) => {
     timer.value++
   }, 400)
   num++
+  minusAvailableTaps()
   whiteText()
   drawCircle(e)
 }
@@ -224,8 +248,20 @@ onUnmounted(() => {
           <!-- <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span> -->
         </div>
       </div>
-      <div class="flex bg-[#ffffff08] min-h-[40px]">
-
+      <div class="flex flex-col bg-[#ffffff08] min-h-[40px]" style="clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, -10% 100%);">
+        <div class="flex w-full p-[4px_16px]">
+          <div class="flex flex-col mr-[24px]">
+            <span class="text-[#ffffff91] text-[12px]">{{ '$/tap' }}</span>
+            <span class="text-[16px] text-[#fff] leading-[22px]">{{ '0.01' }}</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>
+            <span class="text-[16px] text-[#fff] leading-[22px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
+          </div>
+        </div>
+        <div class="flex h-[4px] relative progress-block overflow-hidden">
+          <div class="w-full min-w-[10px] h-full bg-[#f4c543] relative" :style="`width: ${setProcent}%`"></div>
+        </div>
       </div>
     </div>
     <div ref="bottomContainer" class="flex h-[50%] relative">
@@ -265,6 +301,10 @@ onUnmounted(() => {
 
 <style scoped>
 
+.progress-block {
+  background: #ffffff21;
+}
+
 .video-block {
   opacity: 0;
   transition: all 0.5s ease-in-out;
@@ -294,7 +334,7 @@ onUnmounted(() => {
 
 .monitor-block {
   width: 36px;
-  min-height: calc(100% - 70px);
+  min-height: calc(100% - 90px);
   border-radius: 8px/6px;
   /* clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px); */
   background: #7a7a7a1f;

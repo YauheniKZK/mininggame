@@ -47,7 +47,7 @@ export const useApplicationStore = defineStore('application', () => {
   const earnPassivePerHour = ref(0)
   const currentUserLevel = ref('BEGINNER')
   const mainStacks = ref<{ id: number, title: string }[]>([])
-  const availableTaps = ref(0)
+  const availableTaps = ref(200)
   const earnPerTap = ref(0)
 
   const successfullSyncTapClaim = ref(false)
@@ -73,7 +73,7 @@ export const useApplicationStore = defineStore('application', () => {
   const currentThemeAppGetters = computed(() => currentThemeApp.value)
   const optionsThemeAppGetters = computed(() => optionsThemeApp.value)
   const allStacksAppGetters = computed(() => allStacksApp.value)
-  const maxTapsGetters = computed(() => currentUserData.value?.max_taps || 0)
+  const maxTapsGetters = computed(() => currentUserData.value?.max_taps || 200)
 
 
   const mainBalanceUserGetters = computed(() => mainBalanceUser.value)
