@@ -234,6 +234,7 @@ onUnmounted(() => {
         height="240"
         autoplay
         muted
+        loop
         class="absolute z-[0] video-block left-0 top-0 object-cover w-full h-full"
         :class="activeVideo ? 'active' : ''"
       >
@@ -247,6 +248,7 @@ onUnmounted(() => {
         height="240"
         autoplay
         muted
+        loop
         class="absolute z-[0] left-0 top-0 object-cover w-full h-full opacity-[0.1]"
       >
         <source :src="getImageUrl('video/bg_tiny.mp4')" type="video/mp4">
