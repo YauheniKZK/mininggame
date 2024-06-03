@@ -52,8 +52,12 @@ function createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerR
   animations.push({ circles });
 }
 
-function drawCircle(event) {
+const action = (e) => {
   whiteText()
+  drawCircle(e)
+}
+
+function drawCircle(event) {
   const rect = canvas.value.getBoundingClientRect();
   const touch = event.changedTouches[0]
   const x = Math.round(touch.clientX - rect.left);
@@ -65,6 +69,7 @@ function drawCircle(event) {
   const innerRotationSpeeds = new Array(count).fill(null).map(() => Math.random() * 0.2 - 0.1);
   createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerRotationSpeeds, count);
   ripples.push({ x, y, radius: 0, opacity: 0.3 });
+  
 }
 
 function drawRotatingCircles(ctx, circle) {
@@ -190,7 +195,7 @@ onUnmounted(() => {
       </div>
     </div>
     <div ref="bottomContainer" class="flex h-[60%]">
-      <canvas ref="canvas" @touchend="drawCircle"></canvas>
+      <canvas ref="canvas" @touchend="e => action(e)"></canvas>
     </div>
   </div>
 </template>
