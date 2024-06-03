@@ -183,7 +183,7 @@ onUnmounted(() => {
         <div class="line-1"></div>
         <div class="line-2"></div>
         <div class="line-3"></div>
-        <div class="sub-monitor-block w-full">
+        <div ref="scrollbarContainer" class="sub-monitor-block w-full">
           <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
             <p ref="textGeneratedRef" class="break-words text-term" :class="monitorActive">{{ textGenerated }}</p>
           </n-scrollbar>
