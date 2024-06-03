@@ -3,16 +3,13 @@ import { onMounted, ref } from 'vue';
 import WebApp from '@twa-dev/sdk';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { onUnmounted } from 'vue';
+import { getImageUrl } from '@/utils/images';
 
 const appStore = useApplicationStore()
 const { switchModalMiningSystem } = appStore
 
 const mainContainer = ref()
 const monitorActive = ref('')
-
-const canvasDot = ref()
-
-const gridSize = 30; // Размер сетки (настраиваемый)
 
 const scrollbarContainer = ref()
 const scrollbarRef = ref()
@@ -138,28 +135,6 @@ onMounted(() => {
     
     canvas.value.width = bottomContainer.value.clientWidth
     canvas.value.height = bottomContainer.value.clientHeight;
-
-    const ctx1 = canvasDot.value.getContext('2d');
-    canvasDot.value.width = bottomContainer.value.clientWidth; // Задайте ширину canvas
-    canvasDot.value.height = bottomContainer.value.clientHeight; // Задайте высоту canvas
-
-      // Рисуем вертикальные линии сетки
-      for (let x = 0; x < canvasDot.value.width; x += gridSize) {
-        ctx1.beginPath();
-        ctx1.moveTo(Math.round(x), 0);
-        ctx1.lineTo(Math.round(x), canvasDot.value.height);
-        ctx1.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-        ctx1.stroke();
-      }
-
-      // Рисуем горизонтальные линии сетки
-      for (let y = 0; y < canvasDot.value.height; y += gridSize) {
-        ctx1.beginPath();
-        ctx1.moveTo(0, Math.round(y));
-        ctx1.lineTo(canvasDot.value.width, Math.round(y));
-        ctx1.strokeStyle = 'rgba(255, 255, 255, 0.2)';
-        ctx1.stroke();
-      }
   }
   WebApp.BackButton.show()
   monitorActive.value = 'active'
@@ -222,7 +197,7 @@ onUnmounted(() => {
     </div>
     <div ref="bottomContainer" class="flex h-[50%] relative">
       <canvas ref="canvas" class="relative z-[1]" @touchend="e => action(e)"></canvas>
-      <canvas ref="canvasDot" class="absolute left-0 top-0"></canvas>
+      <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3]" alt="">
     </div>
   </div>
 </template>
