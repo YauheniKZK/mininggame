@@ -251,20 +251,23 @@ onUnmounted(() => {
       <div class="flex flex-col bg-[#ffffff08] min-h-[40px]" style="clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, -10% 100%);">
         <div class="flex w-full p-[4px_16px]">
           <div class="flex flex-col mr-[24px]">
-            <span class="text-[#ffffff91] text-[12px]">{{ '$/tap' }}</span>
+            <span class="text-[#ffffff91] text-[12px]">{{ '[$/tap]' }}</span>
             <span class="text-[16px] text-[#fff] leading-[22px]">{{ '0.01' }}</span>
           </div>
           <div class="flex flex-col">
-            <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>
+            <span class="text-[#ffffff91] text-[12px]">{{ '[Energy]' }}</span>
             <span class="text-[16px] text-[#fff] leading-[22px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
           </div>
         </div>
         <div class="flex h-[4px] relative progress-block overflow-hidden">
-          <div class="w-full min-w-[10px] h-full bg-[#f4c543] relative" :style="`width: ${setProcent}%`"></div>
+          <div class="w-full min-w-[10px] h-full bg-[#f4c543] relative bar-pr" :style="`width: ${setProcent}%`"></div>
         </div>
       </div>
     </div>
     <div ref="bottomContainer" class="flex h-[50%] relative">
+      <div class="center-block" :class="activeVideo ? 'active' : ''">
+        <span>{{ 'Start' }}</span>
+      </div>
       <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
       <span v-if="loadingVideo1 && loadingVideo2" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
@@ -301,8 +304,35 @@ onUnmounted(() => {
 
 <style scoped>
 
+.center-block {
+  opacity: 0;
+  position: absolute;
+  top: calc(50% - 25px);
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  color: #ffffff8a;
+  line-height: 50px;
+  font-size: 50px;
+  text-align: center;
+  letter-spacing: 10px;
+  transition: all 0.5s ease-in-out;
+}
+
+.center-block.active {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
+
 .progress-block {
   background: #ffffff21;
+}
+
+.bar-pr {
+  transition: all 0.2s ease-in-out;
 }
 
 .video-block {
