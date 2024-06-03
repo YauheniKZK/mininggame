@@ -11,6 +11,9 @@ const { switchModalMiningSystem } = appStore
 const mainContainer = ref()
 const monitorActive = ref('')
 
+const video = ref()
+const loadingVideo = ref(true)
+
 const scrollbarContainer = ref()
 const scrollbarRef = ref()
 const textGeneratedRef = ref<any>()
@@ -130,6 +133,9 @@ function drawRipple(ctx, ripple) {
 }
 
 onMounted(() => {
+  video.value.addEventListener('canplaythrough', function() {
+    loadingVideo.value = false
+  })
   const dpr = window.devicePixelRatio || 1;
   if (bottomContainer.value) {
     
@@ -198,7 +204,8 @@ onUnmounted(() => {
     <div ref="bottomContainer" class="flex h-[50%] relative">
       <canvas ref="canvas" class="relative z-[1]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3]" alt="">
-      <video width="320" height="240" autoplay muted class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3]">
+      <span v-if="loadingVideo" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
+      <video v-show="!loadingVideo" ref="video" width="320" height="240" autoplay muted class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3]">
         <source :src="getImageUrl('video/bg_tiny.mp4')" type="video/mp4">
         Your browser does not support the video tag.
       </video> 
