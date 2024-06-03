@@ -10,6 +10,10 @@ const { switchModalMiningSystem } = appStore
 const mainContainer = ref()
 const monitorActive = ref('')
 
+const canvasDot = ref()
+
+const gridSize = 30; // Размер сетки (настраиваемый)
+
 const scrollbarContainer = ref()
 const scrollbarRef = ref()
 const textGeneratedRef = ref<any>()
@@ -132,14 +136,36 @@ onMounted(() => {
   const dpr = window.devicePixelRatio || 1;
   if (bottomContainer.value) {
     
-    canvas.value.width = bottomContainer.value.clientWidth * dpr
-    canvas.value.height = bottomContainer.value.clientHeight * dpr;
+    canvas.value.width = bottomContainer.value.clientWidth
+    canvas.value.height = bottomContainer.value.clientHeight;
+
+    const ctx1 = canvasDot.value.getContext('2d');
+    canvasDot.value.width = bottomContainer.value.clientWidth; // Задайте ширину canvas
+    canvasDot.value.height = bottomContainer.value.clientHeight; // Задайте высоту canvas
+
+      // Рисуем вертикальные линии сетки
+      for (let x = 0; x < canvasDot.value.width; x += gridSize) {
+        ctx1.beginPath();
+        ctx1.moveTo(Math.round(x), 0);
+        ctx1.lineTo(Math.round(x), canvasDot.value.height);
+        ctx1.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx1.stroke();
+      }
+
+      // Рисуем горизонтальные линии сетки
+      for (let y = 0; y < canvasDot.value.height; y += gridSize) {
+        ctx1.beginPath();
+        ctx1.moveTo(0, Math.round(y));
+        ctx1.lineTo(canvasDot.value.width, Math.round(y));
+        ctx1.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+        ctx1.stroke();
+      }
   }
   WebApp.BackButton.show()
   monitorActive.value = 'active'
 
   const ctx = canvas.value.getContext('2d');
-  ctx.scale(dpr, dpr)
+  // ctx.scale(dpr, dpr)
   const animationLoop = () => {
     ctx.clearRect(0, 0, canvas.value.width, canvas.value.height);
     for (let ripple of ripples) {
@@ -178,7 +204,7 @@ onUnmounted(() => {
 
 <template>
   <div ref="mainContainer" class="flex flex-col w-full" style="height: calc(100vh - 32px);">
-    <div ref="topContainer" class="flex flex-col w-full h-[40%]">
+    <div ref="topContainer" class="flex flex-col w-full h-[50%]">
       <div class="flex monitor-block relative w-full p-[16px_8px] mb-[16px]" :class="monitorActive">
         <div class="line-1"></div>
         <div class="line-2"></div>
@@ -194,8 +220,9 @@ onUnmounted(() => {
 
       </div>
     </div>
-    <div ref="bottomContainer" class="flex h-[60%]">
-      <canvas ref="canvas" @touchend="e => action(e)"></canvas>
+    <div ref="bottomContainer" class="flex h-[50%] relative">
+      <canvas ref="canvas" class="relative z-[1]" @touchend="e => action(e)"></canvas>
+      <canvas ref="canvasDot" class="absolute left-0 top-0"></canvas>
     </div>
   </div>
 </template>
@@ -221,7 +248,7 @@ onUnmounted(() => {
 
 .monitor-block {
   width: 36px;
-  min-height: 230px;
+  min-height: calc(100% - 70px);
   border-radius: 8px/6px;
   /* clip-path: polygon(15px 0, calc(100% - 15px) 0, 100% 15px, 100% calc(100% - 15px), calc(100% - 15px) 100%, 15px 100%, 0 calc(100% - 15px), 0 15px); */
   background: #7a7a7a1f;
