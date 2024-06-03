@@ -235,8 +235,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="mainContainer" class="flex flex-col w-full" style="height: calc(100vh - 32px);">
-    <div ref="topContainer" class="flex flex-col w-full h-[50%]">
+  <div ref="mainContainer" class="flex flex-col w-full relative" style="height: calc(100vh - 32px);">
+    <img :src="getImageUrl('img/bg-m.jpg')" class="absolute top-0 left-0 object-cover opacity-[0.1]" alt="">
+    <div ref="topContainer" class="flex flex-col w-full h-[50%] relative z-[1]">
       <div class="flex monitor-block relative w-full p-[16px_8px] mb-[16px]" :class="monitorActive">
         <div class="line-1"></div>
         <div class="line-2"></div>
