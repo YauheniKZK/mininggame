@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onMounted, ref, watch } from 'vue';
 import WebApp from '@twa-dev/sdk';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { onUnmounted } from 'vue';
@@ -13,6 +13,7 @@ const monitorActive = ref('')
 
 const video = ref()
 const loadingVideo = ref(true)
+const activeVideo = ref(true)
 
 const scrollbarContainer = ref()
 const scrollbarRef = ref()
@@ -36,6 +37,21 @@ WebApp.BackButton.onClick(() => {
   switchModalMiningSystem()
 })
 
+let num = 0
+const timer = ref(0)
+const interval = ref<any>(null)
+
+watch(() => timer.value, async (newVal) => {
+  if (newVal) {
+    console.log('newVal', newVal)
+    if (newVal > 2) {
+      clearInterval(interval.value)
+      timer.value = 0
+      activeVideo.value = true
+    }
+  }
+})
+
 const topContainer = ref()
 const bottomContainer = ref()
 
@@ -57,6 +73,12 @@ function createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerR
 }
 
 const action = (e) => {
+  activeVideo.value = false
+  clearInterval(interval.value)
+  interval.value = setInterval(() => {
+    timer.value++
+  }, 400)
+  num++
   whiteText()
   drawCircle(e)
 }
@@ -205,7 +227,16 @@ onUnmounted(() => {
       <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
       <span v-if="loadingVideo" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
-      <video v-show="!loadingVideo" ref="video" width="320" height="240" autoplay muted class="absolute z-[0] left-0 top-0 object-cover w-full h-full opacity-[0.3]">
+      <video
+        v-show="!loadingVideo"
+        ref="video"
+        width="320"
+        height="240"
+        autoplay
+        muted
+        class="absolute z-[0] video-block left-0 top-0 object-cover w-full h-full"
+        :class="activeVideo ? 'active' : ''"
+      >
         <source :src="getImageUrl('video/bg_tiny2.mp4')" type="video/mp4">
         Your browser does not support the video tag.
       </video>
@@ -226,6 +257,16 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+
+.video-block {
+  opacity: 0;
+  transition: all 0.5s ease-in-out;
+}
+
+.video-block.active {
+  opacity: 0.3;
+  transition: all 0.3s ease-in-out;
+}
 
 .text-term {
   color: #ffffff85;
