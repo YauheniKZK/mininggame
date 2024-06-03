@@ -53,6 +53,7 @@ function createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerR
 }
 
 function drawCircle(event) {
+  whiteText()
   const rect = canvas.value.getBoundingClientRect();
   const touch = event.changedTouches[0]
   const x = Math.round(touch.clientX - rect.left);
@@ -64,7 +65,6 @@ function drawCircle(event) {
   const innerRotationSpeeds = new Array(count).fill(null).map(() => Math.random() * 0.2 - 0.1);
   createAnimation(x, y, colors, shadowColors, outerRotationSpeeds, innerRotationSpeeds, count);
   ripples.push({ x, y, radius: 0, opacity: 0.3 });
-  whiteText()
 }
 
 function drawRotatingCircles(ctx, circle) {
