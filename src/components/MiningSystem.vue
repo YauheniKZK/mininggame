@@ -159,9 +159,9 @@ function drawRipple(ctx, ripple) {
 onMounted(() => {
   video.value.addEventListener('canplaythrough', function() {
     loadingVideo1.value = false
-    video2.value.addEventListener('canplaythrough', function() {
-      loadingVideo2.value = false
-    })
+  })
+  video2.value.addEventListener('canplaythrough', function() {
+    loadingVideo2.value = false
   })
   const dpr = window.devicePixelRatio || 1;
   if (bottomContainer.value) {
@@ -233,7 +233,7 @@ onUnmounted(() => {
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
       <span v-if="loadingVideo1 && loadingVideo2" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
       <video
-        v-show="!loadingVideo1 && !loadingVideo2"
+        v-show="!loadingVideo2 && !loadingVideo1"
         ref="video"
         width="320"
         height="240"
@@ -247,7 +247,7 @@ onUnmounted(() => {
         Your browser does not support the video tag.
       </video>
       <video
-        v-show="!loadingVideo1 && !loadingVideo2"
+        v-show="!loadingVideo2 && !loadingVideo1"
         ref="video2"
         width="320"
         height="240"
