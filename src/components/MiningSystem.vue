@@ -129,14 +129,14 @@ function drawRotatingCircles(ctx, circle) {
   ctx.translate(circle.x, circle.y);
   // Вращаем внешний круг
   ctx.rotate(circle.outerAngle);
-  drawHollowHalfCircle(ctx, 0, 0, 30, true, circle.color, circle.shadowColor);
+  drawHollowHalfCircle(ctx, 0, 0, 45, true, circle.color, circle.shadowColor);
   ctx.restore();
   
   ctx.save();
   ctx.translate(circle.x, circle.y);
   // Вращаем внутренний круг в противоположном направлении
   ctx.rotate(-circle.innerAngle);
-  drawHollowHalfCircle(ctx, 0, 0, 15, false, circle.color, circle.shadowColor);
+  drawHollowHalfCircle(ctx, 0, 0, 30, false, circle.color, circle.shadowColor);
   ctx.restore();
   
   // Обновляем углы для следующего кадра
