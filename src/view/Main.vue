@@ -123,7 +123,7 @@ onMounted(async () => {
       </n-drawer-content>
     </n-drawer>
     <div v-if="!rulesTabs.includes(valueTab)" class="flex flex-col w-full fixed bottom-[8px] px-[8px] z-[10]">
-      <div class="flex w-full h-[56px] items-center rounded-[2px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
+      <div class="flex w-full h-[50px] items-center rounded-[2px] footer-before" style="box-shadow: 0px -10px 15px -3px rgba(0,0,0,0.1);">
         <n-tabs type="segment" class="w-full tabs-custom1 main-footer custom-bg-1" :value="valueTab" animated @update:value="updateTab">
           <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
