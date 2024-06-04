@@ -7,8 +7,8 @@ import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
     <div class="flex">
       <div class="flex min-w-[4px] w-[4px] h-auto bg-[#fff] mr-[8px]"></div>
       <div class="flex flex-col">
-        <div class="bg-[#efea06] p-[4px_24px_4px_8px] w-max mb-[8px] title-block">
-          <p class="text-[18px] font-[600] text-[#050a0e]">
+        <div class="bg-[#efea06] p-[0px_40px_22px_0px] w-max mb-[8px] title-block">
+          <p class="text-[32px] leading-[16px] font-[600] text-[#050a0e]">
             {{ 'Skills & Events' }}
           </p>
         </div>

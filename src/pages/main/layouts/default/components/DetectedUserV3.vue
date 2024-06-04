@@ -114,4 +114,19 @@ onMounted(() => {
   bottom: 0;
   background: #ffffff3b;
 }
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.cursor {
+  display: inline-block;
+  width: 6px;
+  height: 1em;
+  background-color: #e7e0e09a;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
+  position: relative;
+  top: 4px;
+}
 </style>

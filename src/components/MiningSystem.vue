@@ -9,8 +9,8 @@ import { CloseOutline } from '@vicons/ionicons5'
 
 
 const appStore = useApplicationStore()
-const { availableTapsGetters, maxTapsGetters } = storeToRefs(appStore)
-const { switchModalMiningSystem, minusAvailableTaps, plusAvailableTaps } = appStore
+const { availableTapsGetters, maxTapsGetters, mainBalanceUserGetters } = storeToRefs(appStore)
+const { switchModalMiningSystem, minusAvailableTaps, plusAvailableTaps, startPassiveEarn } = appStore
 
 const mainContainer = ref()
 const monitorActive = ref('')
@@ -23,12 +23,20 @@ const loadingVideo1 = ref(true)
 const loadingVideo2 = ref(true)
 const activeVideo = ref(true)
 
+const balanceRef = computed(() => {
+  if (mainBalanceUserGetters.value) {
+    return Number(mainBalanceUserGetters.value / 100).toFixed(2)
+  } else {
+    return 0
+  }
+})
+
 const scrollbarContainer = ref()
 const scrollbarRef = ref()
 const textGeneratedRef = ref<any>()
 const textGenerated = ref('')
 function generateMatrixSymbol() {
-  const characters = 'абвгде ёж зийкл м нопр сту фхц чшщъыьэюяA BCDEFGHIJKLMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
+  const characters = '{wq dQ @E!e $% &^686 79 FF } BCD EF GHIJK LMNOPQ RSTUVWXYZ 123 4567890 {}@!%[]()^$';
   return characters.charAt(Math.floor(Math.random() * characters.length));
 }
 
@@ -113,6 +121,7 @@ const action = (e) => {
   }, 400)
   num++
   minusAvailableTaps()
+  startPassiveEarn(1)
   whiteText()
   drawCircle(e)
   setTimeout(() => {
@@ -254,20 +263,28 @@ onUnmounted(() => {
         <div class="line-3"></div>
         <div ref="scrollbarContainer" class="sub-monitor-block w-full">
           <n-scrollbar ref="scrollbarRef" class="scrollbarRef" style="max-height: 260px">
-            <p ref="textGeneratedRef" class="break-words text-term" :class="monitorActive">{{ textGenerated }}</p>
+            <p class="text-term" :class="monitorActive">
+              <span ref="textGeneratedRef" class="cursor">{{ textGenerated }}</span>
+            </p>
           </n-scrollbar>
           <!-- <span class="text-term" :class="monitorActive">{{ 'Text description' }}</span> -->
         </div>
       </div>
       <div class="flex flex-col bg-[#ffffff08] min-h-[40px]" style="clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, -10% 100%);">
-        <div class="flex w-full p-[4px_16px]">
-          <div class="flex flex-col mr-[24px]">
-            <span class="text-[#ffffff91] text-[12px]">{{ '[$/tap]' }}</span>
-            <span class="text-[16px] text-[#fff] leading-[22px]">{{ '0.01' }}</span>
+        <div class="flex w-full p-[4px_16px] justify-between">
+          <div class="flex items-center">
+            <div class="flex flex-col mr-[24px]">
+              <span class="text-[#ffffff91] text-[12px]">{{ '[$/tap]' }}</span>
+              <span class="text-[16px] text-[#fff] leading-[22px]">{{ '0.01' }}</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="text-[#ffffff91] text-[12px]">{{ '[Energy]' }}</span>
+              <span class="text-[16px] text-[#fff] leading-[22px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
+            </div>
           </div>
-          <div class="flex flex-col">
-            <span class="text-[#ffffff91] text-[12px]">{{ '[Energy]' }}</span>
-            <span class="text-[16px] text-[#fff] leading-[22px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
+          <div class="flex justify-end">
+            <span class="text-[#f4c543] text-[20px] leading-[40px]">{{ '$ ' + balanceRef }}</span>
+            
           </div>
         </div>
         <div class="flex h-[4px] relative progress-block overflow-hidden">
@@ -329,12 +346,12 @@ onUnmounted(() => {
   z-index: 4;
   min-width: 66px;
   height: 50px;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .btn-close.active {
   opacity: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.2s ease-in-out;
 }
 
 .center-block {
@@ -444,5 +461,27 @@ onUnmounted(() => {
   border-left: 1px solid #f4c543;
   border-right: 1px solid #f4c543;
   padding: 0 8px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+
+.cursor {
+  position: relative;
+}
+.cursor::before {
+  content: '';
+  right: -10px;
+  top: 0;
+  position: absolute;
+  display: inline-block;
+  width: 6px;
+  height: 20px;
+  background-color: #e7e0e09a;
+  margin-left: 2px;
+  animation: blink 1s step-end infinite;
 }
 </style>
