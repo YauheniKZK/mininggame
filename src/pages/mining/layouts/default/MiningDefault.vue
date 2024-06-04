@@ -1,14 +1,20 @@
 <script setup lang="ts">
+import { useApplicationStore } from '@/stores/application/applicationStore';
 import Tabs from './components/Tabs.vue';
 
 import { computed, onMounted, ref } from 'vue';
 
-const valueTab = ref('dev')
+const appStore = useApplicationStore()
+
+const { setSkillsTab } = appStore
+
+const valueTab = ref('Dev')
 const containerTabsSkills = ref()
 const btnMenuRef = ref()
 
 const updateTab = (value: string) => {
   valueTab.value = value
+  setSkillsTab(value)
 }
 const showModalTabs = ref(false)
 const activeMenu = computed(() => showModalTabs.value ? 'active' : '')
@@ -27,14 +33,14 @@ const containerRef = ref()
 
 onMounted(() => {
   window.addEventListener('click', checkClickOutside);
+  setSkillsTab('Dev')
 })
-
 </script>
 
 <template>
   <div class="flex flex-col items-center w-full px-[16px] h-full" ref="containerRef">
     <Tabs :valueTab="valueTab" />
-    <div ref="btnMenuRef" class="btn-menu flex justify-center items-center cursor-pointer bg-[#717070]" @click="openMenu">
+    <div ref="btnMenuRef" class="btn-menu flex justify-center items-center cursor-pointer" @click="openMenu">
       <n-icon :size="26" class="flex justify-center items-center">
         <div class="icon-menu" :class="activeMenu">
           <span></span>
@@ -51,19 +57,19 @@ onMounted(() => {
         class="z-[10] flex flex-col mb-[12px] fixed right-0 top-0 pl-[30px] h-screen bg-[#373c41] justify-end pb-[170px]"
         >
           <n-tabs placement="right" class="w-full" :value="valueTab" animated @update:value="updateTab">
-            <n-tab name="dev">
+            <n-tab name="Dev">
               <span class="text-[16px] text-[#fff]">{{ 'Dev' }}</span>
             </n-tab>
-            <n-tab name="soft">
+            <n-tab name="Soft">
               <span class="text-[16px] text-[#fff]">Soft</span>
             </n-tab>
-            <n-tab name="media">
+            <n-tab name="Media">
               <span class="text-[16px] text-[#fff]">Media</span>
             </n-tab>
-            <n-tab name="experience">
+            <n-tab name="Experience">
               <span class="text-[16px] text-[#fff]">Experience</span>
             </n-tab>
-            <n-tab name="pets">
+            <n-tab name="Pets">
               <span class="text-[16px] text-[#fff]">Pets</span>
             </n-tab>
           </n-tabs>
@@ -75,12 +81,16 @@ onMounted(() => {
 <style scoped>
 .btn-menu {
   z-index: 12;
-  width: 50px;
+  width: 66px;
   height: 50px;
-  border-radius: 50%;
+  border-radius: 0;
   position: fixed;
   bottom: 76px;
-  right: 16px;
+  right: 0;
+  display: flex;
+  justify-content: flex-start;
+  padding: 0 0px 0 16px;
+  background: #f4c543;
 }
 
 .contaner-menu {
@@ -106,7 +116,7 @@ onMounted(() => {
 }
 
 .icon-menu span{
-  background: #fff;
+  background: #050a0e;
   border-radius:10px;
   height: 3px;
   margin: 2px 0;

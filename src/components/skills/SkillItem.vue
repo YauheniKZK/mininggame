@@ -12,7 +12,7 @@ const props = defineProps<{ title: string, profit: number }>()
       </div>
     </div>
     <div class="flex items-center p-[8px_8px_8px_0]">
-      <div class="flex w-[4px] bg-[#ff3f3f] mr-[8px] h-[20px]"></div>
+      <div class="flex w-[2px] bg-[#ff3f3f] mr-[8px] h-[20px]"></div>
       <span class="text-[#ffffffbe] text-[12px]">{{ 'lvl: ' + '5' }}</span>
     </div>
     <div class="flex items-center">
@@ -26,7 +26,7 @@ const props = defineProps<{ title: string, profit: number }>()
  
       <div class="flex flex-col flex-grow bg-[#5d5b594f] p-[2px_8px] rounded-[4px]">
         <span class="text-[#eeeeee7a] text-[12px] mr-[4px]">{{ 'price' }}</span>
-        <span class="text-[#52f55f] text-[13px]">{{ props.profit + ' $' }}</span>
+        <span class="text-[#52f55f] text-[16px] leading-[16px]">{{ props.profit + ' $' }}</span>
       </div>
     </div>
   </div>

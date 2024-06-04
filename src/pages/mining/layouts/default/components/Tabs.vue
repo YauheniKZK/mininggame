@@ -7,6 +7,7 @@ import { ref, watch } from 'vue';
 import { Fireworks } from '@fireworks-js/vue'
 import type { FireworksOptions } from '@fireworks-js/vue'
 
+
 const fw = ref<InstanceType<typeof Fireworks>>()
 const options = ref<FireworksOptions>({ opacity: 0.5 })
 
@@ -44,7 +45,7 @@ const openModal = () => {
     :pane-class="'h-full '"
     :pane-style="'padding-bottom: 60px'"
   >
-    <n-tab-pane name="dev" tab="Dev" class="w-full">
+    <n-tab-pane name="Dev" tab="Dev" class="w-full">
       <div class="flex flex-wrap gap-[16px]">
         <SkillItem
           v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
@@ -56,7 +57,7 @@ const openModal = () => {
         />
       </div>
     </n-tab-pane>
-    <n-tab-pane name="soft" tab="Soft Skills" class="w-full">
+    <n-tab-pane name="Soft" tab="Soft Skills" class="w-full">
       <div class="flex flex-wrap gap-[16px]">
         <SkillItem
           v-for="item in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14]"
@@ -67,14 +68,14 @@ const openModal = () => {
         />
       </div>
     </n-tab-pane>
-    <n-tab-pane name="media" tab="Media" class="w-full">
-      <span class="text-[#fff]">{{ 'Hard SKills' }}</span>
+    <n-tab-pane name="Media" tab="Media" class="w-full">
+      <span class="text-[#fff]">{{ 'Media experience' }}</span>
     </n-tab-pane>
-    <n-tab-pane name="experience" tab="Experience" class="w-full">
-      <span class="text-[#fff]">{{ 'Hard SKills' }}</span>
+    <n-tab-pane name="Experience" tab="Experience" class="w-full">
+      <span class="text-[#fff]">{{ 'Experience work' }}</span>
     </n-tab-pane>
-    <n-tab-pane name="pets" tab="Pets" class="w-full">
-      <span class="text-[#fff]">{{ 'Hard SKills' }}</span>
+    <n-tab-pane name="Pets" tab="Pets" class="w-full">
+      <span class="text-[#fff]">{{ 'Pets project' }}</span>
     </n-tab-pane>
   </n-tabs>
   <ModalDialog

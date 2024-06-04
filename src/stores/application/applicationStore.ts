@@ -56,6 +56,8 @@ export const useApplicationStore = defineStore('application', () => {
   const showModalRating = ref(false)
   const showMiningSystem = ref(false)
 
+  const skillsTab = ref('')
+
   // --------Getters---------
 
   const currentUserDataGetters = computed(() => currentUserData.value)
@@ -96,6 +98,8 @@ export const useApplicationStore = defineStore('application', () => {
   const showModalSettingGetters = computed(() => showModalSetting.value)
   const showModalRatingGetters = computed(() => showModalRating.value)
   const showMiningSystemGetters = computed(() => showMiningSystem.value)
+
+  const skillsTabGetters = computed(() => skillsTab.value)
   
 
   // --------Actions---------
@@ -358,6 +362,10 @@ export const useApplicationStore = defineStore('application', () => {
     showMiningSystem.value = bol
   }
 
+  function setSkillsTab(name: string) {
+    skillsTab.value = name
+  }
+
   return {
     totalScoreGetters,
     updateTotalScore,
@@ -411,6 +419,8 @@ export const useApplicationStore = defineStore('application', () => {
     showModalRatingGetters,
     switchModalRating,
     showMiningSystemGetters,
-    switchModalMiningSystem
+    switchModalMiningSystem,
+    skillsTabGetters,
+    setSkillsTab
   }
 })
