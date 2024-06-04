@@ -276,7 +276,10 @@ onUnmounted(() => {
       </div>
     </div>
     <div ref="bottomContainer" class="flex h-[50%] relative">
-      <button class="flex justify-center items-center absolute -right-[16px] bottom-0 min-w-[66px] h-[50px] bg-[#f4c543] z-[4]" @click="closeMining">
+      <button
+        class="flex justify-center items-center absolute -right-[16px] bottom-0 btn-close"
+        :class="activeVideo ? 'active' : ''"
+        @click="closeMining">
         <n-icon :color="'#050a0e'" :size="46" class="">
           <CloseOutline />
         </n-icon>
@@ -319,6 +322,20 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+
+.btn-close {
+  opacity: 0;
+  background: #f4c543;
+  z-index: 4;
+  min-width: 66px;
+  height: 50px;
+  transition: all 0.5s ease-in-out;
+}
+
+.btn-close.active {
+  opacity: 1;
+  transition: all 0.5s ease-in-out;
+}
 
 .center-block {
   opacity: 0;

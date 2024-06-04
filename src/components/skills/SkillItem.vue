@@ -5,16 +5,12 @@ const props = defineProps<{ title: string, profit: number }>()
 </script>
 
 <template>
-  <div class="flex flex-col p-[12px] bg-[#3d3d3c85] rounded-[8px] cursor-pointer" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">
-    <div class="flex mb-[8px]">
-      <div class="flex flex-col items-center pr-[8px]">
-        <div class="w-[42px] h-[42px] rounded-[50%] bg-[#3b3b3b] mb-[6px]">
-        </div>
-        
-      </div>
+  <div class="flex flex-col p-[12px] bg-[#3d3d3c85] cursor-pointer item-skill">
+    <div class="flex mb-[8px] bg-[#ff003c] header-block relative -top-[10px] -left-[10px]">
       <div class="flex flex-col">
-        <span class="text-[#fff] text-[12px]">{{ 'lvl: ' + '5' }}</span>
-        <span class="text-[#fff] text-[16px]">{{ props.title }}</span>
+        <span class="text-[#050a0e] text-[22px] leading-[20px] title">{{ props.title }}</span>
+        <span class="text-[#050a0e] text-[12px]">{{ 'lvl: ' + '5' }}</span>
+        
 
       </div>
     </div>
@@ -32,4 +28,19 @@ const props = defineProps<{ title: string, profit: number }>()
 </template>
 
 <style scoped>
+.item-skill {
+  clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 20px), calc(100% - 20px) 100%, -10% 100%);
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.header-block {
+  clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, -10% 100%);
+
+}
+
+.header-block .title {
+  font-family: "Orbitron", sans-serif;
+  letter-spacing: -1px;
+}
+    
 </style>
