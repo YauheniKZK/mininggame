@@ -2,7 +2,7 @@
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import { CodeWorkingOutline, Cube } from '@vicons/ionicons5'
-import CardContainer from '@/components/CardContainer.vue'
+import { computed } from 'vue';
 const appStore = useApplicationStore()
 const { 
   maxTapsGetters,
@@ -10,6 +10,14 @@ const {
   earnPerTapGettersFront,
   earnPassivePerHourGetters
 } = storeToRefs(appStore)
+
+const earnPassivePerHourGettersRef = computed(() => {
+  if (earnPassivePerHourGetters.value) {
+    return Number(earnPassivePerHourGetters.value / 100).toFixed(2)
+  } else {
+    return 0
+  }
+})
 
 </script>
 
@@ -52,7 +60,7 @@ const {
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ '$/hour' }}</span>
-          <span class="text-[22px] text-[#f4c543] leading-[26px]">{{ '+' + earnPassivePerHourGetters }}</span>
+          <span class="text-[22px] text-[#f4c543] leading-[26px]">{{ '+' + earnPassivePerHourGettersRef }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>

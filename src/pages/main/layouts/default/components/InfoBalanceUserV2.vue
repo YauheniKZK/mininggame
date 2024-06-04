@@ -5,7 +5,7 @@ import { formatNumberWithSpaces, levels } from '@/utils/data';
 import { computed, ref } from 'vue';
 import { onMounted } from 'vue';
 import { getImageUrl } from '@/utils/images';
-import { ExpandOutline } from '@vicons/ionicons5'
+import { ArrowForwardOutline, CogOutline, BarChartOutline } from '@vicons/ionicons5'
 
 const appStore = useApplicationStore()
 const { mainBalanceUserGetters, earnPassivePerHourGetters, currentUserLevelGetters } = storeToRefs(appStore)
@@ -51,10 +51,14 @@ onMounted(() => {
   <div class="flex w-full">
     <div class="w-[100px] h-[130px] relative bg-[#1f1f1f] rounded-[2px] flex flex-col justify-center items-center mr-[16px] overflow-hidden">
       <span class="text-[12px] text-[#ffffff7a] absolute uppercase left-[4px] top-[4px]">{{ 'balance' }}</span>
-      <img :src="getImageUrl('img/coin-bg2.png')" class="w-[190px] max-w-none opacity-[0.03]" alt="" />
-      <n-icon :color="'#f4c543'" :size="20" class="absolute right-[4px] bottom-[4px]">
-        <ExpandOutline />
-      </n-icon>
+      <img :src="getImageUrl('img/coin-bg2.png')" class="w-[190px] max-w-none opacity-[0.05]" alt="" />
+      <div class="flex items-center justify-between absolute w-full px-[4px] bottom-[4px]">
+        <span class="text-[12px] text-[#ffffff7a] uppercase">{{ 'Setting' }}</span>
+        <n-icon :color="'#f4c543'" :size="18" class="">
+          <ArrowForwardOutline />
+        </n-icon>
+      </div>
+
     </div>
     <div class="flex items-center relative flex-grow before-item">
       <span class="line"></span>
@@ -69,7 +73,19 @@ onMounted(() => {
           </transition>
         </div>
       </div>
-
+      <div class="flex justify-end items-center absolute right-[10px] bottom-[4px]">
+          <button @click="false" class="flex">
+            <n-icon :color="'#413e41f0'" :size="22">
+              <CogOutline />
+            </n-icon>
+          </button>
+          <div class="w-[1px] h-[16px] bg-[#413e41f0] m-[0_12px_0_8px] z-[1]"></div>
+          <button @click="false" class="flex">
+            <n-icon :color="'#413e41f0'" :size="20">
+              <BarChartOutline />
+            </n-icon>
+          </button>
+        </div>
     </div>
 
     <!-- <div class="flex flex-col">
