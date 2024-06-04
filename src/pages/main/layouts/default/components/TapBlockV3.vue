@@ -11,7 +11,7 @@ const { switchModalMiningSystem } = appStore
       <span class="btn__content text-[#fff] font-[600]"></span>
       <span class="flex absolute -top-[22px] -left-[4px] font-[500] text-[54px] -tracking-[5px]">{{ 'Dev_Pad' }}</span>
       <span class="btn__glitch"></span>
-      <span class="btn__label">001</span>
+      <span class="btn__label">OPEN</span>
       <div class="flex absolute right-[50px] bottom-0" style="transform: skewX(-30deg);">
         <div class="line-i"></div>
         <div class="line-i"></div>

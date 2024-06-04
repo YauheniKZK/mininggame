@@ -17,6 +17,7 @@ import TapBlockV3 from '../main/layouts/default/components/TapBlockV3.vue';
 import { useApplicationStore } from '@/stores/application/applicationStore';
 import { storeToRefs } from 'pinia';
 import MiningSystem from '@/components/MiningSystem.vue';
+import Main from '@/view/Main.vue';
 
 const appStore = useApplicationStore()
 const { showMiningSystemGetters } = storeToRefs(appStore)
@@ -25,25 +26,8 @@ const { showMiningSystemGetters } = storeToRefs(appStore)
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full h-full p-[16px]">
-    <DotsLayout />
-    <DetectedUserV3 class="z-[1] mb-[16px]" />
-    <MainInfoUserV3 class="z-[1] mb-[16px]" />
-    <ProgressUser class="z-[1] mb-[16px]" />
-    <InfoBalanceUserV2 class="z-[1] mb-[16px]" />
-    <TapBlockV3 class="z-[1] mb-[16px]" />
-    <DetectedUserV2 class="mb-[16px]" />
-    <MainInfoUserV2 class="mb-[16px]" />
-    <TapsInfoUser  class="z-[1] mb-[16px]" />
-    <DetectedUser />
-    <MainInfoUser />
-    <InfoBalanceUser class="mb-[16px]" />
-    <TapBlockV2 />
-    <n-drawer v-model:show="showMiningSystemGetters" :height="'100vh'" :placement="'bottom'" class="mining-system">
-      <n-drawer-content>
-        <MiningSystem />
-      </n-drawer-content>
-    </n-drawer>
+  <div class="flex flex-col items-center w-full h-full p-[16px] ">
+    <Main />
   </div>
 </template>
 

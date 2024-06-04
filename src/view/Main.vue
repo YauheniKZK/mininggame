@@ -72,7 +72,7 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div class="flex flex-col justify-between container-drawer h-full">
+  <div class="flex flex-col justify-between container-drawer h-full w-full">
     <DotsLayout />
     <div v-if="valueTab === 'mining'" class="px-[16px] pt-[16px] mb-[16px] z-[1]">
       <TopDescription />
@@ -128,7 +128,7 @@ onMounted(async () => {
           <n-tab name="info">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <InfoIcon :color="'#fff'" />
+                <InfoIcon :color="valueTab === 'info' ? '#050a0e' : '#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-infoIcon.svg')" alt="" /> -->
               <span>{{ 'Info' }}</span>
@@ -138,7 +138,7 @@ onMounted(async () => {
           <n-tab name="friends">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <FriendsIcon :color="'#fff'" />
+                <FriendsIcon :color="valueTab === 'friends' ? '#050a0e' : '#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-friendsIcon.svg')" alt="" /> -->
               <span>{{ 'Friends' }}</span>
@@ -147,18 +147,18 @@ onMounted(async () => {
 
           <n-tab name="main">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="30">
-                <HomeIcons :color="'#fff'" />
+              <n-icon :size="24">
+                <HomeIcons :color="valueTab === 'main' ? '#050a0e' : '#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/homeIcon.svg')" alt="" /> -->
-              <span class="text-[14px]">{{ 'Home' }}</span>
+              <span>{{ 'Home' }}</span>
             </div>
           </n-tab>
 
           <n-tab name="earn">
             <div class="flex flex-col items-center justify-center">
-              <n-icon :size="22" class="relative left-[3px]">
-                <TaskIcons :color="'#fff'" />
+              <n-icon :size="22">
+                <TaskIcons :color="valueTab === 'earn' ? '#050a0e' : '#fff'" />
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-earnIcon.svg')" alt="" /> -->
               <span>{{ 'Tasks' }}</span>
@@ -168,7 +168,7 @@ onMounted(async () => {
           <n-tab name="mining">
             <div class="flex flex-col items-center justify-center">
               <n-icon :size="22">
-                <MiningIcon :color="'#fff'" />
+                <MiningIcon :color="valueTab === 'mining' ? '#050a0e' : '#fff'" />
                 
               </n-icon>
               <!-- <img :src="getImageUrl('svg/b2-miningIcon.svg')" alt="" /> -->

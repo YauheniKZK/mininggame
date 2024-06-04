@@ -44,7 +44,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
     <div class="flex w-full mb-[24px] p-[12px] rounded-[16px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
       <div class="flex flex-col justify-center min-w-[47%] max-w-[215px]">
         <span class="text-[20px] text-[var(--main-text-color)] mb-[6px]">
-          {{ 'Hey, ' + currentUserDataGetters.first_name  }}
+          {{ 'Hey, ' + (currentUserDataGetters?.first_name || '')  }}
         </span>
         <span class="text-[14px] text-[var(--main-text-color)]">
           {{ $t('invite_friends_text') }}

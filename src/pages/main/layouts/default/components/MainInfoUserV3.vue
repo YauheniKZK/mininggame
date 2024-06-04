@@ -4,7 +4,12 @@ import { storeToRefs } from 'pinia';
 import { CodeWorkingOutline, Cube } from '@vicons/ionicons5'
 import CardContainer from '@/components/CardContainer.vue'
 const appStore = useApplicationStore()
-const { currentUserDataGetters } = storeToRefs(appStore)
+const { 
+  maxTapsGetters,
+  availableTapsGetters,
+  earnPerTapGettersFront,
+  earnPassivePerHourGetters
+} = storeToRefs(appStore)
 
 </script>
 
@@ -43,15 +48,15 @@ const { currentUserDataGetters } = storeToRefs(appStore)
       <div class="flex items-center justify-between p-[12px_8px_8px_8px]">
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ '$/tap' }}</span>
-          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '0.01' }}</span>
+          <span class="text-[22px] text-[#fff] leading-[26px]">{{ earnPerTapGettersFront }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ '$/hour' }}</span>
-          <span class="text-[22px] text-[#f4c543] leading-[26px]">{{ '+0.01' }}</span>
+          <span class="text-[22px] text-[#f4c543] leading-[26px]">{{ '+' + earnPassivePerHourGetters }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Energy' }}</span>
-          <span class="text-[22px] text-[#fff] leading-[26px]">{{ '200/200' }}</span>
+          <span class="text-[22px] text-[#fff] leading-[26px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
         </div>
         <div class="flex flex-col">
           <span class="text-[#ffffff91] text-[12px]">{{ 'Up level' }}</span>

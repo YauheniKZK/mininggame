@@ -9,7 +9,7 @@ import CoinIcon from '@/assets/svg/components/CoinIcon.vue';
 const appStore = useApplicationStore()
 const { currentUserDataGetters } = storeToRefs(appStore)
 const balanceRef = computed(() => {
-  if (currentUserDataGetters.value.balance) {
+  if (currentUserDataGetters.value?.balance) {
     return Number(currentUserDataGetters.value.balance / 100).toFixed(2)
   } else {
     return 0

@@ -82,6 +82,7 @@ onMounted(() => {
       <n-icon :color="'#f4c543'" :size="20" class="mr-[4px]">
         <ChevronForward />
       </n-icon>
+      <span class="text-[#f4c543] absolute left-[12px] top-[0px]">{{ '_' }}</span>
       <div ref="textAnimated"></div>
       <span v-for="(char, index) in animatedText" :key="index">
         {{ char.char }}
