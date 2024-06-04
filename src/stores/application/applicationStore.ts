@@ -354,8 +354,8 @@ export const useApplicationStore = defineStore('application', () => {
     showModalRating.value = !showModalRating.value
   }
 
-  function switchModalMiningSystem() {
-    showMiningSystem.value = !showMiningSystem.value
+  function switchModalMiningSystem(bol: boolean) {
+    showMiningSystem.value = bol
   }
 
   return {

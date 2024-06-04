@@ -5,6 +5,8 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { onUnmounted } from 'vue';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
+import { CloseOutline } from '@vicons/ionicons5'
+
 
 const appStore = useApplicationStore()
 const { availableTapsGetters, maxTapsGetters } = storeToRefs(appStore)
@@ -12,6 +14,8 @@ const { switchModalMiningSystem, minusAvailableTaps, plusAvailableTaps } = appSt
 
 const mainContainer = ref()
 const monitorActive = ref('')
+
+const textStart = ref('Start')
 
 const video = ref()
 const video2 = ref()
@@ -38,8 +42,12 @@ const whiteText = () => {
 }
 
 WebApp.BackButton.onClick(() => {
-  switchModalMiningSystem()
+  switchModalMiningSystem(false)
 })
+
+const closeMining = () => {
+  switchModalMiningSystem(false)
+}
 
 const setProcent = computed(() => {
   return (availableTapsGetters.value * 100) / maxTapsGetters.value
@@ -107,6 +115,9 @@ const action = (e) => {
   minusAvailableTaps()
   whiteText()
   drawCircle(e)
+  setTimeout(() => {
+    textStart.value = 'Continue'
+  }, 1500)
 }
 
 function drawCircle(event) {
@@ -265,8 +276,13 @@ onUnmounted(() => {
       </div>
     </div>
     <div ref="bottomContainer" class="flex h-[50%] relative">
+      <button class="flex justify-center items-center absolute -right-[16px] bottom-0 min-w-[66px] h-[50px] bg-[#f4c543] z-[4]" @click="closeMining">
+        <n-icon :color="'#050a0e'" :size="46" class="">
+          <CloseOutline />
+        </n-icon>
+      </button>
       <div class="center-block" :class="activeVideo ? 'active' : ''">
-        <span>{{ 'Start' }}</span>
+        <span>{{ textStart }}</span>
       </div>
       <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
@@ -324,7 +340,7 @@ onUnmounted(() => {
 
 .center-block.active {
   opacity: 1;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s 1s ease-in-out;
 }
 
 .progress-block {
@@ -342,7 +358,7 @@ onUnmounted(() => {
 
 .video-block.active {
   opacity: 0.3;
-  transition: all 0.3s ease-in-out;
+  transition: all 0.3s 1s ease-in-out;
 }
 
 .text-term {
@@ -359,7 +375,7 @@ onUnmounted(() => {
 .text-term.active {
   display: flex;
   opacity: 1;
-  transition: all 1.5s ease-in-out;
+  transition: all 1.5s 1s ease-in-out;
 }
 
 .monitor-block {

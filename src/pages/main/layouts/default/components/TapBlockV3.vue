@@ -7,7 +7,7 @@ const { switchModalMiningSystem } = appStore
 
 <template>
   <div class="flex flex-col w-full">
-    <button class="btn red z-[1] overflow-hidden" @click="switchModalMiningSystem">
+    <button class="btn red z-[1] overflow-hidden" @click="switchModalMiningSystem(true)">
       <span class="btn__content text-[#fff] font-[600]"></span>
       <span class="flex absolute -top-[22px] -left-[4px] font-[500] text-[54px] -tracking-[5px]">{{ 'Dev_Pad' }}</span>
       <span class="btn__glitch"></span>
