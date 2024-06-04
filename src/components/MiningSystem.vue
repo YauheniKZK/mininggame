@@ -121,7 +121,7 @@ const action = (e) => {
   }, 400)
   num++
   minusAvailableTaps()
-  startPassiveEarn(1)
+  startPassiveEarn(0.01)
   whiteText()
   drawCircle(e)
   setTimeout(() => {

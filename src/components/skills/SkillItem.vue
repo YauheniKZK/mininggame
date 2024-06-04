@@ -44,7 +44,7 @@ const props = defineProps<{ title: string, profit: number }>()
 }
 
 .header-block .title {
-  font-family: "Orbitron", sans-serif;
+  /* font-family: "Orbitron", sans-serif; */
 }
     
 </style>

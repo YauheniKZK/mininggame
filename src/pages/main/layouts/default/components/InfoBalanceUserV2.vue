@@ -53,7 +53,7 @@ onMounted(() => {
       <span class="text-[12px] text-[#ffffff7a] absolute uppercase left-[4px] top-[4px]">{{ 'balance' }}</span>
       <img :src="getImageUrl('img/coin-bg2.png')" class="w-[190px] max-w-none opacity-[0.05]" alt="" />
       <div class="flex items-center justify-between absolute w-full px-[4px] bottom-[4px]">
-        <span class="text-[12px] text-[#ffffff7a] uppercase">{{ 'Setting' }}</span>
+        <span class="text-[12px] text-[#ffffff7a] uppercase">{{ 'Stg & Rtg' }}</span>
         <n-icon :color="'#f4c543'" :size="18" class="">
           <ArrowForwardOutline />
         </n-icon>
