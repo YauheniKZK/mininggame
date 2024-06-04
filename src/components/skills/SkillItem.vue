@@ -6,10 +6,10 @@ const props = defineProps<{ title: string, profit: number }>()
 
 <template>
   <div class="flex flex-col p-[12px] bg-[#3d3d3c85] cursor-pointer item-skill">
-    <div class="flex mb-[8px] bg-[#ff003c] header-block relative -top-[10px] -left-[10px]">
+    <div class="flex mb-[8px] bg-[#332b4b] header-block relative -top-[10px] -left-[10px]">
       <div class="flex flex-col">
-        <span class="text-[#050a0e] text-[22px] leading-[20px] title">{{ props.title }}</span>
-        <span class="text-[#050a0e] text-[12px]">{{ 'lvl: ' + '5' }}</span>
+        <span class="text-[#ffffffbe] text-[22px] leading-[20px] title">{{ props.title }}</span>
+        <span class="text-[#ffffffbe] text-[12px]">{{ 'lvl: ' + '5' }}</span>
         
 
       </div>
@@ -40,7 +40,6 @@ const props = defineProps<{ title: string, profit: number }>()
 
 .header-block .title {
   font-family: "Orbitron", sans-serif;
-  letter-spacing: -1px;
 }
     
 </style>
