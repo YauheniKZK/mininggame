@@ -4,22 +4,25 @@ import MiningIcon from '@/assets/svg/components/MiningIcon.vue';
 
 <template>
   <div class="flex justify-between items-center">
-    <div class="flex pr-[24px]">
-      <div class="flex min-w-[4px] w-[4px] h-auto bg-[#21ce70] mr-[8px]"></div>
+    <div class="flex">
+      <div class="flex min-w-[4px] w-[4px] h-auto bg-[#fff] mr-[8px]"></div>
       <div class="flex flex-col">
-        <p class="text-[18px] font-[600]">
-          {{ 'Skills & Events' }}
-        </p>
+        <div class="bg-[#efea06] p-[4px_24px_4px_8px] w-max mb-[8px] title-block">
+          <p class="text-[18px] font-[600] text-[#050a0e]">
+            {{ 'Skills & Events' }}
+          </p>
+        </div>
+ 
         <p>
           {{ 'Upgrade your skills and take part in events and earn more so that everyone else is left behind you' }}
         </p>
       </div>
     </div>
-    <n-icon :size="70">
-      <MiningIcon :color="'#fff'" />
-    </n-icon>
  </div>
 </template>
 
 <style scoped>
+.title-block {
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
 </style>

@@ -21,8 +21,8 @@ const balanceRef = computed(() => {
 <template>
   <!-- bg-[#373c41] -->
   <div
-    class="flex justify-between p-[12px] rounded-[16px] w-full"
-    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;backdrop-filter: blur(6px);"
+    class="flex justify-between p-[12px] w-full block-st"
+    style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
   >
     <div class="flex items-center">
       <n-icon :size="36" class="mr-[8px]">
@@ -38,4 +38,8 @@ const balanceRef = computed(() => {
 </template>
 
 <style scoped>
+.block-st {
+  background: #ffffff42;
+  clip-path: polygon(calc(100% - 20px) 0, 100% calc(100% - 45px), 100% 100%, calc(0% + 20px) 100%, 0% calc(100% - 15px), 0 0);
+}
 </style>
