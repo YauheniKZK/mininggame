@@ -8,7 +8,12 @@ import { getImageUrl } from '@/utils/images';
 import { ArrowForwardOutline, CogOutline, BarChartOutline } from '@vicons/ionicons5'
 
 const appStore = useApplicationStore()
-const { mainBalanceUserGetters, earnPassivePerHourGetters, currentUserLevelGetters } = storeToRefs(appStore)
+const {
+  mainBalanceUserGetters,
+  earnPassivePerHourGetters,
+  currentUserLevelGetters
+} = storeToRefs(appStore)
+const { switchModalRating } = appStore
 
 const canvasBlock = ref()
 
@@ -80,7 +85,7 @@ onMounted(() => {
             </n-icon>
           </button>
           <div class="w-[1px] h-[16px] bg-[#413e41f0] m-[0_12px_0_8px] z-[1]"></div>
-          <button @click="false" class="flex">
+          <button @click="switchModalRating" class="flex">
             <n-icon :color="'#413e41f0'" :size="20">
               <BarChartOutline />
             </n-icon>

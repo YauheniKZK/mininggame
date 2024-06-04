@@ -119,43 +119,46 @@ const arrayRating = ref([
 
 <template>
   <div class="flex flex-col w-full h-full px-[16px]">
-    <n-carousel
-      :loop="false"
-      slides-per-view="1"
-      :touchable="false"
-      :current-index="currentIndexSlide"
-      :show-dots="false"
-      class="min-h-[120px] rounded-[8px]"
-    >
-      <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
-          <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
-            <span>{{ 'IMG Rating' }}</span>
+    <div class="flex w-full bg-[#5757579a]">
+      <n-carousel
+        :loop="false"
+        slides-per-view="1"
+        :touchable="false"
+        :current-index="currentIndexSlide"
+        :show-dots="false"
+        class="min-h-[120px] rounded-[8px]"
+      >
+        <n-carousel-item style="width: 100%;height: 120px;">
+          <div class="flex justify-center items-center h-[120px]">
+            <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
+              <span>{{ 'IMG Rating' }}</span>
+            </div>
           </div>
-        </div>
-      </n-carousel-item>
-      <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
-          <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
-            <span>{{ 'IMG Rating' }}</span>
+        </n-carousel-item>
+        <n-carousel-item style="width: 100%;height: 120px;">
+          <div class="flex justify-center items-center h-[120px]">
+            <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
+              <span>{{ 'IMG Rating' }}</span>
+            </div>
           </div>
-        </div>
-      </n-carousel-item>
-      <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
-          <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
-            <span>{{ 'IMG Rating' }}</span>
+        </n-carousel-item>
+        <n-carousel-item style="width: 100%;height: 120px;">
+          <div class="flex justify-center items-center h-[120px]">
+            <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
+              <span>{{ 'IMG Rating' }}</span>
+            </div>
           </div>
-        </div>
-      </n-carousel-item>
-      <n-carousel-item style="width: 100%;height: 120px;">
-        <div class="flex justify-center items-center h-[120px] bg-[#5757579a] rounded-[8px]">
-          <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
-            <span>{{ 'IMG Rating' }}</span>
+        </n-carousel-item>
+        <n-carousel-item style="width: 100%;height: 120px;">
+          <div class="flex justify-center items-center h-[120px]">
+            <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
+              <span>{{ 'IMG Rating' }}</span>
+            </div>
           </div>
-        </div>
-      </n-carousel-item>
-    </n-carousel>
+        </n-carousel-item>
+      </n-carousel>
+    </div>
+
     <n-carousel
       :space-between="0"
       :loop="false"
