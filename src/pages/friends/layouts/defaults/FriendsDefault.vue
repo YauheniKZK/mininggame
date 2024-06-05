@@ -3,6 +3,7 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
 import { watch } from 'vue';
+import TopInfo from './components/TopInfo.vue';
 // import WebApp from '@twa-dev/sdk'
 
 // import { computed, ref } from 'vue';
@@ -40,20 +41,8 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full h-full p-[16px]">
-    <div class="flex w-full mb-[24px] p-[12px] rounded-[16px]" style="box-shadow: 0px 0px 15px -3px var(--main-shadow-color);">
-      <div class="flex flex-col justify-center min-w-[47%] max-w-[215px]">
-        <span class="text-[20px] text-[var(--main-text-color)] mb-[6px]">
-          {{ 'Hey, ' + (currentUserDataGetters?.first_name || '')  }}
-        </span>
-        <span class="text-[14px] text-[var(--main-text-color)]">
-          {{ $t('invite_friends_text') }}
-        </span>
-      </div>
-      <div class="flex justify-center items-center w-[53%]">
-        <img :src="getImageUrl('img/invite_friend_bg.png')" class="object-contain max-w-[200px] w-full" alt="" />
-      </div>
-    </div>
+  <div class="flex flex-col items-center w-full">
+    <TopInfo class="mb-[24px]" />
     <div class="flex flex-col w-full">
       <div class="flex items-center mb-[10px]">
         <span class="text-[18px] text-[var(--main-text-color)]">{{ $t('your_referrals') + ` (${referralsGetters.length})` }}</span>
@@ -91,32 +80,103 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
     
         </div>
       </div>
-    </div>
-
-    <button
-      type="button" 
-      class="w-full h-[50px] flex justify-center items-center bg-[#3C5B6F] rounded-[8px]"
-      @click="createLinkRef"
-    >
-      <div class="flex items-center">
-        <n-spin v-if="loadingGetLinkRefUserServiceGetters" :size="24" :stroke="'#fff'" class="mr-[8px]" />
-        <span class="text-[#fff] font-[600]">{{ $t('invite_friend') }}</span>
+      <div class="flex justify-center items-center w-full">
+        <img :src="getImageUrl('img/none_ref_img2.png')" class="max-w-[50%] min-w-[220px]" alt="" />
       </div>
+    </div>
+    <button class="btn z-[1]" @click="createLinkRef">
+      <n-spin v-if="loadingGetLinkRefUserServiceGetters" :size="24" :stroke="'#fff'" class="mr-[8px]" />
+      <span class="btn__content text-[#000] font-[600]">{{ $t('invite_friend') }}</span>
+      <span class="btn__glitch"></span>
+      <span class="btn__label">DevCat</span>
     </button>
+    
   </div>
 </template>
 
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+
+:root {
+  --yellow-color: #fcee09; 
+  --red-color: #ff003c;
+  --black-color: #050a0e;
+  --blue-color: #00f0ff;
+  --white-color: #fafafa;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.btn {
+  width: 230px;
+  height: 42px;
+  border: 0;
+  outline: none;
+  background: var(--yellow-color);
+  cursor: pointer;
+  position: relative;
+  font-family: Tomorrow, sans-serif;
+  font-size: .85rem;
+  text-transform: uppercase;
+  color: var(--black-color);
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+.btn__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: var(--yellow-color);
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
+
+.btn--secondary {
+  background-color: var(--white-color);
+}
+
+.btn.red .btn__content {
+  background-color: var(--red-color);
+  color: var(--white-color);
+}
+
+.btn__label {
+  font-size: .40rem;
+  position: absolute;
+  bottom: -1px;
+  right: 8%;
+  padding: 0 5px;
+  background-color: var(--yellow-color);
+  z-index: 3;
+  border-left: 1px solid var(--blue-color);
+}
+
+.btn.red .btn__label {
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+.btn__glitch {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fcf0095d;
+  filter: drop-shadow(-2px 3px #67e3f35b) drop-shadow(-1px -3px #02d7f37e) drop-shadow(2px 1px #02d7f363);
+}
+
+.btn.red .btn__glitch {
+  background-color: var(--red-color);
+}
+
+.btn .btn__glitch,
+.btn .btn__content::after,
+.btn .btn__glitch,
+.btn .btn__content::after {
+  display: block;
+}
+
 </style>
