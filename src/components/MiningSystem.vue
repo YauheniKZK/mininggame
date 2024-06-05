@@ -343,6 +343,10 @@ watch(() => showModalTasks.value, (newVal) => {
               <span class="text-[#ffffff91] text-[12px]">{{ '[$/tap]' }}</span>
               <span class="text-[16px] text-[#fff] leading-[22px]">{{ '0.01' }}</span>
             </div>
+            <div class="flex flex-col mr-[24px]">
+              <span class="text-[#ffffff91] text-[12px]">{{ '[Energy use/tap]' }}</span>
+              <span class="text-[16px] text-[#fff] leading-[22px]">{{ '1' }}</span>
+            </div>
             <div class="flex flex-col">
               <span class="text-[#ffffff91] text-[12px]">{{ '[Energy]' }}</span>
               <span class="text-[16px] text-[#fff] leading-[22px]">{{ availableTapsGetters + '/' + maxTapsGetters }}</span>
