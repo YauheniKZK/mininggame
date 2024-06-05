@@ -216,7 +216,8 @@ function ensureDocumentIsScrollable() {
   }
 }
 
-function preventCollapse() {
+function preventCollapse(e) {
+  e.preventDefault()
   if (window.scrollY === 0) {
     window.scrollTo(0, 1);
   }
@@ -227,6 +228,7 @@ window.addEventListener("load", ensureDocumentIsScrollable);
 onMounted(() => {
   if (mainContainer.value) {
     mainContainer.value.addEventListener("touchstart", preventCollapse);
+    mainContainer.value.addEventListener("touchmove", preventCollapse);
   }
  
   video.value.addEventListener('canplaythrough', function() {
