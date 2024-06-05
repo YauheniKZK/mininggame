@@ -124,7 +124,7 @@ export const useApplicationStore = defineStore('application', () => {
       if (res && res.data) {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
-        isActiveUser.value = res.data.isActive
+        isActiveUser.value = res.data.is_active
         lastCheckinUser.value = res.data.checkin
         currentCheckinUser.value = res.data.server_time
         currentThemeApp.value = res.data.theme || 'default'
