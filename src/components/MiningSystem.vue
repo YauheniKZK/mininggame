@@ -5,7 +5,7 @@ import { useApplicationStore } from '@/stores/application/applicationStore';
 import { onUnmounted } from 'vue';
 import { getImageUrl } from '@/utils/images';
 import { storeToRefs } from 'pinia';
-import { CloseOutline } from '@vicons/ionicons5'
+import { CloseOutline, Flash } from '@vicons/ionicons5'
 
 
 const appStore = useApplicationStore()
@@ -344,7 +344,12 @@ watch(() => showModalTasks.value, (newVal) => {
               <span class="text-[16px] text-[#fff] leading-[22px]">{{ '0.01' }}</span>
             </div>
             <div class="flex flex-col mr-[24px]">
-              <span class="text-[#ffffff91] text-[12px]">{{ '[Energy use/tap]' }}</span>
+              <div class="text-[#ffffff91] text-[12px] flex items-center">
+                {{ '[' }}
+                <n-icon :color="'#f4c543'" :size="14" class="">
+                  <Flash />
+                </n-icon>
+                {{ '/tap]' }}</div>
               <span class="text-[16px] text-[#fff] leading-[22px]">{{ '1' }}</span>
             </div>
             <div class="flex flex-col">
