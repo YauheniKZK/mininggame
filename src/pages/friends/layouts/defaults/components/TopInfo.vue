@@ -27,7 +27,7 @@ import { getImageUrl } from '@/utils/images';
           <span class="text-[20px] font-[400]">{{ 'per friend premium' }}</span>
         </div>
       </div>
-      <div class="flex items-center">
+      <div class="flex items-center px-[16px]">
         <span class="text-[#fff] text-[16px]">{{ $t('invite_friends_text') }}</span>
       </div>
     </div>

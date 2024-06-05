@@ -41,7 +41,7 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full">
+  <div class="flex flex-col items-center w-full px-[16px]">
     <TopInfo class="mb-[24px]" />
     <div class="flex flex-col w-full">
       <div class="flex items-center mb-[10px]">
