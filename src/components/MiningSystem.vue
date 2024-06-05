@@ -371,7 +371,8 @@ watch(() => showModalTasks.value, (newVal) => {
       <button
         class="flex justify-center items-center absolute -right-[16px] bottom-0 btn-close"
         :class="activeVideo ? 'active' : ''"
-        @click="closeMining">
+        @click="closeMining"
+      >
         <n-icon :color="'#050a0e'" :size="46" class="">
           <CloseOutline />
         </n-icon>
@@ -379,7 +380,7 @@ watch(() => showModalTasks.value, (newVal) => {
       <div class="center-block" :class="activeVideo ? 'active' : ''">
         <span>{{ textStart }}</span>
       </div>
-      <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
+      <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)" @touchmove="e => e.preventDefault()"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
       <span v-if="loadingVideo1 && loadingVideo2" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
       <video
