@@ -1,7 +1,7 @@
 {
   "name": "iamprogrammer",
   "private": true,
-  "version": "0.3.41",
+  "version": "0.3.42",
   "type": "commonjs",
   "scripts": {
     "dev": "vite --port 5176 --host",

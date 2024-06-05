@@ -205,6 +205,7 @@ import { TextPlugin } from 'gsap/TextPlugin';
 gsap.registerPlugin(TextPlugin)
 
 onMounted(() => {
+  window.removeEventListener('touchmove', touchmovePrevent)
   video.value.addEventListener('canplaythrough', function() {
     loadingVideo1.value = false
   })
@@ -255,8 +256,13 @@ onMounted(() => {
 
 const showModalTasks = ref(false)
 
+const touchmovePrevent = (e: any) => {
+  e.preventDefault()
+} 
+
 onUnmounted(() => {
   WebApp.BackButton.hide()
+  window.removeEventListener('touchmove', touchmovePrevent)
 })
 
 const title = ref()
@@ -380,7 +386,7 @@ watch(() => showModalTasks.value, (newVal) => {
       <div class="center-block" :class="activeVideo ? 'active' : ''">
         <span>{{ textStart }}</span>
       </div>
-      <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)" @touchmove="e => e.preventDefault()"></canvas>
+      <canvas ref="canvas" class="relative z-[2]" @touchend="e => action(e)"></canvas>
       <img :src="getImageUrl('img/background-grid.jpg')" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.3] z-[1]" alt="">
       <span v-if="loadingVideo1 && loadingVideo2" class="absolute left-0 top-0 object-cover w-full h-full opacity-[0.8] text-[#fff]">{{ 'Loading' }}</span>
       <video
