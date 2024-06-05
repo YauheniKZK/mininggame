@@ -26,7 +26,7 @@ export const useApplicationStore = defineStore('application', () => {
   const miningTotalScore = ref(0)
   const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
-  const isActiveUser = ref<any>(false)
+  const isActiveUser = ref(false)
   const successCurrentUserData = ref(false)
   const loadingGetUser = ref(false)
   const loadingGetLinkRefUserService = ref(false)

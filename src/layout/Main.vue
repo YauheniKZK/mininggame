@@ -149,8 +149,8 @@ onBeforeUnmount(async () => {
   <div class="flex flex-col h-full">
     <TestPage v-if="testMode" />
     <LoadingStart v-if="!testMode && loadingGetUserGetters" />
-    <StartPage v-if="!testMode && !currentUserDataGetters && !loadingGetUserGetters && !isActiveUserGetters" />
-    <Main v-if="!testMode && currentUserDataGetters && !loadingGetUserGetters && isActiveUserGetters" />
+    <StartPage v-if="!testMode && !currentUserDataGetters && !isActiveUserGetters && !loadingGetUserGetters" />
+    <Main v-if="!testMode && currentUserDataGetters && isActiveUserGetters && !loadingGetUserGetters" />
   </div>
 </template>
 
