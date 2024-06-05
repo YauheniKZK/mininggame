@@ -55,11 +55,13 @@ onMounted(async () => {
     // containerForOptions.value.addEventListener('touchstart', (e) => e.preventDefault(), { passive: false })
     // containerForOptions.value.addEventListener('touchmove', (e) => e.preventDefault(), { passive: false })
   }
+  if (currentUserDataGetters.value && isActiveUserGetters.value) {
+    await actionGetUser('start')
+    await actionGetStacksMain()
+    await actionSyncTapClaim()
+    await actionCheckinUserService()
+  }
 
-  await actionGetUser('start')
-  await actionGetStacksMain()
-  await actionSyncTapClaim()
-  await actionCheckinUserService()
 
   // if (eruda) {
   //   eruda.init({
