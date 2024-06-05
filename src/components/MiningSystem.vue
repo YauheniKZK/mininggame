@@ -204,8 +204,31 @@ import gsap from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 gsap.registerPlugin(TextPlugin)
 
+function ensureDocumentIsScrollable() {
+  const isScrollable =
+    document.documentElement.scrollHeight > window.innerHeight;
+  if (!isScrollable) {
+    document.documentElement.style.setProperty(
+      "height",
+      "calc(100vh + 1px)",
+      "important"
+    );
+  }
+}
+
+function preventCollapse() {
+  if (window.scrollY === 0) {
+    window.scrollTo(0, 1);
+  }
+}
+
+window.addEventListener("load", ensureDocumentIsScrollable);
+
 onMounted(() => {
-  window.removeEventListener('touchmove', touchmovePrevent)
+  if (mainContainer.value) {
+    mainContainer.value.addEventListener("touchstart", preventCollapse);
+  }
+ 
   video.value.addEventListener('canplaythrough', function() {
     loadingVideo1.value = false
   })
@@ -256,13 +279,8 @@ onMounted(() => {
 
 const showModalTasks = ref(false)
 
-const touchmovePrevent = (e: any) => {
-  e.preventDefault()
-} 
-
 onUnmounted(() => {
   WebApp.BackButton.hide()
-  window.removeEventListener('touchmove', touchmovePrevent)
 })
 
 const title = ref()
