@@ -200,6 +200,10 @@ function drawRipple(ctx, ripple) {
   ctx.fill();
 }
 
+import gsap from 'gsap';
+import { TextPlugin } from 'gsap/TextPlugin';
+gsap.registerPlugin(TextPlugin)
+
 onMounted(() => {
   video.value.addEventListener('canplaythrough', function() {
     loadingVideo1.value = false
@@ -249,14 +253,76 @@ onMounted(() => {
   animationLoop();
 })
 
+const showModalTasks = ref(false)
+
 onUnmounted(() => {
   WebApp.BackButton.hide()
+})
+
+const title = ref()
+const task1 = ref()
+const task2 = ref()
+const task3 = ref()
+const setTextTitle = () => {
+
+  setTimeout(() => {
+    if (title.value) {
+      gsap.to(title.value, {duration: 0.5, text: `Your task today`})
+    }
+    setTimeout(() => {
+      if (task1.value) {
+        gsap.to(task1.value, {duration: 0.5, text: `Make 50 taps -`})
+      }
+    }, 500)
+    setTimeout(() => {
+      if (task2.value) {
+        gsap.to(task2.value, {duration: 0.5, text: `Make 100 taps -`})
+      }
+    }, 1000)
+    setTimeout(() => {
+      if (task3.value) {
+        gsap.to(task3.value, {duration: 0.5, text: `Make 1000 taps -`})
+      }
+    }, 1500)
+  }, 500)
+
+}
+
+watch(() => showModalTasks.value, (newVal) => {
+  if (newVal) {
+    setTextTitle()
+  }
 })
 </script>
 
 <template>
   <div ref="mainContainer" class="flex flex-col w-full relative" style="height: calc(100vh - 32px);">
+    <div v-if="showModalTasks" class="fixed top-0 left-0 h-screen w-full z-[9]" @click="showModalTasks = false"></div>
+    <Transition name="slide-right">
+      <div
+        v-if="showModalTasks"
+        ref="containerTabsSkills"
+        class="z-[10] mb-[12px] fixed right-0 min-w-[260px] max-w-[260px] top-0 pl-[30px] h-screen container-tasks pt-[100px] pb-[170px]"
+        >
+          <div class="flex flex-col z-[1] perspective-block">
+            <span ref="title" class="text-[#ffffffb3] text-[30px] flex mb-[16px] text-item"></span>
+            <div class="flex flex-col">
+              
+              <span class="text-[#ffffffb3] text-[18px] text-item" ref="task1"></span>
+              <span class="text-[#ffffffb3] text-[18px] text-item" ref="task2"></span>
+              <span class="text-[#ffffffb3] text-[18px] text-item" ref="task3"></span>
+            </div>
+          </div>
+      </div>
+    </Transition>
     <div ref="topContainer" class="flex flex-col w-full h-[50%] relative z-[1]">
+      
+      <Transition name="slide-right">
+        <div v-if="!showModalTasks" class="btn-menu-task" @click="showModalTasks =  true">
+          <span>{{ 'tasks' }}</span>
+        </div>
+      </Transition>
+      
       <div class="flex monitor-block relative w-full p-[16px_8px] mb-[16px]" :class="monitorActive">
         <div class="line-1"></div>
         <div class="line-2"></div>
@@ -339,6 +405,55 @@ onUnmounted(() => {
 </template>
 
 <style scoped>
+
+.perspective-block {
+  transform: rotateX(10deg) rotateY(-18deg) rotateZ(3deg);
+  padding-right: 24px;
+  align-items: flex-end;
+}
+
+.text-item {
+  text-shadow: 4px 14px 4px #ffffff30;
+  text-align: right;
+}
+
+.container-tasks {
+  display: flex;
+  flex-flow: column;
+}
+
+.container-tasks::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.btn-menu-task {
+  position: absolute;
+  right: -38px;
+  top: calc(50% - 65px);
+  background: #f4c543;
+  line-height: 18px;
+  min-width: 70px;
+  transform: rotate(-90deg);
+  display: flex;
+  justify-content: center;
+  padding: 8px 16px;
+  z-index: 2;
+  clip-path: polygon(calc(100% - 10px) -1px, 100% 10px, 100% 100%, calc(0% + 0px) 100%, 0% calc(100% - 10px), 0 0);
+}
+
+.btn-menu-task span {
+  position: relative;
+  height: min-content;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 12px;
+}
 
 .btn-close {
   opacity: 0;
@@ -483,5 +598,12 @@ onUnmounted(() => {
   background-color: #e7e0e09a;
   margin-left: 2px;
   animation: blink 1s step-end infinite;
+}
+
+.slide-right-enter-active, .slide-right-leave-active {
+  transition: transform 0.3s;
+}
+.slide-right-enter-from, .slide-right-leave-to {
+  transform: translateX(100%);
 }
 </style>

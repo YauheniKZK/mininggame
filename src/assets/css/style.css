@@ -413,6 +413,7 @@ body, html {
 
 .mining-system .n-drawer-body-content-wrapper {
   position: relative;
+  overflow: hidden !important;
 }
 
 .mining-system .n-drawer-body-content-wrapper::before {
