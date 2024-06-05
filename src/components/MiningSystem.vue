@@ -204,33 +204,7 @@ import gsap from 'gsap';
 import { TextPlugin } from 'gsap/TextPlugin';
 gsap.registerPlugin(TextPlugin)
 
-function ensureDocumentIsScrollable() {
-  const isScrollable =
-    document.documentElement.scrollHeight > window.innerHeight;
-  if (!isScrollable) {
-    document.documentElement.style.setProperty(
-      "height",
-      "calc(100vh + 1px)",
-      "important"
-    );
-  }
-}
-
-function preventCollapse(e) {
-  e.preventDefault()
-  if (window.scrollY === 0) {
-    window.scrollTo(0, 1);
-  }
-}
-
-window.addEventListener("load", ensureDocumentIsScrollable);
-
 onMounted(() => {
-  if (mainContainer.value) {
-    mainContainer.value.addEventListener("touchstart", preventCollapse);
-    mainContainer.value.addEventListener("touchmove", preventCollapse);
-  }
- 
   video.value.addEventListener('canplaythrough', function() {
     loadingVideo1.value = false
   })
