@@ -12,7 +12,8 @@ import {
   levelCheck,
   syncCheck,
   syncTapClaim,
-  getStacksMain
+  getStacksMain,
+  activateUserService
 } from '@/services/tap.service'
 import { defineStore } from 'pinia'
 import { computed, ref } from 'vue'
@@ -180,6 +181,18 @@ export const useApplicationStore = defineStore('application', () => {
       const res = await registrationUserService()
       if (res) {
         console.log('registrationUserService', res)
+        // totalUserScore.value = res.data.balance || 0
+      }      
+    } catch (error) {
+      console.log('error')
+    }
+  }
+
+  async function actionActivatedUser() {
+    try {
+      const res = await activateUserService()
+      if (res) {
+        console.log('activateUserService', res)
         // totalUserScore.value = res.data.balance || 0
       }      
     } catch (error) {
@@ -425,6 +438,7 @@ export const useApplicationStore = defineStore('application', () => {
     switchModalMiningSystem,
     skillsTabGetters,
     setSkillsTab,
-    isActiveUserGetters
+    isActiveUserGetters,
+    actionActivatedUser
   }
 })

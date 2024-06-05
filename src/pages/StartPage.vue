@@ -7,13 +7,14 @@ import { ArrowBack, ArrowForward } from '@vicons/ionicons5'
 import { onMounted, ref } from 'vue';
 import TapBlock from './main/layouts/default/components/TapBlock.vue';
 import UserSetting from '@/components/user/UserSetting.vue';
+import { storeToRefs } from 'pinia';
 // import TestComponent from '@/components/TestComponent.vue';
 // import VirtualKeyboard from '@/components/VirtualKeyboard.vue';
 // import TapBlockV2 from '@/components/TapBlockV2.vue';
 
 const appStore = useApplicationStore()
-// const { totalScoreGetters, totalUserScoreGetter } = storeToRefs(appStore)
-const { actionRegistrationUser, actionGetUser } = appStore
+const { currentUserDataGetters, isActiveUserGetters } = storeToRefs(appStore)
+const { actionRegistrationUser, actionGetUser, actionActivatedUser } = appStore
 
 // watch(() => totalUserScoreGetter.value, async (newVal) => {
 //   if (newVal) {
@@ -32,19 +33,23 @@ const updateTab = (value: string) => {
 }
 const showModal = ref(false)
 
+const loadingStart = ref(false)
+
 const currentIndex = ref(0)
 
 const updateCurrentIndex = (value: number) => {
   currentIndex.value = value
 }
 
-const start = () => {
-  showModal.value = true
-  setTimeout(async () => {
+const start = async () => {
+  loadingStart.value = true
+  if (currentUserDataGetters.value) {
+    await actionActivatedUser()
+  } else {
     await actionRegistrationUser()
-    await actionGetUser('page')
-    showModal.value = false
-  }, 3000)
+  }
+  await actionGetUser('page')
+  loadingStart.value = false
 }
 
 onMounted(() => {
@@ -99,6 +104,7 @@ onMounted(() => {
           </div>
           <div class="flex justify-center w-full pt-[16px]">
             <button class="btn red z-[1]" @click="start">
+              <n-spin v-if="loadingStart" :size="16" :stroke="'#fff'" class="z-[1] absolute top-[13px] left-[20px]" />
               <span class="btn__content text-[#fff] font-[600]">Start</span>
               <span class="btn__glitch"></span>
               <span class="btn__label">New</span>

@@ -9,7 +9,13 @@ import { levels } from './utils/data';
 import { onUpdated } from 'vue';
 
 const appStore = useApplicationStore()
-const { totalScoreGetters, currentThemeAppGetters, mainBalanceUserGetters, currentUserLevelGetters } = storeToRefs(appStore)
+const {
+  totalScoreGetters,
+  currentThemeAppGetters,
+  mainBalanceUserGetters,
+  currentUserLevelGetters,
+  successCurrentUserDataGetters
+} = storeToRefs(appStore)
 const { actionMiningMoney, actionGetStackCategories, actionLevelCheck, actionGetUser } = appStore
 
 function setViewportData() {
@@ -25,6 +31,13 @@ const getCurrentLevelUp = computed(() => {
   return levels[currentUserLevelGetters.value]
 })
 
+watch(() => successCurrentUserDataGetters.value, async (newVal) => {
+  if (newVal) {
+    actionGetStackCategories()
+    actionLevelCheck()
+  }
+})
+
 watch(() => mainBalanceUserGetters.value, async (newVal) => {
   if (newVal) {
     if (newVal > getCurrentLevelUp.value) {
@@ -35,65 +48,14 @@ watch(() => mainBalanceUserGetters.value, async (newVal) => {
   }
 })
 
-onresize = (event) => {
-  console.log('event onresize', event)
-}
-
-const webAppHeight = computed(() => WebApp.viewportHeight)
-
-watch(() => webAppHeight.value, (newVal) => {
-  console.log('rrrrrrrrrr', newVal)  
-})
-
-WebApp.onEvent('viewportChanged', async (event: any) => {
-  // console.log('event111', event)
-  if (WebApp.viewportHeight < 400) {
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAA');
-  }
-  // let value = totalScoreGetters.value
-  if (event.isStateStable) {
-    console.log('event222', event)
-    // await actionCheckinUserService()
-  }
-})
-
-// const overflow = 100
-// document.body.style.overflowY = 'hidden'
-// document.body.style.marginTop = `${overflow}px`
-// document.body.style.height = window.innerHeight + overflow + "px"
-// document.body.style.paddingBottom = `${overflow}px`
-// window.scrollTo(0, overflow)
-
 const mainblock = ref()
 
-let ts: number | undefined
-const onTouchStart = (e: TouchEvent) => {
-  ts = e.touches[0].clientY
-}
-const onTouchMove = (e: TouchEvent) => {
-  if (mainblock.value) {
-    const scroll = mainblock.value.scrollTop
-    const te = e.changedTouches[0].clientY
-    if (scroll <= 0 && ts! < te) {
-      e.preventDefault()
-    }
-  } else {
-    e.preventDefault()
-  }
-}
-
-const touchMove = (e: TouchEvent) => {
-  e.preventDefault()
-}
-
-
-onMounted(() => {
+onMounted(async () => {
   WebApp.expand()
   console.log('WebApp.initDataUnsafe.user?.photo_url', WebApp.initDataUnsafe.user?.photo_url)
   console.log('WebApp.version', WebApp.version)
   WebApp.onEvent('viewportChanged', setViewportData)
-  actionGetStackCategories()
-  actionLevelCheck()
+  await actionGetUser('page')
   // window.addEventListener('touchstart', onTouchStart, { passive: false })
   // window.addEventListener('touchmove', onTouchMove, { passive: false })
 

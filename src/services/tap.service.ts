@@ -5,7 +5,7 @@ import WebApp from '@twa-dev/sdk'
 
 export const getUserService = async () => {
     if (WebApp) {
-        const url = `${Config.REST_SERVER}/mining/user`
+        const url = `${Config.REST_SERVER}/user`
         const res = await api.get(url)
         console.log('res', res)    
         return res
@@ -14,7 +14,16 @@ export const getUserService = async () => {
 
 export const registrationUserService = async () => {
     if (WebApp) {
-        const url = `${Config.REST_SERVER}/mining/start`
+        const url = `${Config.REST_SERVER}/user/create`
+        const res = await api.get(url)
+        console.log('res', res)    
+        return res
+    }
+}
+
+export const activateUserService = async () => {
+    if (WebApp) {
+        const url = `${Config.REST_SERVER}/user/activate`
         const res = await api.get(url)
         console.log('res', res)    
         return res
