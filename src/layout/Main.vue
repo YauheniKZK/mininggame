@@ -20,7 +20,8 @@ const {
   successCurrentUserDataGetters,
   isTapingGetters,
   successfullSyncTapClaimGetters,
-  earnPassivePerSecGetters
+  earnPassivePerSecGetters,
+  isActiveUserGetters
 } = storeToRefs(appStore)
 const {
   actionGetUser,
@@ -148,8 +149,8 @@ onBeforeUnmount(async () => {
   <div class="flex flex-col h-full">
     <TestPage v-if="testMode" />
     <LoadingStart v-if="!testMode && loadingGetUserGetters" />
-    <StartPage v-if="!testMode && !currentUserDataGetters && !loadingGetUserGetters" />
-    <Main v-if="!testMode && currentUserDataGetters && !loadingGetUserGetters" />
+    <StartPage v-if="!testMode && !currentUserDataGetters && !loadingGetUserGetters && !isActiveUserGetters" />
+    <Main v-if="!testMode && currentUserDataGetters && !loadingGetUserGetters && isActiveUserGetters" />
   </div>
 </template>
 

@@ -26,6 +26,7 @@ export const useApplicationStore = defineStore('application', () => {
   const miningTotalScore = ref(0)
   const totalUserScore = ref(0)
   const currentUserData = ref<any>(null)
+  const isActiveUser = ref<any>(false)
   const successCurrentUserData = ref(false)
   const loadingGetUser = ref(false)
   const loadingGetLinkRefUserService = ref(false)
@@ -61,6 +62,7 @@ export const useApplicationStore = defineStore('application', () => {
   // --------Getters---------
 
   const currentUserDataGetters = computed(() => currentUserData.value)
+  const isActiveUserGetters = computed(() => isActiveUser.value)
   const totalScoreGetters = computed(() => totalScore.value)
   const totalUserScoreGetter = computed(() => totalUserScore.value)
   const loadingGetUserGetters = computed(() => loadingGetUser.value)
@@ -122,6 +124,7 @@ export const useApplicationStore = defineStore('application', () => {
       if (res && res.data) {
         console.log('getUserService', res)
         currentUserData.value = res.data || null
+        isActiveUser.value = res.data.isActive
         lastCheckinUser.value = res.data.checkin
         currentCheckinUser.value = res.data.server_time
         currentThemeApp.value = res.data.theme || 'default'
@@ -421,6 +424,7 @@ export const useApplicationStore = defineStore('application', () => {
     showMiningSystemGetters,
     switchModalMiningSystem,
     skillsTabGetters,
-    setSkillsTab
+    setSkillsTab,
+    isActiveUserGetters
   }
 })
