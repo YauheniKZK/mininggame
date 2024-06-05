@@ -41,9 +41,9 @@ watch(() => successGetLinkRefUserServiceGetters.value, (newVal) => {
 </script>
 
 <template>
-  <div class="flex flex-col items-center w-full px-[16px]">
+  <div class="flex flex-col items-center w-full">
     <TopInfo class="mb-[24px]" />
-    <div class="flex flex-col w-full">
+    <div class="flex flex-col w-full px-[16px]">
       <div class="flex items-center mb-[10px]">
         <span class="text-[18px] text-[var(--main-text-color)]">{{ $t('your_referrals') + ` (${referralsGetters.length})` }}</span>
       </div>
