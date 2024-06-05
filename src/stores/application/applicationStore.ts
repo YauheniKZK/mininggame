@@ -58,6 +58,8 @@ export const useApplicationStore = defineStore('application', () => {
   const showModalRating = ref(false)
   const showMiningSystem = ref(false)
 
+  const loadingCreateUser = ref(false)
+
   const skillsTab = ref('')
 
   // --------Getters---------
@@ -103,6 +105,8 @@ export const useApplicationStore = defineStore('application', () => {
   const showMiningSystemGetters = computed(() => showMiningSystem.value)
 
   const skillsTabGetters = computed(() => skillsTab.value)
+
+  const loadingCreateUserGetters = computed(() => loadingCreateUser.value)
   
 
   // --------Actions---------
@@ -117,7 +121,7 @@ export const useApplicationStore = defineStore('application', () => {
 
   async function actionGetUser(type: 'page' |'start' | 'mining') {
     successCurrentUserData.value = false
-    if (type === 'start') {
+    if (type === 'page') {
       loadingGetUser.value = true
     }
     try {
@@ -177,26 +181,32 @@ export const useApplicationStore = defineStore('application', () => {
   }
 
   async function actionRegistrationUser() {
+    loadingCreateUser.value = true
     try {
       const res = await registrationUserService()
       if (res) {
         console.log('registrationUserService', res)
+        loadingCreateUser.value = false
         // totalUserScore.value = res.data.balance || 0
       }      
     } catch (error) {
+      loadingCreateUser.value = false
       console.log('error')
     }
   }
 
   async function actionActivatedUser() {
+    loadingCreateUser.value = true
     try {
       const res = await activateUserService()
       if (res) {
         console.log('activateUserService', res)
         // totalUserScore.value = res.data.balance || 0
+        loadingCreateUser.value = false
       }      
     } catch (error) {
       console.log('error')
+      loadingCreateUser.value = false
     }
   }
 
@@ -439,6 +449,7 @@ export const useApplicationStore = defineStore('application', () => {
     skillsTabGetters,
     setSkillsTab,
     isActiveUserGetters,
-    actionActivatedUser
+    actionActivatedUser,
+    loadingCreateUserGetters
   }
 })

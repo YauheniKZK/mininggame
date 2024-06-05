@@ -13,7 +13,7 @@ import { storeToRefs } from 'pinia';
 // import TapBlockV2 from '@/components/TapBlockV2.vue';
 
 const appStore = useApplicationStore()
-const { currentUserDataGetters, isActiveUserGetters } = storeToRefs(appStore)
+const { currentUserDataGetters, loadingCreateUserGetters } = storeToRefs(appStore)
 const { actionRegistrationUser, actionGetUser, actionActivatedUser } = appStore
 
 // watch(() => totalUserScoreGetter.value, async (newVal) => {
@@ -42,14 +42,12 @@ const updateCurrentIndex = (value: number) => {
 }
 
 const start = async () => {
-  loadingStart.value = true
   if (currentUserDataGetters.value) {
     await actionActivatedUser()
   } else {
     await actionRegistrationUser()
   }
   await actionGetUser('page')
-  loadingStart.value = false
 }
 
 onMounted(() => {
@@ -104,7 +102,7 @@ onMounted(() => {
           </div>
           <div class="flex justify-center w-full pt-[16px]">
             <button class="btn red z-[1]" @click="start">
-              <n-spin v-if="loadingStart" :size="16" :stroke="'#fff'" class="z-[1] absolute top-[13px] left-[20px]" />
+              <n-spin v-if="loadingCreateUserGetters" :size="16" :stroke="'#fff'" class="z-[1] absolute top-[13px] left-[20px]" />
               <span class="btn__content text-[#fff] font-[600]">Start</span>
               <span class="btn__glitch"></span>
               <span class="btn__label">New</span>
