@@ -119,7 +119,8 @@ const tasks = ref([
                 <template #header>
                   <span class="checkinday-title">{{ 'Day 1' }}</span>
                 </template>
-                <div class="flex items-center">
+                <div class="flex flex-col">
+                  <span class="checkinday mb-[4px]">{{ '+ 3$' }}</span>
                   <span class="checkinday">{{ 'Day confirmed - ' }}</span>
                     <n-icon :color="'#f4c543'" :size="20" class="mx-[8px]">
                     <CheckboxOutline />
@@ -131,7 +132,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 2' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday mb-[4px]">{{ '+ 1$' }}</span>
+                  <span class="checkinday mb-[4px]">{{ '+ 5$' }}</span>
                   <button class="btn z-[1]" @click="false">
                     <n-spin v-if="false" :size="24" :stroke="'#fff'" class="mr-[8px]" />
                     <span class="btn__content text-[#000] font-[600] text-[12px]">{{ 'Confirm day' }}</span>
@@ -144,7 +145,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 3' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 2$' }}</span>
+                  <span class="checkinday">{{ '+ 10$' }}</span>
                 </div>
               </n-timeline-item>
               <n-timeline-item type="info" :line-type="'dashed'">
@@ -152,7 +153,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 4' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 5$' }}</span>
+                  <span class="checkinday">{{ '+ 20$' }}</span>
                 </div>
               </n-timeline-item>
               <n-timeline-item type="info" :line-type="'dashed'">
@@ -160,7 +161,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 5' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 10$' }}</span>
+                  <span class="checkinday">{{ '+ 50$' }}</span>
                 </div>
               </n-timeline-item>
             </n-timeline>
@@ -172,7 +173,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 6' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 20$' }}</span>
+                  <span class="checkinday">{{ '+ 100$' }}</span>
                 </div>
               </n-timeline-item>
               <n-timeline-item type="info" :line-type="'dashed'">
@@ -180,7 +181,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 7' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 50$' }}</span>
+                  <span class="checkinday">{{ '+ 300$' }}</span>
                 </div>
               </n-timeline-item>
               <n-timeline-item type="info" :line-type="'dashed'">
@@ -188,7 +189,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 8' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 100$' }}</span>
+                  <span class="checkinday">{{ '+ 500$' }}</span>
                 </div>
               </n-timeline-item>
               <n-timeline-item type="info" :line-type="'dashed'">
@@ -196,7 +197,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 9' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 500$' }}</span>
+                  <span class="checkinday">{{ '+ 1000$' }}</span>
                 </div>
               </n-timeline-item>
               <n-timeline-item type="info" :line-type="'dashed'">
@@ -204,7 +205,7 @@ const tasks = ref([
                   <span class="checkinday-title">{{ 'Day 10' }}</span>
                 </template>
                 <div class="flex flex-col">
-                  <span class="checkinday">{{ '+ 1000$' }}</span>
+                  <span class="checkinday">{{ '+ 5000$' }}</span>
                 </div>
               </n-timeline-item>
             </n-timeline>
