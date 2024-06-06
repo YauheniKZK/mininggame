@@ -307,8 +307,9 @@ body, html {
   height: 48px !important;
   padding: 0px 16px 0 16px !important;
   background: #3d3a3d !important;
-  border-radius: 16px !important;
+  border-radius: 0px !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+  clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, -10% 100%);
 }
 
 .tasks-collapse .n-collapse-item:not(:first-child) {
