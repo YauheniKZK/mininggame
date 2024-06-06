@@ -85,10 +85,18 @@ const tasks = ref([
 
 <template>
   <div class="flex flex-col w-full">
-    <div class="flex justify-center items-center bg-[#5757579a] min-h-[140px] mb-[16px] rounded-[8px]">
-      <div class="flex justify-center items-center w-[100px] min-w-[100px] h-[100px] rounded-[50%] bg-[#63636363]">
-
+    <div class="flex justify-start items-center relative min-h-[170px] max-h-[170px] mb-[16px] bg-block">
+      <div class="flex flex-col max-w-[55%] text-[#fff] relative z-[1]" style="text-shadow: rgb(77 77 77 / 19%) 3px 2px 0px;">
+        <span class="text-[30px] leading-[20px] flex mb-[16px]">{{ 'Your tasks' }}</span>
+        <span>{{ 'Complete tasks to earn more money and gain more skills' }}</span>
       </div>
+      <!-- <div class="flex justify-center items-center w-[120px] min-w-[120px] h-[120px] rounded-[50%] relative bg-[#63636363]">
+        <div class="flex w-full h-full overflow-hidden rounded-[50%]">
+          <img :src="getImageUrl('img/bg-subrise.jpg')" class="object-cover" alt="" />
+        </div>
+        <div class="flex bg-cat"></div>
+      </div> -->
+      <img :src="getImageUrl('img/full-sunrise-cat3.png')" class="object-cover h-full absolute -right-[75px] top-0" alt="" />
     </div>
     <ModalDialog
       :show-modal="showModal"
@@ -186,4 +194,22 @@ const tasks = ref([
 </template>
 
 <style scoped>
+.bg-block {
+  overflow: hidden;
+  padding: 16px 0 16px 16px;
+  clip-path: polygon(10% 0, 100% 0, 100% 80%, 90% 100%, 0 100%, 0 20%);
+  background: #5757579a;
+}
+.bg-cat {
+  background: url('../../../../../assets/img/sunrise-cat.png') no-repeat bottom;
+  background-size: cover;
+  width: 147px;
+  position: absolute;
+  left: -1px;
+  bottom: -7px;
+  height: 153px;
+  border-radius: 50%;
+  background-position: -20px -7px;
+  opacity: 0.9;
+}
 </style>
