@@ -136,7 +136,6 @@ const tasks = ref([
                     <n-spin v-if="false" :size="24" :stroke="'#fff'" class="mr-[8px]" />
                     <span class="btn__content text-[#000] font-[600] text-[12px]">{{ 'Confirm day' }}</span>
                     <span class="btn__glitch"></span>
-                    <span class="btn__label">day</span>
                   </button>
                 </div>
               </n-timeline-item>
