@@ -96,7 +96,7 @@ const tasks = ref([
         </div>
         <div class="flex bg-cat"></div>
       </div> -->
-      <img :src="getImageUrl('img/full-sunrise-cat3.png')" class="object-cover h-full absolute -right-[75px] top-0" alt="" />
+      <img :src="getImageUrl('img/full-sunrise-cat4.png')" class="object-cover h-full absolute -right-[75px] top-0" alt="" />
     </div>
     <ModalDialog
       :show-modal="showModal"
