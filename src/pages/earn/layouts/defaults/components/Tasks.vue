@@ -228,11 +228,11 @@ const tasks = ref([
           <div
             v-for="(item, index) in tasks"
             :key="index"
-            class="flex justify-between items-center mb-[8px] bg-[#496989] p-[8px] rounded-[8px]"
+            class="flex justify-between items-center m-[0_4px_8px_4px] bg-[#496989] p-[2px] box-task"
             style="box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;"
           > 
             <div class="flex items-center">
-              <div class="w-[40px] min-w-[40px] h-[40px] rounded-[50%] mr-[16px] bg-[#414141]">
+              <div class="w-[40px] min-w-[40px] img-block h-[40px] mr-[16px] bg-[#414141]">
 
               </div>
               <div class="flex flex-col">
@@ -253,6 +253,10 @@ const tasks = ref([
 </template>
 
 <style scoped>
+
+.box-task .img-block {
+  clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 10px), calc(100% - 10px) 100%, -10% 100%);
+}
 .checkinday {
   color: #fff;
   font-size: 14px;
