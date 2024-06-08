@@ -117,12 +117,11 @@ const tasks = ref([
             <n-timeline>
               <n-timeline-item type="success" :line-type="'dashed'">
                 <template #header>
-                  <span class="checkinday-title">{{ 'Day 1' }}</span>
+                  <span class="checkinday-title opacity-[0.5]">{{ 'Day 1' }}</span>
                 </template>
-                <div class="flex flex-col">
-                  <span class="checkinday mb-[4px]">{{ '+ 3$' }}</span>
-                  <span class="checkinday">{{ 'Day confirmed - ' }}</span>
-                    <n-icon :color="'#f4c543'" :size="20" class="mx-[8px]">
+                <div class="flex flex-col relative">
+                  <span class="checkinday mb-[4px] opacity-[0.5]">{{ '+ 3$' }}</span>
+                    <n-icon :color="'#f4c543'" :size="46" class="mx-[8px] absolute -top-[28px] left-0">
                     <CheckboxOutline />
                   </n-icon>
                 </div>
@@ -135,7 +134,7 @@ const tasks = ref([
                   <span class="checkinday mb-[4px]">{{ '+ 5$' }}</span>
                   <button class="btn z-[1]" @click="false">
                     <n-spin v-if="false" :size="24" :stroke="'#fff'" class="mr-[8px]" />
-                    <span class="btn__content text-[#000] font-[600] text-[12px]">{{ 'Confirm day' }}</span>
+                    <span class="btn__content text-[#000] font-[600] text-[12px]">{{ 'Confirm' }}</span>
                     <span class="btn__glitch"></span>
                   </button>
                 </div>
@@ -317,6 +316,7 @@ const tasks = ref([
   right: 2px;
   bottom: 2px;
   background: var(--yellow-color);
+  text-transform: none;
   clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
 }
 
