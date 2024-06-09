@@ -124,7 +124,7 @@ const openModal = () => {
           </div>
           <div class="flex items-center w-full">
             <div class="flex justify-center items-center pr-[16px] min-w-[42px] h-[42px]">
-              <span class="text-[28px] font-[600] text-[#fff] leading-[42px] relative z-[1]">
+              <span class="text-[28px] font-[600] text-[#fff] leading-[42px] relative z-[1] whitespace-pre">
                 {{ '3' }}
                 <sup>{{ '$' }}</sup>
               </span>
