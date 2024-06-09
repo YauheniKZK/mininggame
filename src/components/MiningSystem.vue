@@ -303,8 +303,10 @@ watch(() => showModalTasks.value, (newVal) => {
         v-if="showModalTasks"
         ref="containerTabsSkills"
         class="z-[10] mb-[12px] fixed right-0 min-w-[260px] max-w-[260px] top-0 pl-[30px] h-screen container-tasks pt-[100px] pb-[170px]"
+        style="border-left: 1px solid #ffffff59;box-shadow: 1px 1px 24px 12px #0a0a0a4f;"
         >
           <div class="flex flex-col z-[1] perspective-block">
+            <div class="line1"></div>
             <span ref="title" class="text-[#ffffffb3] text-[30px] flex mb-[16px] text-item"></span>
             <div class="flex flex-col">
               
@@ -430,6 +432,25 @@ watch(() => showModalTasks.value, (newVal) => {
 .container-tasks {
   display: flex;
   flex-flow: column;
+}
+
+.container-tasks .line1 {
+  position: absolute;
+  right: 16px;
+  top: -12px;
+  height: 1px;
+  width: calc(100% - 16px);
+  background: #ffffff3b;
+}
+
+.container-tasks .line1::before {
+  content: '';
+  width: 4px;
+  height: 4px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: #ffffff3b;
 }
 
 .container-tasks::before {
