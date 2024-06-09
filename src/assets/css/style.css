@@ -306,10 +306,37 @@ body, html {
 .tasks-collapse .n-collapse-item__header {
   height: 48px !important;
   padding: 0px 16px 0 16px !important;
-  background: #3d3a3d !important;
+  background: #3d3a3d00 !important;
   border-radius: 0px !important;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px !important;
+}
+
+.tasks-collapse .n-collapse-item__header::before {
+  content: '';
+  position: absolute;
+  top: 1px;
+  left: 1px;
+  width: calc(100% - 2px);
+  z-index: 2;
+  height: calc(100% - 2px);
   clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, -10% 100%);
+  background: #0c0c0c !important;
+}
+
+.tasks-collapse .n-collapse-item__header::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: calc(100% + 0px);
+  height: calc(100% + 0px);
+  background: #3d3a3d !important;
+  clip-path: polygon(0px 0px, 0px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, -10% 100%);
+  z-index: 1;
+}
+
+.tasks-collapse .n-collapse-item__header > div {
+  z-index: 3;
 }
 
 .tasks-collapse .n-collapse-item:not(:first-child) {

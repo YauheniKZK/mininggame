@@ -3,12 +3,13 @@
     :show="showModal"
     preset="card"
     :bordered="false"
-    :closable="true"
+    :closable="false"
     class="custom1-card-modal"
     style="padding-bottom: 15px; border-radius: 0px"
     :style="`max-width: ${maxWidth}; width: ${width}`"
     :content-style="'padding-left: 16px;padding-right: 16px;'"
     :header-style="'padding-left: 16px;padding-right: 16px;padding-bottom: 0;'"
+    @mask-click="$emit('close')"
   >
     <template #header>{{ '' }}</template>
     <template #header-extra>
