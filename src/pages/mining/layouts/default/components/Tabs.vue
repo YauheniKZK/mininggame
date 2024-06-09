@@ -170,7 +170,7 @@ const openModal = () => {
 
 .bottom-block {
   position: absolute;
-  bottom: 0px;
+  bottom: -35px;
   left: -16px;
   width: calc(100% + 32px);
   height: 8px;
