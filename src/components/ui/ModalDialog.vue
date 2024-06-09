@@ -3,7 +3,7 @@
     :show="showModal"
     preset="card"
     :bordered="false"
-    :closable="false"
+    :closable="true"
     class="custom1-card-modal"
     style="padding-bottom: 15px; border-radius: 0px"
     :style="`max-width: ${maxWidth}; width: ${width}`"
