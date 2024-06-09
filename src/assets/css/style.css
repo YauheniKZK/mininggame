@@ -481,3 +481,7 @@ body, html {
 .rating_slide .n-carousel__slide {
   clip-path: polygon(calc(100% - 20px) 0, 100% calc(100% - 45px), 100% 100%, calc(0% + 20px) 100%, 0% calc(100% - 15px), 0 0);
 }
+
+/* .custom1-card-modal {
+  clip-path: polygon(calc(0% + 30px) 0, 100% 0, 100% calc(100% - 25px), calc(100% - 30px) 100%, 0 100%, 0 calc(0% + 25px));
+} */

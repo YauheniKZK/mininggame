@@ -85,74 +85,98 @@ const openModal = () => {
     @close="showModal = false"
   >
     <template #content>
-      <div class="flex pt-[8px]">
-        <span class="text-[12px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
-      </div>
-      <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
-      <div class="flex flex-col pt-[8px]">
-        <n-timeline>
-          <n-timeline-item type="success" :line-type="'dashed'">
-            <template #header>
-              <span class="tag">{{ 'C++' }}</span>
-            </template>
-          </n-timeline-item>
-          <n-timeline-item type="warning" :line-type="'dashed'">
-            <template #header>
-              <div class="flex items-center">
-                <span class="text-[#fff] text-[12px]">{{ 'level 5 ' }}</span>
-                <n-icon :color="'#fff'" :size="16" class="mx-[8px]">
-                  <TrendingUpOutline />
-                </n-icon>
-                <span class="text-[#fff] item-before-lvl relative z-0">{{ ' level 6' }}</span>
-              </div>
-            </template>
-          </n-timeline-item>
-          <n-timeline-item type="info" :line-type="'dashed'">
-            <template #header>
-              <div class="flex items-center">
-                <span class="text-[#fff] mr-[4px]">{{ '$/hour: ' }}</span>
-                <span class="text-[#fff] item-before-profit relative z-0">{{ ' +0.5$' }}</span>
-              </div>
-            </template>
-          </n-timeline-item>
-        </n-timeline>
-        <div class="flex justify-end">
-          <div class="w-[150px] h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
+      <div class="flex flex-col w-full relative">
+        <div class="top-block"></div>
+        <div class="bottom-block"></div>
+        <div class="flex pt-[8px]">
+          <span class="text-[12px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
         </div>
-        <div class="flex justify-end">
-          <div class="flex items-center">
-            <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">
-              {{ '3' }}
-              <sup>{{ '$' }}</sup>
-            </span>
-            <div
-              class="z-[1] min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item cursor-pointer"
-              @click="update"
-            >
-              <n-spin v-if="loading" :size="14" class="mr-[8px]" />
-              <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
+        <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
+        <div class="flex flex-col pt-[8px]">
+          <n-timeline>
+            <n-timeline-item type="success" :line-type="'dashed'">
+              <template #header>
+                <span class="tag">{{ 'C++' }}</span>
+              </template>
+            </n-timeline-item>
+            <n-timeline-item type="warning" :line-type="'dashed'">
+              <template #header>
+                <div class="flex items-center">
+                  <span class="text-[#fff] text-[12px]">{{ 'level 5 ' }}</span>
+                  <n-icon :color="'#fff'" :size="16" class="mx-[8px]">
+                    <TrendingUpOutline />
+                  </n-icon>
+                  <span class="text-[#fff] item-before-lvl relative z-0">{{ ' level 6' }}</span>
+                </div>
+              </template>
+            </n-timeline-item>
+            <n-timeline-item type="info" :line-type="'dashed'">
+              <template #header>
+                <div class="flex items-center">
+                  <span class="text-[#fff] mr-[4px]">{{ '$/hour: ' }}</span>
+                  <span class="text-[#fff] item-before-profit relative z-0">{{ ' +0.5$' }}</span>
+                </div>
+              </template>
+            </n-timeline-item>
+          </n-timeline>
+          <div class="flex justify-end">
+            <div class="w-[150px] h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
+          </div>
+          <div class="flex justify-end">
+            <div class="flex items-center">
+              <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">
+                {{ '3' }}
+                <sup>{{ '$' }}</sup>
+              </span>
+              <div
+                class="z-[1] min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item cursor-pointer"
+                @click="update"
+              >
+                <n-spin v-if="loading" :size="14" class="mr-[8px]" />
+                <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
+              </div>
             </div>
           </div>
+          <Fireworks
+            ref="fw"
+            :autostart="false"
+            :options="options"
+            :style="{
+              top: 0,
+              left: 0,
+              zIndex: 0,
+              width: '100%',
+              height: '100%',
+              position: 'absolute'
+            }"
+          />
         </div>
-        <Fireworks
-          ref="fw"
-          :autostart="false"
-          :options="options"
-          :style="{
-            top: 0,
-            left: 0,
-            zIndex: 0,
-            width: '100%',
-            height: '100%',
-            position: 'absolute'
-          }"
-        />
       </div>
+
     </template>
   </ModalDialog>
 </template>
 
 <style scoped>
+.top-block {
+  position: absolute;
+  top: -43px;
+  left: -16px;
+  width: calc(100% + 32px);
+  height: 8px;
+  background: #faebd729;
+  background-image: repeating-linear-gradient(45deg, #f4c543, #f4c543 30px, #050a0e 30px, #050a0e 60px);
+}
+
+.bottom-block {
+  position: absolute;
+  bottom: 0px;
+  left: -16px;
+  width: calc(100% + 32px);
+  height: 8px;
+  background: #faebd729;
+  background-image: repeating-linear-gradient(45deg, #f4c543, #f4c543 30px, #050a0e 30px, #050a0e 60px);
+}
 .price-before {
   text-shadow: rgb(0 0 0 / 44%) 0px 3px 8px;
 }
