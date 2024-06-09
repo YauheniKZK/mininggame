@@ -89,7 +89,7 @@ const openModal = () => {
         <div class="top-block"></div>
         <div class="bottom-block"></div>
         <div class="flex pt-[8px]">
-          <span class="text-[12px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
+          <span class="text-[14px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
         </div>
         <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
         <div class="flex flex-col pt-[8px]">
@@ -122,20 +122,18 @@ const openModal = () => {
           <div class="flex justify-end">
             <div class="w-[150px] h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
           </div>
-          <div class="flex justify-end">
-            <div class="flex items-center">
-              <span class="text-[20px] mr-[40px] font-[600] text-[#fff] relative price-before z-[1]">
+          <div class="flex items-center w-full">
+            <div class="flex justify-center items-center pr-[16px] min-w-[42px] h-[42px]">
+              <span class="text-[28px] font-[600] text-[#fff] leading-[42px] relative z-[1]">
                 {{ '3' }}
                 <sup>{{ '$' }}</sup>
               </span>
-              <div
-                class="z-[1] min-w-[80px] h-[34px] flex justify-center items-center rounded-[4px] btn-item cursor-pointer"
-                @click="update"
-              >
-                <n-spin v-if="loading" :size="14" class="mr-[8px]" />
-                <span class="text-[16px] text-[#fff]">{{ 'Up' }}</span>
-              </div>
             </div>
+            <button class="btn z-[1]" @click="update">
+              <n-spin v-if="loading" :size="24" :stroke="'#fff'" class="mr-[8px]" />
+              <span class="btn__content text-[#000] font-[600]">{{ 'Upgrade' }}</span>
+              <span class="btn__label">up</span>
+            </button>
           </div>
           <Fireworks
             ref="fw"
@@ -179,17 +177,6 @@ const openModal = () => {
 }
 .price-before {
   text-shadow: rgb(0 0 0 / 44%) 0px 3px 8px;
-}
-.price-before::before {
-  content: "";
-  position: absolute;
-  width: 1px;
-  height: 36px;
-  right: -19px;
-  z-index: -1;
-  top: -3px;
-  background: #5f5f5f;
-  transform: skew(-25deg);
 }
 /* .price-before::after {
   content: "";
@@ -284,6 +271,77 @@ const openModal = () => {
 		filter: hue-rotate(1turn);
 	}
 }
+
+:root {
+  --yellow-color: #fcee09; 
+  --red-color: #ff003c;
+  --black-color: #050a0e;
+  --blue-color: #00f0ff;
+  --white-color: #fafafa;
+}
+
+.btn {
+  max-width: 100%;
+  flex-grow: 1;
+  height: 42px;
+  border: 0;
+  outline: none;
+  background: var(--yellow-color);
+  cursor: pointer;
+  position: relative;
+  font-family: Tomorrow, sans-serif;
+  font-size: .85rem;
+  text-transform: uppercase;
+  color: var(--black-color);
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
+
+.btn__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  right: 2px;
+  bottom: 2px;
+  background: var(--yellow-color);
+  clip-path: polygon(92% 0, 100% 25%, 100% 100%, 8% 100%, 0% 75%, 0 0);
+}
+
+.btn--secondary {
+  background-color: var(--white-color);
+}
+
+.btn.red .btn__content {
+  background-color: var(--red-color);
+  color: var(--white-color);
+}
+
+.btn__label {
+  font-size: .40rem;
+  position: absolute;
+  bottom: -1px;
+  right: 8%;
+  padding: 0 5px;
+  background-color: var(--yellow-color);
+  z-index: 3;
+  border-left: 1px solid var(--blue-color);
+}
+
+.btn.red .btn__label {
+  background-color: var(--white-color);
+  color: var(--black-color);
+}
+
+
+.btn .btn__glitch,
+.btn .btn__content::after,
+.btn .btn__glitch,
+.btn .btn__content::after {
+  display: block;
+}
+
 
 
 </style>
