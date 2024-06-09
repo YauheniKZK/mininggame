@@ -27,7 +27,7 @@ const versionApp = import.meta.env.PACKAGE_VERSION
 
 const appStore = useApplicationStore()
 const { showModalSettingGetters, showModalRatingGetters, showMiningSystemGetters } = storeToRefs(appStore)
-// const { actionMiningMoney } = appStore
+const { switchModalRating, switchModalSetting } = appStore
 
 const rulesTabs = ['setting', 'rating']
 
@@ -42,9 +42,11 @@ const updateTab = (value: string) => {
 watch(() => showModalRatingGetters.value, (newVal) => {
   if (newVal) {
     updateTab('rating')
+    switchModalRating(true)
     WebApp.BackButton.show()
   } else {
     updateTab('main')
+    switchModalRating(false)
     WebApp.BackButton.hide()
   }
 })
@@ -52,9 +54,11 @@ watch(() => showModalRatingGetters.value, (newVal) => {
 watch(() => showModalSettingGetters.value, (newVal) => {
   if (newVal) {
     updateTab('setting')
+    switchModalSetting(true)
     WebApp.BackButton.show()
   } else {
     updateTab('main')
+    switchModalSetting(false)
     WebApp.BackButton.hide()
   }
 })

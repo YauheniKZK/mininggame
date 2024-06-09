@@ -44,13 +44,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div
+  <div class="flex justify-center flex-col items-center w-full h-[100px]">
+    <span class="text-[20px] font-[600]">{{ 'Choose a theme to your liking' }}</span>
+    <span class="text-[20px] font-[600] text-[#fff]">{{ 'Comming soon...' }}</span>
+  </div>
+  <!-- <div
     v-for="item in optionsThemeAppGetters"
     :key="item"
     class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
   >
     <span class="text-[14px] text-main-color">{{ item }}</span>
-  </div>
+  </div> -->
 </template>
 
 <style scoped>

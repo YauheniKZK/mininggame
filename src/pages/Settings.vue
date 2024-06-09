@@ -4,7 +4,7 @@ import WebApp from '@twa-dev/sdk';
 import { onBeforeUnmount } from 'vue';
 import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
 import StackOptions from '@/components/user/components/StackOptions.vue';
-import { ChevronForward } from '@vicons/ionicons5';
+import { ChevronForward, CloseOutline } from '@vicons/ionicons5';
 
 const emit = defineEmits(['back'])
 
@@ -23,7 +23,15 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="flex flex-col p-[16px]">
+  <div class="flex flex-col p-[16px] relative">
+    <button
+      class="flex justify-center items-center fixed right-0 bottom-[32px] btn-close"
+      @click="emit('back')"
+    >
+      <n-icon :color="'#050a0e'" :size="46" class="">
+        <CloseOutline />
+      </n-icon>
+    </button>
     <div class="flex mb-[24px]">
       <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
     </div>
@@ -66,5 +74,13 @@ onBeforeUnmount(() => {
   </div>
 </template>
 
-<style>
+<style scoped>
+.btn-close {
+  opacity: 1;
+  background: #f4c543;
+  z-index: 4;
+  min-width: 66px;
+  height: 50px;
+  transition: all 0.2s ease-in-out;
+}
 </style>
