@@ -82,14 +82,14 @@ onUnmounted(() => {
 
 <template>
   <div class="flex flex-col items-end">
-    <button @click="switchModalSetting" class="btn-item">
+    <button @click="switchModalSetting(true)" class="btn-item">
       <n-icon :color="'#fff'" :size="28">
         <CogOutline />
       </n-icon>
       <!-- <img :src="getImageUrl('svg/settingUser.svg')" class="max-w-[44px]" alt="" /> -->
     </button>
     <div class="w-[36px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
-    <button @click="switchModalRating" class="btn-item">
+    <button @click="switchModalRating(true)" class="btn-item">
       <n-icon :color="'#fff'" :size="22">
         <BarChartOutline />
       </n-icon>

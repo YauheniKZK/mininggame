@@ -13,7 +13,7 @@ const {
   earnPassivePerHourGetters,
   currentUserLevelGetters
 } = storeToRefs(appStore)
-const { switchModalRating } = appStore
+const { switchModalRating, switchModalSetting } = appStore
 
 const canvasBlock = ref()
 
@@ -79,13 +79,13 @@ onMounted(() => {
         </div>
       </div>
       <div class="flex justify-end items-center absolute right-[10px] bottom-[4px]">
-          <button @click="false" class="flex">
+          <button @click="switchModalSetting(true)" class="flex">
             <n-icon :color="'#413e41f0'" :size="22">
               <CogOutline />
             </n-icon>
           </button>
           <div class="w-[1px] h-[16px] bg-[#413e41f0] m-[0_12px_0_8px] z-[1]"></div>
-          <button @click="switchModalRating" class="flex">
+          <button @click="switchModalRating(true)" class="flex">
             <n-icon :color="'#413e41f0'" :size="20">
               <BarChartOutline />
             </n-icon>

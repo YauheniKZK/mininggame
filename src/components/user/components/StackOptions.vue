@@ -25,11 +25,6 @@ WebApp.BackButton.onClick(() => {
   showModal.value = false
 })
 
-
-const updateTheme = (value: ThemeApp) => {
-  actionChooseThemeApp(value)
-}
-
 const updateStack = async (value: string) => {
   await actionAddMainStack(Number(value))
 }
@@ -48,39 +43,13 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting" @click="openOptions">
-    <span class="text-[14px] text-main-color">{{ $t('choose_main_stack') }}</span>
-    <div class="flex">
-      <n-icon :size="22" :color="'#D2649A'">
-        <ChevronForward />
-      </n-icon>
-    </div>
-  </div>
-  <Transition name="slide-up">
-    <div v-if="showModal" ref="stackContainer" class="flex flex-col p-[16px] fixed left-0 top-0 w-full h-screen bg-[#000] overflow-auto">
-      <div
-        v-for="item in mainStacksGetters"
-        :key="item.id"
-        class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
-      >
-        <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
-      </div>
-    </div>
-  </Transition>
-  
-  <!-- <n-drawer
-    v-model:show="showModal"
-    :placement="'right'"
-    width="90%"
-    content-style="flex: 1 1 auto;"
-    height="100vh"
-    class="bg-secondary fixed"
-    style="height: auto;"
+  <div
+    v-for="item in mainStacksGetters"
+    :key="item.id"
+    class="flex items-center justify-between p-[8px_16px] rounded-[12px] item-setting mb-[16px]"
   >
-    <n-drawer-content>
-      
-    </n-drawer-content>
-  </n-drawer> -->
+    <span class="text-[14px] text-main-color">{{ $t(item.title) }}</span>
+  </div>
 </template>
 
 <style scoped>

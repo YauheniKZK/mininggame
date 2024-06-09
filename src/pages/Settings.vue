@@ -4,6 +4,7 @@ import WebApp from '@twa-dev/sdk';
 import { onBeforeUnmount } from 'vue';
 import ThemeOptions from '@/components/user/components/ThemeOptions.vue';
 import StackOptions from '@/components/user/components/StackOptions.vue';
+import { ChevronForward } from '@vicons/ionicons5';
 
 const emit = defineEmits(['back'])
 
@@ -27,10 +28,40 @@ onBeforeUnmount(() => {
       <span class="text-[18px] text-main-color">{{ $t('SETTING') }}</span>
     </div>
     <div class="flex flex-col mb-[12px]">
-      <ThemeOptions />
-    </div>
-    <div class="flex flex-col">
-      <StackOptions />
+      <n-collapse class="tasks-collapse" accordion>
+        <n-collapse-item title="right" name="1">
+          <template #arrow>
+            <n-icon :color="'#fff'" :size="22">
+              <ChevronForward />
+            </n-icon>
+          </template>
+          <template #header>
+            <span class="text-[#fff] text-[16px]">{{ 'Theme' }}</span>
+          </template>
+          <template #header-extra>
+            <span class="text-[#48ede7c0] text-[14px]">{{ '' }}</span>
+          </template>
+          <div class="flex flex-col">
+            <ThemeOptions />
+          </div>
+        </n-collapse-item>
+        <n-collapse-item title="right" name="2">
+          <template #arrow>
+            <n-icon :color="'#fff'" :size="22">
+              <ChevronForward />
+            </n-icon>
+          </template>
+          <template #header>
+            <span class="text-[#fff] text-[16px]">{{ 'Main stack' }}</span>
+          </template>
+          <template #header-extra>
+            <span class="text-[#48ede7c0] text-[14px]">{{ '' }}</span>
+          </template>
+          <div class="flex flex-col">
+            <StackOptions />
+          </div>
+        </n-collapse-item>
+      </n-collapse>
     </div>
   </div>
 </template>

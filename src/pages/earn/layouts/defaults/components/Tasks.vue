@@ -117,10 +117,10 @@ const tasks = ref([
             <n-timeline>
               <n-timeline-item type="success" :line-type="'dashed'">
                 <template #header>
-                  <span class="checkinday-title opacity-[0.5]">{{ 'Day 1' }}</span>
+                  <span class="checkinday-title opacity-[0.3]">{{ 'Day 1' }}</span>
                 </template>
                 <div class="flex flex-col relative">
-                  <span class="checkinday mb-[4px] opacity-[0.5]">{{ '+ 3$' }}</span>
+                  <span class="checkinday mb-[4px] opacity-[0.3]">{{ '+ 3$' }}</span>
                     <n-icon :color="'#f4c543'" :size="46" class="mx-[8px] absolute -top-[28px] left-0">
                     <CheckboxOutline />
                   </n-icon>
@@ -293,6 +293,7 @@ const tasks = ref([
 
 .btn {
   width: 110px;
+  max-width: 100%;
   height: 24px;
   border: 0;
   outline: none;

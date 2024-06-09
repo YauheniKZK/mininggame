@@ -119,7 +119,7 @@ const arrayRating = ref([
 
 <template>
   <div class="flex flex-col w-full h-full px-[16px]">
-    <div class="flex w-full bg-[#5757579a]">
+    <div class="flex w-full bg-[#5757579a] carusel-img">
       <n-carousel
         :loop="false"
         slides-per-view="1"
@@ -167,7 +167,7 @@ const arrayRating = ref([
       :current-index="currentIndexSlide"
       centered-slides
       :show-dots="false"
-      class="min-h-[60px] pt-[16px]"
+      class="min-h-[60px] max-h-[76px] pt-[16px] rating_slide"
     >
       <n-carousel-item style="width: 33.333%;height: 60px;" :class="`${currentIndexSlide === 0 ? 'active-slide' : ''}`" class="item-car">
         <span class="text-[#fff] flex justify-center items-center h-full text-[16px]" @click="updateSlide(0)">{{ 'Beginner' }}</span>
@@ -186,16 +186,27 @@ const arrayRating = ref([
       <div
         v-for="item, index in arrayRating"
         :key="index"
-        class="flex justify-between items-center w-full mb-[8px] p-[8px] rounded-[16px] bg-[#2f2f2f]"
-        style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;"
+        class="flex justify-between item-user items-center w-full mb-[8px] p-[2px_24px_2px_2px] border-[1px]"
         :class="{
-          'border-[#FFD700] border-[1px]': index === 0,
-          'border-[#C0C0C0] border-[1px]': index === 1,
-          'border-[#CD7F32] border-[1px]': index === 2,
+          'border-[#FFD700]': index === 0,
+          'border-[#C0C0C0]': index === 1,
+          'border-[#CD7F32]': index === 2,
+          'border-[#ffffff00] bg-[#4f4f4f30]': index > 2,
         }"
       >
-        <div class="flex items-center">
-          <div class="w-[40px] min-w-[40px] bg-[#868686b4] h-[40px] rounded-[50%] mr-[16px]">
+        <div
+          class="flex items-center flex-grow "
+        >
+          <div
+          class="flex absolute right-0 top-0 h-full w-[15px]"
+          :class="{
+            'bg-[#FFD700]': index === 0,
+            'bg-[#C0C0C0]': index === 1,
+            'bg-[#CD7F32]': index === 2,
+            'bg-[#df4c25]': index > 2,
+          }"
+          ></div>
+          <div class="w-[63px] min-w-[63px] bg-[#868686b4] h-[63px] mr-[16px]">
 
           </div>
           <div class="flex flex-col">
@@ -214,12 +225,12 @@ const arrayRating = ref([
             </div>
           </div>
         </div>
-        <div class="flex items-center">
-          <span class="text-[20px] text-[#fff] z-0" :class="{
-            'text-[#FFD700] font-[900] text-[30px] rating-item-1': index === 0,
-            'text-[#C0C0C0] font-[900] text-[30px] rating-item-2': index === 1,
-            'text-[#CD7F32] font-[900] text-[30px] rating-item-3': index === 2,
-            'text-[#fff]': index > 2
+        <div class="flex items-end justify-end min-w-[30px] h-full">
+          <span class=" z-0 leading-[33px] min-w-[70px] text-right" :class="{
+            'text-[#FFD700] font-[900] text-[46px]': index === 0,
+            'text-[#C0C0C0] font-[900] text-[46px]': index === 1,
+            'text-[#CD7F32] font-[900] text-[46px]': index === 2,
+            'text-[#df4c25] text-[26px]': index > 2
           }" style="text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;">{{ item.rating }}</span>
         </div>
       </div>
@@ -228,6 +239,13 @@ const arrayRating = ref([
 </template>
 
 <style>
+.carusel-img {
+  clip-path: polygon(calc(0% + 30px) 0, 100% 0, 100% calc(100% - 25px), calc(100% - 30px) 100%, 0 100%, 0 calc(0% + 25px));
+}
+.item-user {
+  position: relative;
+  clip-path: polygon(calc(100% - 15px) 0, 100% calc(100% - 55px), 100% 100%, 0 100%, 0% 100%, 0 0);
+}
 .item-car {
   transition: all 0.3s ease-in-out;
 }
@@ -242,15 +260,15 @@ const arrayRating = ref([
 .rating-item-2::before,
 .rating-item-3::before {
   content: "";
-  bottom: 4px;
-  right: 0;
-  width: 28px;
-  height: 20px;
+  bottom: -1px;
+  right: -10px;
+  width: 40px;
+  height: 46px;
   position: absolute;
   z-index: -1;
-  transform: skewY(-15deg) rotate(15deg) rotateX(45deg);
-  border-radius: 2px;
+  border-radius: 0px;
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  clip-path: polygon(calc(100% - 25px) 0, 0 0, 100% 0, 100% 100%, 0 100%, 0% calc(100% - 35px));
 }
 
 .rating-item-1::before {
@@ -265,8 +283,9 @@ const arrayRating = ref([
 
 .active-slide {
   background: rgb(81 79 79);
-  border-radius: 10px;
+  border-radius: 0px;
   box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+
 }
 .tag2 {
   display: inline-block;

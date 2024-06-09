@@ -376,12 +376,12 @@ export const useApplicationStore = defineStore('application', () => {
     currentThemeApp.value = theme
   }
 
-  function switchModalSetting() {
-    showModalSetting.value = !showModalSetting.value
+  function switchModalSetting(bol: boolean) {
+    showModalSetting.value = bol
   }
 
-  function switchModalRating() {
-    showModalRating.value = !showModalRating.value
+  function switchModalRating(bol: boolean) {
+    showModalRating.value = bol
   }
 
   function switchModalMiningSystem(bol: boolean) {
