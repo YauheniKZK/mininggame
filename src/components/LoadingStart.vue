@@ -3,7 +3,10 @@ import { getImageUrl } from '@/utils/images';
 </script>
 
 <template>
-  <div class="flex items-center justify-center w-full h-full">
+  <div class="flex flex-col items-center justify-center w-full h-full">
+    <div class="flex justify-center items-center">
+      <span class="text-[#ffffff77] text-[32px]">{{'Loading...'}}</span>
+    </div>
     <div class="flex relative w-[200px] h-[200px]">
       <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-1" alt="">
       <img :src="getImageUrl('img/protez.png')" class="w-[50px] h-[50%] object-contain absolute img-2" alt="">
