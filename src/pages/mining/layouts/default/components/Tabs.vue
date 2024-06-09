@@ -22,13 +22,20 @@ async function startFireworks() {
 
 const showModal = ref(false)
 const loading = ref(false)
+const completed = ref(false)
+const isCompleted = ref(false)
 
 const update = async () => {
   loading.value = true
   setTimeout(async () => {
     loading.value = false
+    completed.value = true
+    setTimeout(() => {
+      isCompleted.value = true
+    }, 1000)
     await startFireworks()
-  }, 1500)
+    
+  }, 2500)
 }
 
 const openModal = () => {
@@ -85,69 +92,81 @@ const openModal = () => {
     @close="showModal = false"
   >
     <template #content>
-      <div class="flex flex-col w-full relative">
-        <div class="top-block"></div>
-        <div class="bottom-block"></div>
-        <div class="flex pt-[8px]">
-          <span class="text-[14px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
+      <div class="flex flex-col w-full relative container-main">
+        <div class="top-block" :class="{
+          'active': loading,
+          'completed': completed
+        }"></div>
+        <div class="bottom-block" :class="{
+          'active': loading,
+          'completed': completed
+        }"></div>
+        <div v-if="isCompleted" class="flex flex-col justify-center items-center w-full min-h-[250px]">
+          <span class="tag mb-[16px]">{{ 'C++' }}</span>
+          <span class="text-[#fff]">{{ 'Upgraded!' }}</span>
         </div>
-        <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
-        <div class="flex flex-col pt-[8px]">
-          <n-timeline>
-            <n-timeline-item type="success" :line-type="'dashed'">
-              <template #header>
-                <span class="tag">{{ 'C++' }}</span>
-              </template>
-            </n-timeline-item>
-            <n-timeline-item type="warning" :line-type="'dashed'">
-              <template #header>
-                <div class="flex items-center">
-                  <span class="text-[#fff] text-[12px]">{{ 'level 5 ' }}</span>
-                  <n-icon :color="'#fff'" :size="16" class="mx-[8px]">
-                    <TrendingUpOutline />
-                  </n-icon>
-                  <span class="text-[#fff] item-before-lvl relative z-0">{{ ' level 6' }}</span>
-                </div>
-              </template>
-            </n-timeline-item>
-            <n-timeline-item type="info" :line-type="'dashed'">
-              <template #header>
-                <div class="flex items-center">
-                  <span class="text-[#fff] mr-[4px]">{{ '$/hour: ' }}</span>
-                  <span class="text-[#fff] item-before-profit relative z-0">{{ ' +0.5$' }}</span>
-                </div>
-              </template>
-            </n-timeline-item>
-          </n-timeline>
-          <div class="flex justify-end">
-            <div class="w-[150px] h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
+        <div v-else class="flex flex-col w-full">
+          <div class="flex pt-[8px]">
+            <span class="text-[14px] text-[#fff]">{{ 'Upgrade your knowledge in C++ and reach a new level of software development' }}</span>
           </div>
-          <div class="flex items-center w-full">
-            <div class="flex justify-center items-center pr-[16px] min-w-[42px] h-[42px]">
-              <span class="text-[28px] font-[600] text-[#fff] leading-[42px] relative z-[1] whitespace-pre">
-                {{ '3' }}
-                <sup>{{ '$' }}</sup>
-              </span>
+          <div class="w-[150px] h-[1px] bg-[#63656661] my-[8px] z-[1]"></div>
+          <div class="flex flex-col pt-[8px]">
+            <n-timeline>
+              <n-timeline-item type="success" :line-type="'dashed'">
+                <template #header>
+                  <span class="tag">{{ 'C++' }}</span>
+                </template>
+              </n-timeline-item>
+              <n-timeline-item type="warning" :line-type="'dashed'">
+                <template #header>
+                  <div class="flex items-center">
+                    <span class="text-[#fff] text-[12px]">{{ 'level 5 ' }}</span>
+                    <n-icon :color="'#fff'" :size="16" class="mx-[8px]">
+                      <TrendingUpOutline />
+                    </n-icon>
+                    <span class="text-[#fff] item-before-lvl relative z-0">{{ ' level 6' }}</span>
+                  </div>
+                </template>
+              </n-timeline-item>
+              <n-timeline-item type="info" :line-type="'dashed'">
+                <template #header>
+                  <div class="flex items-center">
+                    <span class="text-[#fff] mr-[4px]">{{ '$/hour: ' }}</span>
+                    <span class="text-[#fff] item-before-profit relative z-0">{{ ' +0.5$' }}</span>
+                  </div>
+                </template>
+              </n-timeline-item>
+            </n-timeline>
+            <div class="flex justify-end">
+              <div class="w-[150px] h-[1px] bg-[#63656661] my-[16px] z-[1]"></div>
             </div>
-            <button class="btn z-[1]" @click="update">
-              <n-spin v-if="loading" :size="24" :stroke="'#fff'" class="mr-[8px]" />
-              <span class="btn__content text-[#000] font-[600]">{{ 'Upgrade' }}</span>
-              <span class="btn__label">up</span>
-            </button>
+            <div class="flex items-center w-full">
+              <div class="flex justify-center items-center pr-[16px] min-w-[42px] h-[42px]">
+                <span class="text-[28px] font-[600] text-[#fff] leading-[42px] relative z-[1] whitespace-pre">
+                  {{ '3' }}
+                  <sup>{{ '$' }}</sup>
+                </span>
+              </div>
+              <button class="btn z-[1]" @click="update">
+                <n-spin v-if="loading" :size="24" :stroke="'#000'" class="absolute left-[16px] top-[8px] z-[1]" />
+                <span class="btn__content text-[#000] font-[600]">{{ 'Upgrade' }}</span>
+                <span class="btn__label">up</span>
+              </button>
+            </div>
+            <Fireworks
+              ref="fw"
+              :autostart="false"
+              :options="options"
+              :style="{
+                top: 0,
+                left: 0,
+                zIndex: 0,
+                width: '100%',
+                height: '100%',
+                position: 'absolute'
+              }"
+            />
           </div>
-          <Fireworks
-            ref="fw"
-            :autostart="false"
-            :options="options"
-            :style="{
-              top: 0,
-              left: 0,
-              zIndex: 0,
-              width: '100%',
-              height: '100%',
-              position: 'absolute'
-            }"
-          />
         </div>
       </div>
 
@@ -156,6 +175,9 @@ const openModal = () => {
 </template>
 
 <style scoped>
+.container-main {
+  transition: height 0.2s ease-in-out;
+}
 .top-block {
   position: absolute;
   top: -43px;
@@ -163,7 +185,9 @@ const openModal = () => {
   width: calc(100% + 32px);
   height: 8px;
   background: #faebd729;
+  background-size: 85px 85px;
   background-image: repeating-linear-gradient(45deg, #f4c543, #f4c543 30px, #050a0e 30px, #050a0e 60px);
+  transition: height 0.4s ease-in-out;
 }
 
 .bottom-block {
@@ -174,7 +198,46 @@ const openModal = () => {
   height: 8px;
   background: #faebd729;
   background-image: repeating-linear-gradient(45deg, #f4c543, #f4c543 30px, #050a0e 30px, #050a0e 60px);
+  background-size: 85px 85px;
+  transition: height 0.4s ease-in-out;
 }
+
+.bottom-block.active,
+.top-block.active {
+  animation: move-it 2s linear infinite;
+}
+
+.bottom-block.completed,
+.top-block.completed {
+  z-index: 12;
+  animation: move-height 2s ease-in-out;
+}
+
+@keyframes move-height {
+  0% {
+    height: 8px;
+  }
+  35% {
+    height: calc(50% + 40px);
+  }
+  70% {
+    height: calc(50% + 40px);
+  }
+  100% {
+    height: 8px;
+  }
+}
+
+@keyframes move-it {
+  0% {
+    background-position: initial;
+  }
+  100% {
+    background-position: 85px 0px;
+  }
+}
+
+
 .price-before {
   text-shadow: rgb(0 0 0 / 44%) 0px 3px 8px;
 }
@@ -341,7 +404,6 @@ const openModal = () => {
 .btn .btn__content::after {
   display: block;
 }
-
 
 
 </style>
